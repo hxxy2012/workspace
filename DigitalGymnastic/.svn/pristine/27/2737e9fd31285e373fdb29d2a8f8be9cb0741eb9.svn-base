@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myradio="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/top"
+        layout="@layout/topbar" />
+
+    <LinearLayout
+        android:id="@+id/ll_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal" >
+
+        <TextView
+            android:id="@+id/tv_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/x11"
+            android:textColor="@color/umeng_socialize_list_item_textcolor" />
+
+        <TextView
+            android:id="@+id/tv_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/x11"
+            android:textColor="@color/umeng_socialize_list_item_textcolor" />
+
+        <TextView
+            android:id="@+id/tv_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/x10"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="@dimen/x11"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_content"
+        android:layout_width="@dimen/x280"
+        android:layout_height="@dimen/x280"
+        android:layout_below="@id/ll_text"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:id="@+id/ll_example"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <ImageView
+                android:id="@+id/iv_example"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x20"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_part"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="gone" >
+
+            <com.hike.digitalgymnastic.view.MyImageView
+                android:id="@+id/iv_part"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/x35"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_desp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_desp_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x20"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="TextView"
+                android:textSize="@dimen/x13"
+                android:textColor="@color/umeng_socialize_list_item_textcolor" />
+		<View   android:id="@+id/view_line"
+		        android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/white"/>
+            <TextView
+                android:id="@+id/tv_desp_protect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x20"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="TextView"
+                android:textSize="@dimen/x13" 
+                android:textColor="@color/umeng_socialize_list_item_textcolor"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fl_content"
+        android:gravity="center"
+        android:minHeight="@dimen/y150"
+        android:orientation="horizontal" >
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <com.hike.digitalgymnastic.view.MyRadioButton
+                android:id="@+id/rb_example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:clickable="true"
+                android:drawablePadding="@dimen/y10"
+                android:gravity="center"
+                android:text="动作示范"
+                android:textColor="@drawable/rb_text_selector"
+                myradio:drawableHeight="@dimen/x60"
+                myradio:drawableTop="@drawable/rb_example_selector"
+                myradio:drawableWidth="@dimen/x60" />
+
+            <com.hike.digitalgymnastic.view.MyRadioButton
+                android:id="@+id/rb_part"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:clickable="true"
+                android:drawablePadding="@dimen/y10"
+                android:gravity="center"
+                android:text="训练部位"
+                android:textColor="@drawable/rb_text_selector"
+                myradio:drawableHeight="@dimen/x60"
+                myradio:drawableTop="@drawable/rb_part_selector"
+                myradio:drawableWidth="@dimen/x60" />
+
+            <com.hike.digitalgymnastic.view.MyRadioButton
+                android:id="@+id/rb_desp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:clickable="true"
+                android:drawablePadding="@dimen/y10"
+                android:gravity="center"
+                android:text="训练介绍"
+                android:textColor="@drawable/rb_text_selector"
+                myradio:drawableHeight="@dimen/x60"
+                myradio:drawableTop="@drawable/rb_desp_selector"
+                myradio:drawableWidth="@dimen/x60" />
+        </RadioGroup>
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_sportdetail.xml -->

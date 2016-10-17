@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_home_sport"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <include layout="@layout/topbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:scrollbars="none" 
+        android:overScrollMode="never" >
+ 	
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+	<EditText
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@android:color/transparent"
+                 />
+            <include layout="@layout/activity_viewflipper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x8"
+                android:layout_marginRight="@dimen/x8"
+                />
+
+            <ListView
+                android:id="@+id/history_lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:cacheColorHint="#00000000"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:drawSelectorOnTop="false"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none" 
+                android:overScrollMode="never"
+                >
+              
+            </ListView>
+
+            <include layout="@layout/activity_history_bottom_ly" 
+                android:id="@+id/history_bottom_ly"
+                android:visibility="invisible"/>
+         
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/activity_history.xml -->

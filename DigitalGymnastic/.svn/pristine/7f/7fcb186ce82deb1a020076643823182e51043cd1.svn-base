@@ -1,0 +1,8 @@
+package com.weizhi.domainmodel;
+
+public class MBattery {
+	//电量%
+	public String Battery;
+	//描述(还可以用X天)
+	public String Desc;
+}

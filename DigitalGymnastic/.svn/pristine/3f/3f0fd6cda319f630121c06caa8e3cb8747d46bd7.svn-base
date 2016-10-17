@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="11dp"
+    android:orientation="vertical"
+    >
+    <View 
+    android:layout_width="70dp"
+    android:layout_height="4dp"
+    android:background="@android:color/transparent"
+    android:layout_gravity="left"/>
+<View 
+    android:layout_width="70dp"
+    android:layout_height="3dp"
+    android:background="@color/darkgrey"
+    android:layout_gravity="left"/>
+<View 
+    android:layout_width="70dp"
+    android:layout_height="4dp"
+    android:background="@android:color/transparent"
+    android:layout_gravity="left"/>
+
+</LinearLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/ruleitemsmall_horizontal.xml -->

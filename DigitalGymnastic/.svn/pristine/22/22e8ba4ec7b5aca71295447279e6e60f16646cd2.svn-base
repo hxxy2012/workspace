@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="unspecified"><source path="F:\wp_android\DbService\build\intermediates\exploded-aar\wp_android\library\unspecified\res"/></dataSet><dataSet config="main"><source path="F:\wp_android\DbService\res"/><source path="F:\wp_android\DbService\build\generated\res\rs\debug"/><source path="F:\wp_android\DbService\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug"><source path="F:\wp_android\DbService\build-types\debug\res"/></dataSet><mergedItems/></merger>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <include
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/topbar"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/grey_dd"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:layout_marginTop="@dimen/x20"
+            android:background="@color/grey_e5"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rl_sit_long_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x9"
+                android:text="@string/sit_alarm_time_set"
+                android:textColor="@color/umeng_socialize_list_item_textcolor"
+                android:textSize="@dimen/x13" />
+
+            <ImageView
+                android:id="@+id/iv_arrow"
+                android:layout_width="@dimen/x7"
+                android:layout_height="@dimen/x11"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@mipmap/icon_set_right_arrow" />
+
+            <TextView
+                android:id="@+id/tv_sit_long_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x5"
+                android:layout_toLeftOf="@+id/iv_arrow"
+                android:text="@string/minute"
+                android:textColor="@color/umeng_socialize_list_item_textcolor"
+                android:textSize="@dimen/x13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/umeng_socialize_ucenter_bg"
+            android:layout_marginLeft="@dimen/x10"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_sit_long_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:visibility="gone" >
+
+            <com.hike.digitalgymnastic.view.PickerView
+                android:id="@+id/MM_sit_long"
+                android:layout_width="80dp"
+                android:layout_height="180dp"
+                android:layout_margin="20dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_sit_long_start"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:layout_toEndOf="@+id/rl_sit_long_time" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x9"
+                android:text="@string/sit_alarm_start_time"
+                android:textColor="@color/umeng_socialize_list_item_textcolor"
+                android:textSize="@dimen/x13" />
+
+            <ImageView
+                android:id="@+id/iv_arrow2"
+                android:layout_width="@dimen/x7"
+                android:layout_height="@dimen/x11"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@mipmap/icon_set_right_arrow" />
+
+            <TextView
+                android:id="@+id/tv_sit_long_time_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x5"
+                android:layout_toLeftOf="@+id/iv_arrow2"
+                android:text="@string/minute"
+                android:textColor="@color/umeng_socialize_list_item_textcolor"
+                android:textSize="@dimen/x13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/umeng_socialize_ucenter_bg"
+            android:layout_marginLeft="@dimen/x10"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_sit_start_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_first"
+            android:gravity="center_horizontal"
+            android:visibility="gone" >
+
+            <com.hike.digitalgymnastic.view.PickerView
+                android:id="@+id/start_HH_pv"
+                android:layout_width="80dp"
+                android:layout_height="180dp"
+                android:layout_margin="20dp" />
+
+            <com.hike.digitalgymnastic.view.PickerView
+                android:id="@+id/start_MM_pv"
+                android:layout_width="80dp"
+                android:layout_height="180dp"
+                android:layout_margin="20dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_sit_long_end"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:layout_toEndOf="@+id/rl_sit_long_start" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x9"
+                android:text="@string/sit_alarm_end_time"
+                android:textColor="@color/umeng_socialize_list_item_textcolor"
+                android:textSize="@dimen/x13" />
+
+            <ImageView
+                android:id="@+id/iv_arrow3"
+                android:layout_width="@dimen/x7"
+                android:layout_height="@dimen/x11"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x14"
+                android:background="@mipmap/icon_set_right_arrow" />
+
+            <TextView
+                android:id="@+id/tv_sit_long_time_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x5"
+                android:layout_toLeftOf="@+id/iv_arrow3"
+                android:text="@string/minute"
+                android:textColor="@color/umeng_socialize_list_item_textcolor"
+                android:textSize="@dimen/x13" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="@color/umeng_socialize_ucenter_bg"
+            android:layout_marginLeft="@dimen/x10"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_end_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/v_first"
+            android:gravity="center_horizontal"
+            android:visibility="gone" >
+
+            <com.hike.digitalgymnastic.view.PickerView
+                android:id="@+id/end_HH_pv"
+                android:layout_width="80dp"
+                android:layout_height="180dp"
+                android:layout_margin="20dp" />
+
+            <com.hike.digitalgymnastic.view.PickerView
+                android:id="@+id/end_MM_pv"
+                android:layout_width="80dp"
+                android:layout_height="180dp"
+                android:layout_margin="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/x10"
+        android:layout_marginRight="@dimen/x10"
+        android:layout_marginBottom="@dimen/y10"
+        android:visibility="gone" >
+
+        <ImageView
+            android:layout_width="@dimen/x7"
+            android:layout_height="@dimen/x11"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x14"
+            android:background="@mipmap/little_circle" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x5"
+            android:text="@string/alarm_sit_long_tip"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x13" />
+    </LinearLayout>
+
+</RelativeLayout>

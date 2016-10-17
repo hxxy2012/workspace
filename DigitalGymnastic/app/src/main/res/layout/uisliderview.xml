@@ -1,0 +1,89 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp"
+   >
+
+    <ImageView
+        android:id="@+id/iv_bg_slider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="left"
+        android:src="@mipmap/kal_value" />
+
+    <ImageView
+        android:id="@+id/iv_kedu_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/iv_bg_slider"
+        android:src="@mipmap/icon_kedu_line" />
+
+    <ImageView
+        android:id="@+id/iv_vert_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="145dp"
+        android:layout_toRightOf="@id/iv_bg_slider"
+        android:src="@mipmap/vert_line" />
+
+    <LinearLayout android:id="@+id/ll_silder"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_toRightOf="@id/iv_bg_slider"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:orientation="vertical" 
+        >
+
+        <RelativeLayout
+            android:id="@+id/fl_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp" >
+
+            <ImageView
+                android:id="@+id/iv_line_white"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/line_left" />
+
+            <ImageView
+                android:id="@+id/iv_people"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="-20dp"
+                android:layout_toRightOf="@id/iv_line_white"
+                android:src="@mipmap/icon_target" />
+
+            <FrameLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/iv_people" >
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="30dp"
+                    android:src="@mipmap/line_rigth" />
+                <TextView 
+                    android:id="@+id/tv_kedu_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:text="500cal"
+                    android:layout_gravity="right|bottom"
+                    android:gravity="right|bottom"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/white"/>
+            </FrameLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

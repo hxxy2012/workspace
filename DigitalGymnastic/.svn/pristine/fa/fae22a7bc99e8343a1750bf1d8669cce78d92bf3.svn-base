@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/id_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/id_rlyt_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/id_llyt_menu"></FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/id_llyt_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/x50"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/id_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/transparent_background" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical">
+
+
+            <RadioGroup
+                android:id="@+id/id_rg_menu"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/ghostwhite"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/id_menu_rbtn_home"
+                    style="@style/style_menu_rbtn"
+                    android:checked="true"
+                    android:drawableTop="@drawable/drawable_activity_menu_home_selector" />
+
+
+                <RadioButton
+                    android:id="@+id/id_menu_rbtn_circle"
+                    style="@style/style_menu_rbtn"
+                    android:drawableTop="@drawable/drawable_activity_menu_calendar_selector" />
+
+                <RadioButton
+                    android:id="@+id/id_menu_rbtn_analyze"
+                    style="@style/style_menu_rbtn"
+                    android:drawableTop="@drawable/drawable_activity_menu_analyze_selector" />
+
+                <RadioButton
+                    android:id="@+id/id_menu_rbtn_my"
+                    style="@style/style_menu_rbtn"
+                    android:drawableTop="@drawable/drawable_activity_menu_my_selector" />
+            </RadioGroup>
+
+            <ImageView
+                android:id="@+id/iv_unread"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x140"
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/iconred_unread"
+                android:visibility="gone" />
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

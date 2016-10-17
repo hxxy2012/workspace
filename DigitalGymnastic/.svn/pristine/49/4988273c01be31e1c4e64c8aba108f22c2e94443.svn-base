@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 新加的 -->
+    
+    <string name="zumba">狂热的音乐节奏和肢体动作上:跳跃、挥动手臂、扭臀、鼓掌、甩头，就像是酒吧里的一场舞会。如此较大强度的运动对减肥、塑身有很好的效果。</string>
+    <string name="zumba_fh">低冲击类运动，对关节等伤害均很小，运动前一个半小时推荐饮用富含无机盐、维生素的运动饮料，保证在运动过程中身体不缺水。</string>
+    <string name="yujia">健身瑜伽主要抽取瑜伽体式中对力量及耐力的训练，如斜板式、三角式、弓式等。经过一段时间的训练，能感受到肌肉耐力有明显的提升。</string>
+    <string name="yujia_fh">作为练习者，应随时遵循瑜伽练习中自然的规律循序渐进，不和他人相比。运动前一定要充分热身，骨质疏松及眼压过高者谨慎练习。</string>
+    <string name="youyangwudao">有氧舞蹈的特点就是髋部动作很多，动作优美。进行有氧舞蹈训练，对腰腹部瘦身有很好的作用。</string>
+    <string name="youyangwudao_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    <string name="ladingwu">拉丁舞就是指体育舞蹈，分为恰恰、桑巴、伦巴、牛仔、斗牛。腹部一般不容易活动到，拉丁舞急剧的骨盆摇动、胯部扭摆是对付小肚子上赘肉最有效的方法。</string>
+    <string name="ladingwu_fh">训练过程中不要急于求成，打下坚实的基本功，然后针对自己的特点有选择地学习一些花步。否则容易造成扭伤以及造成错误的运动姿态。</string>
+    <string name="xiandaiwu">现代舞的生活观是宽容大度，乐观向上，随遇而安。所以，在现代舞的动作中没有固定舞步，最重要是要放松，无限延伸自己，抒发自己的感情。</string>
+    <string name="xiandaiwu_fh">特别注意膝盖、手肘、手腕和脚腕，注意手撑地时避免扭伤手腕，跳起落地时避免扭伤脚腕。运动伤害发生时的处理步骤：休息、冰敷、压迫、抬高。</string>
+    
+    <string name="gudianwu">古典舞具有严谨的程式、规范性的动作和比较高超的技巧。讲究形神兼备，主要有旋转、弹跳、翻身等基本动作组成。</string>
+    <string name="gudianwu_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+      <string name="jueshiwu">快速的移动重心，特别是水平移动姿势更是爵士舞的技巧。让身体各个部位如头，肩，腰，臀，躯干做独立的动作。基本动作有踢腿、跳跃等。</string>
+    <string name="jueshiwu_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    
+      <string name="dupiwu">在肚皮舞中，腹部等部位的动作远远多于四肢的动作，以胸部腹部以及骨盆为重点舞动部位的肚皮舞，非常适合女性的身体结构，会给女性带来很好的效果。</string>
+    <string name="dupiwu_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+    
+      <string name="bodyjam">BODYJAM是最佳的音乐与动作相结合的课程，精心编排的动作中包含了拉丁、Funk、Groove、加勒比舞蹈、街舞、爵士以及百老汇爵士等风格的舞蹈元素。</string>
+    <string name="bodyjam_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+      <string name="bodypump">BODY PUMP是一项比较快速的瘦身运动，它是把杠铃和健身操进行了组合，将有氧运动与无氧运动完美结合，有很好的减脂塑形的效果。</string>
+    <string name="bodypump_fh">穿着贴身服装，运动中关节不要完全伸直，给自己身体有一个缓冲。并根据自身的情况掌握运动量，不要过于勉强，坚持不了就要及时停止。</string>
+    
+      <string name="donggandanche">和所有的有氧运动一样，动感单车是在充分激活身体的运动细胞后，在消耗能量的同时达到减脂目的。同时还能增强腿部的力量，美化下肢形体。</string>
+    <string name="donggandanche_fh">放开单手或双手骑车，在站姿或是跳跃情况下可能会严重受伤；在坐姿爬坡时也会造成腰部受力不均。骑车时脚趾朝下则会造成骨结节发炎和脚部麻木。</string>
+      <string name="bodyblance">一个将传统瑜伽、太极和普拉提融合在一起的身心训练项目。作为第一个预先编排动作的身心结合训练项目，参加者完全没有年龄、性别和身体状况的限制。</string>
+    <string name="bodyblance_fh">作为练习者，应随时遵循瑜伽练习中自然的规律循序渐进，不和他人相比。运动前一定要充分热身，骨质疏松及眼压过高者谨慎练习。</string>
+    
+      <string name="bodybcombat">源自一系列搏击格斗动作，将武术、泰拳、西洋拳击、空手道、跆拳道等结合在一起，在注重锻炼耐力的同时提高全身的力量和灵活性，消耗大量卡路里，修整肌肉轮廓，并能自我防卫。</string>
+    <string name="bodybcombat_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。心脏病及高血压患者需遵医嘱练习。</string>
+      <string name="bodyattack">是一项高能量的间歇式训练课程，将竞技有氧动作与力量训练和稳定性训练结合在一起。能燃烧大量的热量，让身材更加苗条，同时通过核心调节训练，使你变得更加强健。</string>
+    <string name="bodyattack_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+      <string name="minzuwu">民族民间舞是一个多层次的概念和可伸缩的界面，对于练习者有较强趣味性，且能 培养舞者气质，让人心情愉悦 。</string>
+    <string name="minzuwu_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+      <string name="popdance">POP DANCE代表着潮流，年轻，梦想。练习能够释放内心的压力，增强自信心和成就感。</string>
+    <string name="popdance_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+      <string name="foc">FOC课程体系是中国民族艺术及传统的养生之道与国际科学的健身方式接轨，具有中国特色的健身课程体系。课程体系中主要分为有氧舞蹈和身心能量两部分。</string>
+    <string name="foc_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+    
+     <string name="paobu">跑步能够减肥塑形，增强心肺机能和肠胃蠕动，长期坚持跑步能提高睡眠质量，使身体保持年轻，而且跑步还能够提高性能力和减少女性妇科疾病，是人们最常用的一种运动方式。</string>
+    <string name="paobu_fh">运动伤害防护：跑步结束后要注意腿部拉伸，否则容易使小腿变粗壮，尤其对于爱美的女性来说。</string>
+      <string name="youyong">游泳是一种全身性的锻炼，不仅能够增强人体神经系统的功能，改善血液循环，而且还能提高对营养物质的消化和吸收，进而增强体质和对疾病的抵抗力。此外，游泳消耗的热量非常大，是减肥的首选运动。</string>
+    <string name="youyong_fh">运动伤害防护：下水前需充分做好热身运动，防止因热身不足造成的抽筋的肌肉痉挛等情况。</string>
+   
+      <string name="lishidatuiqushen">立式大腿屈伸练习器能使腿部和臀部的肌肉得到锻炼和加强，增强腿部力量。</string>
+    <string name="lishidatuiqushen_fh">运动伤害防护：练习之前要注意膝关节和髋关节的热身，在练习时当腿部完全蹬直以后，膝盖千万不要完全伸直，将力量大多让肌肉程受，否则很容易造成膝盖损伤。</string>
+     <string name="tiaojieshidengtui">调节式蹬腿练习器能够锻炼小腿的所有肌群，长时间锻炼能够改善个人的运动表现。</string>
+    <string name="tiaojieshidengtui_fh">运动伤害防护：因背部疼痛而不能做下蹲的人可进行此项训练，但切勿使背部离开斜垫；此外，有时大重量的蹬腿训练可导致骶髂（di qia)关节移位，引起严重的肌肉痉挛和疼痛。</string>
+    
+       <string name="santoujishuangxiang">三头肌双向练习器专门锻炼手臂的三头肌，增强肘关节的稳定性和改善手臂的肌肉不平衡。</string>
+    <string name="santoujishuangxiang_fh">运动伤害防护：运动起始时肌张力较大，因此应先进行小负荷热身训练，训练时臂部不要完全伸直，以免引起肌腱炎。</string>
+    
+    
+     <string name="ertoujishuangxiang">二头肌双向练习器主要锻炼你的肱二头肌，运动时可与哑铃、杠铃弯举搭配练习，让你增强肘关节的稳定性的同时拥有健美的双臂。</string>
+    <string name="ertoujishuangxiang_fh">运动伤害防护：运动起始时肌张力较大，因此应先进行小负荷热身训练，训练时臂部不要完全伸直，以免引起肌腱炎。</string>
+   
+ <string name="woshituiquzhan">卧式腿屈展器能使大腿部位的肌肉得到锻炼和加强。</string>
+    <string name="woshituiquzhan_fh">运动伤害防护：运动时俯卧于训练机上，双手握住手柄，腿伸直，双踝位于滚轴垫的下方，首先吸气使双腿同时屈，尽量使足跟触及臀肌，然后结束动作并呼气，运动时要注意个人气息的节奏。</string>
+
+<string name="buxing">步行能很好的锻炼腿部股内侧肌、股外侧肌和股直肌，并延缓骨骼退化，同时，你的臀大肌也能被锻炼。坚持步行能拥有更优美的臀线。</string>
+<string name="tuoyuanji">椭圆机作为热身和减脂运动，不仅能够锻炼到你的股二头肌、股四头肌和臀部肌肉，还能增强你的心肺功能。</string>
+    <string name="tuoyuanji_fh">运动伤害防护：椭圆机单次锻炼时间不宜过长，否则容易导致脚部发麻，因此要注意中间休息；此外体型过胖者不推荐此运动。</string>
+    
+
+<string name="zuoshihuatinglali">坐式划艇拉力练习器主要用来锻炼背阔肌、三角肌和二头肌，可与高拉力背肌练习器和坐式背肌伸展练习器配套使用。</string>
+    <string name="zuoshihuatinglali_fh">运动伤害防护：训练时身体前倾，吸气时将手柄拉至下胸部，然后挺胸肘部尽量往后拉，最后结束动作并呼气。此外在做大负荷低手拉力器划船动作时不要弓背，以免拉伤。</string>
+
+<string name="zuoshijianbanghouzhan">坐式肩膀后展练习器主要锻炼三角肌后束和背阔肌,在锻炼过程中要注意进行坐姿推肩的搭配练习.</string>
+    <string name="zuoshijianbanghouzhan_fh">运动伤害防护：由于肩关节比较脆弱，为避免损伤肩关节，可根据自身素质和柔韧性，进行适当的训练。</string>
+
+
+  <string name="gaolalibeiji">高拉力背肌练习器主要锻炼背阔肌和肱二头肌，可与坐式划艇拉力练习器和坐式背肌伸展练习器配套使用。</string>
+    <string name="gaolalibeiji_fh">运动伤害防护：首先吸气，下拉拉杆，肘部靠向身体，然后结束动作并呼气。运动过程中要注意身体的稳定与平衡，否则容易引起肱三头肌的拉伤。</string>
+
+ <string name="zuoshibeijishenzhan">坐式背肌伸展练习器主要锻炼背阔肌和肱二头肌，可与坐式划艇拉力练习器和高拉力背肌练习器配套使用。</string>
+    <string name="zuoshibeijishenzhan_fh">运动伤害防护：首先吸气，下拉拉杆，肘部靠向身体，然后结束动作并呼气。运动过程中要注意身体的稳定与平衡以及热身前适当的热身运动，否则容易引起肱三头肌的拉伤。</string>
+
+
+<string name="zuoshifeiniao">坐式飞鸟练习器主要锻炼你的三角肌后束，可与坐式肩膀后展练习器搭配使用，让你拥有健美的双臂。</string>
+    <string name="zuoshifeiniao_fh">运动伤害防护：此训练是极好的入门练习，不必担心体型和姿势，并且可以连续重复多组训练，非常适合初学者。</string>
+
+  <string name="zuoshitixi">坐式提膝练习器主要锻炼你的腓肠肌和比目鱼肌，不仅能够作为其他运动的热身项目还是腿部运动的首选项目。</string>
+    <string name="zuoshitixi_fh">运动伤害防护：此训练是极好的入门练习，不必担心体型和姿势，并且可以连续重复多组训练，非常适合初学者。</string>
+
+
+  <string name="zuoshidatuishenzhan">坐式大腿伸展练习器主要锻炼你的股四头肌，初学者适合此训练以增加肌肉的力量，为以后的复杂技巧训练奠定基础。</string>
+    <string name="zuoshidatuishenzhan_fh">运动伤害防护：在运动时要注意与蹲腿和箭步蹲腿的搭配练习，帮助你预防和护理膝部关节并改善肌肉弹性。</string>
+
+  <string name="zuoshihoutuiqushen">坐式后腿屈伸练习器主要锻炼你的股二头肌，在运动时要注意与蹲腿和箭步蹲腿的搭配练习，帮助你改善肌肉弹性和双腿功能。</string>
+    <string name="zuoshihoutuiqushen_fh">运动伤害防护：练习过程中要注意身体的稳定和平衡以及相对位置的准确，此外还需注意个人的动作幅度和呼吸节奏，否则会容易出现肌肉变形以及不对称等问题。</string>
+    
+
+  <string name="datuiwaiceji">大腿外侧肌练习器主要锻炼你的股外侧肌，运动时要注意与侧踢腿和抬腿的搭配练习，让你拥有健美、充满力量感的双腿。</string>
+    <string name="datuiwaiceji_fh">运动伤害防护：在进行此项训练时，大腿内收肌群容易在剧烈运动时受伤，因此，应逐渐增加负荷，并在训练结束时做一些拉伸练习。</string>
+    <string name="datuineiceji">大腿内侧肌练习器主要锻炼你的股内侧肌，运动时要注意与垫上内收肌群的搭配练习，让你拥有健美、充满力量的双腿。</string>
+    <string name="datuineiceji_fh">运动伤害防护：在进行此项训练时，大腿内收肌群容易在剧烈运动时受伤，因此，应逐渐增加负荷，并在训练结束时做一些拉伸练习。</string>
+    
+    
+     <string name="zuoshijianbangtuiju">坐式肩膀推举练习器主要锻炼你的三角肌中束，运动时要注意与侧平举、杠铃、哑铃上推的搭配练习，帮助你增强肩关节的稳定性，纠正手臂肌肉的不平衡。</string>
+    <string name="zuoshijianbangtuiju_fh">运动伤害防护：练习时要注意身体与靠背的紧密贴合，可预防背部过度弓起从而造成身体的损伤。</string>
+    <string name="zuoshishuangxiangtuixong">坐式双向推胸练习器主要锻炼你的胸大肌，运动时可与蝴蝶式扩胸练习器搭配使用，让你拥有完美的胸肌。</string>
+    <string name="zuoshishuangxiangtuixong_fh">运动伤害防护：进行此项训练时要注意身体与器械的角度，并保证身体与器械靠背的紧密贴合，以免引起胸大肌的拉伤。</string>
+    
+     <string name="hudieshikuoxiong">蝴蝶式扩胸练习器主要锻炼你的胸大肌，同时又能最大限度的减少前部三角肌的参与，运动时可与坐式双向推胸练习器搭配练习，让你拥有完美的胸肌。</string>
+    <string name="hudieshikuoxiong_fh">运动伤害防护：此训练可帮助初学者获得足够的力量以便进行更加复杂的训练，训练时要注意呼吸的节奏，吸气时用力收双臂使其相互靠拢，动作结束时呼气。</string>
+    
+</resources>

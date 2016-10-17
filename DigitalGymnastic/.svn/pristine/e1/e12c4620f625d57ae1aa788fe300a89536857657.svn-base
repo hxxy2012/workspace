@@ -1,0 +1,17 @@
+package com.weizhi.httpservice;
+
+import com.weizhi.domainmodel.MUser;
+
+/**
+ * Created by shaohua on 14-11-8.
+ */
+public interface IUserInfo {
+    boolean login(MUser user);
+    boolean register(MUser user);
+    boolean forgetPassword(String phoneNumber);
+    boolean modifyPassword(String phoneNumber,String sms,String newPwd);
+    void uploadHeadPhoto();
+    void updateHeadPhoto();
+    void updateProfile();
+    void getProfile();
+}

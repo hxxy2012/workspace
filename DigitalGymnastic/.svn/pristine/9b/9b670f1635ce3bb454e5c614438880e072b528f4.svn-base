@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/id_rlyt_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/id_llyt_menu"></FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/id_llyt_menu"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/id_line"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/powderblue" />
+
+        <RadioGroup
+            android:id="@+id/id_rg_menu"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/paleturquoise"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/id_menu_rbtn_home"
+                style="@style/style_menu_rbtn"
+                android:checked="true"
+                android:drawableTop="@drawable/drawable_activity_menu_home_selector"
+                android:text="运动" />
+
+            <RadioButton
+                android:id="@+id/id_menu_rbtn_circle"
+                style="@style/style_menu_rbtn"
+                android:drawableTop="@drawable/drawable_activity_menu_calendar_selector"
+                android:text="圈子" />
+
+            <!--<ImageButton-->
+            <!--android:id="@+id/id_menu_ibtn_measure"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@null"-->
+            <!--android:contentDescription="@string/app_name"-->
+            <!--android:onClick="menuOnClick"-->
+            <!--android:scaleType="center"-->
+            <!--android:src="圈子" />-->
+
+            <RadioButton
+                android:id="@+id/id_menu_rbtn_analyze"
+                style="@style/style_menu_rbtn"
+                android:drawableTop="@drawable/drawable_activity_menu_analyze_selector"
+                android:text="装备" />
+
+            <RadioButton
+                android:id="@+id/id_menu_rbtn_my"
+                style="@style/style_menu_rbtn"
+                android:drawableTop="@drawable/drawable_activity_menu_my_selector"
+                android:text="我的" />
+        </RadioGroup>
+    </LinearLayout>
+</RelativeLayout>

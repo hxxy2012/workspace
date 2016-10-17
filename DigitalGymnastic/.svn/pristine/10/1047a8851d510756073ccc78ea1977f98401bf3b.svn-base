@@ -1,0 +1,165 @@
+package com.hike.digitalgymnastic.request;
+
+import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.hike.digitalgymnastic.entitiy.MessageContext;
+import com.hike.digitalgymnastic.entitiy.MessageCount;
+import com.hike.digitalgymnastic.entitiy.QueryMessage;
+import com.hike.digitalgymnastic.http.HttpConnectUtils;
+import com.hike.digitalgymnastic.http.IBaseRequest;
+import com.hike.digitalgymnastic.http.INetResult;
+import com.hike.digitalgymnastic.utils.Constants;
+import com.hike.digitalgymnastic.utils.Utiles;
+import com.lidroid.xutils.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+public class MessageDao extends IBaseRequest {
+	private Context context;
+	private Gson gson;
+	private MessageCount messageCount;// 消息数量
+	private MessageContext messagecontext;// 获取消息
+	QueryMessage qm;
+
+	public QueryMessage getQm() {
+		return qm;
+	}
+
+	public void setQm(QueryMessage qm) {
+		this.qm = qm;
+	}
+	public MessageContext getMessagecontext() {
+		return messagecontext;
+	}
+
+	public MessageCount getMessageCount() {
+		return messageCount;
+	}
+
+	public MessageDao(INetResult activity, Activity context) {
+		super(activity, context);
+		this.gson = new Gson();
+		this.context = context;
+	}
+
+	/**
+	 * 获取未读消息数量
+	 */
+	public void GetUnreadMessageCount() {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		postRequest(HttpConnectUtils.api_getUnreadMessageCount, params,
+				Constants.getUnreadMessageCount);
+	}
+
+	/**
+	 * 获取消息 messageId Long 否 消息标识
+	 */
+	public void GetMessage(String id) {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		params.addBodyParameter("messageId", id);
+		postRequest(HttpConnectUtils.api_getMessage, params,
+				Constants.getMessage);
+	}
+
+	/**
+	 * 查询消息 startIndex Integer 否 开始序号 pageSize Integer 否 页面大小
+	 */
+	public void QueryMessage() {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		params.addBodyParameter("startIndex", "0");
+		params.addBodyParameter("pageSize", "1000");
+		postRequest(HttpConnectUtils.api_queryMessage, params,
+				Constants.queryMessage);
+	}
+
+	/**
+	 * 阅读消息 messageId Long 否 消息标识
+	 */
+	public void ReadMessage(String id) {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		params.addBodyParameter("messageId", id);
+		postRequest(HttpConnectUtils.api_readMessage, params,
+				Constants.readMessage);
+	}
+
+	/**
+	 * 删除消息 messageId Long 否 消息标识
+	 */
+	public void DeleteMessage(String id) {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		params.addBodyParameter("messageId", id);
+		postRequest(HttpConnectUtils.api_deleteMessage, params, Constants.deleteMessage);
+	}
+
+	/**
+	 * 确认推送消息 messageId Long 是 消息标识
+	 */
+	public void AckPushMessage(String id) {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		params.addBodyParameter("messageId", id);
+		postRequest(HttpConnectUtils.api_ackPushMessage, params,
+				Constants.ackPushMessage);
+	}
+
+	/**
+	 * 查询消息列表
+	 */
+	public void queryMessage(int startIndex, int pageSize) {
+		RequestParams params = new RequestParams();
+		Utiles.Add(context, params);
+		params.addBodyParameter("startIndex", String.valueOf(startIndex));
+		params.addBodyParameter("pageSize", String.valueOf(pageSize));
+		postRequest(HttpConnectUtils.api_queryMessage, params,
+				Constants.queryMessage);
+	}
+
+	@Override
+	public void onRequestSuccess(JSONObject result, int requestCode)
+			throws IOException, JsonSyntaxException, JSONException {
+		Log.v("MyLog", result.toString());
+		switch (requestCode) {
+		case Constants.getUnreadMessageCount:// 获取未读消息数量
+			messageCount = gson.fromJson(result.getString("data"), MessageCount.class);
+			break;
+		case Constants.getMessage:// 获取消息
+			break;
+		case Constants.queryMessage:// 查询消息
+			messagecontext = gson.fromJson(result.getString("data"), MessageContext.class);
+			break;
+		case Constants.readMessage:// 阅读消息
+			break;
+		case Constants.deleteMessage:// 删除消息
+			break;
+		case Constants.ackPushMessage:// 确认推送消息
+			break;
+		default:
+			break;
+		}
+	}
+	
+	
+	public void cancel(){
+		if(httpHandler!=null&&!httpHandler.isCancelled()){
+			httpHandler.cancel(true);
+		}
+	}
+	
+	public boolean isRunning(){
+		if(httpHandler!=null)
+			return httpHandler.isCancelled();
+		return false;
+	}
+}

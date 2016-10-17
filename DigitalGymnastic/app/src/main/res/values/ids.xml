@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="first_circle">1001</item>
+    <item type="id" name="secend_circle">1002</item>
+    <item type="id" name="third_circle">1003</item>
+    <item type="id" name="fourth_circle">1004</item>
+    <item type="id" name="fivth_circle">1005</item>
+    <item type="id" name="sixth_circle">1006</item>
+    <item type="id" name="seventh_circle">1007</item>
+     <item type="id" name="sport_footer_view">1008</item>
+</resources>

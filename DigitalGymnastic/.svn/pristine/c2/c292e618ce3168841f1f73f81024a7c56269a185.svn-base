@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/x9"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_selected_year"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x18"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:textColor="@color/green_00bfa3"
+        android:textSize="@dimen/x27"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:id="@+id/fl_kedu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <ScrollView
+                android:id="@+id/hsv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y187"
+                android:minWidth="@dimen/x44"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/ll_hsv_year"
+                    android:layout_width="@dimen/x44"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical" />
+            </ScrollView>
+
+            <com.hike.digitalgymnastic.view.DiverRuleAgeScrollView
+                android:id="@+id/hsv_kedu"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y187"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/ll_hsv_kedu"
+                    android:layout_width="@dimen/x89"
+                    android:layout_height="@dimen/y187"
+                    android:gravity="bottom"
+                    android:orientation="vertical" />
+            </com.hike.digitalgymnastic.view.DiverRuleAgeScrollView>
+
+            <ScrollView
+                android:id="@+id/hsv_year_right"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/y187"
+                android:minWidth="@dimen/x44"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/ll_hsv_year_right"
+                    android:layout_width="@dimen/x44"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical" />
+            </ScrollView>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/x204"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_alignParentLeft="true"
+               android:rotation="180"
+                android:src="@mipmap/arrow_left" />
+
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_centerInParent="true"
+                layout="@layout/rulestandarline_horizontal" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/arrow_left" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/diverruleage.xml -->

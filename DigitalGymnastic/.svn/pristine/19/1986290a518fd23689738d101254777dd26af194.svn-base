@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y38"
+        android:layout_marginLeft="@dimen/x9"
+        android:layout_marginRight="@dimen/x9">
+
+        <LinearLayout
+            android:id="@+id/ll_btn_left"
+            android:layout_width="@dimen/x40"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x2"
+            android:gravity="left|center_vertical">
+
+            <ImageView
+                android:id="@+id/btn_left"
+                android:layout_width="@dimen/x9"
+                android:layout_height="@dimen/x15"
+                android:src="@mipmap/back_login_3x" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/ll_btn_right"
+            android:layout_width="@dimen/x40"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x2">
+
+            <ImageView
+                android:id="@+id/btn_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x4"
+                android:background="@mipmap/btn_deletediary2" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/y1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x18" />
+    </RelativeLayout>
+
+</LinearLayout>

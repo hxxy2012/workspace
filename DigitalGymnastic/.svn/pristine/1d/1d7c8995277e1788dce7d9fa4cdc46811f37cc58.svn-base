@@ -1,0 +1,184 @@
+package com.weizhi.httpservice;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+import android.os.Handler;
+
+import com.loopj.android.http.*;
+import com.weizhi.domainmodel.*;
+import org.apache.http.Header;
+import org.json.JSONObject;
+
+import java.io.File;
+
+public class Common implements ICommon
+{
+    private static final String TAG = Common.class.getSimpleName();
+
+    public static Common getInstance(Handler handler) {
+        return new Common(handler);
+    }
+
+    private AsyncHttpClient m_client;
+
+    private Handler m_callback;
+
+    private Common(Handler handler)
+    {
+        m_callback = handler;
+        m_client = new AsyncHttpClient();
+    }
+
+    private void Post(String url, RequestParams params, ResponseHandlerInterface responseHandler)
+    {
+        m_client.post(url, params,responseHandler);
+    }
+
+    private void reportUI(int what,boolean success,Object obj)
+    {
+        int nRet = success?0:1;
+        if(m_callback != null)
+            m_callback.obtainMessage(what,nRet,0,obj).sendToTarget();
+    }
+
+    public void getPoster(final String postersDir)
+    {
+        m_client.get(ServiceURL.COMMON_POSTER_URL,new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response)
+            {
+                try 
+                {
+                    int nRet = response.getInt("code");
+                    if(nRet != 0)
+                    {
+                    	reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                    			false,null);
+                    	return;
+                    }
+
+                    String posterUrl = response.getString("poster");
+                    if(posterUrl.isEmpty())
+                    {
+                    	reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                    			false,null);
+                    	return;
+                    }
+
+                    String posterName = posterUrl.substring(posterUrl.lastIndexOf('/') + 1);
+                    if(!posterName.isEmpty()) {
+                        //是否已经下载
+                        String poster = String.format("%s/poster/%s", postersDir,
+                                                      posterName);
+                        File file = new File(poster);
+                        if (file.exists()) {
+                        	reportUI(
+                                    NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                                         true,poster);
+                        }
+                        else//下载
+                            downloadPoster(postersDir, posterUrl);
+                    }
+                    else reportUI(
+                                 NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                            false,null);
+
+
+
+                }
+                catch (Exception ex){
+                	reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                        false,null);}
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable,
+                                  JSONObject errorResponse) {
+            	reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),false,null);
+            }
+        });
+    }
+
+    private void downloadPoster(final String postersDir,String posterUrl)
+    {
+        if(posterUrl == null || posterUrl.isEmpty())
+            return;
+        File dir = new File(postersDir.concat("/poster"));
+        dir.delete();
+        dir.mkdir();
+
+        String posterName = posterUrl.substring(posterUrl.lastIndexOf('/') + 1);
+        File poster = new File(dir,posterName);
+
+        m_client.get(posterUrl,
+                new FileAsyncHttpResponseHandler(poster) {
+                    @Override
+                    public void onSuccess(int i, Header[] headers, File file) {
+                       try {
+                    	   reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                                   true,String.format("%s/poster/%s",postersDir,file.getName()));
+                       }
+                       catch (Exception ex){
+                    	   reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                               false,null); }
+
+                    }
+
+                    @Override
+                    public void onFailure(int i, Header[] headers, Throwable throwable, File file) {
+                        file.delete();
+                        reportUI(NotifyMessage.HTTP_COMMON_GETPOSTER_FIN.ordinal(),
+                                false,null);
+
+                    }
+                });
+    }
+
+    public void getMilepost()
+    {
+        m_client.get(ServiceURL.COMMON_MILEPOST_URL,new JsonHttpResponseHandler()
+        {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response)
+            {
+                //
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString,
+                                  Throwable throwable)
+            {
+                //
+            }
+        });
+    }
+
+    public boolean care(int token,String IThink)
+    {
+        if(IThink == null || IThink.isEmpty())
+            return false;
+        RequestParams params = new RequestParams();
+        params.setUseJsonStreamer(true);
+        params.put("token", token);
+        params.put("IThink",IThink);
+
+        Post(ServiceURL.COMMON_CARE_URL, params, respCareHandler);
+        return true;
+    }
+
+    private JsonHttpResponseHandler respCareHandler = new JsonHttpResponseHandler()
+    {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+        	reportUI(NotifyMessage.HTTP_COMMON_CARE_FIN.ordinal(),true,null);
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString,
+                              Throwable throwable) {
+        	reportUI(NotifyMessage.HTTP_COMMON_CARE_FIN.ordinal(),false,null);
+        }
+    };
+}

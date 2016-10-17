@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    >
+
+   
+<include layout="@layout/topbar"
+    android:id="@+id/ll_top_title"
+    android:visibility="invisible"/>
+
+    <LinearLayout android:layout_below="@id/ll_top_title"
+        android:id="@+id/ll_circle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/y30"
+         >
+        <TextView  android:id="@+id/tv_staus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/x15"
+            android:textColor="@color/device_rel_text_normal"
+            android:text="搜索手环中"/>
+        <TextView  android:id="@+id/tv_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/y25"
+            android:textSize="@dimen/x12"
+            android:textColor="@color/device_rel_text_desp"
+            android:text="请将手环靠近手机，并保证有足够的电量"/>
+        <com.hike.digitalgymnastic.view.DeviceSearchImageView
+            android:id="@+id/iv_completionRate"
+            android:layout_width="@dimen/x196"
+            android:layout_height="@dimen/x196"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_horizontal"
+           />
+
+       
+    </LinearLayout>
+
+    
+    
+    <Button android:id="@+id/btn_conntect_nopause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_connect_pause"
+        android:textColor="@color/umeng_socialize_list_item_textcolor"
+        android:textSize="@dimen/x11"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_connect2bond_selector"
+        android:gravity="center"
+        android:layout_marginBottom="25dp"/>
+
+</RelativeLayout>

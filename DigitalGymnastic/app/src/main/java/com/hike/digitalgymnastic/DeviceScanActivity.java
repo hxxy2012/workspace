@@ -1,0 +1,311 @@
+package com.hike.digitalgymnastic;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.hike.digitalgymnastic.service.BLEDataType;
+import com.hike.digitalgymnastic.utils.Constants;
+import com.hike.digitalgymnastic.utils.Contants;
+import com.hike.digitalgymnastic.view.DeviceSearchImageView;
+import com.hiko.enterprisedigital.R;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ContentView;
+import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
+
+import java.util.ArrayList;
+import java.util.List;
+/*
+ * changqi
+ */
+
+@ContentView(R.layout.activity_devicesearch)
+public class DeviceScanActivity extends BluetoothActivity implements UIHandler {
+    public static String TAG = "DeviceScanActivity";
+    HikoDigitalgyApplication application = HikoDigitalgyApplication.getInstance();
+    @ViewInject(R.id.ll_top_title)
+    LinearLayout ll_top_title;
+    @ViewInject(R.id.btn_left)
+    private ImageView btn_left;
+    @ViewInject(R.id.ll_btn_left)
+    private LinearLayout ll_btn_left;
+    @ViewInject(R.id.ll_btn_right)
+    private LinearLayout ll_btn_right;
+
+    @ViewInject(R.id.title)
+    private TextView title;
+    @ViewInject(R.id.tv_staus)
+    private TextView tv_staus;
+
+
+    @ViewInject(R.id.root)
+    RelativeLayout root;
+    @ViewInject(R.id.iv_completionRate)
+    DeviceSearchImageView iv_completionRate;
+    //	@ViewInject(R.id.ll_search_ing)
+//	LinearLayout ll_search_ing;
+//	@ViewInject(R.id.ll_search_fail)
+//	LinearLayout ll_search_fail;
+//	@ViewInject(R.id.iv_search_failed_hint)
+//	ImageView iv_search_failed_hint;
+    @ViewInject(R.id.btn_conntect_nopause)
+    Button btn_conntect_nopause;
+
+    @OnClick(value = {R.id.btn_conntect_nopause, R.id.btn_left, R.id.ll_btn_left})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_conntect_nopause:
+                Intent intent = new Intent(DeviceScanActivity.this,
+                        MainActivity.class);
+                startActivity(intent);
+
+                finish();
+                break;
+            case R.id.btn_left:
+                finish();
+                break;
+            case R.id.ll_btn_left:
+                finish();
+                break;
+            default:
+                break;
+        }
+    }
+
+    boolean isScaning = true;
+    private ArrayList<BluetoothDevice> mList;
+//	DataGettingTask task;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        ViewUtils.inject(this);
+        init();
+    }
+
+    boolean isFromRegister;
+
+    private void init() {
+
+        ll_top_title.setVisibility(View.VISIBLE);
+        title.setTextColor(this.getResources().getColor(R.color.umeng_socialize_list_item_textcolor));
+        title.setText(getString(R.string.menu_clock_str));
+        btn_left.setImageResource(R.mipmap.back_login_3x);
+        title.setText("");
+        application = (HikoDigitalgyApplication) getApplication();
+        application.registerUIHandler(this);
+
+        mList = new ArrayList<BluetoothDevice>();
+        iv_completionRate
+                .setOnTouchListener(new DeviceSearchImageView.OnTouchListener() {
+                    @Override
+                    public void onTouch() {
+                            startScan();
+                    }
+                });
+
+        isFromRegister = getIntent().getBooleanExtra(Constants.isRegister, false);
+        if (startBluetoothStateChecking()) {
+            if (isFromRegister) {
+                ll_btn_left.setVisibility(View.INVISIBLE);
+
+            } else {
+
+            }
+        } else {
+            checkBluetoothState();
+        }
+    }
+
+    /**
+     * 自定义的打开 Bluetooth 的请求码，与 onActivityResult 中返回的 requestCode 匹配。
+     */
+    private static final int REQUEST_CODE_BLUETOOTH_ON = 1313;
+
+    /**
+     * Bluetooth 设备可见时间，单位：秒。
+     */
+    private static final int BLUETOOTH_DISCOVERABLE_DURATION = 250;
+    BluetoothAdapter mBluetoothAdapter = application.mBluetoothAdapter;
+    private boolean startBluetoothStateChecking() {
+
+
+        if (mBluetoothAdapter != null)
+            return mBluetoothAdapter.isEnabled();
+        else
+            return false;
+    }
+
+    @SuppressLint("NewApi")
+    private void checkBluetoothState() {
+        if (android.os.Build.VERSION.SDK_INT >= 18) {
+            if (mBluetoothAdapter != null && !mBluetoothAdapter.isEnabled()) {
+                turnOnBluetooth();
+            }
+        }
+    }
+
+    /**
+     * 弹出系统弹框提示用户打开 Bluetooth
+     */
+    private void turnOnBluetooth() {
+        // 请求打开 Bluetooth
+        Intent requestBluetoothOn = new Intent(
+                BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+        // 设置 Bluetooth 设备可以被其它 Bluetooth 设备扫描到
+        requestBluetoothOn
+                .setAction(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+
+        // 设置 Bluetooth 设备可见时间
+        requestBluetoothOn.putExtra(
+                BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
+                BLUETOOTH_DISCOVERABLE_DURATION);
+
+        // 请求开启 Bluetooth
+        this.startActivityForResult(requestBluetoothOn,
+                REQUEST_CODE_BLUETOOTH_ON);
+    }
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        application.registerUIHandler(this);
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+    }
+
+
+    @Override
+    public void handlerUI(Message msg) {
+        switch (msg.what) {
+            case BLEDataType.BLE_SCAN_CODE: {
+                BluetoothDevice _Devices = (BluetoothDevice) msg.obj;
+                String _mac = _Devices.getAddress();
+                if (!mList.contains(_Devices)){
+                    mList.add(_Devices);
+                }
+                break;
+            }
+            case BLEDataType.BLE_SCAN_END: {
+                onResult();
+                break;
+            }
+            default:
+                break;
+        }
+
+    }
+
+    //扫描
+    private void startScan() {
+        //清空
+        onPreExecute();
+        //扫描之前断开一下
+        application.unBinder();
+        iv_completionRate.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                application.registerUIHandler(DeviceScanActivity.this);
+                application.scanDevice(Contants.scanbyuuid);
+            }
+        }, 1000);
+
+    }
+
+    private void onPreExecute() {
+        mList.clear();
+        iv_completionRate.startSearch();
+        tv_staus.setText("搜索手环中");
+//		ll_search_ing.setVisibility(View.VISIBLE);
+//		ll_search_fail.setVisibility(View.INVISIBLE);
+//		iv_search_failed_hint.setVisibility(View.INVISIBLE);
+    }
+
+    private void onResult() {
+
+        isScaning = false;// 设置未搜索状态
+        if (mList.size() == 0) {// 如果搜索失败，显示重新搜索页面
+//			ll_search_ing.setVisibility(View.INVISIBLE);
+//			ll_search_fail.setVisibility(View.VISIBLE);
+//			iv_search_failed_hint.setVisibility(View.VISIBLE);
+            tv_staus.setText("未找到手环");
+            iv_completionRate.stopSearch();
+        } else {
+            tv_staus.setText("搜索成功");
+            iv_completionRate.finishSearch();
+//			ll_search_ing.setVisibility(View.VISIBLE);
+//			ll_search_fail.setVisibility(View.INVISIBLE);
+            if (!DeviceScanActivity.this.isFinishing()) {
+                application.unRegisterUIHandler();
+                Intent intent = new Intent(DeviceScanActivity.this,
+                        DeviceListActivity.class);
+                intent.putParcelableArrayListExtra(Constants.deviceList,
+                        mList);
+                intent.putExtra(Constants.isRegister, isFromRegister);
+                startActivity(intent);
+                finish();
+            }
+        }
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (isFromRegister)
+                return false;
+
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    public char Hex2Char(byte b) {
+        if ((b >= 0) && (b <= 9)) {
+            return (char) (b + '0');
+        } else {
+            return (char) ((b - 0x0A) + 'A');
+        }
+    }
+
+    public String Bytes2String(byte[] bts) {
+        StringBuffer str = new StringBuffer(bts.length * 2);
+        for (int i = 0; i < bts.length; i++) {
+
+            str.append(Hex2Char((byte) ((bts[i] >> 4) & 0x0F)));
+            str.append(Hex2Char((byte) (bts[i] & 0x0F)));
+        }
+
+        return str.toString();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mList.clear();
+    }
+}

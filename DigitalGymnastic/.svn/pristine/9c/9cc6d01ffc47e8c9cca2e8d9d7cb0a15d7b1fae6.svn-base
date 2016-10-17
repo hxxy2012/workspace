@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/layout-land/activity_history_bodycheck.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout-land/activity_history_bodycheck.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/layout-land/activity_history_bodycheck.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout-land/activity_history_bodycheck.xml"
+    }
+]

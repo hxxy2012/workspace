@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/bg_home_bodycheck" >
+
+    <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <include layout="@layout/topbar" />
+
+        <include layout="@layout/activity_viewflipper" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_blank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_top"
+        android:layout_marginTop="@dimen/y23"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible" >
+
+        <TextView
+            android:id="@+id/tv_nodata_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            
+            android:textColor="@color/white"
+            android:textSize="@dimen/x13" />
+
+
+        <Button
+            android:id="@+id/iv_add_weight"
+            android:layout_width="@dimen/x70"
+            android:layout_height="@dimen/x22"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/y15"
+            android:background="@mipmap/btn_body_addweight"
+            android:text="新增体重"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x12"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_top"
+        android:layout_marginTop="@dimen/y12"
+        android:orientation="vertical" 
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/tv_weekadd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/y19"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x13" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x23"
+            android:layout_marginTop="@dimen/y12"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/x14"
+                android:layout_height="@dimen/x14"
+                android:src="@mipmap/icon_max_record"
+                 android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/tv_max_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x3"
+                android:gravity="center_vertical|left"
+                android:text="本周最高纪录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x13" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x23"
+            android:layout_marginTop="@dimen/y12"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/x14"
+                android:layout_height="@dimen/x14"
+                android:src="@mipmap/icon_min_record"
+                android:layout_gravity="center_vertical" />
+            
+
+            <TextView
+                android:id="@+id/tv_min_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x3"
+                android:gravity="center_vertical|left"
+                android:text="本周最低纪录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x13" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/x9"
+        android:layout_marginRight="@dimen/x9"
+        android:gravity="center_horizontal|top"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_firstline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_tizhong"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_tizhong_selector"
+                android:text="体重" />
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_tizhizhishu"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_tizhizhishu_selector"
+                android:text="体质指数" />
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_shentizhifanglv"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_zhifanglv_selector"
+                android:text="身体脂肪率" />
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_neizangzhifangshuiping"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_neizangzhifang_selector"
+                android:text="内脏脂肪" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_secondline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_fubufeipanglv"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_fubufeipanglv_selector"
+                android:text="腹部肥胖率" />
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_jiroulv"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_jiroulv_selector"
+                android:text="肌肉率" />
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_shentishuifen"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_shentishuifen_selector"
+                android:text="身体水分" />
+
+            <com.hike.digitalgymnastic.view.MutexImageView
+                android:id="@+id/iv_danbaizhi"
+                style="@style/raidobutton_style"
+                android:layout_weight="1"
+                android:background="@drawable/icon_danbaizhi_selector"
+                android:text="蛋白质质量比" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_history_bodycheck.xml -->

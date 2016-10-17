@@ -1,0 +1,509 @@
+<resources>
+
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="app_name">TechFit</string>
+    <string name="default_ip">123.57.67.188:8080</string>
+    <!-- <string name="default_ip">192.168.102.102:8080</string> -->
+    <string name="exception_parsejson">数据解析异常</string>
+
+    <!-- 登陆注册验证码 -->
+    <string name="error_mobilerule">手机号格式有误</string>
+    <string name="error_pwd">密码格式有误</string>
+    <string name="error_mobileorpwd">手机号或密码有误</string>
+    <string name="mobile_insert">请输入11位手机号</string>
+    <string name="error_mobile_insert"> 手机号格式有误</string>
+    <string name="pwd_insert">请输入你的密码</string>
+    <string name="mobile">手机号</string>
+    <string name="suss_login">登录成功</string>
+    <string name="logining">登录中...</string>
+    <string name="login">登 &#160;录</string>
+    <string name="register">注&#160;册</string>
+    <string name="title_pwd_find">找回密码</string>
+    <string name="pwd_forget">忘记密码?</string>
+    <string name="pwd_setting">设置密码</string>
+    <string name="pwd_resset">重置密码</string>
+    <string name="newpwd_insert">请输入6-18位新密码</string>
+    <string name="pwdisnull">密码不允许为空</string>
+    <string name="newpwd_insert_confirm">请重复一次新密码</string>
+    <string name="error_pwd_input"> 两次输入密码不一致</string>
+    <string name="suss_reg"> 注册成功</string>
+    <string name="suss_pwd_set"> 密码重置成功</string>
+    <string name="validcode_input">填写验证码</string>
+    <string name="validcode_input_error">验证码输入有误</string>
+    <string name="validcode_input_blank">请输入验证码</string>
+    <string name="validcode_sended">我们已经将验证码发送到&#160;</string>
+    <string name="validcode_get">获取验证码</string>
+    <string name="validcode_resend">秒后重发</string>
+    <string name="confirm">确定</string>
+    <string name="alarminfo">轻触上方\"注册\"按钮，即表示同意《隐私条款》</string>
+
+    <string name="type_login">其它登陆方式</string>
+    <string name="little_touch_refresh">轻触刷新数据</string>
+    <string name="no_connect_str">网络不给力</string>
+    <!-- 个人资料 -->
+    <string name="persioninfo">个人资料</string>
+    <string name="selcetsex">请选择你的性别</string>
+    <string name="selcetage">请选择你的出生年份</string>
+    <string name="selcetheigth">请选择你的身高</string>
+    <string name="selcetweigth">请选择你的体重</string>
+    <string name="sex_str">性别</string>
+    <string name="age_str">年龄</string>
+    <string name="heigth_str">身高</string>
+    <string name="weigth_str">体重</string>
+    <string name="input_nick">请输入你的昵称</string>
+    <string name="next">下一步</string>
+    <string name="finish">完成</string>
+    <string name="target_day">每日运动目标</string>
+
+    <!-- 搜索手环 -->
+    <string name="device_search">搜索手环</string>
+    <string name="device_connect">连接手环</string>
+    <string name="no_connect_pause">暂不连接</string>
+    <string name="device_notfound">未找到手环</string>
+    <string name="research">重新搜索</string>
+    <string name="device_searching">搜索手环中</string>
+    <string name="device_near">请将手环靠近手机</string>
+    <string name="power_enable">并保证有足够电量</string>
+    <!-- 搜索帮助 -->
+    <string name="help">帮助</string>
+    <string name="help_title1">手环是否离手机较远？</string>
+    <string name="help_desc1">手环是使用蓝牙和手机连接，所以当连接手环时，手机和手环的距离越近越好。</string>
+    <string name="help_title2">手环是否电量不足？</string>
+    <string name="help_desc2">当手环离手机较近，但未能搜索到手环时。可能是手环电量不足。请用包装盒中的金属片打开后盖，更换电池。</string>
+    <string name="help_title3">手机蓝牙是否未开启？</string>
+    <string name="help_desc3">如果手环有电，且离手机位置较近仍无法找到。希望检查手机蓝牙是否开启，或者尝试重启一次。</string>
+    <string name="help_title4">手环是否已经与其他手机绑定？</string>
+    <string name="help_desc4">如果你的手环已经和其他手机绑定，且绑定的手机仍在手环附近。希望你能关闭已绑定手机的蓝牙，然后重新使用新手机搜索手环。</string>
+
+    <!-- 手环匹配 -->
+    <string name="device_round">附近的手环</string>
+    <string name="device_near_power">请将手环靠近手机，并保证有足够的电量</string>
+    <string name="doing_pipei">匹配手环中</string>
+    <string name="device_confirm">手环蓝灯亮起时，轻扣两次手环确认</string>
+    <string name="changedevice">更换手环</string>
+    <string name="alermnotlight">手环灯未亮起？</string>
+    <string name="device_succ_pipei">绑定失败</string>
+    <!-- 手环匹配失败 -->
+    <string name="device_failed_pipei">绑定失败</string>
+    <string name="device_near_phone">请尝试将手环靠近手机，并尽可能远离其他手环</string>
+    <string name="research_device">重新搜索手环</string>
+    <string name="text_light_open">手环灯未亮起？</string>
+    <string name="device_select_error">您是否手环名称选择错误呢？</string>
+    <string name="device_select_error_action">请再次确认手环名称，并尝试重新连接。</string>
+
+    <!-- 主页 -->
+    <string name="tv_title_today">今日运动</string>
+    <string name="tv_title_history">历史数据</string>
+
+    <!-- 我的手环 -->
+    <string name="tv_powerrate">电池电量</string>
+
+    <!--
+    <string-array name="circle_color_names">
+        
+    <color name="rigth_circle_one">#008dbc</color>
+    <color name="rigth_circle_two">#008ec0</color>
+    <color name="rigth_circle_three">#008fc5</color>
+    <color name="rigth_circle_four">#008eca</color>
+    <color name="rigth_circle_five">#0091cf</color>
+    <color name="rigth_circle_six">#0094d3</color>
+    <color name="rigth_circle_seven">#0098d6</color>
+    <color name="rigth_circle_aight">#009ed9</color>
+    <color name="rigth_circle_nine">#00a4d9</color>
+    <color name="rigth_circle_ten">#01a9d9</color>
+    <color name="rigth_circle_eleven">#02afd9</color>
+    <color name="rigth_circle_twelve">#01b7d9</color>
+    <color name="rigth_circle_thirteen">#03bed9</color>
+    <color name="rigth_circle_fourteen">#03c6d9</color>
+    <color name="rigth_circle_fifteen">#04ced9</color>
+    <color name="rigth_circle_ sixteen">#04d7d8</color>
+    <color name="rigth_circle_seventeen">#05dfd7</color>
+    <color name="rigth_circle_eighteen">#06e7d6</color>
+     <color name="left_circle_one">#00e6b6</color>
+     圆环左侧2-14点使用一个颜色
+     <color name="left_circle_two">#08ffd4</color>
+     <color name="left_circle_three">#08ffd4</color>
+     <color name="left_circle_four">#08ffd4</color>
+     <color name="left_circle_five">#08ffd4</color>
+     <color name="left_circle_six">#08ffd4</color>
+     <color name="left_circle_seven">#08ffd4</color>
+     <color name="left_circle_aight">#08ffd4</color>
+     <color name="left_circle_nine">#08ffd4</color>
+     <color name="left_circle_ten">#08ffd4</color>
+     <color name="left_circle_eleven">#08ffd4</color>
+     <color name="left_circle_twelve">#08ffd4</color>
+     <color name="left_circle_thirteen">#08ffd4</color>
+     <color name="left_circle_fourteen">#08ffd4</color>
+     <color name="left_circle_fifteen">#08fdd4</color>
+     <color name="left_circle_sixteen">#08f9d4</color>
+     <color name="left_circle_seventeen">#07f4d5</color>
+     <color name="left_circle_eighteen">#06eed6</color>
+     
+     
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_two</item>
+        <item>rigth_circle_three</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+        <item>rigth_circle_one</item>
+    </string-array>
+
+    -->
+    <!-- 个人资料fragment -->
+    <string name="gender">gender</string>
+    <string name="year">year</string>
+    <string name="height">height</string>
+    <string name="weight">weight</string>
+    <string name="pichead">pichead</string>
+    <!-- 个人目标 -->
+    <string name="target">target</string>
+
+    <!-- 主页 -->
+    <string name="home_frament">主页界面</string>
+    <string name="setphistory_frament">历史记录界面</string>
+    <!-- menu 分类 -->
+    <string name="menu_frament">菜单界面</string>
+    <string name="menu_my_watch">我的手环</string>
+    <string name="menu_my_message">个人信息</string>
+    <string name="menu_my_goal">我的目标</string>
+    <string name="menu_set">设&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;置</string>
+    <string name="menu_my_clock">闹&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;钟</string>
+    <string name="menu_add_my_clock">添加闹钟</string>
+    <string name="menu_message">消&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;息</string>
+    <string name="menu_feedback">意见反馈</string>
+    <string name="menu_feedback_top_str">你的建议将会使我们做得更好</string>
+    <string name="menu_feedback_middle_str">留下您的联系方式，我们将第一时间与您联系</string>
+    <string name="menu_feedback_ed_hint_str">请输入200字以内</string>
+    <string name="menu_feedback_bottom_ed_hint_str">请输入您的手机号或者邮箱</string>
+    <string name="menu_set_str">设置</string>
+    <string name="menu_clock_str">闹钟</string>
+    <string name="menu_clock_time_str">选择重复时间</string>
+    <string name="menu_clock_btn_str">存储</string>
+    <string name="menu_message_str">消息</string>
+    <string name="menu_login_out">退出登录</string>
+    <string name="menu_set_feedback_cummit">提\t\t交</string>
+    <string name="history_title_str">历史记录</string>
+    <string name="today_sport_title_str">今日运动</string>
+    <string name="yestoday_sleep_title_str">昨晚睡眠</string>
+    <string name="body_data_title_str">上次体测</string>
+    <string name="body_baogao_title_str">体测报告</string>
+    <string name="sit_long_alarm">久坐提醒</string>
+    <string name="sport_alarm">运动提醒</string>
+    <string name="body_test_alarm">体测提醒</string>
+    <string name="access_apple_health">接入苹果健康</string>
+    <string name="access_qq_health">接入QQ健康</string>
+    <string name="sit_alarm_time_set">久坐提醒时间</string>
+    <string name="sit_alarm_start_time">开始提醒时间</string>
+    <string name="sit_alarm_end_time">结束提醒时间</string>
+    <string name="sport_alarm_time">运动提醒时间</string>
+    <string name="minute">分钟</string>
+    <string name="about_us">关于我们</string>
+    <string name="version_name">版本号：</string>
+    <string name="can_not_find_version_name">无法获取版本号信息</string>
+    <string name="alarm_sit_long_tip">当你坐的时间过长,手环会震动提醒你活动下身体。</string>
+    <string name="alarm_body_test_tip">当到设定时间你还没有参加体测时,手环会震动提醒你参加体测。</string>
+    <string name="alarm_sport_tip">当到设定时间你还没有达到今日运动目标,手环会震动提醒你去参加活动。</string>
+    <!-- 分享 -->
+    <string name="doing_share">分&#160;&#160;享&#160;&#160;到</string>
+    <string name="deep_sleep">深度睡眠被称为黄金睡眠，是人们的大脑和身体得到休息的最佳睡眠阶段，一般会占整个睡眠的25%哟~</string>
+    <string name="light_sleep">浅度睡眠是指清醒和深度睡眠之间的阶段，睡觉时做梦、易醒也都是浅度睡眠哟~</string>
+    <string name="per_info">个人资料</string>
+    <!-- 体质监测bmi -->
+    <string-array name="bodystatebmi">
+        <item>较轻 </item>
+        <item>正常 </item>
+        <!-- <item>适中 </item> -->
+        <item>过重 </item>
+        <item>肥胖 </item>
+        <item>过胖 </item>
+    </string-array>
+    <string-array name="bodystatezhifanglv">
+        <item>过瘦 </item>
+        <item>偏瘦</item>
+        <item>偏胖 </item>
+        <item>肥胖 </item>
+    </string-array>
+    <string-array name="bodystateneizangzhifang">
+        <item>皮下型 </item>
+        <item>均衡 </item>
+        <item>警戒 </item>
+        <item>肥胖 </item>
+        <item>过胖 </item>
+    </string-array>
+    <string-array name="bodystateFubufeipanglv">
+        <item>低于 </item>
+        <item>标准 </item>
+        <item>高于 </item>
+    </string-array>
+    <string-array name="bodystateJiroulvlv">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>优秀 </item>
+    </string-array>
+    <string-array name="bodystateDanbaizhi">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateShuifenData">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateGuliang">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateJichudaixielv">
+    <item>偏低 </item>
+    <item>标准 </item>
+    <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateKuangwuzhi">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="sport_image_male">
+        <item>image_body03_male</item>
+        <item>image_body01_male</item>
+        <item>image_body31_male</item>
+        <item>image_body39_male</item>
+        <item>image_body38_male</item>
+        <item>image_body41_male</item>
+        <item>image_body04_male</item>
+        <item>image_body05_male</item>
+        <item>image_body06_male</item>
+        <item>image_body07_male</item>
+        <item>image_body08_male</item>
+        <item>image_body09_male</item>
+        <item>image_body10_male</item>
+        <item>image_body11_male</item>
+        <item>image_body12_male</item>
+        <item>image_body13_male</item>
+        <item>image_body14_male</item>
+        <item>image_body15_male</item>
+        <item>image_body16_male</item>
+        <item>image_body17_male</item>
+        <item>image_body18_male</item>
+        <item>image_body19_male</item>
+        <item>image_body21_male</item>
+        <item>image_body23_male</item>
+        <item>image_body24_male</item>
+        <item>image_body25_male</item>
+        <item>image_body02_male</item>
+        <item>image_body45_male</item>
+        <item>image_body44_male</item>
+        <item>image_body43_male</item>
+        <item>image_body42_male</item>
+        <item>image_body40_male</item>
+        <item>image_body37_male</item>
+        <item>image_body36_male</item>
+        <item>image_body35_male</item>
+        <item>image_body34_male</item>
+        <item>image_body33_male</item>
+        <item>image_body32_male</item>
+        <item>image_body30_male</item>
+        <item>image_body29_male</item>
+        <item>image_body20_male</item>
+        <item>image_body22_male</item>
+        <item>image_body26_male</item>
+        <item>image_body27_male</item>
+        <item>image_body28_male</item>
+    </string-array>
+    <string-array name="sport_image_sex">
+        <item>image_body03_sex</item>
+        <item>image_body01_sex</item>
+        <item>image_body31_sex</item>
+        <item>image_body39_sex</item>
+        <item>image_body38_sex</item>
+        <item>image_body41_sex</item>
+        <item>image_body04_sex</item>
+        <item>image_body05_sex</item>
+        <item>image_body06_sex</item>
+        <item>image_body07_sex</item>
+        <item>image_body08_sex</item>
+        <item>image_body09_sex</item>
+        <item>image_body10_sex</item>
+        <item>image_body11_sex</item>
+        <item>image_body12_sex</item>
+        <item>image_body13_sex</item>
+        <item>image_body14_sex</item>
+        <item>image_body15_sex</item>
+        <item>image_body16_sex</item>
+        <item>image_body17_sex</item>
+        <item>image_body18_sex</item>
+        <item>image_body19_sex</item>
+        <item>image_body21_sex</item>
+        <item>image_body23_sex</item>
+        <item>image_body24_sex</item>
+        <item>image_body25_sex</item>
+        <item>image_body02_sex</item>
+        <item>image_body45_sex</item>
+        <item>image_body44_sex</item>
+        <item>image_body43_sex</item>
+        <item>image_body42_sex</item>
+        <item>image_body40_sex</item>
+        <item>image_body37_sex</item>
+        <item>image_body36_sex</item>
+        <item>image_body35_sex</item>
+        <item>image_body34_sex</item>
+        <item>image_body33_sex</item>
+        <item>image_body32_sex</item>
+        <item>image_body30_sex</item>
+        <item>image_body29_sex</item>
+        <item>image_body20_sex</item>
+        <item>image_body22_sex</item>
+        <item>image_body26_sex</item>
+        <item>image_body27_sex</item>
+        <item>image_body28_sex</item>
+    </string-array>
+    <string-array name="sport_name">
+        <item>跑步</item>
+        <item>步行</item>
+        <item>有氧舞蹈</item>
+        <item>动感单车</item>
+        <item>BODY PUMP</item>
+        <item>搏击操</item>
+        <item>椭圆机</item>
+        <item>坐式划艇</item>
+        <item>肩膀后展</item>
+        <item>高拉背肌</item>
+        <item>坐式背肌</item>
+        <item>坐式飞鸟</item>
+        <item>坐式提膝</item>
+        <item>坐式伸腿</item>
+        <item>坐式屈腿</item>
+        <item>大腿外展</item>
+        <item>大腿内收</item>
+        <item>肩膀推举</item>
+        <item>坐式推胸</item>
+        <item>蝴蝶扩胸</item>
+        <item>卧式屈腿</item>
+        <item>二头双向</item>
+        <item>三头双向</item>
+        <item>立式伸腿</item>
+        <item>坐式蹬腿</item>
+        <item>立式摆腿</item>
+        <item>游泳</item>
+        <item>FOC</item>
+        <item>POP DANCE</item>
+        <item>民族舞</item>
+        <item>BODYATTACK</item>
+        <item>BODY BLANCE</item>
+        <item>BODY JAM</item>
+        <item>肚皮舞</item>
+        <item>爵士舞</item>
+        <item>古典舞</item>
+        <item>现代舞</item>
+        <item>拉丁舞</item>
+        <item>健身瑜伽</item>
+        <item>ZUMBA</item>
+        <item>二头上提</item>
+        <item>三头下压</item>
+        <item>坐式腹肌</item>
+        <item>坐式拉力</item>
+        <item>坐式转体</item>
+    </string-array>
+
+    <!-- 分享 -->
+    <string name="wx_appid">wxbaeb54da45c2178d</string>
+    <string name="wx_secret">4dc4635a81bd5d84f1ead13aacab08e1</string>
+    <string name="qq_appid">1105003170</string>
+    <string name="qq_appkey">oTbkhraxm88UMdY8</string>
+    <string name="wx_appid_fit">wxcc2660c78036eb8b</string>
+    <string name="wx_secret_fit">90a7c62c0b8db8e51ec633e36dd2da04</string>
+    <string name="qq_appid_fit">1104928388</string>
+    <string name="qq_appkey_fit">oJ9E4SQAXjKtU6o2</string>
+    <string name="resend">重新发送</string>
+    <string name="submit">提交</string>
+    <string name="edit_personal_info">请编辑您的信息</string>
+    <string name="birth_year">出生年</string>
+    <string name="year_def">年</string>
+    <string name="cm">cm</string>
+    <string name="kg">kg</string>
+    <string name="head_tip">唯独头像这件事不能懒哦~</string>
+    <string name="kcal">kcal</string>
+    <string name="string_less_net">网络不给力哦</string>
+    <string name="string_loading">加载中...</string>
+    <string name="string_not_bind_device">未绑定</string>
+    <string name="string_had_bind">已绑定</string>
+    <string name="string_sys_data_hint">数据同步中，请保持手环电量充足，并靠近手机</string>
+    <string name="hint_camear">拍照秀出自己的好身材</string>
+    <string name="myhomepage">我的主页</string>
+    <string name="feedback">意见反馈</string>
+    <string name="关于我们">关于我们</string>
+    <string name="string_device">装备</string>
+    <string name="string_add">添加</string>
+    <string name="string_person_device">个人装备</string>
+    <string name="string_venue_device">场馆装备</string>
+    <string name="string_you_not_have_device_now">您还没有绑定个人装备</string>
+    <string name="string_aerobic_exerciser">有氧器械</string>
+    <string name="string_power_equipment">力量器械</string>
+    <string name="string_third_connect">第三方接入</string>
+    <string name="string_weixin_sport">微信运动</string>
+    <string name="string_band_name">TechFit-B1 ELITE</string>
+    <string name="string_bind_success">绑定成功！</string>
+    <string name="string_connect_time_out">连接超时!</string>
+    <string name="string_alert">提醒</string>
+    <string name="string_phone_alert">电话提醒</string>
+    <string name="string_phone_alert_hint">当手机来点化时，手环震动，并显示对方手机或姓名</string>
+    <string name="string_app_alert">APP消息提醒</string>
+    <string name="string_app_alert_hint">当收到APP消息推送时，手环震动，并显示消息内容</string>
+    <string name="string_walk">步行</string>
+    <string name="string_tyj">椭圆机</string>
+    <string name="string_swm">游泳</string>
+    <string name="string_run">跑步</string>
+    <string name="string_zsht">坐式划艇</string>
+    <string name="string_hdkx">蝴蝶扩胸</string>
+    <string name="string_jbhz">肩膀后展</string>
+    <string name="string_glbj">高拉背肌</string>
+    <string name="string_etsx">二头双向</string>
+    <string name="string_wsqt">卧式曲腿</string>
+    <string name="string_zsbj">坐式背肌</string>
+    <string name="string_stsx">三头双向</string>
+    <string name="string_zstx">坐式提膝</string>
+    <string name="string_stxy">三头下压</string>
+    <string name="string_zsst">坐式伸腿</string>
+    <string name="string_lsst">立式摆腿</string>
+    <string name="string_zsqt">坐式屈腿</string>
+    <string name="string_zsdt">大腿外展</string>
+    <string name="string_jbtj">肩膀推举</string>
+    <string name="string_dtns">大腿内收</string>
+    <string name="string_zstxx">坐式推胸</string>
+    <string name="string_please_bind_band">请绑定手环后再设置闹钟</string>
+    <string name="string_not_have_data_now">暂无数据</string>
+
+
+</resources>

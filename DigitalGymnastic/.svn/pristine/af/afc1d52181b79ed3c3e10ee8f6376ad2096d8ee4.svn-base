@@ -1,0 +1,24 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="11dp"
+    android:layout_gravity="center_vertical"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:background="@android:color/transparent" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/green_00bfa3" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="3dp"
+        android:background="@android:color/transparent" />
+
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/rulestandarline_horizontal.xml -->

@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/x9"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+	<LinearLayout android:id="@+id/ll_selectview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="@dimen/x71"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/x18"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_selected_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x22"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_DanweiView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:text="cm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x13"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <ScrollView
+            android:id="@+id/hsv_year"
+            android:layout_width="@dimen/x27"
+            android:layout_height="@dimen/y187"
+            
+            android:layout_marginLeft="@dimen/x36"
+            android:layout_toRightOf="@id/ll_selectview"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/ll_hsv_year"
+                android:layout_width="@dimen/x27"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/fl_kedu"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y187"
+            android:layout_toRightOf="@id/hsv_year"
+             android:layout_marginLeft="@dimen/x9"
+            >
+
+            <com.hike.digitalgymnastic.view.DiverRuleHeightScrollView
+                android:id="@+id/hsv_kedu"
+                android:layout_width="@dimen/x89"
+                android:layout_height="@dimen/y187"
+                android:layout_gravity="left|center_vertical"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/ll_hsv_kedu"
+                    android:layout_width="@dimen/x89"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="vertical" />
+            </com.hike.digitalgymnastic.view.DiverRuleHeightScrollView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|center_vertical"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <include
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    layout="@layout/rulestandarline_horizontal" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/x5"
+                    android:src="@mipmap/arrow_left" />
+            </LinearLayout>
+        </FrameLayout>
+
+        
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/diverruleheight.xml -->

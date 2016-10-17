@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SwitchButton">
+        <attr name="bmWidth" format="dimension"></attr>
+        <attr name="bmHeight" format="dimension"></attr>
+    </declare-styleable>
+    <declare-styleable name="MyRadioButton">
+        <attr name="drawableWidth" format="dimension"></attr>
+         <attr name="drawableHeight" format="dimension"></attr>
+        <attr name="drawableBottom" format="dimension"></attr>
+        <attr name="drawableRight" format="dimension"></attr>
+        <attr name="drawableLeft" format="dimension"></attr>
+        <attr name="drawableTop" format="dimension"></attr>
+    </declare-styleable>
+
+    <!--首页圆环属性-->
+    <declare-styleable name="DashCircleProgress">
+        <attr name="mRingColor" format="color" />
+        <attr name="mRingPaintColor" format="color" />
+        <attr name="max" format="integer" />
+        <attr name="min" format="integer" />
+        <attr name="progress_icon" format="reference" />
+        <attr name="duration" format="integer" />
+        <attr name="mHeartPaintWidth" format="dimension" />
+        <attr name="zhizhen" format="reference" />
+    </declare-styleable>
+
+
+
+    <declare-styleable name="TextSport">
+        <attr name="normalWidth" format="dimension" />
+        <attr name="normalHeight" format="dimension" />
+        <attr name="checkedWidth" format="dimension" />
+        <attr name="checkedHeight" format="dimension" />
+        <attr name="normalBackground" format="reference" />
+        <attr name="checkedBackground" format="reference" />
+        <attr name="during" format="integer" />
+        <attr name="textsize_big" format="dimension" />
+        <attr name="textsize_small" format="dimension" />
+    </declare-styleable>
+</resources>

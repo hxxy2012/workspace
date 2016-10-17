@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="@null"
+     >
+
+    <TextView android:id="@+id/tv_device_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical"
+        android:textColor="#333333"
+        android:textSize="13dp" 
+        android:singleLine="true"
+        />
+    
+   
+     <ImageView android:id="@+id/iv_connect"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_alignParentRight="true"
+        android:src="@mipmap/btn_connect_icon"
+       
+        />
+    
+
+</RelativeLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/item_devicelist.xml -->

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_checked="false" android:drawable="@mipmap/icon_shuifen_normal"/>
+    <item android:state_checked="true" android:drawable="@mipmap/icon_shuifen_selected"/>
+
+</selector>
+<!-- From: file:/D:/techfit3_1/app/src/main/res/drawable/icon_shentishuifen_selector.xml -->

@@ -1,0 +1,830 @@
+package com.hike.digitalgymnastic;
+
+import android.app.Activity;
+import android.app.Application;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.AlarmClock;
+import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
+import android.widget.RemoteViews;
+import android.widget.Toast;
+
+import com.hike.digitalgymnastic.db.DBManager;
+import com.hike.digitalgymnastic.entitiy.AppVersion;
+import com.hike.digitalgymnastic.entitiy.BandVersion;
+import com.hike.digitalgymnastic.entitiy.BleData;
+import com.hike.digitalgymnastic.entitiy.Customer;
+import com.hike.digitalgymnastic.entitiy.MyClock;
+import com.hike.digitalgymnastic.entitiy.SleepData;
+import com.hike.digitalgymnastic.entitiy.Sport;
+import com.hike.digitalgymnastic.entitiy.SportSleepData;
+import com.hike.digitalgymnastic.entitiy.WHistorySteps;
+import com.hike.digitalgymnastic.fragment.HomeFragment;
+import com.hike.digitalgymnastic.fragment.SleepFragment;
+import com.hike.digitalgymnastic.http.INetResult;
+import com.hike.digitalgymnastic.request.BaseDao;
+import com.hike.digitalgymnastic.service.BLEDataType;
+import com.hike.digitalgymnastic.service.BleManager;
+import com.hike.digitalgymnastic.tools.FontsOverride;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.hike.digitalgymnastic.utils.BluetoothUtils;
+import com.hike.digitalgymnastic.utils.Constants;
+import com.hike.digitalgymnastic.utils.LocalDataUtils;
+import com.hike.digitalgymnastic.utils.Utils;
+import com.hiko.enterprisedigital.R;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.message.PushAgent;
+import com.umeng.message.UTrack;
+import com.umeng.message.UmengMessageHandler;
+import com.umeng.message.UmengNotificationClickHandler;
+import com.umeng.message.entity.UMessage;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class HikoDigitalgyApplication extends Application {
+
+    private static final String TAG = "HikoDigitalgyApplication";
+    public BluetoothAdapter mBluetoothAdapter;
+    public BluetoothManager mBluetoothManager;
+    private static HikoDigitalgyApplication mInstance;
+
+    public static HikoDigitalgyApplication getInstance() {
+        return mInstance;
+    }
+
+
+    public static boolean isNeedUpdated = false;
+    public static boolean isCustomerModify = false;
+
+    public static Map<String, Activity> map = new HashMap<String, Activity>();
+    public AppVersion appVersion;// 应用版本信息
+
+    public String bindMAC ;
+    public String bindMacCacher;
+    public String name;
+    public int powerRate;
+    public boolean isCommunication;// 是否正在通信
+    public int version;// 手环版本号
+    public BandVersion bandVersion;// 服务端手环版本信息
+
+    private UIHandler uiHandler;
+
+    /*1.博思手环 2.LOVEFIT手环*/
+    public static final int WRISTBANDSTYPE = 1;
+
+
+    String appid = "900014582";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //LeakCanary.install(this);
+        mInstance = this;
+        mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = mBluetoothManager.getAdapter();
+
+
+        CrashReport.initCrashReport(getApplicationContext(), appid, false);
+
+
+        FontsOverride.setDefaultFont(this, "DEFAULT", "fonts/fz_font.TTF");
+        FontsOverride.setDefaultFont(this, "MONOSPACE", "fonts/fz_font.TTF");
+        FontsOverride.setDefaultFont(this, "SERIF", "fonts/fz_font.TTF");
+        FontsOverride.setDefaultFont(this, "SANS_SERIF", "fonts/fz_font.TTF");
+
+        initData();
+
+        initYouMengMessagePush();
+
+        initBaseDao();
+    }
+
+
+
+    void initData() {
+        bindMAC = LocalDataUtils.getBindMAC(getApplicationContext());
+        name = LocalDataUtils.getBindName(getApplicationContext());
+    }
+
+    protected BleManager mBleManager;
+    private volatile String mAddress;
+    private SimpleDateFormat setpFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private Message sportmsg = new Message();
+    private Handler mHandler = new Handler() {
+        public void dispatchMessage(final android.os.Message msg) {
+            int what = msg.what;
+            Object obj = msg.obj;
+            UtilLog.e(TAG, "what=[" + what + "]; obj=[" + obj + "]");
+            switch (what) {
+
+                case BLEDataType.BLE_SCAN_CODE: {
+                    if (uiHandler != null) {// 说明是设备搜索页面进行扫描
+                        reset();
+                        uiHandler.handlerUI(msg);
+                    }
+
+                    break;
+                }
+                case BLEDataType.BLE_SCAN_END: {
+                    if (uiHandler != null) {
+                        uiHandler.handlerUI(msg);
+                    }
+                    break;
+                }
+                case BLEDataType.BLE_ISREADY_CODE:
+
+                    UtilLog.e(TAG, "连接成功！！！");
+                    //&& uiHandler instanceof DeviceConnectActivity
+                    if (uiHandler != null && msg.obj != null) {
+                        reset();
+                        adjustTime();//校验时间
+                        uiHandler.handlerUI(msg);
+                    } else {//说明是后台自动获取
+                        adjustTime();//校验时间
+                    }
+
+                    break;
+                case BLEDataType.BLE_CANNOTFINDSERVICE_CODE:
+                    if (uiHandler != null && msg.obj != null && uiHandler instanceof DeviceConnectActivity) {
+                        uiHandler.handlerUI(msg);
+                    }
+                    reset();
+                    break;
+                case BLEDataType.BLE_CONNECTTIMEOUT_CODE:
+                    if (uiHandler != null && msg.obj != null && uiHandler instanceof DeviceConnectActivity) {
+                        uiHandler.handlerUI(msg);
+                    }
+                    reset();
+                    break;
+                case BLEDataType.BLE_DISCONNECT_CODE:
+                    if (uiHandler != null && msg.obj != null && uiHandler instanceof DeviceConnectActivity) {
+                        uiHandler.handlerUI(msg);
+                    }
+                    reset();
+                    break;
+                case BLEDataType.BLE_BIND_CODE: // Bind
+                    BleData<String> bind = (BleData<String>) msg.obj;
+                    if (bind != null) {
+                        if (uiHandler != null && bind != null && uiHandler instanceof DeviceConfirmPage) {
+                            uiHandler.handlerUI(msg);
+                        }
+                    }
+                    getBallary();
+                    break;
+                case BLEDataType.BLE_RECORDCOUNT_CODE:// RecordCount
+                    syncWatchData();
+                    break;
+                case BLEDataType.BLE_BATTERY_CODE:// Battery
+                    UtilLog.e(TAG,"BLE_BATTERY_CODE");
+                    BleData<String> battery = (BleData<String>) msg.obj;
+                    if (battery != null && battery.getData() != null) {
+                        powerRate = (int) Long.parseLong(battery.getData());
+                        setBondName();
+//					getRecordCount();
+                    }
+                    sendBroadcast();
+//				showToast("Battery-->" + battery);
+                    reset();
+                    break;
+                case BLEDataType.BLE_VERSION_CODE:// Version
+                    BleData<String> version = (BleData<String>) msg.obj;
+//				showToast("Version-->" + version);
+                    break;
+                case BLEDataType.BLE_GETALARMCLOCK_CODE:// GetAlarmClock
+                    BleData<AlarmClock> getAlarmClock = (BleData<AlarmClock>) msg.obj;
+//				showToast("GetAlarmClock-->" + getAlarmClock);
+                    break;
+                case BLEDataType.BLE_ADJUSTTIME_CODE:// SetTime
+                    BleData<String> setTime = (BleData<String>) msg.obj;
+
+//				showToast("SetTime-->" + setTime);
+                    break;
+                case BLEDataType.BLE_SETNAME_CODE:// SetName
+                    BleData<String> setName = (BleData<String>) msg.obj;
+//				showToast("SetName-->" + setName);
+                    break;
+                case BLEDataType.BLE_SPORTDATA_CODE:// SportData
+                    try {
+                        SportSleepData sportData = (SportSleepData) msg.obj;
+                        List<WHistorySteps> list = new ArrayList<WHistorySteps>();
+                        WHistorySteps step;
+                        for (Sport sport : sportData.getSportList()) {
+                            step = new WHistorySteps();
+                            if (!TextUtils.isEmpty(sport.getCalories()))
+                                step.calories = sport.getCalories();
+                            if (!TextUtils.isEmpty(sport.getStartTime()))
+                                step.startTime = setpFormat.format(setpFormat.parse(sport.getStartTime()));
+                            if (!TextUtils.isEmpty(sport.getEndTime()))
+                                step.endTime = setpFormat.format(setpFormat.parse(sport.getEndTime()));
+                            if (!TextUtils.isEmpty(sport.getSteps()))
+                                step.steps = sport.getSteps();
+                            if (!TextUtils.isEmpty(sport.getDistance()))
+                                step.distance = sport.getDistance();
+                            if (!TextUtils.isEmpty(sport.getRun()))
+                                step.run = sport.getRun();
+                            list.add(step);
+                        }
+                        if (((SportSleepData) msg.obj).getSportList().size() != 0) {
+                            DBManager manager = DBManager.getIntance(getApplicationContext(), customer.getId());
+                            manager.saveAll(list);
+                            sportmsg.what = msg.what;
+                            sportmsg.obj = msg.obj;
+                            uploadWalkData();
+                        }
+                        syncWatchSleepData();
+                        //更新UI，获取电量
+                        uiHandler.handlerUI(msg);
+                        mBleManager.getBallary();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();//同步某一天的失败了
+                        msg.obj = Constants.ISTIMEOUT;
+                        if (uiHandler != null) {
+                            uiHandler.handlerUI(msg);
+                        }
+
+                    }
+
+                    break;
+                case BLEDataType.BLE_SETALARMCLOCK_CODE:// SetAlarmClock
+                    BleData<String> setAlarmClock = (BleData<String>) msg.obj;
+//				showToast("SetAlarmClock-->" + setAlarmClock);
+                    break;
+                case BLEDataType.BLE_DELETESPORTDATA_CODE:// DeleteSportData
+                    BleData<String> deleteSportData = (BleData<String>) msg.obj;
+//				showToast("DeleteSportData-->" + deleteSportData);
+                    break;
+                case BLEDataType.BLE_GETSLEEP_CODE:// getSleep()
+                    UtilLog.e(TAG, "ble_getsleep_code");
+                    BleData sleepble = (BleData) msg.obj;
+                    SleepData sleepdata = (SleepData) sleepble.getData();
+
+                    if (sleepdata == null) {
+                        UtilLog.e(TAG, "is null");
+                    } else {
+                        sleepdata.setTime(Utils.DateToStr(new Date()));
+                        List<SleepData> list = new ArrayList<SleepData>();
+                        DBManager manager = DBManager.getIntance(getApplicationContext(), customer.getId());
+                        list.add(sleepdata);
+                        manager.saveAll(list);
+                    }
+                    uploadSleepData();
+
+                    if (uiHandler!=null){
+                        uiHandler.handlerUI(msg);
+                    }
+
+                    mBleManager.getBallary();
+                    break;
+            }
+        }
+
+        ;
+    };
+    public void reset() {
+        isCommunication = false;
+    }
+
+    public void registerUIHandler(UIHandler uiHandler) {
+        this.uiHandler = uiHandler;
+    }
+
+    public void unRegisterUIHandler() {
+        this.uiHandler = null;
+    }
+
+    // 登录/绑定手环
+    // (网络绑定手环)
+    // 设置昵称
+    // 获取电量
+    // 同步手环时间
+    // 获取本地手环版本
+    // 同步数据
+    // 手环升级逻辑判断
+
+    Customer customer;
+
+    // 退出登陆
+    public void logout() {
+        try {
+            close();
+            unRegisterUIHandler();
+            System.gc();
+            UtilLog.e(TAG, "logout successed!!!!!!!!!!!!!!!!!!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    // 后台扫描设备
+    public void scanDevice(int pType) {
+        if (!isCommunication) {
+            if (mBleManager == null) {
+                mBleManager = BleManager.getInstance(getApplicationContext(), mHandler);
+            }
+            mBleManager.init(WRISTBANDSTYPE);
+            try {
+                if (BluetoothUtils.checkDeviceConnectStatus()) {
+                    UtilLog.e(TAG, "connect get count");
+                    getRecordCount();
+                } else {
+                    UtilLog.e(TAG, "not connect begin scan ");
+                    mBleManager.scanDevice(pType);
+                }
+            } catch (Exception e) {
+                UtilLog.e(TAG, " exception ");
+                mBleManager.scanDevice(pType);
+            }
+
+
+        }
+
+    }
+
+
+    // 手环连接界面调用
+    public boolean connecting(String pMac) {
+        UtilLog.e(TAG, "connecting+++++++" + pMac);
+        mBleManager.stopScan();
+        if (mBleManager != null && !mBleManager.isShutdown()) {
+            return mBleManager.connect(pMac);
+        }
+        return false;
+    }
+
+    // 断开蓝牙与手环连接
+
+
+    // 绑定用户，走这套逻辑
+    public void bindUser() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mBleManager.bindUser("");
+            }
+        }).start();
+
+    }
+
+    public void unBinder() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (mBleManager != null)
+                    mBleManager.disconnect();
+            }
+        }).start();
+
+    }
+
+    // 设置昵称
+    public void setBondName() {
+        customer = LocalDataUtils.readCustomer(getApplicationContext());
+        if (mBleManager != null && !TextUtils.isEmpty(customer.getName()) && customer.getName().getBytes().length <= 13) {
+            mBleManager.setDeviceName("HIKO-" + customer.getName());
+        }
+    }
+
+
+    // 获取上次充电时间
+    public void getlaseFillPowerTime() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+            }
+        }).start();
+    }
+
+    // 获取电量
+    public void getBallary() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (mBleManager != null)
+                    mBleManager.getBallary();
+            }
+        }).start();
+    }
+
+    //设置时间
+    private void adjustTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Calendar c = Calendar.getInstance();
+                c.setTime(new Date());
+                if (mBleManager != null)
+                    mBleManager.adjustTime();
+            }
+        }).start();
+    }
+
+
+    //获取闹钟列表
+    public boolean getAlarmList() {
+
+        return false;
+    }
+
+    //	//同步数据
+//	public Boolean syncWatchData(){
+//		customer=LocalDataUtils.readCustomer(getApplicationContext());
+//		if(indexList.size()==0)
+//			return  true;
+//		mBleManager.syncWatchData(indexList.getFirst());
+//		return false;
+//	}
+    //同步数据
+    public Boolean syncWatchData() {
+        customer = LocalDataUtils.readCustomer(getApplicationContext());
+//		if(indexList.size()==0)
+//			return  true;
+        mBleManager.syncWatchData(0);
+        return false;
+    }
+
+    //同步睡眠数据
+    public Boolean syncWatchSleepData() {
+        customer = LocalDataUtils.readCustomer(getApplicationContext());
+        mBleManager.syncWatchSleepData();
+        return false;
+    }
+
+    public void getRecordCount() {
+        if (mBleManager == null) {
+            mBleManager = BleManager.getInstance(getApplicationContext(), mHandler);
+        }
+        mBleManager.init(WRISTBANDSTYPE);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mBleManager.getRecordCount();
+            }
+        }).start();
+    }
+
+    //升级
+    public void startBondUpdate() {
+
+    }
+
+
+    private void sendBroadcast() {
+        try {
+            Intent intent = new Intent();
+            intent.setAction(Constants.watchconnected);
+            getApplicationContext().sendBroadcast(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void cancalNotification() {
+        NotificationManager notificationManager = (NotificationManager) this
+                .getSystemService(android.content.Context.NOTIFICATION_SERVICE);// 调用android系统属性
+        notificationManager.cancel(notificationID);
+
+    }
+
+	/*同步状态通知*/
+
+    int notificationID = 1001;
+
+    // 更新状态栏
+    private void showNotification(int s) {
+        // 加载消息通知服务
+        final NotificationManager notificationManager = (NotificationManager) this
+                .getSystemService(android.content.Context.NOTIFICATION_SERVICE);// 调用android系统属性
+        // 显示消息通知
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(), 0);
+        RemoteViews contentView = new RemoteViews(getPackageName(), R.layout.notification);
+        if (s == 100) {
+            contentView.setTextViewText(R.id.notificationTitle, "数据同步完成");
+        } else {
+            contentView.setTextViewText(R.id.notificationTitle, "正 在同步数据....");
+        }
+        contentView.setTextViewText(R.id.notificationPercent, new String().valueOf(s) + "%"); // 计算进度
+        contentView.setProgressBar(R.id.notificationProgress, 100, s, false);
+        Notification notification = new Notification(R.mipmap.app_icon, "", System.currentTimeMillis());
+        notification.contentView = contentView;
+        notification.contentIntent = contentIntent;
+        notificationManager.notify(notificationID, notification);
+
+        if (s == 100) {
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    notificationManager.cancel(notificationID);
+                }
+            };
+            timer.schedule(task, 1000);
+        }
+
+    }
+
+
+    // 网络部分开始
+    BaseDao uploadWalkDataDao;
+
+    BaseDao uploadSleepDataDao;
+    BaseDao getDeviceVersionDao;
+    BaseDao bindBandDao;
+
+    void initBaseDao() {
+        uploadWalkDataDao = new BaseDao(new INetResult() {
+
+            @Override
+            public void onResponseReceived(int requestCode) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onRequestSuccess(int requestCode) {
+                UtilLog.e(TAG, "上传运动数据成功!!!!");
+                DBManager manager = DBManager.getIntance(getApplicationContext(),
+                        LocalDataUtils.readCustomer(getApplicationContext()).getId());
+                manager.clearTable(WHistorySteps.class);
+//				uploadSleepData();
+                //获取睡眠数据
+//				syncWatchSleepData();
+                Intent intent = new Intent(HomeFragment.sportAction);
+                sendBroadcast(intent);
+
+            }
+
+            @Override
+            public void onRequestFaild(String errorNo, String errorMessage) {
+                UtilLog.e(TAG, "上传运动数据失败!!!!");
+            }
+
+            @Override
+            public void onNoConnect() {
+
+            }
+
+            @Override
+            public void onRequestSuccess(ResponseInfo responseInfo) {
+
+            }
+
+        }, getApplicationContext());
+
+        uploadSleepDataDao = new BaseDao(new INetResult() {
+
+            @Override
+            public void onResponseReceived(int requestCode) {
+
+            }
+
+            @Override
+            public void onRequestSuccess(int requestCode) {
+                UtilLog.e(TAG, "上传睡眠数据成功!!!!");
+                DBManager manager = DBManager.getIntance(getApplicationContext(), LocalDataUtils.readCustomer(getApplicationContext()).getId());
+                manager.clearTable(SleepData.class);
+				Intent intent = new Intent(SleepFragment.sleepAction);
+				sendBroadcast(intent);
+
+            }
+
+            @Override
+            public void onRequestFaild(String errorNo, String errorMessage) {
+                UtilLog.e(TAG, "上传睡眠数据失败!!!!");
+            }
+
+            @Override
+            public void onNoConnect() {
+
+            }
+
+            @Override
+            public void onRequestSuccess(ResponseInfo responseInfo) {
+
+            }
+        }, getApplicationContext());
+
+    }
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    // 上传数据部分开始
+    // 上传步行数据
+    void uploadWalkData() {
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String maxDay = format.format(Utils.dateAdd(1));
+                String minDay = format.format(Utils.dateAdd(-55));
+                DBManager manager = DBManager.getIntance(getApplicationContext(),
+                        LocalDataUtils.readCustomer(getApplicationContext()).getId());
+                List<WHistorySteps> list = manager.getAllObject(WHistorySteps.class);
+                JSONArray array = new JSONArray();
+                if (list.size() == 0) {
+                    UtilLog.e(TAG, "运动数据为空！！！！！！");
+                    uploadSleepData();
+                } else {
+                    String lastDate = null;// 本地保存的最新日期
+                    for (WHistorySteps step : list) {
+                        JSONObject json = new JSONObject();
+                        try {
+                            if (!TextUtils.isEmpty(step.startTime)
+                                    && !TextUtils.isEmpty(step.endTime)
+                                    && !TextUtils.isEmpty(minDay)
+                                    && !TextUtils.isEmpty(maxDay)
+                                    && step.startTime.compareTo(minDay) >= 0
+                                    && step.startTime.compareTo(maxDay) < 0
+                                    && step.endTime.compareTo(minDay) >= 0
+                                    && step.endTime.compareTo(maxDay) < 0) {
+                                json.put("startTime", step.startTime);
+                                json.put("endTime", step.endTime);
+                                json.put("walkStep", step.steps);
+                                json.put("runStep", step.run);
+                                json.put("distance", step.distance);
+                                json.put("calories", step.calories);
+                                array.put(json);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    UtilLog.e("MyLog", "开始上传运动数据");
+                    uploadWalkDataDao.UploadWalkData(array.toString());
+                }
+            }
+        }).start();
+
+    }
+
+    // 上传睡眠数据
+    void uploadSleepData() {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                String maxDay = format.format(Utils.dateAdd(1));
+                String minDay = format.format(Utils.dateAdd(-6));
+                DBManager manager = DBManager.getIntance(getApplicationContext(),
+                        LocalDataUtils.readCustomer(getApplicationContext()).getId());
+                List<SleepData> list = manager.getAllObject(SleepData.class);
+                if (list.size() == 0) {
+                    UtilLog.e(TAG, "睡眠数据为空！！！！！！！！！！！！！");
+                } else {
+                    JSONArray array = new JSONArray();
+                    for (SleepData sleepData : list) {
+                        JSONObject json = new JSONObject();
+                        try {
+//							if (!TextUtils.isEmpty(sleep.timeString)
+//									&& !TextUtils.isEmpty(minDay)
+//									&& !TextUtils.isEmpty(maxDay)
+//									&& sleep.timeString.compareTo(minDay) >= 0
+//									&& sleep.timeString.compareTo(maxDay) < 0) {
+                            json.put("time",sleepData.getTime());
+                            json.put("isSleepValid", sleepData.isSleepValid);
+                            json.put("sleepHour", sleepData.sleepHour);
+                            json.put("sleepMin", sleepData.sleepMin);
+                            json.put("wakeHour", sleepData.wakeHour);
+                            json.put("wakeMin", sleepData.wakeMin);
+                            json.put("wakeCount", sleepData.wakeCount);
+                            json.put("deepTime", sleepData.deepTime);
+                            json.put("lightTime", sleepData.lightTime);
+                            json.put("sleepScore", sleepData.sleepScore);
+                            json.put("sleepShowRaw", sleepData.sleepShowRaw);
+                            json.put("sleepShowRawi", sleepData.sleepShowRawi);
+                            array.put(json);
+//							}
+                        } catch (JSONException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                    UtilLog.e(TAG, "开始上传睡眠数据");
+                    uploadSleepDataDao.UploadSleepData(array.toString());
+                }
+            }
+        }).start();
+
+    }
+
+
+    private PushAgent mPushAgent;
+
+    void initYouMengMessagePush() {
+        mPushAgent = PushAgent.getInstance(this);
+        mPushAgent.setDebugMode(true);
+
+        UmengMessageHandler messageHandler = new UmengMessageHandler() {
+            /**
+             *
+             * http://dev.umeng.com/push/android/integration#1_6_3
+             */
+            @Override
+            public void dealWithCustomMessage(final Context context, final UMessage msg) {
+                new Handler().post(new Runnable() {
+
+                    @Override
+                    public void run() {
+
+                        boolean isClickOrDismissed = true;
+                        if (isClickOrDismissed) {
+                            UTrack.getInstance(getApplicationContext()).trackMsgClick(msg);
+                        } else {
+                            UTrack.getInstance(getApplicationContext()).trackMsgDismissed(msg);
+                        }
+                        Toast.makeText(context, msg.custom, Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+
+            /**
+             *
+             * http://dev.umeng.com/push/android/integration#1_6_4
+             */
+            @Override
+            public Notification getNotification(Context context, UMessage msg) {
+                switch (msg.builder_id) {
+                    case 1:
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+                        RemoteViews myNotificationView = new RemoteViews(context.getPackageName(),
+                                R.layout.notification_view);
+                        myNotificationView.setTextViewText(R.id.notification_title, msg.title);
+                        myNotificationView.setTextViewText(R.id.notification_text, msg.text);
+                        myNotificationView.setImageViewBitmap(R.id.notification_large_icon, getLargeIcon(context, msg));
+                        myNotificationView.setImageViewResource(R.id.notification_small_icon, getSmallIconId(context, msg));
+                        builder.setContent(myNotificationView);
+                        builder.setAutoCancel(true);
+//					builder.setDefaults(Notification.DEFAULT_ALL);
+                        Notification mNotification = builder.build();
+                        mNotification.contentView = myNotificationView;
+                        return mNotification;
+                    default:
+
+                        return super.getNotification(context, msg);
+                }
+            }
+        };
+        mPushAgent.setMessageHandler(messageHandler);
+
+        /**
+         *
+         * http://dev.umeng.com/push/android/integration#1_6_2
+         */
+        UmengNotificationClickHandler notificationClickHandler = new UmengNotificationClickHandler() {
+            @Override
+            public void dealWithCustomAction(Context context, UMessage msg) {
+                Toast.makeText(context, msg.custom, Toast.LENGTH_LONG).show();
+            }
+        };
+        mPushAgent.setNotificationClickHandler(notificationClickHandler);
+    }
+
+    public void stopScan() {
+        if (mBleManager != null) {
+            mBleManager.stopScan();
+        }
+
+    }
+    public void setAlarm(ArrayList<MyClock> pClock){
+        if (mBleManager!=null){
+            mBleManager.setAlarm(pClock);
+        }
+
+    }
+    public void close() {
+        if (mBleManager != null) {
+            UtilLog.e(TAG,"close");
+            mBleManager.disconnect();
+        }
+    }
+
+    public void getConfig() {
+        if (mBleManager!=null){
+            mBleManager.getConfig();
+        }
+    }
+}

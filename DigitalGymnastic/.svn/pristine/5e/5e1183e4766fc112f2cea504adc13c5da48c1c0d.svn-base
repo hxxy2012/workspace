@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/bg_home_bodycheck">
+    <include android:id="@+id/topbar" layout="@layout/topbar" />
+    <View  android:layout_width="match_parent"
+        android:layout_height="@dimen/y20"
+        android:visibility="invisible"
+        />
+    <com.hike.digitalgymnastic.view.MyViewFlipper android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           
+           >
+        
+        <include
+        android:id="@+id/frament_body_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/activity_main_frament_body_top"
+        />
+        
+         <include
+        android:id="@+id/frament_body_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/activity_main_frament_body_bottom"
+        />
+        </com.hike.digitalgymnastic.view.MyViewFlipper>
+	
+</LinearLayout>

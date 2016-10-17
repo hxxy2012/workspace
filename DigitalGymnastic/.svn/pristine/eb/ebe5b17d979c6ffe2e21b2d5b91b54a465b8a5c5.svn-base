@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y150"
+    android:gravity="center" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:alpha="0.03"
+        />
+    <RelativeLayout
+        android:id="@+id/rl_handler"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150" >
+
+        <ImageView
+            android:id="@+id/iv_top11"
+            android:layout_width="@dimen/x27"
+            android:layout_height="@dimen/x18"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y8"
+            android:src="@mipmap/btn_up" />
+<!--
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_top11"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x5"
+            android:layout_marginTop="@dimen/y20"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="@dimen/y3"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_baseinfo_alert"
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x5"
+                android:gravity="center_horizontal"
+                android:text="基础代谢率："
+                android:textSize="@dimen/x12" />
+
+            <TextView
+                android:id="@+id/tv_baseinfo_alert_value"
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_green"
+                android:text="400.0"
+                android:textSize="@dimen/x13" />
+
+            <TextView
+                android:id="@+id/tv_baseinfo_alert_kcal"
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x5"
+                android:lineSpacingExtra="@dimen/y3"
+                android:text="kcal/d"
+                android:textSize="@dimen/x12" />
+        </LinearLayout>
+-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y42"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x45"
+                android:layout_marginBottom="@dimen/y20"
+                android:text="您的体测详情"
+                android:textSize="@dimen/x12" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x9"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_couont_qualified"
+                    style="@style/mainpage_tv_value_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="@dimen/x27"
+                    android:minWidth="@dimen/x27"
+                    android:textColor="@color/text_green"
+                    android:text="0"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/tv_hege"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:gravity="center"
+                    android:text="项合格"
+                    android:textSize="@dimen/x12" />
+
+                <TextView
+                    android:id="@+id/tv_couont_unqualified"
+                    style="@style/mainpage_tv_value_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x50"
+                    android:gravity="center"
+                    android:minHeight="@dimen/x27"
+                    android:minWidth="@dimen/x27"
+                    android:textColor="@color/text_pink"
+                    android:text="0"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/tv_buhege"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:gravity="center"
+                    android:text="项不合格"
+                    android:textSize="@dimen/x12" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/layout/activity_main_frament_body_urual1.xml -->

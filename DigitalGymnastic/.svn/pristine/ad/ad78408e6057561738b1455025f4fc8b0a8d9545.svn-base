@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+        <include layout="@layout/topbar" />
+    <Button
+        android:id="@+id/btn_next_four"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/x18"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="@string/next"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_ly"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y50"
+            android:gravity="center_horizontal"
+            android:text="@string/selcetweigth"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/y1">
+
+            <com.hike.digitalgymnastic.view.WeightRingView
+                android:id="@+id/view_weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/y1"
+                android:layout_centerInParent="true"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/activity_weigth_add.xml -->

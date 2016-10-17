@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout  android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        >
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
+            android:background="@color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_weight="1"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="一周运动统计"
+        android:textColor="@color/time_color_normal"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true"/>
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:alpha="0.2"
+            android:background="@color/white"
+            android:layout_gravity="center_vertical"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginRight="@dimen/x10"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/ll_history_avery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal" 
+        android:orientation="horizontal"
+        android:layout_below="@id/fl"
+        android:layout_marginTop="20dp">
+	<LinearLayout  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <com.hike.digitalgymnastic.view.HistoryProgressView
+            android:id="@+id/view_avercal"
+            android:layout_width="@dimen/x89"
+            android:layout_height="@dimen/x89"
+            android:layout_gravity="center_horizontal"
+            />
+         <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="平均卡路里消耗"
+        android:textColor="@color/time_color_normal"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+       />
+</LinearLayout>
+<LinearLayout  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+         android:layout_weight="1">
+        <com.hike.digitalgymnastic.view.HistoryProgressView
+            android:id="@+id/view_avertime"
+            android:layout_width="@dimen/x89"
+            android:layout_height="@dimen/x89"
+             android:layout_gravity="center_horizontal"
+            />
+         <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="平均运动时间"
+        android:textColor="@color/time_color_normal"
+         android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+       />
+         </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_hasnosport_alert"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_history_avery"
+        android:layout_marginBottom="120dp"
+        android:layout_marginTop="42dp"
+        android:gravity="center_horizontal"
+        android:text="你本周还未参加运动，快去锻炼去吧！"
+        android:textColor="@color/time_color_normal"
+        android:visibility="invisible" />
+
+</RelativeLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/activity_history_bottom_ly.xml -->

@@ -1,0 +1,574 @@
+package com.hike.digitalgymnastic.service;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+
+import com.hike.digitalgymnastic.HikoDigitalgyApplication;
+import com.hike.digitalgymnastic.entitiy.BleData;
+import com.hike.digitalgymnastic.entitiy.CmdEnum;
+import com.hike.digitalgymnastic.entitiy.MyClock;
+import com.hike.digitalgymnastic.entitiy.SleepData;
+import com.hike.digitalgymnastic.entitiy.Sport;
+import com.hike.digitalgymnastic.entitiy.SportSleepData;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.hike.digitalgymnastic.utils.LocalDataUtils;
+import com.milink.air.ble.OnBleNotification;
+import com.milink.air.ble.Raw;
+import com.milink.air.ble.Sleep;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+/**
+ * 当sdk通知蓝牙变化 调用对应方法
+ */
+public class AirServiceManager implements OnBleNotification {
+
+    private static final String TAG = AirServiceManager.class.getSimpleName();
+
+    private static final long SCAN_PERIOD = 5000;
+
+    private final Context context;
+    private boolean mScanning = false;
+    private volatile boolean mIsShutdown = false;
+    private static AirServiceManager mInstance;
+    private Handler mHandler;
+    private volatile String mAddress;
+    private static UUID [] mDeviceUUID = new UUID[1];
+
+    private int pressVibrate;
+    private int steplen;
+    private String deviceId;
+    private byte alarm1;
+    private byte a1H;
+    private byte a1M;
+    private byte alarm2;
+    private byte a2H;
+    private byte a2M;
+    private int Vibrate;
+    private String oneAlarmWeek;
+    private int liftwrist;
+    private String hexVer;
+    private String deviceName;
+    private String twoAlarmWeek;
+    private String dateString;
+    private long cur_step;
+    private long cur_dis;
+    private long cur_cal;
+    private long cur_battery;
+    private int index = 0;
+
+    private BluetoothAdapter mBluetoothAdapter = HikoDigitalgyApplication.getInstance().mBluetoothAdapter;
+    private Intent service;
+
+    private AirServiceManager(Context pContext) {
+        UtilLog.e(TAG, "ServiceManager is onCreate");
+        this.context = pContext;
+        mScanning = false;
+
+    }
+
+    public static synchronized AirServiceManager getInstance(Context pContext) {
+        if (mInstance == null) {
+            mInstance = new AirServiceManager(pContext);
+        }
+        return mInstance;
+    }
+
+
+    public void initialize(Handler pHandler) {
+        this.mHandler = pHandler;
+    }
+
+    /**
+     * 搜索蓝牙
+     * type == 0 默认用名字过滤
+     * type == 1 用uuid过滤
+     * @param pType
+     */
+    public void startScan(final int pType) {
+        mDeviceUUID[0]= UUID.fromString("0000fff0-0000-1000-8000-00805f9b34fb");
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (mScanning) {
+                    UtilLog.e(TAG, "it is time stop scan");
+                    stopScan();
+                    if (AirServiceManager.this.checkUiHandlerIsNotNull()) {
+                        Message msg1 = new Message();
+                        msg1.what = BLEDataType.BLE_SCAN_END;
+                        AirServiceManager.this.mHandler.sendMessage(msg1);
+                    }
+                }
+            }
+        }, SCAN_PERIOD);
+        UtilLog.e(TAG,"start scan");
+        mScanning = true;
+        if (pType==1){
+            mBluetoothAdapter.startLeScan(mDeviceUUID,mLeScanCallbackByUUID);
+        }else{
+            mBluetoothAdapter.startLeScan(mLeScanCallback);
+        }
+
+    }
+
+    public void stopScan() {
+        mScanning = false;
+        mBluetoothAdapter.stopLeScan(mLeScanCallback);
+        mBluetoothAdapter.stopLeScan(mLeScanCallbackByUUID);
+    }
+
+
+    private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
+
+        @Override
+        public void onLeScan(final BluetoothDevice device, final int rssiint,
+                             byte[] scanRecord) {
+
+            UtilLog.e(TAG,"scan -->"+device.getAddress()+":"+device.getName());
+            if (device != null && device.getName()!=null&&device.getName().contains("Air")  ) {
+                if (AirServiceManager.this.checkUiHandlerIsNotNull()) {
+                    Message msg1 = new Message();
+                    msg1.what = BLEDataType.BLE_SCAN_CODE;
+                    msg1.obj = device;
+                    AirServiceManager.this.mHandler.sendMessage(msg1);
+                }
+            }
+
+
+        }
+    };
+
+    private BluetoothAdapter.LeScanCallback mLeScanCallbackByUUID = new BluetoothAdapter.LeScanCallback() {
+
+        @Override
+        public void onLeScan(final BluetoothDevice device, final int rssiint,
+                             byte[] scanRecord) {
+
+            UtilLog.e(TAG,"mLeScanCallbackByUUID -->"+device.getAddress()+":"+device.getName());
+            if (device != null ) {
+                if (AirServiceManager.this.checkUiHandlerIsNotNull()) {
+                    Message msg1 = new Message();
+                    msg1.what = BLEDataType.BLE_SCAN_CODE;
+                    msg1.obj = device;
+                    AirServiceManager.this.mHandler.sendMessage(msg1);
+                }
+            }
+
+
+        }
+    };
+
+    private boolean checkUiHandlerIsNotNull() {
+        return this.mHandler != null;
+    }
+
+    public void connect(String mac) {
+        IntentFilter inf = new IntentFilter();
+        inf.addAction("mil.bt");
+        context.registerReceiver(btReceiver, inf);
+        service = new Intent(context, AirBLEService.class);
+        service.putExtra("address", mac);
+        AirServiceManager.this.mAddress = mac;
+        context.bindService(service, mServiceConnection, Context.BIND_AUTO_CREATE);
+        context.startService(service);
+    }
+
+    public void disconnect() {
+
+        if (bleService != null) {
+            bleService.close();
+            bleService.disconnect();
+            bleService = null;
+            context.unbindService(mServiceConnection);
+            context.stopService(service);
+        }
+    }
+
+    public void bind() {
+    }
+
+    public void setName(String s) {
+    }
+
+    public void battery() {
+        BleData bleData = new BleData();
+//        String.valueOf((double)val * 12.5D)
+        bleData.setData(String.valueOf(cur_battery));
+        bleData.setDesc("执行成功");
+        Message msg1 = new Message();
+        msg1.what = CmdEnum.Battery.getCode();
+        msg1.obj = bleData;
+        this.mHandler.sendMessage(msg1);
+    }
+
+    public void setTime(String s, String s1, String s2, String s3, String s4, String s5) {
+        bleService.setTime(0, 0, 0);
+    }
+
+    public void recordCount() {
+        BleData bleData = new BleData();
+        bleData.setData("");
+        bleData.setDesc("执行成功");
+        Message msg1 = new Message();
+        msg1.what = CmdEnum.RecordCount.getCode();
+        msg1.obj = bleData;
+        this.mHandler.sendMessage(msg1);
+    }
+
+    public void getSportData() {
+        if (bleService != null) {
+            bleService.getSpData();
+        }
+    }
+
+    public void shutdown() {
+        UtilLog.e(TAG, "Service Manager shutdown!!");
+        if (bleService!=null){
+            bleService.close();
+        }else {
+            UtilLog.e(TAG,"ble service is null");
+        }
+    }
+
+    public boolean isShutdown() {
+        return false;
+    }
+
+    BroadcastReceiver btReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // 收到使能成功之后的广播 可以通信了
+            if (intent.getAction().equals("mil.bt")) {
+                int cmd = intent.getIntExtra("cmd", 0);
+                if (cmd == 1) {
+                    if (bleService != null) {
+                        bleService.setNotifyBt(AirServiceManager.this);
+                        if (AirServiceManager.this.checkUiHandlerIsNotNull()) {
+                            Message msg = new Message();
+                            msg.what = BLEDataType.BLE_ISREADY_CODE;
+                            msg.obj = AirServiceManager.this.mAddress;
+                            AirServiceManager.this.mHandler.sendMessageDelayed(msg, 1000L);
+                        }
+                        //读取手环基本配置 后期开发闹钟等 要用
+                        bleService.readDeviceConfig();
+                    }
+                } else if (cmd == 2) {
+                    System.out.println("cmd == 2");
+                }
+            }
+        }
+    };
+    private AirBLEService bleService;
+    ServiceConnection mServiceConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            System.out.println("onServiceDisconnected");
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            if (service instanceof AirBLEService.LocalBinder) {
+                bleService = ((AirBLEService.LocalBinder) service).getService();
+            }
+        }
+    };
+
+    @Override
+    public void onGetCurSp(long step, long dis, long cal, long battery) {
+        System.out.println("onGetCurSp当前步数：" + step + "电量：" + battery + "=卡路里=" + cal + "=距离=" + dis);
+        cur_step = step;
+        cur_dis = dis;
+        cur_cal = cal;
+        cur_battery = battery;
+        index = 0;
+        sports.clear();
+        bleData = new SportSleepData();
+    }
+
+    ArrayList sports = new ArrayList();
+    SportSleepData bleData;
+
+    @Override
+    public void onGetHisSp(String date, long step, long dis, long cal) {
+
+        System.out.println("onGetHisSp步数：date：" + date + "===步数：" + step + "=卡路里=" + cal + "=距离=" + dis);
+
+        String startTime = "";
+        String endTime = "";
+        startTime = date + " " + "00:00:00";
+        endTime = date + " " + "23:59:59";
+
+        Sport sport = new Sport();
+        sport.setStartTime(startTime);
+        sport.setEndTime(endTime);
+        sport.setSteps("" + step);
+        sport.setCalories(cal + "");
+        sport.setDistance(dis + "");
+        sports.add(sport);
+//
+//        bleData.setSportList(sports);
+//        Message var27 = new Message();
+//        var27.what = CmdEnum.SportData.getCode();
+//        var27.obj = bleData;
+//        this.mHandler.sendMessage(var27);
+    }
+
+    @Override
+    public void onGetRawSp(Raw[] raws) {
+//        ArrayList sports = new ArrayList();
+//        SportSleepData bleData = new SportSleepData();
+        String startTime = "";
+        String endTime = "";
+        index = index++;
+        int length = raws.length;
+        for (int i = 0; i < raws.length; i++) {
+
+            System.out.println("onGetRawSp_raw" + i + raws[i].getDate() + raws[i].getHour() + raws[i].getStep());
+            System.out.println("raw" + i + raws[i].getStep().length);
+
+
+            dateString = raws[i].getDate();
+            int hour = raws[i].getHour();
+            int[] steps = raws[i].getStep();
+            int [] mCalories = raws[i].getCalories();
+            int mm = 0;
+
+                for (int j = 0; j < steps.length && mm < 60; j++) {
+
+                    startTime = dateString + " " + hour + ":" + mm + ":0";
+                    mm = mm + 5;
+                    endTime = dateString + " " + hour + ":" + mm + ":0";
+                    if(steps[j]==0){
+
+                    }else{
+                        Sport sport = new Sport();
+                        sport.setStartTime(startTime);
+                        sport.setEndTime(endTime);
+                        sport.setSteps("" + steps[j]);
+                        sport.setCalories(""+mCalories[j]);
+                        sports.add(sport);
+                    }
+
+            }
+        }
+
+    }
+
+    @Override
+    public void onSetTime() {
+        System.out.println("时间设置成功！");
+    }
+
+    @Override
+    public void onSettingsChanged(int i) {
+
+    }
+    MyClock myClockOne ;
+    MyClock myClockTwo ;
+    List mAllClock = new ArrayList<MyClock>();
+    @Override
+    public void onGetSettings(HashMap<String, Object> hashMap) {
+        mAllClock.clear();
+        myClockOne = new MyClock();
+        myClockTwo = new MyClock();
+        StringBuffer sb = new StringBuffer();
+        Iterator<Map.Entry<String, Object>> iterator = hashMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            final Map.Entry<String, Object> param = iterator.next();
+            // jre 1.7
+            switch (param.getKey()) {
+                case "pressVibrate":
+                    sb.append("触摸振动：" + param.getValue() + (param.getValue().toString().equals("1") ? "开" : "关") + "\n");
+                    pressVibrate = Integer.parseInt(param.getValue().toString());
+                    break;
+                case "steplen":
+                    sb.append("步长：" + (param.getValue()) + "\n");
+                    steplen = Integer.parseInt(param.getValue().toString());
+                    break;
+                case "deviceId":
+                    sb.append("设备号：" + param.getValue() + "\n");
+                    deviceId = param.getValue().toString();
+                    break;
+                case "languge":
+                    sb.append("当前语言：" + ((param.getValue().toString()).equals("1") ? "中文" : "英文") + "\n");
+                    break;
+                case "AlarmsSettings":
+                    byte[] alarm = (byte[]) param.getValue();
+                    alarm1 = alarm[0];
+                    a1H = alarm[1];
+                    a1M = alarm[2];
+                    alarm2 = alarm[3];
+                    a2H = alarm[4];
+                    a2M = alarm[5];
+                    myClockOne.setGroup_id(0);
+                    myClockTwo.setGroup_id(1);
+                    saveClock(myClockOne, a1H, a1M, alarm1);
+                    saveClock(myClockTwo,a2H,a2M,alarm2);
+                    sb.append("闹钟一：" + (alarm1 == 1 ? "开" : "关") + "->" + a1H + ":" + a1M + "\n");
+                    sb.append("闹钟二：" + (alarm2 == 1 ? "开" : "关") + "->" + a2H + ":" + a2M + "\n");
+                    break;
+                case "Vibrate":
+                    sb.append("振动开关：" + param.getValue() + (param.getValue().toString().equals("1") ? "开" : "关") + "\n");
+                    Vibrate = Integer.parseInt(param.getValue().toString());
+                    break;
+                case "oneAlarmWeek":
+                    sb.append("闹钟一工作时间：" + (getWeek(param.getValue().toString())) + "\n");
+                    oneAlarmWeek = param.getValue().toString();
+                    myClockOne.setWorkTime(param.getValue().toString());
+                    mAllClock.add(myClockOne);
+                    break;
+                case "liftwrist":
+                    sb.append("抬腕显示：" + param.getValue() + (param.getValue().toString().equals("1") ? "开" : "关") + "\n");
+                    liftwrist = Integer.parseInt(param.getValue().toString());
+                    break;
+                case "hexVer":
+                    sb.append("固件版本：" + (param.getValue()) + "\n");
+                    hexVer = param.getValue().toString();
+                    break;
+                case "deviceName":
+                    sb.append("蓝牙名称：" + (param.getValue()) + "\n");
+                    deviceName = param.getValue().toString();
+                    break;
+                case "twoAlarmWeek":
+                    sb.append("闹钟二工作时间：" + (getWeek(param.getValue().toString())) + "\n");
+                    twoAlarmWeek = param.getValue().toString();
+                    myClockTwo.setWorkTime(param.getValue().toString());
+                    mAllClock.add(myClockTwo);
+                    break;
+            }
+
+        }
+        UtilLog.e(TAG,sb.toString());
+        LocalDataUtils.saveClockData(HikoDigitalgyApplication.getInstance(),mAllClock);
+    }
+
+    private void saveClock(MyClock pClock,int pH,int pM,int pOpen) {
+        pClock.setExpanded(false);
+        pClock.setHour(pH);
+        pClock.setMin(pM);
+        if (pOpen==1){
+            pClock.setOpenorclose(true);
+        }else {
+            pClock.setOpenorclose(false);
+        }
+    }
+
+    @Override
+    public void onGetCallphone() {
+
+    }
+
+    @Override
+    public void onDeviceoff() {
+
+    }
+
+    @Override
+    public void onGetSleepData(Sleep sleep) {
+        UtilLog.e(TAG,"deepTime=" + sleep.deepTime + "=lightTime=" + sleep.lightTime + "" + "=sleepHour=" + sleep.sleepHour);
+
+        BleData<SleepData> sleepBleData = new BleData<SleepData>();
+        SleepData sleepData = null;
+        if (sleep.isSleepValid) {
+            sleepData = new SleepData();
+            sleepData.setDeepTime(sleep.deepTime);
+            sleepData.setIsSleepValid(sleep.isSleepValid);
+            sleepData.setLightTime(sleep.lightTime);
+            sleepData.setSleepHour(sleep.sleepHour);
+            sleepData.setSleepMin(sleep.sleepMin);
+            sleepData.setSleepScore(sleep.sleepScore);
+            sleepData.setSleepShowRaw(sleep.sleepShowRaw);
+            sleepData.setSleepShowRawi(sleep.sleepShowRawi);
+            sleepData.setWakeCount(sleep.wakeCount);
+            sleepData.setWakeHour(sleep.wakeHour);
+            sleepData.setWakeMin(sleep.wakeMin);
+        }
+        sleepBleData.setData(sleepData);
+        Message var27 = new Message();
+        var27.what = 200;
+        var27.obj = sleepBleData;
+        this.mHandler.sendMessage(var27);
+    }
+
+    @Override
+    public void onGetAdvSp(long l, long l1, long l2) {
+
+    }
+
+    @Override
+    public void onStepLenSet() {
+
+    }
+
+    @Override
+    public void onAirDisplaySet() {
+
+    }
+
+    @Override
+    public void onAlarmSet() {
+
+    }
+
+    @Override
+    public void onVibrateSet() {
+
+    }
+
+    @Override
+    public void onPressVibrateSet() {
+
+    }
+
+    @Override
+    public void onCrcError(byte b) {
+
+    }
+
+    @Override
+    public void onSpDataFinished() {
+        UtilLog.e(TAG,"onSpDataFinished=sports=" + sports);
+
+        bleData.setSportList(sports);
+        Message var27 = new Message();
+        var27.what = CmdEnum.SportData.getCode();
+        var27.obj = bleData;
+        this.mHandler.sendMessage(var27);
+    }
+
+    String[] weekname = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+
+    private String getWeek(String src) {
+        String data = "";
+        String[] arr = src.split("-");
+        for (int i = 0; i < arr.length; i++) {
+            if ("1".equals(arr[i])) {
+                data += weekname[i] + " ";
+            }
+        }
+        return data;
+    }
+    public void getSleepData() {
+        if (bleService != null) {
+            bleService.GetSleep();
+        }
+    }
+}
+
+

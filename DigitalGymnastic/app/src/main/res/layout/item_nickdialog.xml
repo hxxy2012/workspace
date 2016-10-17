@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x280"
+    android:layout_height="@dimen/y114"
+    android:background="@mipmap/pop_back">
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x13"
+        android:gravity="center"
+        android:text="昵称"
+        android:textColor="@color/picker_tophint"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginBottom="@dimen/x13"
+        android:layout_marginLeft="@dimen/x9"
+        android:layout_marginRight="@dimen/x9"
+        android:layout_marginTop="@dimen/x13"
+        android:background="@color/grey_ea"
+        android:gravity="left|center"
+        android:hint=""
+        android:maxLength="8" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/et_name"
+        android:background="@color/plan_line_color" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/y37"
+        android:layout_below="@+id/et_name"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/negativeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/grey_e5"
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/x5"
+            android:layout_marginTop="@dimen/x5"
+            android:background="@color/plan_line_color" />
+
+        <TextView
+            android:id="@+id/positiveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/special_tcolor"
+            android:textSize="20sp" />
+    </LinearLayout>
+</RelativeLayout>

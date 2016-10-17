@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_gender_male"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/y8">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="@dimen/x45"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="@color/plan_title_textcolor"
+            android:textSize="@dimen/x18" />
+
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="请选择你的体重"
+            android:textColor="@color/picker_tophint"
+            android:textSize="@dimen/x18" />
+
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="@dimen/x45"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:gravity="center"
+            android:text="确定"
+            android:textColor="@color/special_tcolor"
+            android:textSize="@dimen/x18" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/plan_line_color" />
+
+    <RelativeLayout
+        android:id="@+id/rl_gender_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:paddingBottom="@dimen/y10"
+        android:paddingTop="@dimen/y10">
+
+        <com.hike.digitalgymnastic.view.PickerViewTwo
+            android:id="@+id/pv_weight_int"
+            android:layout_width="@dimen/x71"
+            android:layout_height="@dimen/y113"
+            android:layout_toLeftOf="@+id/pv_weight_float" />
+
+        <com.hike.digitalgymnastic.view.PickerViewTwo
+            android:id="@+id/pv_weight_float"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/y113"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/plan_line_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:paddingBottom="@dimen/y4"
+                android:paddingLeft="@dimen/x200"
+                android:paddingTop="@dimen/y4"
+                android:text="公斤"
+                android:textColor="@color/special_tcolor"
+                android:textSize="@dimen/x18" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/plan_line_color" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

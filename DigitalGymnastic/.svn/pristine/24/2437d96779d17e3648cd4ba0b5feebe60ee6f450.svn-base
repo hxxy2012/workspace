@@ -1,0 +1,72 @@
+apply plugin: 'com.android.application'
+apply plugin: 'bugly'   //添加Bugly插件
+
+repositories {
+    jcenter()
+}
+dependencies {
+    compile files('libs/gson-2.1.jar')
+    compile files('libs/ble.jar')
+    compile files('libs/com.umeng.message.lib_v2.4.1.jar')
+    compile project(':social_sdk_library_project')
+    compile project(':slidelistview_library')
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release为当前最新的Bugly SDK版本号
+    bugly {
+        appId = '900014582'    //注册时分配的App ID
+        appKey = 'bCMY1irNOt65pwX5'  //注册时分配的App Key
+    }
+    android {
+        compileSdkVersion 21
+        buildToolsVersion "23.0.2"
+
+        defaultConfig {
+            applicationId "com.hiko.enterprisedigital"
+            minSdkVersion 18
+            targetSdkVersion 23
+            versionCode 1
+            versionName "2.1.4"
+            multiDexEnabled true
+        }
+        buildTypes {
+            release {
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+
+        }
+
+        packagingOptions {
+            exclude 'AndroidManifest.xml'
+        }
+
+    }
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile project(':library')
+    /**
+     * 内存溢出分析工具
+        */
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3.1'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3.1'
+    compile project(path: ':PullRefreshlibrary')
+}
+
+android {
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_7
+    }
+    signingConfigs {
+        release {
+            storeFile file("hiko.keystore")
+            storePassword 'hiko1234'
+            keyAlias 'alias'
+            keyPassword 'hiko1234'
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+}

@@ -1,0 +1,2253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string-array name="bodystateDanbaizhi">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateFubufeipanglv">
+        <item>低于 </item>
+        <item>标准 </item>
+        <item>高于 </item>
+    </string-array>
+    <string-array name="bodystateGuliang">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateJichudaixielv">
+    <item>偏低 </item>
+    <item>标准 </item>
+    <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateJiroulvlv">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>优秀 </item>
+    </string-array>
+    <string-array name="bodystateKuangwuzhi">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystateShuifenData">
+        <item>偏低 </item>
+        <item>标准 </item>
+        <item>偏高 </item>
+    </string-array>
+    <string-array name="bodystatebmi">
+        <item>较轻 </item>
+        <item>正常 </item>
+        <!-- <item>适中 </item> -->
+        <item>过重 </item>
+        <item>肥胖 </item>
+        <item>过胖 </item>
+    </string-array>
+    <string-array name="bodystateneizangzhifang">
+        <item>皮下型 </item>
+        <item>均衡 </item>
+        <item>警戒 </item>
+        <item>肥胖 </item>
+        <item>过胖 </item>
+    </string-array>
+    <string-array name="bodystatezhifanglv">
+        <item>过瘦 </item>
+        <item>偏瘦</item>
+        <item>偏胖 </item>
+        <item>肥胖 </item>
+    </string-array>
+    <string-array name="sport_image_male">
+        <item>image_body03_male</item>
+        <item>image_body01_male</item>
+        <item>image_body31_male</item>
+        <item>image_body39_male</item>
+        <item>image_body38_male</item>
+        <item>image_body41_male</item>
+        <item>image_body04_male</item>
+        <item>image_body05_male</item>
+        <item>image_body06_male</item>
+        <item>image_body07_male</item>
+        <item>image_body08_male</item>
+        <item>image_body09_male</item>
+        <item>image_body10_male</item>
+        <item>image_body11_male</item>
+        <item>image_body12_male</item>
+        <item>image_body13_male</item>
+        <item>image_body14_male</item>
+        <item>image_body15_male</item>
+        <item>image_body16_male</item>
+        <item>image_body17_male</item>
+        <item>image_body18_male</item>
+        <item>image_body19_male</item>
+        <item>image_body21_male</item>
+        <item>image_body23_male</item>
+        <item>image_body24_male</item>
+        <item>image_body25_male</item>
+        <item>image_body02_male</item>
+        <item>image_body45_male</item>
+        <item>image_body44_male</item>
+        <item>image_body43_male</item>
+        <item>image_body42_male</item>
+        <item>image_body40_male</item>
+        <item>image_body37_male</item>
+        <item>image_body36_male</item>
+        <item>image_body35_male</item>
+        <item>image_body34_male</item>
+        <item>image_body33_male</item>
+        <item>image_body32_male</item>
+        <item>image_body30_male</item>
+        <item>image_body29_male</item>
+        <item>image_body20_male</item>
+        <item>image_body22_male</item>
+        <item>image_body26_male</item>
+        <item>image_body27_male</item>
+        <item>image_body28_male</item>
+    </string-array>
+    <string-array name="sport_image_sex">
+        <item>image_body03_sex</item>
+        <item>image_body01_sex</item>
+        <item>image_body31_sex</item>
+        <item>image_body39_sex</item>
+        <item>image_body38_sex</item>
+        <item>image_body41_sex</item>
+        <item>image_body04_sex</item>
+        <item>image_body05_sex</item>
+        <item>image_body06_sex</item>
+        <item>image_body07_sex</item>
+        <item>image_body08_sex</item>
+        <item>image_body09_sex</item>
+        <item>image_body10_sex</item>
+        <item>image_body11_sex</item>
+        <item>image_body12_sex</item>
+        <item>image_body13_sex</item>
+        <item>image_body14_sex</item>
+        <item>image_body15_sex</item>
+        <item>image_body16_sex</item>
+        <item>image_body17_sex</item>
+        <item>image_body18_sex</item>
+        <item>image_body19_sex</item>
+        <item>image_body21_sex</item>
+        <item>image_body23_sex</item>
+        <item>image_body24_sex</item>
+        <item>image_body25_sex</item>
+        <item>image_body02_sex</item>
+        <item>image_body45_sex</item>
+        <item>image_body44_sex</item>
+        <item>image_body43_sex</item>
+        <item>image_body42_sex</item>
+        <item>image_body40_sex</item>
+        <item>image_body37_sex</item>
+        <item>image_body36_sex</item>
+        <item>image_body35_sex</item>
+        <item>image_body34_sex</item>
+        <item>image_body33_sex</item>
+        <item>image_body32_sex</item>
+        <item>image_body30_sex</item>
+        <item>image_body29_sex</item>
+        <item>image_body20_sex</item>
+        <item>image_body22_sex</item>
+        <item>image_body26_sex</item>
+        <item>image_body27_sex</item>
+        <item>image_body28_sex</item>
+    </string-array>
+    <string-array name="sport_name">
+        <item>跑步</item>
+        <item>步行</item>
+        <item>有氧舞蹈</item>
+        <item>动感单车</item>
+        <item>BODY PUMP</item>
+        <item>搏击操</item>
+        <item>椭圆机</item>
+        <item>坐式划艇</item>
+        <item>肩膀后展</item>
+        <item>高拉背肌</item>
+        <item>坐式背肌</item>
+        <item>坐式飞鸟</item>
+        <item>坐式提膝</item>
+        <item>坐式伸腿</item>
+        <item>坐式屈腿</item>
+        <item>大腿外展</item>
+        <item>大腿内收</item>
+        <item>肩膀推举</item>
+        <item>坐式推胸</item>
+        <item>蝴蝶扩胸</item>
+        <item>卧式屈腿</item>
+        <item>二头双向</item>
+        <item>三头双向</item>
+        <item>立式伸腿</item>
+        <item>坐式蹬腿</item>
+        <item>立式摆腿</item>
+        <item>游泳</item>
+        <item>FOC</item>
+        <item>POP DANCE</item>
+        <item>民族舞</item>
+        <item>BODYATTACK</item>
+        <item>BODY BLANCE</item>
+        <item>BODY JAM</item>
+        <item>肚皮舞</item>
+        <item>爵士舞</item>
+        <item>古典舞</item>
+        <item>现代舞</item>
+        <item>拉丁舞</item>
+        <item>健身瑜伽</item>
+        <item>ZUMBA</item>
+        <item>二头上提</item>
+        <item>三头下压</item>
+        <item>坐式腹肌</item>
+        <item>坐式拉力</item>
+        <item>坐式转体</item>
+    </string-array>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="aliceblue">#F0F8FF</color>
+    <color name="antiquewhite">#FAEBD7</color>
+    <color name="app">#FFFF00</color>
+    <color name="app_bg">#323a5d</color>
+    <color name="app_bg_login">#f5f5f5</color>
+    <color name="aqua">#00FFFF</color>
+    <color name="aquamarine">#7FFFD4</color>
+    <color name="aver_cal_color">#00bba3</color>
+    <color name="aver_color">#2a2d4d</color>
+    <color name="aver_time_color">#05bdc8</color>
+    <color name="azure">#F0FFFF</color>
+    <color name="banlkid">#ff9786</color>
+    <color name="beige">#F5F5DC</color>
+    <color name="bg_chart">#323555</color>
+    <color name="bisque">#FFE4C4</color>
+    <color name="black">#000000</color>
+    <color name="blanchedalmond">#FFEBCD</color>
+    <color name="blue">#0000FF</color>
+    <color name="blueviolet">#8A2BE2</color>
+    <color name="bottom_color">#413f59</color>
+    <color name="brown">#A52A2A</color>
+    <color name="burlywood">#DEB887</color>
+    <color name="cadetblue">#5F9EA0</color>
+    <color name="chartreuse">#7FFF00</color>
+    <color name="chocolate">#D2691E</color>
+    <color name="circle_color_five">#fae2e1</color>
+    <color name="circle_color_four">#f8d7d6</color>
+    <color name="circle_color_one">#e2788f</color>
+    <color name="circle_color_six">#e57174</color>
+    <color name="circle_color_three">#f2b9be</color>
+    <color name="circle_color_two">#e792a9</color>
+    <color name="colorCircleID">#00bba3</color>
+    <color name="color_939393">#939393</color>
+    <color name="color_97c726">#97c726</color>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <color name="com_facebook_blue">#3B5998</color>
+    <color name="com_facebook_button_background_color">#415dae</color>
+    <color name="com_facebook_button_background_color_disabled">#bdc1c9</color>
+    <color name="com_facebook_button_background_color_pressed">#2f477a</color>
+    <color name="com_facebook_button_like_background_color_selected">#7c8fc8</color>
+    <color name="com_facebook_button_login_silver_background_color">#f4f6f8</color>
+    <color name="com_facebook_button_login_silver_background_color_pressed">#e9eaf0</color>
+    <color name="com_facebook_button_send_background_color">#0084ff</color>
+    <color name="com_facebook_button_send_background_color_pressed">#006fff</color>
+    <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
+    <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
+    <color name="com_facebook_likeview_text_color">#6a7180</color>
+    <color name="com_facebook_share_button_text_color">#FFFFFF</color>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="coral">#FF7F50</color>
+    <color name="cornflowerblue">#6495ED</color>
+    <color name="cornsilk">#FFF8DC</color>
+    <color name="crimson">#DC143C</color>
+    <color name="cyan">#00FFFF</color>
+    <color name="darkblue">#00008B</color>
+    <color name="darkcyan">#008B8B</color>
+    <color name="darkgoldenrod">#B8860B</color>
+    <color name="darkgray">#A9A9A9</color>
+    <color name="darkgreen">#006400</color>
+    <color name="darkgrey">#A9A9A9</color>
+    <color name="darkkhaki">#BDB76B</color>
+    <color name="darkmagenta">#8B008B</color>
+    <color name="darkolivegreen">#556B2F</color>
+    <color name="darkorange">#FF8C00</color>
+    <color name="darkorchid">#9932CC</color>
+    <color name="darkred">#8B0000</color>
+    <color name="darksalmon">#E9967A</color>
+    <color name="darkseagreen">#8FBC8F</color>
+    <color name="darkslateblue">#483D8B</color>
+    <color name="darkslategray">#2F4F4F</color>
+    <color name="darkslategrey">#2F4F4F</color>
+    <color name="darkturquoise">#00CED1</color>
+    <color name="darkviolet">#9400D3</color>
+    <color name="deeppink">#FF1493</color>
+    <color name="deepskyblue">#00BFFF</color>
+    <color name="default_circle_color">#474669</color>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/color_new.xml -->
+    <eat-comment/>
+    <color name="device_rel_text_desp">#999999</color>
+    <color name="device_rel_text_normal">#333333</color>
+    <color name="device_unbind_btncolor">#00bea3</color>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="dimgray">#696969</color>
+    <color name="dimgrey">#696969</color>
+    <color name="dodgerblue">#1E90FF</color>
+    <color name="feedback_ed_bg">#2B2E49</color>
+    <color name="firebrick">#B22222</color>
+    <color name="floralwhite">#FFFAF0</color>
+    <color name="forestgreen">#228B22</color>
+    <color name="fuchsia">#FF00FF</color>
+    <color name="gainsboro">#DCDCDC</color>
+    <color name="ghostwhite">#F8F8FF</color>
+    <color name="gold">#FFD700</color>
+    <color name="goldenrod">#DAA520</color>
+    <color name="gray">#808080</color>
+    <color name="green">#008000</color>
+    <color name="green_00839b">#00839b</color>
+    <color name="green_00bfa3">#00bfa3</color>
+    <color name="green_219fb4">#219fb4</color>
+    <color name="green_2ee0cb">#2ee0cb</color>
+    <color name="green_62cdba">#62cdba</color>
+    <color name="green_73dcff">#73dcff</color>
+    <color name="greenyellow">#ADFF2F</color>
+    <color name="grey">#808080</color>
+    <color name="grey_838383">#838383</color>
+    <color name="grey_99">#999999</color>
+    <color name="grey_aaabce">#aaabce</color>
+    <color name="grey_ae">#aeaeae</color>
+    <color name="grey_cacaca">#cacaca</color>
+    <color name="grey_cc">#cccccc</color>
+    <color name="grey_cd">#cdcdcd</color>
+    <color name="grey_d0">#d0d0d0</color>
+    <color name="grey_dd">#dddddd</color>
+    <color name="grey_e5">#e5e5e5</color>
+    <color name="his_left_color">#aaaccd</color>
+    <color name="honeydew">#F0FFF0</color>
+    <color name="hotpink">#FF69B4</color>
+    <color name="indianred">#CD5C5C</color>
+    <color name="indigo">#4B0082</color>
+    <color name="ivory">#FFFFF0</color>
+    <color name="khaki">#F0E68C</color>
+    <color name="lavender">#E6E6FA</color>
+    <color name="lavenderblush">#FFF0F5</color>
+    <color name="lawngreen">#7CFC00</color>
+    <color name="left_circle_aight">#08ffd4</color>
+    <color name="left_circle_eighteen">#06eed6</color>
+    <color name="left_circle_eleven">#08ffd4</color>
+    <color name="left_circle_fifteen">#08fdd4</color>
+    <color name="left_circle_five">#08ffd4</color>
+    <color name="left_circle_four">#08ffd4</color>
+    <color name="left_circle_fourteen">#08ffd4</color>
+    <color name="left_circle_nine">#08ffd4</color>
+    <color name="left_circle_one">#00e6b6</color>
+    <color name="left_circle_seven">#08ffd4</color>
+    <color name="left_circle_seventeen">#07f4d5</color>
+    <color name="left_circle_six">#08ffd4</color>
+    <color name="left_circle_sixteen">#08f9d4</color>
+    <color name="left_circle_ten">#08ffd4</color>
+    <color name="left_circle_thirteen">#08ffd4</color>
+    <color name="left_circle_three">#08ffd4</color>
+    <color name="left_circle_twelve">#08ffd4</color>
+    <color name="left_circle_two">#08ffd4</color>
+    <color name="lemonchiffon">#FFFACD</color>
+    <color name="light_green">#54c9b5</color>
+    <color name="lightblue">#ADD8E6</color>
+    <color name="lightcoral">#F08080</color>
+    <color name="lightcyan">#E0FFFF</color>
+    <color name="lightgoldenrodyellow">#FAFAD2</color>
+    <color name="lightgray">#D3D3D3</color>
+    <color name="lightgreen">#90EE90</color>
+    <color name="lightgrey">#D3D3D3</color>
+    <color name="lightpink">#FFB6C1</color>
+    <color name="lightsalmon">#FFA07A</color>
+    <color name="lightseagreen">#20B2AA</color>
+    <color name="lightskyblue">#87CEFA</color>
+    <color name="lightslategray">#778899</color>
+    <color name="lightslategrey">#778899</color>
+    <color name="lightsteelblue">#B0C4DE</color>
+    <color name="lightyellow">#FFFFE0</color>
+    <color name="lime">#00FF00</color>
+    <color name="limegreen">#32CD32</color>
+    <color name="line_grey">#4e5171</color>
+    <color name="linen">#FAF0E6</color>
+    <color name="magenta">#FF00FF</color>
+    <color name="maroon">#800000</color>
+    <color name="material_pink">#FF4081</color>
+    <color name="mediumaquamarine">#66CDAA</color>
+    <color name="mediumblue">#0000CD</color>
+    <color name="mediumorchid">#BA55D3</color>
+    <color name="mediumpurple">#9370DB</color>
+    <color name="mediumseagreen">#3CB371</color>
+    <color name="mediumslateblue">#7B68EE</color>
+    <color name="mediumspringgreen">#00FA9A</color>
+    <color name="mediumturquoise">#48D1CC</color>
+    <color name="mediumvioletred">#C71585</color>
+    <color name="midnightblue">#191970</color>
+    <color name="mintcream">#F5FFFA</color>
+    <color name="mistyrose">#FFE4E1</color>
+    <color name="moccasin">#FFE4B5</color>
+    <color name="navajowhite">#FFDEAD</color>
+    <color name="navy">#000080</color>
+    <color name="oldlace">#FDF5E6</color>
+    <color name="olive">#808000</color>
+    <color name="olivedrab">#6B8E23</color>
+    <color name="orange">#FFA500</color>
+    <color name="orangered">#FF4500</color>
+    <color name="orchid">#DA70D6</color>
+    <color name="page_select">#00bba3</color>
+    <color name="page_unselect">#37325f</color>
+    <color name="pager_base_color">#4cffffff</color>
+    <color name="pager_bg">#212121</color>
+    <color name="palegoldenrod">#EEE8AA</color>
+    <color name="palegreen">#98FB98</color>
+    <color name="paleturquoise">#AFEEEE</color>
+    <color name="palevioletred">#DB7093</color>
+    <color name="papayawhip">#FFEFD5</color>
+    <color name="peachpuff">#FFDAB9</color>
+    <color name="peru">#CD853F</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="plum">#DDA0DD</color>
+    <color name="powderblue">#B0E0E6</color>
+    <color name="purple">#800080</color>
+    <color name="qualified">#00BBA3</color>
+    <color name="red">#FF0000</color>
+    <color name="red_ea5e6e">#ea5e6e</color>
+    <color name="rigth_circle_aight">#009ed9</color>
+    <color name="rigth_circle_eighteen">#06e7d6</color>
+    <color name="rigth_circle_eleven">#02afd9</color>
+    <color name="rigth_circle_fifteen">#04ced9</color>
+    <color name="rigth_circle_five">#0091cf</color>
+    <color name="rigth_circle_four">#008eca</color>
+    <color name="rigth_circle_fourteen">#03c6d9</color>
+    <color name="rigth_circle_nine">#00a4d9</color>
+    <color name="rigth_circle_one">#008dbc</color>
+    <color name="rigth_circle_seven">#0098d6</color>
+    <color name="rigth_circle_seventeen">#05dfd7</color>
+    <color name="rigth_circle_six">#0094d3</color>
+    <color name="rigth_circle_sixteen">#04d7d8</color>
+    <color name="rigth_circle_ten">#01a9d9</color>
+    <color name="rigth_circle_thirteen">#03bed9</color>
+    <color name="rigth_circle_three">#008fc5</color>
+    <color name="rigth_circle_twelve">#01b7d9</color>
+    <color name="rigth_circle_two">#008ec0</color>
+    <color name="rosybrown">#BC8F8F</color>
+    <color name="royalblue">#4169E1</color>
+    <color name="saddlebrown">#8B4513</color>
+    <color name="salmon">#FA8072</color>
+    <color name="sandybrown">#F4A460</color>
+    <color name="seagreen">#2E8B57</color>
+    <color name="seashell">#FFF5EE</color>
+    <color name="setting_title_bar_bg">#36395a</color>
+    <color name="sienna">#A0522D</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="simple_bg">#ff39065a</color>
+    <color name="size_base">#ff959595</color>
+    <color name="size_bg">#ffdcd5d6</color>
+    <color name="size_external">#ffff001e</color>
+    <color name="size_external_circle">#a3ff3443</color>
+    <color name="skyblue">#87CEEB</color>
+    <color name="slateblue">#6A5ACD</color>
+    <color name="slategray">#708090</color>
+    <color name="slategrey">#708090</color>
+    <color name="snow">#FFFAFA</color>
+    <color name="springgreen">#00FF7F</color>
+    <color name="steelblue">#4682B4</color>
+    <color name="tan">#D2B48C</color>
+    <color name="teal">#008080</color>
+    <color name="text_bodypage_color">#8688a9</color>
+    <color name="text_color_normal">#aaaccd</color>
+    <color name="text_green">#00bca3</color>
+    <color name="text_normal_color">#aaaccd</color>
+    <color name="text_pink">#f69a9d</color>
+    <color name="thistle">#D8BFD8</color>
+    <color name="time_color_normal">#ffffff</color>
+    <color name="time_color_selected">#00e6be</color>
+    <color name="tomato">#FF6347</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_background">#50000000</color>
+    <color name="turquoise">#40E0D0</color>
+    <color name="umeng_socialize_color_group">#2c3035</color>
+    <color name="umeng_socialize_comments_bg">#F4F4F4</color>
+    <color name="umeng_socialize_divider">#E6E6E6</color>
+    <color name="umeng_socialize_edit_bg">#C4C4C4</color>
+    <color name="umeng_socialize_grid_divider_line">#F8F8F8</color>
+    <color name="umeng_socialize_list_item_bgcolor">#FFFFFF</color>
+    <color name="umeng_socialize_list_item_textcolor">#333333</color>
+    <color name="umeng_socialize_text_friends_list">#959696</color>
+    <color name="umeng_socialize_text_share_content">#666666</color>
+    <color name="umeng_socialize_text_time">#999999</color>
+    <color name="umeng_socialize_text_title">#464f61</color>
+    <color name="umeng_socialize_text_ucenter">#595959</color>
+    <color name="umeng_socialize_ucenter_bg">#EEEEEE</color>
+    <color name="violet">#EE82EE</color>
+    <color name="week_color">#aaaccd</color>
+    <color name="wheat">#F5DEB3</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_cce7ec">#cce7ec</color>
+    <color name="whitesmoke">#F5F5F5</color>
+    <declare-styleable name="DashCircleProgress"><attr format="color" name="mRingColor"/><attr format="color" name="mRingPaintColor"/><attr format="integer" name="max"/><attr format="integer" name="min"/><attr format="reference" name="progress_icon"/><attr format="integer" name="duration"/><attr format="dimension" name="mHeartPaintWidth"/><attr format="reference" name="zhizhen"/></declare-styleable>
+    <declare-styleable name="MyRadioButton"><attr format="dimension" name="drawableWidth"/><attr format="dimension" name="drawableHeight"/><attr format="dimension" name="drawableBottom"/><attr format="dimension" name="drawableRight"/><attr format="dimension" name="drawableLeft"/><attr format="dimension" name="drawableTop"/></declare-styleable>
+    <declare-styleable name="SlideListView"><attr format="integer" name="slideAnimationTime"/><attr format="enum" name="slideMode"><enum name="none" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/><enum name="both" value="3"/></attr><attr format="enum" name="slideLeftAction"><enum name="scroll" value="0"/><enum name="reveal" value="1"/></attr><attr format="enum" name="slideRightAction"><enum name="scroll" value="0"/><enum name="reveal" value="1"/></attr></declare-styleable>
+    <declare-styleable name="SwitchButton"><attr format="dimension" name="bmWidth"/><attr format="dimension" name="bmHeight"/></declare-styleable>
+    <declare-styleable name="TextSport"><attr format="dimension" name="normalWidth"/><attr format="dimension" name="normalHeight"/><attr format="dimension" name="checkedWidth"/><attr format="dimension" name="checkedHeight"/><attr format="reference" name="normalBackground"/><attr format="reference" name="checkedBackground"/><attr format="integer" name="during"/><attr format="dimension" name="textsize_big"/><attr format="dimension" name="textsize_small"/></declare-styleable>
+    <declare-styleable name="com_facebook_like_view"><attr format="color" name="com_facebook_foreground_color"/><attr format="string" name="com_facebook_object_id"/><attr name="com_facebook_object_type"><enum name="unknown" value="0"/><enum name="open_graph" value="1"/><enum name="page" value="2"/></attr><attr name="com_facebook_style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="com_facebook_auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="com_facebook_horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
+    <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="com_facebook_confirm_logout"/><attr format="string" name="com_facebook_login_text"/><attr format="string" name="com_facebook_logout_text"/><attr name="com_facebook_tooltip_mode"><enum name="automatic" value="0"/><enum name="display_always" value="1"/><enum name="never_display" value="2"/></attr></declare-styleable>
+    <declare-styleable name="com_facebook_profile_picture_view"><attr name="com_facebook_preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="com_facebook_is_cropped"/></declare-styleable>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <dimen name="alphabet_size">12dip</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_width">6dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_padding">6dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_likeview_edge_padding">2dp</dimen>
+    <dimen name="com_facebook_likeview_internal_padding">6dp</dimen>
+    <dimen name="com_facebook_likeview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_large">180dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_normal">100dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_small">50dp</dimen>
+    <dimen name="com_facebook_share_button_compound_drawable_padding">12dp</dimen>
+    <dimen name="com_facebook_share_button_padding_bottom">12dp</dimen>
+    <dimen name="com_facebook_share_button_padding_left">12dp</dimen>
+    <dimen name="com_facebook_share_button_padding_right">16dp</dimen>
+    <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
+    <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
+    <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
+    <dimen name="umeng_socialize_pad_window_height">350dip</dimen>
+    <dimen name="umeng_socialize_pad_window_width">580dip</dimen>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="x0">-3dp</dimen>
+    <dimen name="x1">1dp</dimen>
+    <dimen name="x10">11dp</dimen>
+    <dimen name="x100">113dp</dimen>
+    <dimen name="x101">114dp</dimen>
+    <dimen name="x102">115dp</dimen>
+    <dimen name="x103">116dp</dimen>
+    <dimen name="x104">117dp</dimen>
+    <dimen name="x105">118dp</dimen>
+    <dimen name="x106">119dp</dimen>
+    <dimen name="x107">120dp</dimen>
+    <dimen name="x108">122dp</dimen>
+    <dimen name="x109">123dp</dimen>
+    <dimen name="x11">12dp</dimen>
+    <dimen name="x110">124dp</dimen>
+    <dimen name="x111">125dp</dimen>
+    <dimen name="x112">126dp</dimen>
+    <dimen name="x113">127dp</dimen>
+    <dimen name="x114">128dp</dimen>
+    <dimen name="x115">129dp</dimen>
+    <dimen name="x116">131dp</dimen>
+    <dimen name="x117">132dp</dimen>
+    <dimen name="x118">133dp</dimen>
+    <dimen name="x119">134dp</dimen>
+    <dimen name="x12">14dp</dimen>
+    <dimen name="x120">135dp</dimen>
+    <dimen name="x121">136dp</dimen>
+    <dimen name="x122">137dp</dimen>
+    <dimen name="x123">138dp</dimen>
+    <dimen name="x124">140dp</dimen>
+    <dimen name="x125">141dp</dimen>
+    <dimen name="x126">142dp</dimen>
+    <dimen name="x127">143dp</dimen>
+    <dimen name="x128">144dp</dimen>
+    <dimen name="x129">145dp</dimen>
+    <dimen name="x13">15dp</dimen>
+    <dimen name="x130">146dp</dimen>
+    <dimen name="x131">147dp</dimen>
+    <dimen name="x132">149dp</dimen>
+    <dimen name="x133">150dp</dimen>
+    <dimen name="x134">151dp</dimen>
+    <dimen name="x135">152dp</dimen>
+    <dimen name="x136">153dp</dimen>
+    <dimen name="x137">154dp</dimen>
+    <dimen name="x138">155dp</dimen>
+    <dimen name="x139">156dp</dimen>
+    <dimen name="x14">16dp</dimen>
+    <dimen name="x140">158dp</dimen>
+    <dimen name="x141">159dp</dimen>
+    <dimen name="x142">160dp</dimen>
+    <dimen name="x143">161dp</dimen>
+    <dimen name="x144">162dp</dimen>
+    <dimen name="x145">163dp</dimen>
+    <dimen name="x146">164dp</dimen>
+    <dimen name="x147">165dp</dimen>
+    <dimen name="x148">167dp</dimen>
+    <dimen name="x149">168dp</dimen>
+    <dimen name="x15">17dp</dimen>
+    <dimen name="x150">169dp</dimen>
+    <dimen name="x151">170dp</dimen>
+    <dimen name="x152">171dp</dimen>
+    <dimen name="x153">172dp</dimen>
+    <dimen name="x154">173dp</dimen>
+    <dimen name="x155">174dp</dimen>
+    <dimen name="x156">176dp</dimen>
+    <dimen name="x157">177dp</dimen>
+    <dimen name="x158">178dp</dimen>
+    <dimen name="x159">179dp</dimen>
+    <dimen name="x16">18dp</dimen>
+    <dimen name="x160">180dp</dimen>
+    <dimen name="x161">181dp</dimen>
+    <dimen name="x162">182dp</dimen>
+    <dimen name="x163">183dp</dimen>
+    <dimen name="x164">185dp</dimen>
+    <dimen name="x165">186dp</dimen>
+    <dimen name="x166">187dp</dimen>
+    <dimen name="x167">188dp</dimen>
+    <dimen name="x168">189dp</dimen>
+    <dimen name="x169">190dp</dimen>
+    <dimen name="x17">19dp</dimen>
+    <dimen name="x170">191dp</dimen>
+    <dimen name="x171">192dp</dimen>
+    <dimen name="x172">194dp</dimen>
+    <dimen name="x173">195dp</dimen>
+    <dimen name="x174">196dp</dimen>
+    <dimen name="x175">197dp</dimen>
+    <dimen name="x176">198dp</dimen>
+    <dimen name="x177">199dp</dimen>
+    <dimen name="x178">200dp</dimen>
+    <dimen name="x179">201dp</dimen>
+    <dimen name="x18">20dp</dimen>
+    <dimen name="x180">203dp</dimen>
+    <dimen name="x181">204dp</dimen>
+    <dimen name="x182">205dp</dimen>
+    <dimen name="x183">206dp</dimen>
+    <dimen name="x184">207dp</dimen>
+    <dimen name="x185">208dp</dimen>
+    <dimen name="x186">209dp</dimen>
+    <dimen name="x187">210dp</dimen>
+    <dimen name="x188">212dp</dimen>
+    <dimen name="x189">213dp</dimen>
+    <dimen name="x19">21dp</dimen>
+    <dimen name="x190">214dp</dimen>
+    <dimen name="x191">215dp</dimen>
+    <dimen name="x192">216dp</dimen>
+    <dimen name="x193">217dp</dimen>
+    <dimen name="x194">218dp</dimen>
+    <dimen name="x195">219dp</dimen>
+    <dimen name="x196">221dp</dimen>
+    <dimen name="x197">222dp</dimen>
+    <dimen name="x198">223dp</dimen>
+    <dimen name="x199">224dp</dimen>
+    <dimen name="x2">2dp</dimen>
+    <dimen name="x20">23dp</dimen>
+    <dimen name="x200">225dp</dimen>
+    <dimen name="x201">226dp</dimen>
+    <dimen name="x202">227dp</dimen>
+    <dimen name="x203">228dp</dimen>
+    <dimen name="x204">230dp</dimen>
+    <dimen name="x205">231dp</dimen>
+    <dimen name="x206">232dp</dimen>
+    <dimen name="x207">233dp</dimen>
+    <dimen name="x208">234dp</dimen>
+    <dimen name="x209">235dp</dimen>
+    <dimen name="x21">24dp</dimen>
+    <dimen name="x210">236dp</dimen>
+    <dimen name="x211">237dp</dimen>
+    <dimen name="x212">239dp</dimen>
+    <dimen name="x213">240dp</dimen>
+    <dimen name="x214">241dp</dimen>
+    <dimen name="x215">242dp</dimen>
+    <dimen name="x216">243dp</dimen>
+    <dimen name="x217">244dp</dimen>
+    <dimen name="x218">245dp</dimen>
+    <dimen name="x219">246dp</dimen>
+    <dimen name="x22">25dp</dimen>
+    <dimen name="x220">248dp</dimen>
+    <dimen name="x221">249dp</dimen>
+    <dimen name="x222">250dp</dimen>
+    <dimen name="x223">251dp</dimen>
+    <dimen name="x224">252dp</dimen>
+    <dimen name="x225">253dp</dimen>
+    <dimen name="x226">254dp</dimen>
+    <dimen name="x227">255dp</dimen>
+    <dimen name="x228">257dp</dimen>
+    <dimen name="x229">258dp</dimen>
+    <dimen name="x23">26dp</dimen>
+    <dimen name="x230">259dp</dimen>
+    <dimen name="x231">260dp</dimen>
+    <dimen name="x232">261dp</dimen>
+    <dimen name="x233">262dp</dimen>
+    <dimen name="x234">263dp</dimen>
+    <dimen name="x235">264dp</dimen>
+    <dimen name="x236">266dp</dimen>
+    <dimen name="x237">267dp</dimen>
+    <dimen name="x238">268dp</dimen>
+    <dimen name="x239">269dp</dimen>
+    <dimen name="x24">27dp</dimen>
+    <dimen name="x240">270dp</dimen>
+    <dimen name="x241">271dp</dimen>
+    <dimen name="x242">272dp</dimen>
+    <dimen name="x243">273dp</dimen>
+    <dimen name="x244">275dp</dimen>
+    <dimen name="x245">276dp</dimen>
+    <dimen name="x246">277dp</dimen>
+    <dimen name="x247">278dp</dimen>
+    <dimen name="x248">279dp</dimen>
+    <dimen name="x249">280dp</dimen>
+    <dimen name="x25">28dp</dimen>
+    <dimen name="x250">281dp</dimen>
+    <dimen name="x251">282dp</dimen>
+    <dimen name="x252">284dp</dimen>
+    <dimen name="x253">285dp</dimen>
+    <dimen name="x254">286dp</dimen>
+    <dimen name="x255">287dp</dimen>
+    <dimen name="x256">288dp</dimen>
+    <dimen name="x257">289dp</dimen>
+    <dimen name="x258">290dp</dimen>
+    <dimen name="x259">291dp</dimen>
+    <dimen name="x26">29dp</dimen>
+    <dimen name="x260">293dp</dimen>
+    <dimen name="x261">294dp</dimen>
+    <dimen name="x262">295dp</dimen>
+    <dimen name="x263">296dp</dimen>
+    <dimen name="x264">297dp</dimen>
+    <dimen name="x265">298dp</dimen>
+    <dimen name="x266">299dp</dimen>
+    <dimen name="x267">300dp</dimen>
+    <dimen name="x268">302dp</dimen>
+    <dimen name="x269">303dp</dimen>
+    <dimen name="x27">30dp</dimen>
+    <dimen name="x270">304dp</dimen>
+    <dimen name="x271">305dp</dimen>
+    <dimen name="x272">306dp</dimen>
+    <dimen name="x273">307dp</dimen>
+    <dimen name="x274">308dp</dimen>
+    <dimen name="x275">309dp</dimen>
+    <dimen name="x276">311dp</dimen>
+    <dimen name="x277">312dp</dimen>
+    <dimen name="x278">313dp</dimen>
+    <dimen name="x279">314dp</dimen>
+    <dimen name="x28">32dp</dimen>
+    <dimen name="x280">315dp</dimen>
+    <dimen name="x281">316dp</dimen>
+    <dimen name="x282">317dp</dimen>
+    <dimen name="x283">318dp</dimen>
+    <dimen name="x284">320dp</dimen>
+    <dimen name="x285">321dp</dimen>
+    <dimen name="x286">322dp</dimen>
+    <dimen name="x287">323dp</dimen>
+    <dimen name="x288">324dp</dimen>
+    <dimen name="x289">325dp</dimen>
+    <dimen name="x29">33dp</dimen>
+    <dimen name="x290">326dp</dimen>
+    <dimen name="x291">327dp</dimen>
+    <dimen name="x292">329dp</dimen>
+    <dimen name="x293">330dp</dimen>
+    <dimen name="x294">331dp</dimen>
+    <dimen name="x295">332dp</dimen>
+    <dimen name="x296">333dp</dimen>
+    <dimen name="x297">334dp</dimen>
+    <dimen name="x298">335dp</dimen>
+    <dimen name="x299">336dp</dimen>
+    <dimen name="x2_f">-2dp</dimen>
+    <dimen name="x3">3dp</dimen>
+    <dimen name="x30">34dp</dimen>
+    <dimen name="x300">338dp</dimen>
+    <dimen name="x301">339dp</dimen>
+    <dimen name="x302">340dp</dimen>
+    <dimen name="x303">341dp</dimen>
+    <dimen name="x304">342dp</dimen>
+    <dimen name="x305">343dp</dimen>
+    <dimen name="x306">344dp</dimen>
+    <dimen name="x307">345dp</dimen>
+    <dimen name="x308">347dp</dimen>
+    <dimen name="x309">348dp</dimen>
+    <dimen name="x31">35dp</dimen>
+    <dimen name="x310">349dp</dimen>
+    <dimen name="x311">350dp</dimen>
+    <dimen name="x312">351dp</dimen>
+    <dimen name="x313">352dp</dimen>
+    <dimen name="x314">353dp</dimen>
+    <dimen name="x315">354dp</dimen>
+    <dimen name="x316">356dp</dimen>
+    <dimen name="x317">357dp</dimen>
+    <dimen name="x318">358dp</dimen>
+    <dimen name="x319">359dp</dimen>
+    <dimen name="x32">36dp</dimen>
+    <dimen name="x320">360dp</dimen>
+    <dimen name="x33">37dp</dimen>
+    <dimen name="x34">38dp</dimen>
+    <dimen name="x35">39dp</dimen>
+    <dimen name="x36">41dp</dimen>
+    <dimen name="x37">42dp</dimen>
+    <dimen name="x38">43dp</dimen>
+    <dimen name="x39">44dp</dimen>
+    <dimen name="x4">5dp</dimen>
+    <dimen name="x40">45dp</dimen>
+    <dimen name="x41">46dp</dimen>
+    <dimen name="x42">47dp</dimen>
+    <dimen name="x43">48dp</dimen>
+    <dimen name="x44">50dp</dimen>
+    <dimen name="x45">51dp</dimen>
+    <dimen name="x46">52dp</dimen>
+    <dimen name="x47">53dp</dimen>
+    <dimen name="x48">54dp</dimen>
+    <dimen name="x49">55dp</dimen>
+    <dimen name="x5">6dp</dimen>
+    <dimen name="x50">56dp</dimen>
+    <dimen name="x51">57dp</dimen>
+    <dimen name="x52">59dp</dimen>
+    <dimen name="x53">60dp</dimen>
+    <dimen name="x54">61dp</dimen>
+    <dimen name="x55">62dp</dimen>
+    <dimen name="x56">63dp</dimen>
+    <dimen name="x57">64dp</dimen>
+    <dimen name="x58">65dp</dimen>
+    <dimen name="x59">66dp</dimen>
+    <dimen name="x6">7dp</dimen>
+    <dimen name="x60">68dp</dimen>
+    <dimen name="x61">69dp</dimen>
+    <dimen name="x62">70dp</dimen>
+    <dimen name="x63">71dp</dimen>
+    <dimen name="x64">72dp</dimen>
+    <dimen name="x65">73dp</dimen>
+    <dimen name="x66">74dp</dimen>
+    <dimen name="x67">75dp</dimen>
+    <dimen name="x68">77dp</dimen>
+    <dimen name="x69">78dp</dimen>
+    <dimen name="x7">8dp</dimen>
+    <dimen name="x70">79dp</dimen>
+    <dimen name="x71">80dp</dimen>
+    <dimen name="x72">81dp</dimen>
+    <dimen name="x73">82dp</dimen>
+    <dimen name="x74">83dp</dimen>
+    <dimen name="x75">84dp</dimen>
+    <dimen name="x76">86dp</dimen>
+    <dimen name="x77">87dp</dimen>
+    <dimen name="x78">88dp</dimen>
+    <dimen name="x79">89dp</dimen>
+    <dimen name="x8">9dp</dimen>
+    <dimen name="x80">90dp</dimen>
+    <dimen name="x81">91dp</dimen>
+    <dimen name="x82">92dp</dimen>
+    <dimen name="x83">93dp</dimen>
+    <dimen name="x84">95dp</dimen>
+    <dimen name="x85">96dp</dimen>
+    <dimen name="x86">97dp</dimen>
+    <dimen name="x87">98dp</dimen>
+    <dimen name="x88">99dp</dimen>
+    <dimen name="x89">100dp</dimen>
+    <dimen name="x9">10dp</dimen>
+    <dimen name="x90">101dp</dimen>
+    <dimen name="x91">102dp</dimen>
+    <dimen name="x92">104dp</dimen>
+    <dimen name="x93">105dp</dimen>
+    <dimen name="x94">106dp</dimen>
+    <dimen name="x95">107dp</dimen>
+    <dimen name="x96">108dp</dimen>
+    <dimen name="x97">109dp</dimen>
+    <dimen name="x98">110dp</dimen>
+    <dimen name="x99">111dp</dimen>
+    <dimen name="y1">1dp</dimen>
+    <dimen name="y10">13dp</dimen>
+    <dimen name="y100">133dp</dimen>
+    <dimen name="y101">135dp</dimen>
+    <dimen name="y102">136dp</dimen>
+    <dimen name="y103">137dp</dimen>
+    <dimen name="y104">139dp</dimen>
+    <dimen name="y105">140dp</dimen>
+    <dimen name="y106">141dp</dimen>
+    <dimen name="y107">143dp</dimen>
+    <dimen name="y108">144dp</dimen>
+    <dimen name="y109">145dp</dimen>
+    <dimen name="y11">15dp</dimen>
+    <dimen name="y110">147dp</dimen>
+    <dimen name="y111">148dp</dimen>
+    <dimen name="y112">149dp</dimen>
+    <dimen name="y113">151dp</dimen>
+    <dimen name="y114">152dp</dimen>
+    <dimen name="y115">153dp</dimen>
+    <dimen name="y116">155dp</dimen>
+    <dimen name="y117">156dp</dimen>
+    <dimen name="y118">157dp</dimen>
+    <dimen name="y119">159dp</dimen>
+    <dimen name="y12">16dp</dimen>
+    <dimen name="y120">160dp</dimen>
+    <dimen name="y121">161dp</dimen>
+    <dimen name="y122">163dp</dimen>
+    <dimen name="y123">164dp</dimen>
+    <dimen name="y124">165dp</dimen>
+    <dimen name="y125">167dp</dimen>
+    <dimen name="y126">168dp</dimen>
+    <dimen name="y127">169dp</dimen>
+    <dimen name="y128">171dp</dimen>
+    <dimen name="y129">172dp</dimen>
+    <dimen name="y13">17dp</dimen>
+    <dimen name="y130">173dp</dimen>
+    <dimen name="y131">175dp</dimen>
+    <dimen name="y132">176dp</dimen>
+    <dimen name="y133">177dp</dimen>
+    <dimen name="y134">179dp</dimen>
+    <dimen name="y135">180dp</dimen>
+    <dimen name="y136">181dp</dimen>
+    <dimen name="y137">183dp</dimen>
+    <dimen name="y138">184dp</dimen>
+    <dimen name="y139">185dp</dimen>
+    <dimen name="y14">19dp</dimen>
+    <dimen name="y140">187dp</dimen>
+    <dimen name="y141">188dp</dimen>
+    <dimen name="y142">189dp</dimen>
+    <dimen name="y143">191dp</dimen>
+    <dimen name="y144">192dp</dimen>
+    <dimen name="y145">193dp</dimen>
+    <dimen name="y146">195dp</dimen>
+    <dimen name="y147">196dp</dimen>
+    <dimen name="y148">197dp</dimen>
+    <dimen name="y149">199dp</dimen>
+    <dimen name="y15">20dp</dimen>
+    <dimen name="y150">200dp</dimen>
+    <dimen name="y151">201dp</dimen>
+    <dimen name="y152">203dp</dimen>
+    <dimen name="y153">204dp</dimen>
+    <dimen name="y154">205dp</dimen>
+    <dimen name="y155">207dp</dimen>
+    <dimen name="y156">208dp</dimen>
+    <dimen name="y157">209dp</dimen>
+    <dimen name="y158">211dp</dimen>
+    <dimen name="y159">212dp</dimen>
+    <dimen name="y16">21dp</dimen>
+    <dimen name="y160">213dp</dimen>
+    <dimen name="y161">215dp</dimen>
+    <dimen name="y162">216dp</dimen>
+    <dimen name="y163">217dp</dimen>
+    <dimen name="y164">219dp</dimen>
+    <dimen name="y165">220dp</dimen>
+    <dimen name="y166">221dp</dimen>
+    <dimen name="y167">223dp</dimen>
+    <dimen name="y168">224dp</dimen>
+    <dimen name="y169">225dp</dimen>
+    <dimen name="y17">23dp</dimen>
+    <dimen name="y170">227dp</dimen>
+    <dimen name="y171">228dp</dimen>
+    <dimen name="y172">229dp</dimen>
+    <dimen name="y173">231dp</dimen>
+    <dimen name="y174">232dp</dimen>
+    <dimen name="y175">233dp</dimen>
+    <dimen name="y176">235dp</dimen>
+    <dimen name="y177">236dp</dimen>
+    <dimen name="y178">237dp</dimen>
+    <dimen name="y179">239dp</dimen>
+    <dimen name="y18">24dp</dimen>
+    <dimen name="y180">240dp</dimen>
+    <dimen name="y181">241dp</dimen>
+    <dimen name="y182">243dp</dimen>
+    <dimen name="y183">244dp</dimen>
+    <dimen name="y184">245dp</dimen>
+    <dimen name="y185">247dp</dimen>
+    <dimen name="y186">248dp</dimen>
+    <dimen name="y187">249dp</dimen>
+    <dimen name="y188">251dp</dimen>
+    <dimen name="y189">252dp</dimen>
+    <dimen name="y19">25dp</dimen>
+    <dimen name="y190">253dp</dimen>
+    <dimen name="y191">255dp</dimen>
+    <dimen name="y192">256dp</dimen>
+    <dimen name="y193">257dp</dimen>
+    <dimen name="y194">259dp</dimen>
+    <dimen name="y195">260dp</dimen>
+    <dimen name="y196">261dp</dimen>
+    <dimen name="y197">263dp</dimen>
+    <dimen name="y198">264dp</dimen>
+    <dimen name="y199">265dp</dimen>
+    <dimen name="y2">3dp</dimen>
+    <dimen name="y20">27dp</dimen>
+    <dimen name="y200">267dp</dimen>
+    <dimen name="y201">268dp</dimen>
+    <dimen name="y202">269dp</dimen>
+    <dimen name="y203">271dp</dimen>
+    <dimen name="y204">272dp</dimen>
+    <dimen name="y205">273dp</dimen>
+    <dimen name="y206">275dp</dimen>
+    <dimen name="y207">276dp</dimen>
+    <dimen name="y208">277dp</dimen>
+    <dimen name="y209">279dp</dimen>
+    <dimen name="y21">28dp</dimen>
+    <dimen name="y210">280dp</dimen>
+    <dimen name="y211">281dp</dimen>
+    <dimen name="y212">283dp</dimen>
+    <dimen name="y213">284dp</dimen>
+    <dimen name="y214">285dp</dimen>
+    <dimen name="y215">287dp</dimen>
+    <dimen name="y216">288dp</dimen>
+    <dimen name="y217">289dp</dimen>
+    <dimen name="y218">291dp</dimen>
+    <dimen name="y219">292dp</dimen>
+    <dimen name="y22">29dp</dimen>
+    <dimen name="y220">293dp</dimen>
+    <dimen name="y221">295dp</dimen>
+    <dimen name="y222">296dp</dimen>
+    <dimen name="y223">297dp</dimen>
+    <dimen name="y224">299dp</dimen>
+    <dimen name="y225">300dp</dimen>
+    <dimen name="y226">301dp</dimen>
+    <dimen name="y227">303dp</dimen>
+    <dimen name="y228">304dp</dimen>
+    <dimen name="y229">305dp</dimen>
+    <dimen name="y23">31dp</dimen>
+    <dimen name="y230">307dp</dimen>
+    <dimen name="y231">308dp</dimen>
+    <dimen name="y232">309dp</dimen>
+    <dimen name="y233">311dp</dimen>
+    <dimen name="y234">312dp</dimen>
+    <dimen name="y235">313dp</dimen>
+    <dimen name="y236">315dp</dimen>
+    <dimen name="y237">316dp</dimen>
+    <dimen name="y238">317dp</dimen>
+    <dimen name="y239">319dp</dimen>
+    <dimen name="y24">32dp</dimen>
+    <dimen name="y240">320dp</dimen>
+    <dimen name="y241">321dp</dimen>
+    <dimen name="y242">323dp</dimen>
+    <dimen name="y243">324dp</dimen>
+    <dimen name="y244">325dp</dimen>
+    <dimen name="y245">327dp</dimen>
+    <dimen name="y246">328dp</dimen>
+    <dimen name="y247">329dp</dimen>
+    <dimen name="y248">331dp</dimen>
+    <dimen name="y249">332dp</dimen>
+    <dimen name="y25">33dp</dimen>
+    <dimen name="y250">333dp</dimen>
+    <dimen name="y251">335dp</dimen>
+    <dimen name="y252">336dp</dimen>
+    <dimen name="y253">337dp</dimen>
+    <dimen name="y254">339dp</dimen>
+    <dimen name="y255">340dp</dimen>
+    <dimen name="y256">341dp</dimen>
+    <dimen name="y257">343dp</dimen>
+    <dimen name="y258">344dp</dimen>
+    <dimen name="y259">345dp</dimen>
+    <dimen name="y26">35dp</dimen>
+    <dimen name="y260">347dp</dimen>
+    <dimen name="y261">348dp</dimen>
+    <dimen name="y262">349dp</dimen>
+    <dimen name="y263">351dp</dimen>
+    <dimen name="y264">352dp</dimen>
+    <dimen name="y265">353dp</dimen>
+    <dimen name="y266">355dp</dimen>
+    <dimen name="y267">356dp</dimen>
+    <dimen name="y268">357dp</dimen>
+    <dimen name="y269">359dp</dimen>
+    <dimen name="y27">36dp</dimen>
+    <dimen name="y270">360dp</dimen>
+    <dimen name="y271">361dp</dimen>
+    <dimen name="y272">363dp</dimen>
+    <dimen name="y273">364dp</dimen>
+    <dimen name="y274">365dp</dimen>
+    <dimen name="y275">367dp</dimen>
+    <dimen name="y276">368dp</dimen>
+    <dimen name="y277">369dp</dimen>
+    <dimen name="y278">371dp</dimen>
+    <dimen name="y279">372dp</dimen>
+    <dimen name="y28">37dp</dimen>
+    <dimen name="y280">373dp</dimen>
+    <dimen name="y281">375dp</dimen>
+    <dimen name="y282">376dp</dimen>
+    <dimen name="y283">377dp</dimen>
+    <dimen name="y284">379dp</dimen>
+    <dimen name="y285">380dp</dimen>
+    <dimen name="y286">381dp</dimen>
+    <dimen name="y287">383dp</dimen>
+    <dimen name="y288">384dp</dimen>
+    <dimen name="y289">385dp</dimen>
+    <dimen name="y29">39dp</dimen>
+    <dimen name="y290">387dp</dimen>
+    <dimen name="y291">388dp</dimen>
+    <dimen name="y292">389dp</dimen>
+    <dimen name="y293">391dp</dimen>
+    <dimen name="y294">392dp</dimen>
+    <dimen name="y295">393dp</dimen>
+    <dimen name="y296">395dp</dimen>
+    <dimen name="y297">396dp</dimen>
+    <dimen name="y298">397dp</dimen>
+    <dimen name="y299">399dp</dimen>
+    <dimen name="y3">4dp</dimen>
+    <dimen name="y30">40dp</dimen>
+    <dimen name="y300">400dp</dimen>
+    <dimen name="y301">401dp</dimen>
+    <dimen name="y302">403dp</dimen>
+    <dimen name="y303">404dp</dimen>
+    <dimen name="y304">405dp</dimen>
+    <dimen name="y305">407dp</dimen>
+    <dimen name="y306">408dp</dimen>
+    <dimen name="y307">409dp</dimen>
+    <dimen name="y308">411dp</dimen>
+    <dimen name="y309">412dp</dimen>
+    <dimen name="y31">41dp</dimen>
+    <dimen name="y310">413dp</dimen>
+    <dimen name="y311">415dp</dimen>
+    <dimen name="y312">416dp</dimen>
+    <dimen name="y313">417dp</dimen>
+    <dimen name="y314">419dp</dimen>
+    <dimen name="y315">420dp</dimen>
+    <dimen name="y316">421dp</dimen>
+    <dimen name="y317">423dp</dimen>
+    <dimen name="y318">424dp</dimen>
+    <dimen name="y319">425dp</dimen>
+    <dimen name="y32">43dp</dimen>
+    <dimen name="y320">427dp</dimen>
+    <dimen name="y321">428dp</dimen>
+    <dimen name="y322">429dp</dimen>
+    <dimen name="y323">431dp</dimen>
+    <dimen name="y324">432dp</dimen>
+    <dimen name="y325">433dp</dimen>
+    <dimen name="y326">435dp</dimen>
+    <dimen name="y327">436dp</dimen>
+    <dimen name="y328">437dp</dimen>
+    <dimen name="y329">439dp</dimen>
+    <dimen name="y33">44dp</dimen>
+    <dimen name="y330">440dp</dimen>
+    <dimen name="y331">441dp</dimen>
+    <dimen name="y332">443dp</dimen>
+    <dimen name="y333">444dp</dimen>
+    <dimen name="y334">445dp</dimen>
+    <dimen name="y335">447dp</dimen>
+    <dimen name="y336">448dp</dimen>
+    <dimen name="y337">449dp</dimen>
+    <dimen name="y338">451dp</dimen>
+    <dimen name="y339">452dp</dimen>
+    <dimen name="y34">45dp</dimen>
+    <dimen name="y340">453dp</dimen>
+    <dimen name="y341">455dp</dimen>
+    <dimen name="y342">456dp</dimen>
+    <dimen name="y343">457dp</dimen>
+    <dimen name="y344">459dp</dimen>
+    <dimen name="y345">460dp</dimen>
+    <dimen name="y346">461dp</dimen>
+    <dimen name="y347">463dp</dimen>
+    <dimen name="y348">464dp</dimen>
+    <dimen name="y349">465dp</dimen>
+    <dimen name="y35">47dp</dimen>
+    <dimen name="y350">467dp</dimen>
+    <dimen name="y351">468dp</dimen>
+    <dimen name="y352">469dp</dimen>
+    <dimen name="y353">471dp</dimen>
+    <dimen name="y354">472dp</dimen>
+    <dimen name="y355">473dp</dimen>
+    <dimen name="y356">475dp</dimen>
+    <dimen name="y357">476dp</dimen>
+    <dimen name="y358">477dp</dimen>
+    <dimen name="y359">479dp</dimen>
+    <dimen name="y36">48dp</dimen>
+    <dimen name="y360">480dp</dimen>
+    <dimen name="y361">481dp</dimen>
+    <dimen name="y362">483dp</dimen>
+    <dimen name="y363">484dp</dimen>
+    <dimen name="y364">485dp</dimen>
+    <dimen name="y365">487dp</dimen>
+    <dimen name="y366">488dp</dimen>
+    <dimen name="y367">489dp</dimen>
+    <dimen name="y368">491dp</dimen>
+    <dimen name="y369">492dp</dimen>
+    <dimen name="y37">49dp</dimen>
+    <dimen name="y370">493dp</dimen>
+    <dimen name="y371">495dp</dimen>
+    <dimen name="y372">496dp</dimen>
+    <dimen name="y373">497dp</dimen>
+    <dimen name="y374">499dp</dimen>
+    <dimen name="y375">500dp</dimen>
+    <dimen name="y376">501dp</dimen>
+    <dimen name="y377">503dp</dimen>
+    <dimen name="y378">504dp</dimen>
+    <dimen name="y379">505dp</dimen>
+    <dimen name="y38">51dp</dimen>
+    <dimen name="y380">507dp</dimen>
+    <dimen name="y381">508dp</dimen>
+    <dimen name="y382">509dp</dimen>
+    <dimen name="y383">511dp</dimen>
+    <dimen name="y384">512dp</dimen>
+    <dimen name="y385">513dp</dimen>
+    <dimen name="y386">515dp</dimen>
+    <dimen name="y387">516dp</dimen>
+    <dimen name="y388">517dp</dimen>
+    <dimen name="y389">519dp</dimen>
+    <dimen name="y39">52dp</dimen>
+    <dimen name="y390">520dp</dimen>
+    <dimen name="y391">521dp</dimen>
+    <dimen name="y392">523dp</dimen>
+    <dimen name="y393">524dp</dimen>
+    <dimen name="y394">525dp</dimen>
+    <dimen name="y395">527dp</dimen>
+    <dimen name="y396">528dp</dimen>
+    <dimen name="y397">529dp</dimen>
+    <dimen name="y398">531dp</dimen>
+    <dimen name="y399">532dp</dimen>
+    <dimen name="y4">5dp</dimen>
+    <dimen name="y40">53dp</dimen>
+    <dimen name="y400">533dp</dimen>
+    <dimen name="y401">535dp</dimen>
+    <dimen name="y402">536dp</dimen>
+    <dimen name="y403">537dp</dimen>
+    <dimen name="y404">539dp</dimen>
+    <dimen name="y405">540dp</dimen>
+    <dimen name="y406">541dp</dimen>
+    <dimen name="y407">543dp</dimen>
+    <dimen name="y408">544dp</dimen>
+    <dimen name="y409">545dp</dimen>
+    <dimen name="y41">55dp</dimen>
+    <dimen name="y410">547dp</dimen>
+    <dimen name="y411">548dp</dimen>
+    <dimen name="y412">549dp</dimen>
+    <dimen name="y413">551dp</dimen>
+    <dimen name="y414">552dp</dimen>
+    <dimen name="y415">553dp</dimen>
+    <dimen name="y416">555dp</dimen>
+    <dimen name="y417">556dp</dimen>
+    <dimen name="y418">557dp</dimen>
+    <dimen name="y419">559dp</dimen>
+    <dimen name="y42">56dp</dimen>
+    <dimen name="y420">560dp</dimen>
+    <dimen name="y421">561dp</dimen>
+    <dimen name="y422">563dp</dimen>
+    <dimen name="y423">564dp</dimen>
+    <dimen name="y424">565dp</dimen>
+    <dimen name="y425">567dp</dimen>
+    <dimen name="y426">568dp</dimen>
+    <dimen name="y427">569dp</dimen>
+    <dimen name="y428">571dp</dimen>
+    <dimen name="y429">572dp</dimen>
+    <dimen name="y43">57dp</dimen>
+    <dimen name="y430">573dp</dimen>
+    <dimen name="y431">575dp</dimen>
+    <dimen name="y432">576dp</dimen>
+    <dimen name="y433">577dp</dimen>
+    <dimen name="y434">579dp</dimen>
+    <dimen name="y435">580dp</dimen>
+    <dimen name="y436">581dp</dimen>
+    <dimen name="y437">583dp</dimen>
+    <dimen name="y438">584dp</dimen>
+    <dimen name="y439">585dp</dimen>
+    <dimen name="y44">59dp</dimen>
+    <dimen name="y440">587dp</dimen>
+    <dimen name="y441">588dp</dimen>
+    <dimen name="y442">589dp</dimen>
+    <dimen name="y443">591dp</dimen>
+    <dimen name="y444">592dp</dimen>
+    <dimen name="y445">593dp</dimen>
+    <dimen name="y446">595dp</dimen>
+    <dimen name="y447">596dp</dimen>
+    <dimen name="y448">597dp</dimen>
+    <dimen name="y449">599dp</dimen>
+    <dimen name="y45">60dp</dimen>
+    <dimen name="y450">600dp</dimen>
+    <dimen name="y451">601dp</dimen>
+    <dimen name="y452">603dp</dimen>
+    <dimen name="y453">604dp</dimen>
+    <dimen name="y454">605dp</dimen>
+    <dimen name="y455">607dp</dimen>
+    <dimen name="y456">608dp</dimen>
+    <dimen name="y457">609dp</dimen>
+    <dimen name="y458">611dp</dimen>
+    <dimen name="y459">612dp</dimen>
+    <dimen name="y46">61dp</dimen>
+    <dimen name="y460">613dp</dimen>
+    <dimen name="y461">615dp</dimen>
+    <dimen name="y462">616dp</dimen>
+    <dimen name="y463">617dp</dimen>
+    <dimen name="y464">619dp</dimen>
+    <dimen name="y465">620dp</dimen>
+    <dimen name="y466">621dp</dimen>
+    <dimen name="y467">623dp</dimen>
+    <dimen name="y468">624dp</dimen>
+    <dimen name="y469">625dp</dimen>
+    <dimen name="y47">63dp</dimen>
+    <dimen name="y470">627dp</dimen>
+    <dimen name="y471">628dp</dimen>
+    <dimen name="y472">629dp</dimen>
+    <dimen name="y473">631dp</dimen>
+    <dimen name="y474">632dp</dimen>
+    <dimen name="y475">633dp</dimen>
+    <dimen name="y476">635dp</dimen>
+    <dimen name="y477">636dp</dimen>
+    <dimen name="y478">637dp</dimen>
+    <dimen name="y479">639dp</dimen>
+    <dimen name="y48">64dp</dimen>
+    <dimen name="y480">640dp</dimen>
+    <dimen name="y49">65dp</dimen>
+    <dimen name="y5">7dp</dimen>
+    <dimen name="y50">67dp</dimen>
+    <dimen name="y51">68dp</dimen>
+    <dimen name="y52">69dp</dimen>
+    <dimen name="y53">71dp</dimen>
+    <dimen name="y54">72dp</dimen>
+    <dimen name="y55">73dp</dimen>
+    <dimen name="y56">75dp</dimen>
+    <dimen name="y57">76dp</dimen>
+    <dimen name="y58">77dp</dimen>
+    <dimen name="y59">79dp</dimen>
+    <dimen name="y6">8dp</dimen>
+    <dimen name="y60">80dp</dimen>
+    <dimen name="y61">81dp</dimen>
+    <dimen name="y62">83dp</dimen>
+    <dimen name="y63">84dp</dimen>
+    <dimen name="y64">85dp</dimen>
+    <dimen name="y65">87dp</dimen>
+    <dimen name="y66">88dp</dimen>
+    <dimen name="y67">89dp</dimen>
+    <dimen name="y68">91dp</dimen>
+    <dimen name="y69">92dp</dimen>
+    <dimen name="y7">9dp</dimen>
+    <dimen name="y70">93dp</dimen>
+    <dimen name="y71">95dp</dimen>
+    <dimen name="y72">96dp</dimen>
+    <dimen name="y73">97dp</dimen>
+    <dimen name="y74">99dp</dimen>
+    <dimen name="y75">100dp</dimen>
+    <dimen name="y76">101dp</dimen>
+    <dimen name="y77">103dp</dimen>
+    <dimen name="y78">104dp</dimen>
+    <dimen name="y79">105dp</dimen>
+    <dimen name="y8">11dp</dimen>
+    <dimen name="y80">107dp</dimen>
+    <dimen name="y81">108dp</dimen>
+    <dimen name="y82">109dp</dimen>
+    <dimen name="y83">111dp</dimen>
+    <dimen name="y84">112dp</dimen>
+    <dimen name="y85">113dp</dimen>
+    <dimen name="y86">115dp</dimen>
+    <dimen name="y87">116dp</dimen>
+    <dimen name="y88">117dp</dimen>
+    <dimen name="y89">119dp</dimen>
+    <dimen name="y9">12dp</dimen>
+    <dimen name="y90">120dp</dimen>
+    <dimen name="y91">121dp</dimen>
+    <dimen name="y92">123dp</dimen>
+    <dimen name="y93">124dp</dimen>
+    <dimen name="y94">125dp</dimen>
+    <dimen name="y95">127dp</dimen>
+    <dimen name="y96">128dp</dimen>
+    <dimen name="y97">129dp</dimen>
+    <dimen name="y98">131dp</dimen>
+    <dimen name="y99">132dp</dimen>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/ids.xml -->
+    <eat-comment/>
+    <item name="first_circle" type="id">1001</item>
+    <item name="fivth_circle" type="id">1005</item>
+    <item name="fourth_circle" type="id">1004</item>
+    <item name="secend_circle" type="id">1002</item>
+    <item name="seventh_circle" type="id">1007</item>
+    <item name="sixth_circle" type="id">1006</item>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/slidelistview_library/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <item name="slide_id_front_view" type="id"/>
+    <item name="slide_id_left_back_view" type="id"/>
+    <item name="slide_id_right_back_view" type="id"/>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/ids.xml -->
+    <eat-comment/>
+    <item name="sport_footer_view" type="id">1008</item>
+    <item name="third_circle" type="id">1003</item>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.3.1/res/values/values.xml -->
+    <eat-comment/>
+    <integer name="__leak_canary_max_stored_leaks">7</integer>
+    <string name="__leak_canary_analysis_failed">Leak analysis failed</string>
+    <string name="__leak_canary_class_has_leaked">%s has leaked</string>
+    <string name="__leak_canary_delete">Delete</string>
+    <string name="__leak_canary_delete_all">Delete all</string>
+    <string name="__leak_canary_display_activity_label">Leaks</string>
+    <string name="__leak_canary_failure_report">"Please report this failure to http://github.com/square/leakcanary\n"</string>
+    <string name="__leak_canary_leak_list_title">Leaks in %s</string>
+    <string name="__leak_canary_notification_message">Click for more details</string>
+    <string name="__leak_canary_share_heap_dump">Share heap dump</string>
+    <string name="__leak_canary_share_leak">Share info</string>
+    <string name="__leak_canary_share_with">Share with…</string>
+    <string name="__leak_canary_toast_heap_dump">Dumping memory, app will freeze. Brrrr.</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="about_us">关于我们</string>
+    <string name="access_apple_health">接入苹果健康</string>
+    <string name="access_qq_health">接入QQ健康</string>
+    <string name="age_str">年龄</string>
+    <string name="alarm_body_test_tip">当到设定时间你还没有参加体测时,手环会震动提醒你参加体测。</string>
+    <string name="alarm_sit_long_tip">当你坐的时间过长,手环会震动提醒你活动下身体。</string>
+    <string name="alarm_sport_tip">当到设定时间你还没有达到今日运动目标,手环会震动提醒你去参加活动。</string>
+    <string name="alarminfo">轻触上方\"注册\"按钮，即表示同意《隐私条款》</string>
+    <string name="alermnotlight">手环灯未亮起？</string>
+    <string name="app_name">TechFit</string>
+    <string name="birth_year">出生年</string>
+    <string name="body_baogao_title_str">体测报告</string>
+    <string name="body_data_title_str">上次体测</string>
+    <string name="body_test_alarm">体测提醒</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="bodyattack">是一项高能量的间歇式训练课程，将竞技有氧动作与力量训练和稳定性训练结合在一起。能燃烧大量的热量，让身材更加苗条，同时通过核心调节训练，使你变得更加强健。</string>
+    <string name="bodyattack_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    <string name="bodybcombat">源自一系列搏击格斗动作，将武术、泰拳、西洋拳击、空手道、跆拳道等结合在一起，在注重锻炼耐力的同时提高全身的力量和灵活性，消耗大量卡路里，修整肌肉轮廓，并能自我防卫。</string>
+    <string name="bodybcombat_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。心脏病及高血压患者需遵医嘱练习。</string>
+    <string name="bodyblance">一个将传统瑜伽、太极和普拉提融合在一起的身心训练项目。作为第一个预先编排动作的身心结合训练项目，参加者完全没有年龄、性别和身体状况的限制。</string>
+    <string name="bodyblance_fh">作为练习者，应随时遵循瑜伽练习中自然的规律循序渐进，不和他人相比。运动前一定要充分热身，骨质疏松及眼压过高者谨慎练习。</string>
+    <string name="bodyjam">BODYJAM是最佳的音乐与动作相结合的课程，精心编排的动作中包含了拉丁、Funk、Groove、加勒比舞蹈、街舞、爵士以及百老汇爵士等风格的舞蹈元素。</string>
+    <string name="bodyjam_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    <string name="bodypump">BODY PUMP是一项比较快速的瘦身运动，它是把杠铃和健身操进行了组合，将有氧运动与无氧运动完美结合，有很好的减脂塑形的效果。</string>
+    <string name="bodypump_fh">穿着贴身服装，运动中关节不要完全伸直，给自己身体有一个缓冲。并根据自身的情况掌握运动量，不要过于勉强，坚持不了就要及时停止。</string>
+    <string name="buxing">步行能很好的锻炼腿部股内侧肌、股外侧肌和股直肌，并延缓骨骼退化，同时，你的臀大肌也能被锻炼。坚持步行能拥有更优美的臀线。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="can_not_find_version_name">无法获取版本号信息</string>
+    <string name="changedevice">更换手环</string>
+    <string name="cm">cm</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="com_facebook_dialogloginactivity_ok_button">OK</string>
+    <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
+    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
+    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
+    <string name="com_facebook_like_button_liked">Liked</string>
+    <string name="com_facebook_like_button_not_liked">Like</string>
+    <string name="com_facebook_loading">Loading...</string>
+    <string name="com_facebook_loginview_cancel_action">Cancel</string>
+    <string name="com_facebook_loginview_log_in_button">Log in</string>
+    <string name="com_facebook_loginview_log_in_button_long">Log in with Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Log out</string>
+    <string name="com_facebook_loginview_log_out_button">Log out</string>
+    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
+    <string name="com_facebook_requesterror_password_changed">Your Facebook password has changed. Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_requesterror_permissions">This app doesn’t have permission to do this. To change permissions, try logging into the app again.</string>
+    <string name="com_facebook_requesterror_reconnect">Please log into this app again to reconnect your Facebook account.</string>
+    <string name="com_facebook_send_button_text">Send</string>
+    <string name="com_facebook_share_button_text">Share</string>
+    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="confirm">确定</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="datuineiceji">大腿内侧肌练习器主要锻炼你的股内侧肌，运动时要注意与垫上内收肌群的搭配练习，让你拥有健美、充满力量的双腿。</string>
+    <string name="datuineiceji_fh">运动伤害防护：在进行此项训练时，大腿内收肌群容易在剧烈运动时受伤，因此，应逐渐增加负荷，并在训练结束时做一些拉伸练习。</string>
+    <string name="datuiwaiceji">大腿外侧肌练习器主要锻炼你的股外侧肌，运动时要注意与侧踢腿和抬腿的搭配练习，让你拥有健美、充满力量感的双腿。</string>
+    <string name="datuiwaiceji_fh">运动伤害防护：在进行此项训练时，大腿内收肌群容易在剧烈运动时受伤，因此，应逐渐增加负荷，并在训练结束时做一些拉伸练习。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="deep_sleep">深度睡眠被称为黄金睡眠，是人们的大脑和身体得到休息的最佳睡眠阶段，一般会占整个睡眠的25%哟~</string>
+    <string name="default_ip">123.57.67.188:8080</string>
+    <string name="device_confirm">手环蓝灯亮起时，轻扣两次手环确认</string>
+    <string name="device_connect">连接手环</string>
+    <string name="device_failed_pipei">绑定失败</string>
+    <string name="device_near">请将手环靠近手机</string>
+    <string name="device_near_phone">请尝试将手环靠近手机，并尽可能远离其他手环</string>
+    <string name="device_near_power">请将手环靠近手机，并保证有足够的电量</string>
+    <string name="device_notfound">未找到手环</string>
+    <string name="device_round">附近的手环</string>
+    <string name="device_search">搜索手环</string>
+    <string name="device_searching">搜索手环中</string>
+    <string name="device_select_error">您是否手环名称选择错误呢？</string>
+    <string name="device_select_error_action">请再次确认手环名称，并尝试重新连接。</string>
+    <string name="device_succ_pipei">绑定失败</string>
+    <string name="doing_pipei">匹配手环中</string>
+    <string name="doing_share">分  享  到</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="donggandanche">和所有的有氧运动一样，动感单车是在充分激活身体的运动细胞后，在消耗能量的同时达到减脂目的。同时还能增强腿部的力量，美化下肢形体。</string>
+    <string name="donggandanche_fh">放开单手或双手骑车，在站姿或是跳跃情况下可能会严重受伤；在坐姿爬坡时也会造成腰部受力不均。骑车时脚趾朝下则会造成骨结节发炎和脚部麻木。</string>
+    <string name="dupiwu">在肚皮舞中，腹部等部位的动作远远多于四肢的动作，以胸部腹部以及骨盆为重点舞动部位的肚皮舞，非常适合女性的身体结构，会给女性带来很好的效果。</string>
+    <string name="dupiwu_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="edit_personal_info">请编辑您的信息</string>
+    <string name="error_mobile_insert"> 手机号格式有误</string>
+    <string name="error_mobileorpwd">手机号或密码有误</string>
+    <string name="error_mobilerule">手机号格式有误</string>
+    <string name="error_pwd">密码格式有误</string>
+    <string name="error_pwd_input"> 两次输入密码不一致</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="ertoujishuangxiang">二头肌双向练习器主要锻炼你的肱二头肌，运动时可与哑铃、杠铃弯举搭配练习，让你增强肘关节的稳定性的同时拥有健美的双臂。</string>
+    <string name="ertoujishuangxiang_fh">运动伤害防护：运动起始时肌张力较大，因此应先进行小负荷热身训练，训练时臂部不要完全伸直，以免引起肌腱炎。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="exception_parsejson">数据解析异常</string>
+    <string name="finish">完成</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="flickr_content">Flickr只支持图片分享</string>
+    <string name="flickr_no_client">未安装Flickr客户端</string>
+    <string name="flickr_no_content">请设置分享内容</string>
+    <string name="flickr_showword">Flickr</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="foc">FOC课程体系是中国民族艺术及传统的养生之道与国际科学的健身方式接轨，具有中国特色的健身课程体系。课程体系中主要分为有氧舞蹈和身心能量两部分。</string>
+    <string name="foc_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="foursquare_content">Foursquare只支持纯图片分享</string>
+    <string name="foursquare_no_client">未安装Foursquare客户端</string>
+    <string name="foursquare_showword">Foursquare</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="gaolalibeiji">高拉力背肌练习器主要锻炼背阔肌和肱二头肌，可与坐式划艇拉力练习器和坐式背肌伸展练习器配套使用。</string>
+    <string name="gaolalibeiji_fh">运动伤害防护：首先吸气，下拉拉杆，肘部靠向身体，然后结束动作并呼气。运动过程中要注意身体的稳定与平衡，否则容易引起肱三头肌的拉伤。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="gender">gender</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="gudianwu">古典舞具有严谨的程式、规范性的动作和比较高超的技巧。讲究形神兼备，主要有旋转、弹跳、翻身等基本动作组成。</string>
+    <string name="gudianwu_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="head_tip">唯独头像这件事不能懒哦~</string>
+    <string name="height">height</string>
+    <string name="heigth_str">身高</string>
+    <string name="help">帮助</string>
+    <string name="help_desc1">手环是使用蓝牙和手机连接，所以当连接手环时，手机和手环的距离越近越好。</string>
+    <string name="help_desc2">当手环离手机较近，但未能搜索到手环时。可能是手环电量不足。请用包装盒中的金属片打开后盖，更换电池。</string>
+    <string name="help_desc3">如果手环有电，且离手机位置较近仍无法找到。希望检查手机蓝牙是否开启，或者尝试重启一次。</string>
+    <string name="help_desc4">如果你的手环已经和其他手机绑定，且绑定的手机仍在手环附近。希望你能关闭已绑定手机的蓝牙，然后重新使用新手机搜索手环。</string>
+    <string name="help_title1">手环是否离手机较远？</string>
+    <string name="help_title2">手环是否电量不足？</string>
+    <string name="help_title3">手机蓝牙是否未开启？</string>
+    <string name="help_title4">手环是否已经与其他手机绑定？</string>
+    <string name="history_title_str">历史记录</string>
+    <string name="home_frament">主页界面</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="hudieshikuoxiong">蝴蝶式扩胸练习器主要锻炼你的胸大肌，同时又能最大限度的减少前部三角肌的参与，运动时可与坐式双向推胸练习器搭配练习，让你拥有完美的胸肌。</string>
+    <string name="hudieshikuoxiong_fh">运动伤害防护：此训练可帮助初学者获得足够的力量以便进行更加复杂的训练，训练时要注意呼吸的节奏，吸气时用力收双臂使其相互靠拢，动作结束时呼气。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="input_nick">请输入你的昵称</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="jueshiwu">快速的移动重心，特别是水平移动姿势更是爵士舞的技巧。让身体各个部位如头，肩，腰，臀，躯干做独立的动作。基本动作有踢腿、跳跃等。</string>
+    <string name="jueshiwu_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="kakao_content">Kakao Talk只支持图片、文本分享</string>
+    <string name="kakao_no_client">未安装Kakao Talk客户端</string>
+    <string name="kakao_no_content">请设置分享内容</string>
+    <string name="kakao_showword">Kakao Talk</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="kcal">kcal</string>
+    <string name="kg">kg</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="ladingwu">拉丁舞就是指体育舞蹈，分为恰恰、桑巴、伦巴、牛仔、斗牛。腹部一般不容易活动到，拉丁舞急剧的骨盆摇动、胯部扭摆是对付小肚子上赘肉最有效的方法。</string>
+    <string name="ladingwu_fh">训练过程中不要急于求成，打下坚实的基本功，然后针对自己的特点有选择地学习一些花步。否则容易造成扭伤以及造成错误的运动姿态。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="light_sleep">浅度睡眠是指清醒和深度睡眠之间的阶段，睡觉时做梦、易醒也都是浅度睡眠哟~</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="line_content">Line只支持文本，图片</string>
+    <string name="line_no_client">未安装Line客户端</string>
+    <string name="line_no_content">请设置分享内容</string>
+    <string name="line_showword">LINE</string>
+    <string name="linkedin_content">linked只支持纯文本分享</string>
+    <string name="linkedin_no_client">未安装LinkedIn客户端</string>
+    <string name="linkedin_showword">LinkedIn</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="lishidatuiqushen">立式大腿屈伸练习器能使腿部和臀部的肌肉得到锻炼和加强，增强腿部力量。</string>
+    <string name="lishidatuiqushen_fh">运动伤害防护：练习之前要注意膝关节和髋关节的热身，在练习时当腿部完全蹬直以后，膝盖千万不要完全伸直，将力量大多让肌肉程受，否则很容易造成膝盖损伤。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="little_touch_refresh">轻触刷新数据</string>
+    <string name="login">登  录</string>
+    <string name="logining">登录中...</string>
+    <string name="menu_add_my_clock">添加闹钟</string>
+    <string name="menu_clock_btn_str">存储</string>
+    <string name="menu_clock_str">闹钟</string>
+    <string name="menu_clock_time_str">选择重复时间</string>
+    <string name="menu_feedback">意见反馈</string>
+    <string name="menu_feedback_bottom_ed_hint_str">请输入您的手机号或者邮箱</string>
+    <string name="menu_feedback_ed_hint_str">请输入200字以内</string>
+    <string name="menu_feedback_middle_str">留下您的联系方式，我们将第一时间与您联系</string>
+    <string name="menu_feedback_top_str">你的建议将会使我们做得更好</string>
+    <string name="menu_frament">菜单界面</string>
+    <string name="menu_login_out">退出登录</string>
+    <string name="menu_message">消        息</string>
+    <string name="menu_message_str">消息</string>
+    <string name="menu_my_clock">闹        钟</string>
+    <string name="menu_my_goal">我的目标</string>
+    <string name="menu_my_message">个人信息</string>
+    <string name="menu_my_watch">我的手环</string>
+    <string name="menu_set">设        置</string>
+    <string name="menu_set_feedback_cummit">提\t\t交</string>
+    <string name="menu_set_str">设置</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">Send</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="minute">分钟</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="minzuwu">民族民间舞是一个多层次的概念和可伸缩的界面，对于练习者有较强趣味性，且能 培养舞者气质，让人心情愉悦 。</string>
+    <string name="minzuwu_fh">强迫超越其生理限制就容易受到伤害。在学习舞蹈动作对其技巧的认知不足时，也容易造成肌肉运用方式不正确而造成伤害。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="mobile">手机号</string>
+    <string name="mobile_insert">请输入11位手机号</string>
+    <string name="newpwd_insert">请输入6-18位新密码</string>
+    <string name="newpwd_insert_confirm">请重复一次新密码</string>
+    <string name="next">下一步</string>
+    <string name="no_connect_pause">暂不连接</string>
+    <string name="no_connect_str">网络不给力</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="paobu">跑步能够减肥塑形，增强心肺机能和肠胃蠕动，长期坚持跑步能提高睡眠质量，使身体保持年轻，而且跑步还能够提高性能力和减少女性妇科疾病，是人们最常用的一种运动方式。</string>
+    <string name="paobu_fh">运动伤害防护：跑步结束后要注意腿部拉伸，否则容易使小腿变粗壮，尤其对于爱美的女性来说。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="per_info">个人资料</string>
+    <string name="persioninfo">个人资料</string>
+    <string name="pichead">pichead</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="pocket_content">pocket只支持网页链接分享</string>
+    <string name="pocket_no_client">未安装pocket客户端</string>
+    <string name="pocket_showword">Pocket</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="popdance">POP DANCE代表着潮流，年轻，梦想。练习能够释放内心的压力，增强自信心和成就感。</string>
+    <string name="popdance_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="power_enable">并保证有足够电量</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="pull_to_refresh_pull_label" translatable="false">向下拉动可以刷新</string>
+    <string name="pull_to_refresh_refreshing_label" translatable="false">加载中…</string>
+    <string name="pull_to_refresh_release_label" translatable="false">松开可以刷新</string>
+    <string name="pull_to_refresh_tap_label" translatable="false">点击刷新</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="pwd_forget">忘记密码?</string>
+    <string name="pwd_insert">请输入你的密码</string>
+    <string name="pwd_resset">重置密码</string>
+    <string name="pwd_setting">设置密码</string>
+    <string name="pwdisnull">密码不允许为空</string>
+    <string name="qq_appid">1105003170</string>
+    <string name="qq_appid_fit">1104928388</string>
+    <string name="qq_appkey">oTbkhraxm88UMdY8</string>
+    <string name="qq_appkey_fit">oJ9E4SQAXjKtU6o2</string>
+    <string name="register">注 册</string>
+    <string name="research">重新搜索</string>
+    <string name="research_device">重新搜索手环</string>
+    <string name="resend">重新发送</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="santoujishuangxiang">三头肌双向练习器专门锻炼手臂的三头肌，增强肘关节的稳定性和改善手臂的肌肉不平衡。</string>
+    <string name="santoujishuangxiang_fh">运动伤害防护：运动起始时肌张力较大，因此应先进行小负荷热身训练，训练时臂部不要完全伸直，以免引起肌腱炎。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="scan_text">将二维码放入框内, 即可自动扫描</string>
+    <string name="selcetage">请选择你的出生年份</string>
+    <string name="selcetheigth">请选择你的身高</string>
+    <string name="selcetsex">请选择你的性别</string>
+    <string name="selcetweigth">请选择你的体重</string>
+    <string name="setphistory_frament">历史记录界面</string>
+    <string name="sex_str">性别</string>
+    <string name="sit_alarm_end_time">结束提醒时间</string>
+    <string name="sit_alarm_start_time">开始提醒时间</string>
+    <string name="sit_alarm_time_set">久坐提醒时间</string>
+    <string name="sit_long_alarm">久坐提醒</string>
+    <string name="sport_alarm">运动提醒</string>
+    <string name="sport_alarm_time">运动提醒时间</string>
+    <string name="string_had_bind">已绑定</string>
+    <string name="string_less_net">网络不给力哦</string>
+    <string name="string_loading">加载中...</string>
+    <string name="string_not_bind_device">未绑定</string>
+    <string name="string_sys_data_hint">数据同步中，请保持手环电量充足，并靠近手机</string>
+    <string name="submit">提交</string>
+    <string name="suss_login">登录成功</string>
+    <string name="suss_pwd_set"> 密码重置成功</string>
+    <string name="suss_reg"> 注册成功</string>
+    <string name="target">target</string>
+    <string name="target_day">每日运动目标</string>
+    <string name="text_light_open">手环灯未亮起？</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="tiaojieshidengtui">调节式蹬腿练习器能够锻炼小腿的所有肌群，长时间锻炼能够改善个人的运动表现。</string>
+    <string name="tiaojieshidengtui_fh">运动伤害防护：因背部疼痛而不能做下蹲的人可进行此项训练，但切勿使背部离开斜垫；此外，有时大重量的蹬腿训练可导致骶髂（di qia)关节移位，引起严重的肌肉痉挛和疼痛。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="title_pwd_find">找回密码</string>
+    <string name="today_sport_title_str">今日运动</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="tumblr_content">Tumblr只支持文本，图片，图文分享</string>
+    <string name="tumblr_no_client">未安装Tumblr客户端</string>
+    <string name="tumblr_no_content">请设置分享内容</string>
+    <string name="tumblr_showword">Tumblr</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="tuoyuanji">椭圆机作为热身和减脂运动，不仅能够锻炼到你的股二头肌、股四头肌和臀部肌肉，还能增强你的心肺功能。</string>
+    <string name="tuoyuanji_fh">运动伤害防护：椭圆机单次锻炼时间不宜过长，否则容易导致脚部发麻，因此要注意中间休息；此外体型过胖者不推荐此运动。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="tv_powerrate">电池电量</string>
+    <string name="tv_title_history">历史数据</string>
+    <string name="tv_title_today">今日运动</string>
+    <string name="type_login">其它登陆方式</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="umeng_example_home_btn_plus">社交分享</string>
+    <string name="umeng_socialize_back" translatable="false">返回</string>
+    <string name="umeng_socialize_cancel_btn_str">取消</string>
+    <string name="umeng_socialize_comment" translatable="false">评论</string>
+    <string name="umeng_socialize_comment_detail" translatable="false">评论详情</string>
+    <string name="umeng_socialize_content_hint">说点啥…</string>
+    <string name="umeng_socialize_friends" translatable="false">关注的好友</string>
+    <string name="umeng_socialize_img_des"/>
+    <string name="umeng_socialize_laiwang_default_content">友盟社会化组件（SDK）让移动应用快速整合社交分享功能</string>
+    <string name="umeng_socialize_login">登录</string>
+    <string name="umeng_socialize_login_qq">QQ空间</string>
+    <string name="umeng_socialize_msg_hor" translatable="false">小时前</string>
+    <string name="umeng_socialize_msg_min" translatable="false">分钟前</string>
+    <string name="umeng_socialize_msg_sec" translatable="false">秒前</string>
+    <string name="umeng_socialize_near_At" translatable="false">最近\@的好友</string>
+    <string name="umeng_socialize_network_break_alert" translatable="false">请连接网络后再尝试！</string>
+    <string name="umeng_socialize_send" translatable="false">发布</string>
+    <string name="umeng_socialize_send_btn_str">发送</string>
+    <string name="umeng_socialize_share">分享</string>
+    <string name="umeng_socialize_share_content">友盟社会化组件（SDK）让移动应用快速整合社交分享功能，我们简化了社交平台的接入，为开发者提供坚实的基础服务。（一）支持各大主流社交平台， 
+												（二）支持图片、文字、gif动图、音频、视频；@好友，关注官方微博等功能。
+												（三）提供详尽的后台用户社交行为分析。www.umeng.com/social</string>
+    <string name="umeng_socialize_text_add_custom_platform">请配置用户平台</string>
+    <string name="umeng_socialize_text_authorize">授权</string>
+    <string name="umeng_socialize_text_choose_account">选择已有帐号登录</string>
+    <string name="umeng_socialize_text_comment_hint">说点什么吧…</string>
+    <string name="umeng_socialize_text_douban_key">豆瓣网</string>
+    <string name="umeng_socialize_text_friend_list">好友列表</string>
+    <string name="umeng_socialize_text_laiwang_dynamic_key">来往动态</string>
+    <string name="umeng_socialize_text_laiwang_key">来往</string>
+    <string name="umeng_socialize_text_loading_message">载入中,请稍候...</string>
+    <string name="umeng_socialize_text_login_fail">登录失败了，请重试</string>
+    <string name="umeng_socialize_text_qq_key">QQ</string>
+    <string name="umeng_socialize_text_qq_zone_key">QQ空间</string>
+    <string name="umeng_socialize_text_renren_key">人人网</string>
+    <string name="umeng_socialize_text_sina_key">微博</string>
+    <string name="umeng_socialize_text_tencent_key">腾讯微博</string>
+    <string name="umeng_socialize_text_tencent_no_connection">无法连接到腾讯微博客户端</string>
+    <string name="umeng_socialize_text_tencent_no_install">未安装腾讯微博客户端</string>
+    <string name="umeng_socialize_text_tencent_oauth_login_fail">授权登录失败</string>
+    <string name="umeng_socialize_text_tencent_version_no_match">版本不匹配，SSO只对微博客户端V3.8.1及以上的版本提供支持</string>
+    <string name="umeng_socialize_text_ucenter">个人中心</string>
+    <string name="umeng_socialize_text_unauthorize">未授权</string>
+    <string name="umeng_socialize_text_visitor">游客</string>
+    <string name="umeng_socialize_text_waitting">请稍候...</string>
+    <string name="umeng_socialize_text_waitting_message">,请稍候...</string>
+    <string name="umeng_socialize_text_waitting_qq">跳转QQ中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_qzone">跳转QZone中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_redirect">跳转</string>
+    <string name="umeng_socialize_text_waitting_share">分享中…</string>
+    <string name="umeng_socialize_text_waitting_weixin">跳转微信中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_weixin_circle">跳转朋友圈中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_yixin">跳转易信中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_yixin_circle">跳转易信朋友圈中，请稍候...</string>
+    <string name="umeng_socialize_text_weixin_circle_key">微信朋友圈</string>
+    <string name="umeng_socialize_text_weixin_key">微信</string>
+    <string name="umeng_socialize_tip_blacklist" translatable="false">对不起，因为违反了用户协议您已被禁言.</string>
+    <string name="umeng_socialize_tip_loginfailed" translatable="false">登录失败…</string>
+    <string name="umeng_socialize_ucenter_login_title_guide" translatable="false">游客登录</string>
+    <string name="umeng_socialize_ucenter_login_title_platform" translatable="false">登录帐号</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="validcode_get">获取验证码</string>
+    <string name="validcode_input">填写验证码</string>
+    <string name="validcode_input_blank">请输入验证码</string>
+    <string name="validcode_input_error">验证码输入有误</string>
+    <string name="validcode_resend">秒后重发</string>
+    <string name="validcode_sended">我们已经将验证码发送到 </string>
+    <string name="version_name">版本号：</string>
+    <string name="weight">weight</string>
+    <string name="weigth_str">体重</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="whatsapp_content">有道云笔记只支持文本，图片</string>
+    <string name="whatsapp_no_client">未安装有WhatsApp客户端</string>
+    <string name="whatsapp_no_content">请设置分享内容</string>
+    <string name="whatsapp_showword">WhatsApp</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="woshituiquzhan">卧式腿屈展器能使大腿部位的肌肉得到锻炼和加强。</string>
+    <string name="woshituiquzhan_fh">运动伤害防护：运动时俯卧于训练机上，双手握住手柄，腿伸直，双踝位于滚轴垫的下方，首先吸气使双腿同时屈，尽量使足跟触及臀肌，然后结束动作并呼气，运动时要注意个人气息的节奏。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="wx_appid">wxbaeb54da45c2178d</string>
+    <string name="wx_appid_fit">wxcc2660c78036eb8b</string>
+    <string name="wx_secret">4dc4635a81bd5d84f1ead13aacab08e1</string>
+    <string name="wx_secret_fit">90a7c62c0b8db8e51ec633e36dd2da04</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="xiandaiwu">现代舞的生活观是宽容大度，乐观向上，随遇而安。所以，在现代舞的动作中没有固定舞步，最重要是要放松，无限延伸自己，抒发自己的感情。</string>
+    <string name="xiandaiwu_fh">特别注意膝盖、手肘、手腕和脚腕，注意手撑地时避免扭伤手腕，跳起落地时避免扭伤脚腕。运动伤害发生时的处理步骤：休息、冰敷、压迫、抬高。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="year">year</string>
+    <string name="year_def">年</string>
+    <string name="yestoday_sleep_title_str">昨晚睡眠</string>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <string name="ynote_content">有道云笔记只支持文本，图片，图文分享</string>
+    <string name="ynote_no_client">未安装有道云笔记客户端</string>
+    <string name="ynote_no_content">请设置分享内容</string>
+    <string name="ynote_showword">有道云笔记</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/sport_message.xml -->
+    <eat-comment/>
+    <string name="youyangwudao">有氧舞蹈的特点就是髋部动作很多，动作优美。进行有氧舞蹈训练，对腰腹部瘦身有很好的作用。</string>
+    <string name="youyangwudao_fh">穿适合运动的服装和鞋、准备活动、放松、伸展要充分，循序渐进，不要过度运动。</string>
+    <string name="youyong">游泳是一种全身性的锻炼，不仅能够增强人体神经系统的功能，改善血液循环，而且还能提高对营养物质的消化和吸收，进而增强体质和对疾病的抵抗力。此外，游泳消耗的热量非常大，是减肥的首选运动。</string>
+    <string name="youyong_fh">运动伤害防护：下水前需充分做好热身运动，防止因热身不足造成的抽筋的肌肉痉挛等情况。</string>
+    <string name="yujia">健身瑜伽主要抽取瑜伽体式中对力量及耐力的训练，如斜板式、三角式、弓式等。经过一段时间的训练，能感受到肌肉耐力有明显的提升。</string>
+    <string name="yujia_fh">作为练习者，应随时遵循瑜伽练习中自然的规律循序渐进，不和他人相比。运动前一定要充分热身，骨质疏松及眼压过高者谨慎练习。</string>
+    <string name="zumba">狂热的音乐节奏和肢体动作上:跳跃、挥动手臂、扭臀、鼓掌、甩头，就像是酒吧里的一场舞会。如此较大强度的运动对减肥、塑身有很好的效果。</string>
+    <string name="zumba_fh">低冲击类运动，对关节等伤害均很小，运动前一个半小时推荐饮用富含无机盐、维生素的运动饮料，保证在运动过程中身体不缺水。</string>
+    <string name="zuoshibeijishenzhan">坐式背肌伸展练习器主要锻炼背阔肌和肱二头肌，可与坐式划艇拉力练习器和高拉力背肌练习器配套使用。</string>
+    <string name="zuoshibeijishenzhan_fh">运动伤害防护：首先吸气，下拉拉杆，肘部靠向身体，然后结束动作并呼气。运动过程中要注意身体的稳定与平衡以及热身前适当的热身运动，否则容易引起肱三头肌的拉伤。</string>
+    <string name="zuoshidatuishenzhan">坐式大腿伸展练习器主要锻炼你的股四头肌，初学者适合此训练以增加肌肉的力量，为以后的复杂技巧训练奠定基础。</string>
+    <string name="zuoshidatuishenzhan_fh">运动伤害防护：在运动时要注意与蹲腿和箭步蹲腿的搭配练习，帮助你预防和护理膝部关节并改善肌肉弹性。</string>
+    <string name="zuoshifeiniao">坐式飞鸟练习器主要锻炼你的三角肌后束，可与坐式肩膀后展练习器搭配使用，让你拥有健美的双臂。</string>
+    <string name="zuoshifeiniao_fh">运动伤害防护：此训练是极好的入门练习，不必担心体型和姿势，并且可以连续重复多组训练，非常适合初学者。</string>
+    <string name="zuoshihoutuiqushen">坐式后腿屈伸练习器主要锻炼你的股二头肌，在运动时要注意与蹲腿和箭步蹲腿的搭配练习，帮助你改善肌肉弹性和双腿功能。</string>
+    <string name="zuoshihoutuiqushen_fh">运动伤害防护：练习过程中要注意身体的稳定和平衡以及相对位置的准确，此外还需注意个人的动作幅度和呼吸节奏，否则会容易出现肌肉变形以及不对称等问题。</string>
+    <string name="zuoshihuatinglali">坐式划艇拉力练习器主要用来锻炼背阔肌、三角肌和二头肌，可与高拉力背肌练习器和坐式背肌伸展练习器配套使用。</string>
+    <string name="zuoshihuatinglali_fh">运动伤害防护：训练时身体前倾，吸气时将手柄拉至下胸部，然后挺胸肘部尽量往后拉，最后结束动作并呼气。此外在做大负荷低手拉力器划船动作时不要弓背，以免拉伤。</string>
+    <string name="zuoshijianbanghouzhan">坐式肩膀后展练习器主要锻炼三角肌后束和背阔肌,在锻炼过程中要注意进行坐姿推肩的搭配练习.</string>
+    <string name="zuoshijianbanghouzhan_fh">运动伤害防护：由于肩关节比较脆弱，为避免损伤肩关节，可根据自身素质和柔韧性，进行适当的训练。</string>
+    <string name="zuoshijianbangtuiju">坐式肩膀推举练习器主要锻炼你的三角肌中束，运动时要注意与侧平举、杠铃、哑铃上推的搭配练习，帮助你增强肩关节的稳定性，纠正手臂肌肉的不平衡。</string>
+    <string name="zuoshijianbangtuiju_fh">运动伤害防护：练习时要注意身体与靠背的紧密贴合，可预防背部过度弓起从而造成身体的损伤。</string>
+    <string name="zuoshishuangxiangtuixong">坐式双向推胸练习器主要锻炼你的胸大肌，运动时可与蝴蝶式扩胸练习器搭配使用，让你拥有完美的胸肌。</string>
+    <string name="zuoshishuangxiangtuixong_fh">运动伤害防护：进行此项训练时要注意身体与器械的角度，并保证身体与器械靠背的紧密贴合，以免引起胸大肌的拉伤。</string>
+    <string name="zuoshitixi">坐式提膝练习器主要锻炼你的腓肠肌和比目鱼肌，不仅能够作为其他运动的热身项目还是腿部运动的首选项目。</string>
+    <string name="zuoshitixi_fh">运动伤害防护：此训练是极好的入门练习，不必担心体型和姿势，并且可以连续重复多组训练，非常适合初学者。</string>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light"/>
+    <style name="AppTheme" parent="AppBaseTheme"/>
+    <style name="CustomRadioBtn">  
+        <item name="android:background">@mipmap/blank_03</item>
+         <item name="android:button">@mipmap/blank_03</item>
+ 	</style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="Dialog_Fullscreen">
+
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <style name="MessengerButton">
+    <item name="android:clickable">true</item>
+  </style>
+    <style name="MessengerButton.Blue">
+    <item name="android:background">@drawable/messenger_button_blue_bg_selector</item>
+  </style>
+    <style name="MessengerButton.Blue.Large">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">44dp</item>
+    <item name="android:layout_marginLeft">16dp</item>
+    <item name="android:layout_marginRight">16dp</item>
+  </style>
+    <style name="MessengerButton.Blue.Small">
+    <item name="android:layout_width">158dp</item>
+    <item name="android:layout_height">36dp</item>
+  </style>
+    <style name="MessengerButton.White">
+    <item name="android:background">@drawable/messenger_button_white_bg_selector</item>
+  </style>
+    <style name="MessengerButton.White.Large">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">44dp</item>
+    <item name="android:layout_marginLeft">16dp</item>
+    <item name="android:layout_marginRight">16dp</item>
+  </style>
+    <style name="MessengerButton.White.Small">
+    <item name="android:layout_width">158dp</item>
+    <item name="android:layout_height">36dp</item>
+  </style>
+    <style name="MessengerButtonText">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:drawablePadding">4dp</item>
+    <item name="android:gravity">center</item>
+    <!--suppress NewApi -->
+    <!-- <item name="android:textAllCaps">true</item> -->
+    <item name="android:textSize">14sp</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+    <style name="MessengerButtonText.Blue">
+    <item name="android:textColor">#ffffff</item>
+  </style>
+    <style name="MessengerButtonText.Blue.Large">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_large_white</item>
+  </style>
+    <style name="MessengerButtonText.Blue.Small">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_small_white</item>
+  </style>
+    <style name="MessengerButtonText.White">
+    <item name="android:textColor">#0084ff</item>
+  </style>
+    <style name="MessengerButtonText.White.Large">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_large_blue</item>
+  </style>
+    <style name="MessengerButtonText.White.Small">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
+  </style>
+    <style name="Notitle_Fullscreen">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style mce_bogus="1" name="PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popwindow_down</item>
+        <item name="android:windowExitAnimation">@anim/popwindow_up</item>
+    </style>
+    <style name="ProgressHUD" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Start" parent="android:Theme">
+        <item name="android:windowBackground">@mipmap/start_im_bg</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="Theme.UMDefault" parent="android:style/Theme.NoTitleBar"/>
+    <style name="Theme.UMDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="Transparent_Dialog">
+        <item name="android:windowBackground">@color/transparent_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.3.1/res/values/values.xml -->
+    <eat-comment/>
+    <style name="__LeakCanary.Base" parent="android:Theme">
+  </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="com_facebook_button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/com_facebook_button_background</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14.0dp</item>
+    </style>
+    <style name="com_facebook_button_like" parent="com_facebook_button">
+        <item name="android:background">@drawable/com_facebook_button_like_background</item>
+    </style>
+    <style name="com_facebook_button_send" parent="com_facebook_button">
+        <item name="android:background">@drawable/com_facebook_button_send_background</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_send_icon</item>
+        <item name="android:text">@string/com_facebook_send_button_text</item>
+    </style>
+    <style name="com_facebook_button_share" parent="com_facebook_button">
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
+        <item name="android:text">@string/com_facebook_share_button_text</item>
+    </style>
+    <style name="com_facebook_loginview_default_style" parent="com_facebook_button">
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
+    </style>
+    <style name="com_facebook_loginview_silver_style" parent="com_facebook_loginview_default_style">
+        <item name="android:background">@drawable/com_facebook_button_login_silver_background</item>
+        <item name="android:drawableLeft">@null</item>
+        <item name="android:textColor">#4b5164</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/themes.xml -->
+    <eat-comment/>
+    <style name="dialogTheme">
+			<item name="android:windowBackground">@android:color/transparent</item>
+			<item name="android:windowIsFloating">true</item>
+			<item name="android:windowContentOverlay">@null</item>
+		</style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="fontTheme" parent="android:Theme.Light.NoTitleBar">
+        <item name="android:typeface">monospace</item>
+   		 </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style mce_bogus="1" name="lan_DialogWindowAnim" parent="android:Animation">
+        <item name="android:windowExitAnimation">@anim/shake_umeng_socialize_dlg_alpha</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="mainpage_tv_value_style1">
+ 		<item name="android:textColor">@color/white</item>
+         <item name="android:alpha">0.5</item>
+    </style>
+    <style name="mainpage_tv_value_style2">
+ 		<item name="android:textColor">@color/white</item>
+    </style>
+    <style name="menu_clock_rbtn_style">
+        <item name="android:layout_width">@dimen/x35</item>
+        <item name="android:layout_height">@dimen/x35</item>
+        <item name="android:textColor">@color/app_bg</item>
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:drawablePadding">0dp</item>
+         <item name="android:checked">false</item>
+    </style>
+    <style name="menu_my_message_iv_style">
+        <item name="android:layout_width">@dimen/x7</item>
+        <item name="android:layout_height">@dimen/y9</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:src">@mipmap/icon_msg_right_arrow</item>
+        <item name="android:layout_marginRight">@dimen/x18</item>
+    </style>
+    <style name="menu_my_message_tv_key_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/umeng_socialize_list_item_textcolor</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/x18</item>
+        <item name="android:layout_marginTop">@dimen/y27</item>
+        <item name="android:textSize">@dimen/x14</item>
+    </style>
+    <style name="menu_my_message_tv_value_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">@dimen/x18</item>
+        <item name="android:textSize">@dimen/x14</item>
+        <item name="android:textColor">@color/umeng_socialize_list_item_textcolor</item>
+    </style>
+    <style name="menu_style_rl">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+         <item name="android:paddingTop">@dimen/y8</item>
+       
+    </style>
+    <style name="menu_style_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/y34</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:padding">@dimen/x6</item>
+        <item name="android:textColor">@color/umeng_socialize_text_share_content</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:minWidth">@dimen/x80</item>
+        <item name="android:textSize">@dimen/x18</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="notitleDialog">
+
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="pickDialog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/app_bg</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <style name="processDialog">
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:background">@android:color/transparent</item>
+        <!-- 背景透明 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 模糊 -->
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:alpha">0.9</item>
+    </style>
+    <style name="raidobutton_style">
+        <item name="android:layout_width">@dimen/x60</item>
+        <item name="android:layout_height">@dimen/x65</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">1dp</item>
+        <item name="android:layout_marginLeft">1dp</item>
+         <item name="android:layout_marginRight">1dp</item>
+        <item name="android:textSize">@dimen/x11</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="scrshot_dlg_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="shareDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowBackground"> @android:color/transparent </item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style mce_bogus="1" name="snapshotDialogWindowAnim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/shake_umeng_socialize_scrshot_dlg</item>
+        <item name="android:windowExitAnimation">@anim/shake_umeng_socialize_dlg_alpha</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="style_menu_rbtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:onClick">menuOnClick</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/color_menu_rbtn_selector</item>
+        <item name="android:drawablePadding">0dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@null</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="tooltip_bubble_text">
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:gravity">left</item>
+	    <item name="android:textSize">12sp</item>
+	    <item name="android:shadowDy">-1</item>
+	    <item name="android:shadowRadius">0.25</item>
+	    <item name="android:shadowColor">#40000000</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="topbar_btn_right_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textSize">@dimen/x16</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:visibility">gone</item>
+    </style>
+    <style name="topbar_tv_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/x6</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/x13</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/build/intermediates/exploded-aar/techfit3_1/social_sdk_library_project/unspecified/res/values/values.xml -->
+    <eat-comment/>
+    <style name="umeng_socialize_action_bar_item_im">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <style name="umeng_socialize_action_bar_item_tv">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:text">999</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="umeng_socialize_action_bar_itemlayout">
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="umeng_socialize_dialog_anim_fade">
+        <item name="android:windowEnterAnimation">@anim/umeng_socialize_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/umeng_socialize_fade_out</item>
+    </style>
+    <style name="umeng_socialize_dialog_animations">
+        <item name="android:windowEnterAnimation">@anim/umeng_socialize_slide_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/umeng_socialize_slide_out_from_bottom</item>
+    </style>
+    <style name="umeng_socialize_divider">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/umeng_socialize_divider</item>
+    </style>
+    <style name="umeng_socialize_edit_padding">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">@color/umeng_socialize_list_item_bgcolor</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+    <style name="umeng_socialize_list_item">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:background">@color/umeng_socialize_list_item_bgcolor</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingTop">5dp</item>
+    </style>
+    <style name="umeng_socialize_popup_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <style name="umeng_socialize_popup_dialog_anim" parent="@style/umeng_socialize_popup_dialog">
+        <item name="android:windowAnimationStyle">@style/umeng_socialize_dialog_animations</item>
+    </style>
+    <style name="umeng_socialize_shareboard_animation">
+        <item name="android:windowEnterAnimation">@anim/umeng_socialize_shareboard_animation_in</item>
+        <item name="android:windowExitAnimation">@anim/umeng_socialize_shareboard_animation_out</item>
+    </style>
+    <!-- From: file:/D:/techfit3_1/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="validcodeinputTheme">
+        <item name="android:layout_width">@dimen/x260</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/grey_ae</item>
+        <item name="android:textSize">@dimen/x15</item>
+        <item name="android:background">@color/white</item>
+    </style>
+</resources>

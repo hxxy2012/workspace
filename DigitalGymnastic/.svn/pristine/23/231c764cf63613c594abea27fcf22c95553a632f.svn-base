@@ -1,0 +1,170 @@
+package com.hike.digitalgymnastic.fragment;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.hike.digitalgymnastic.entitiy.MyClock;
+import com.hike.digitalgymnastic.view.PickerView;
+import com.hike.digitalgymnastic.view.PickerView.onSelectListener;
+import com.hike.digitalgymnastic.view.UISwitchButton;
+import com.hiko.enterprisedigital.R;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 
+ * @author changqi
+ * @category 该适配器已经废弃不用了
+ *
+ */
+public class MyClockAdapter extends BaseAdapter {
+	private List<MyClock> myDatas;
+	private LayoutInflater inflater;
+	Map<Integer, Boolean> checkedMap = new HashMap<Integer, Boolean>();
+	Map<Integer, String> checkedTitleMap = new HashMap<Integer, String>();
+	Calendar calendar;
+	public MyClockAdapter(Activity activity, List<MyClock> myDatas) {
+		this.inflater = LayoutInflater.from(activity);
+		this.myDatas = myDatas;
+	}
+
+	@Override
+	public int getCount() {
+		return myDatas.size();
+	}
+
+	@Override
+	public Object getItem(int arg0) {
+		return myDatas.get(arg0);
+	}
+
+	@Override
+	public long getItemId(int arg0) {
+		return arg0;
+	}
+
+
+
+	@SuppressLint("InflateParams")
+	public View getView(int position, View convertView, ViewGroup arg2) {
+		final ViewHolder holder;
+		final  MyClock clock=(MyClock) getItem(position);
+		if (convertView == null) {
+			holder = new ViewHolder();
+			convertView = inflater.inflate(R.layout.menu_my_clock_list_item, null);
+			holder.tv_time = (TextView) convertView.findViewById(R.id.tv_time);
+			holder.tv_date = (TextView) convertView.findViewById(R.id.tv_date);
+			holder.ck_open_or_close = (UISwitchButton) convertView.findViewById(R.id.ck_open_or_close);
+			holder.cb_expand=(CheckBox) convertView.findViewById(R.id.cb_expand);
+			holder.ll_clock_time=(LinearLayout) convertView.findViewById(R.id.ll_clock_time);
+			holder.pv_hh=(PickerView) convertView.findViewById(R.id.pv_hh);
+			holder.pv_mm=(PickerView) convertView.findViewById(R.id.pv_mm);
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+//		holder.tv_time.setText(clock.getTime());
+//		holder.tv_date.setText(clock.getDate());
+		if (clock.isOpenorclose()) {
+			holder.ck_open_or_close.setChecked(true);
+		}else {
+			holder.ck_open_or_close.setChecked(false);
+		}
+		
+		if(clock.isExpanded()){
+			holder.ll_clock_time.setVisibility(View.VISIBLE);
+		}else{
+			holder.ll_clock_time.setVisibility(View.GONE);
+		}
+		initdata(holder.pv_hh, holder.pv_mm);
+		
+		holder.cb_expand.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				// TODO Auto-generated method stub
+				clock.setExpanded(isChecked);
+				if(isChecked){
+					holder.ll_clock_time.setVisibility(View.VISIBLE);
+				}else{
+					holder.ll_clock_time.setVisibility(View.GONE);
+				}
+			}
+		});
+		return convertView;
+	}
+	
+	private void initData() {
+		calendar = Calendar.getInstance();
+		checkedMap.put(R.id.rb_one, false);
+		checkedMap.put(R.id.rb_two, false);
+		checkedMap.put(R.id.rb_three, false);
+		checkedMap.put(R.id.rb_four, false);
+		checkedMap.put(R.id.rb_five, false);
+		checkedMap.put(R.id.rb_six, false);
+		checkedMap.put(R.id.rb_seven, false);
+		
+		checkedTitleMap.put(R.id.rb_one, "周一");
+		checkedTitleMap.put(R.id.rb_two,  "周二");
+		checkedTitleMap.put(R.id.rb_three,  "周三");
+		checkedTitleMap.put(R.id.rb_four,  "周四");
+		checkedTitleMap.put(R.id.rb_five,  "周五");
+		checkedTitleMap.put(R.id.rb_six,  "周六");
+		checkedTitleMap.put(R.id.rb_seven,  "周日");
+		
+
+		
+	}
+	private void initdata(PickerView pv_hh,PickerView pv_mm){
+		List<String> HH = new ArrayList<String>();// 时
+		List<String> MM = new ArrayList<String>();// 分
+		for (int i = 0; i < 25; i++) {
+			HH.add(i < 10 ? "0" + i : "" + i);
+		}
+		for (int i = 0; i < 60; i++) {
+			MM.add(i < 10 ? "0" + i : "" + i);
+		}
+		pv_hh.setData(HH);
+		pv_mm.setData(MM);
+		pv_hh.setOnSelectListener(new onSelectListener() {
+
+			@Override
+			public void onSelect(String text) {
+				Log.v("MyLog", "---hh-----" + text);
+				calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
+			}
+		});
+		pv_mm.setOnSelectListener(new onSelectListener() {
+
+			@Override
+			public void onSelect(String text) {
+				Log.v("MyLog", "--mm----" + text);
+				calendar.set(Calendar.MINUTE, Integer.parseInt(text));
+			}
+		});
+	}
+
+	public final class ViewHolder {
+		public TextView tv_time;
+		public TextView tv_date;
+		public UISwitchButton ck_open_or_close;
+		public CheckBox cb_expand;
+		public LinearLayout ll_clock_time;
+		public PickerView pv_hh;
+		public PickerView pv_mm;
+	}
+}

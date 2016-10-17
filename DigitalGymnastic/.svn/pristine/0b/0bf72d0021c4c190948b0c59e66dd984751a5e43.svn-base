@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="@dimen/x20"
+        android:text="相机" />
+
+    <SurfaceView
+        android:id="@+id/surface_shows"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y250" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_flashmode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x70"
+            android:padding="@dimen/x20"
+            android:src="@mipmap/light_auto" />
+
+        <ImageView
+            android:id="@+id/ib_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x70"
+            android:background="@color/white"
+            android:src="@mipmap/btn_switch_camera" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ImageView
+            android:id="@+id/ib_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x35"
+            android:background="@color/white"
+            android:src="@mipmap/cha_pressed" />
+
+
+        <ImageView
+            android:id="@+id/ib_takepic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/white"
+            android:src="@drawable/takepic_selector" />
+
+        <ImageView
+            android:id="@+id/iv_album_show"
+            android:layout_width="@dimen/x59"
+            android:layout_height="@dimen/x59"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x25"
+            android:src="@mipmap/default_ablum" />
+
+    </RelativeLayout>
+</LinearLayout>

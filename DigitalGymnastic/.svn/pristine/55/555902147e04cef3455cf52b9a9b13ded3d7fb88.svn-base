@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    >
+
+<!-- 未搜索到设备 -->
+<LinearLayout android:id="@+id/ll_search_fail"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_marginTop="-10dp"
+    android:orientation="vertical" 
+     android:visibility="invisible"
+     >
+
+    <LinearLayout
+        android:layout_width="@dimen/x116"
+        android:layout_height="@dimen/x23"
+        android:orientation="horizontal" 
+        android:gravity="center_horizontal"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/x23"
+            android:layout_height="@dimen/x23"
+            android:src="@mipmap/iv_search_fail_icon"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x23"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:text="@string/device_notfound"
+            android:textSize="20dp"
+            android:textColor="@color/darkgray" />
+    </LinearLayout>
+    
+      <LinearLayout
+        android:layout_width="@dimen/x116"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x9">
+
+
+        <TextView
+            android:layout_width="@dimen/x107"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/research"
+            android:textSize="20dp"
+            android:textColor="@color/white" />
+ </LinearLayout>
+  
+</LinearLayout>
+<!-- 搜索设备 -->
+<LinearLayout android:id="@+id/ll_search_ing"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_marginTop="-10dp"
+    android:orientation="vertical" 
+    android:visibility="visible">
+
+    <LinearLayout
+        android:layout_width="@dimen/x116"
+        android:layout_height="@dimen/x23"
+        android:orientation="horizontal" 
+        android:gravity="center_horizontal"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/x23"
+            android:layout_height="@dimen/x23"
+            android:src="@mipmap/iv_search_ing_icon"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/x23"
+            android:gravity="center"
+             android:layout_gravity="center_vertical"
+            android:text="@string/device_searching"
+            android:textSize="@dimen/x18"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    
+      <LinearLayout
+        android:layout_width="@dimen/x116"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/x9">
+
+
+        <TextView
+            android:layout_width="@dimen/x107"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/device_near"
+            android:textSize="@dimen/x12"
+            android:textColor="@color/darkgray" />
+ </LinearLayout>
+    <LinearLayout
+        android:layout_width="@dimen/x116"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
+        <TextView
+            android:layout_width="@dimen/x107"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/power_enable"
+             android:textSize="@dimen/x12"
+            android:textColor="@color/darkgray" />
+ </LinearLayout>
+</LinearLayout>
+</FrameLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/widget_center_devicesearch.xml -->

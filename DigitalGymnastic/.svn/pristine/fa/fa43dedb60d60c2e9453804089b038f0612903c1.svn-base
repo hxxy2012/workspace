@@ -1,0 +1,52 @@
+package com.weizhi.httpservice;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+public class ServiceURL {
+
+    //common
+    public static final String COMMON_BASE_URL = "http://114.215.127.64:8088/common";
+    public static final String COMMON_POSTER_URL = COMMON_BASE_URL.concat("/poster");
+    public static final String COMMON_MILEPOST_URL = COMMON_BASE_URL.concat("/milepost");
+    public static final String COMMON_CARE_URL = COMMON_BASE_URL.concat("/care");
+
+    //userInfo
+    public static final String USERINFO_BASE_URL = "http://114.215.127.64:8088/UserInfo";
+    public static final String USERINFO_LOGIN_URL = USERINFO_BASE_URL.concat("/login");
+    public static final String USERINFO_REGISTER_URL = USERINFO_BASE_URL.concat("/register");
+    public static final String USERINFO_UPLOADHEADPHOTO_URL =
+            USERINFO_BASE_URL.concat("/uploadHeadPhoto");
+    public static final String USERINFO_UPDATEHEADPHOTO_URL =
+            USERINFO_BASE_URL.concat("/updateHeadPhoto");
+    public static final String USERINFO_UPDATEPROFILE_URL =
+            USERINFO_BASE_URL.concat("/updateProfile");
+    public static final String USERINFO_GETPROFILE_URL = USERINFO_BASE_URL.concat("/getProfile");
+    public static final String USERINFO_FORGETPASSWORD_URL =
+            USERINFO_BASE_URL.concat("/forgetPassword");
+    public static final String USERINFO_MODIFYPASSWORD_URL =
+            USERINFO_BASE_URL.concat("/modifyPassword");
+
+    //counter
+    public static final String COUNTER_BASE_URL = "http://114.215.127.64:8088/counter";
+    public static final String COUNTER_ADDRECORD_URL = COUNTER_BASE_URL.concat("/addRecord");
+    public static final String COUNTER_GETSTATISTICSBYMONTH_URL =
+            COUNTER_BASE_URL.concat("/getStatisticsByMonth");
+    public static final String COUNTER_GETRECORDSBYMONTH_URL =
+            COUNTER_BASE_URL.concat("/getRecordsByMonth");
+    public static final String COUNTER_GETRECORD_URL = COUNTER_BASE_URL.concat("/getRecord");
+    public static final String COUNTER_EVALUATE_URL = COUNTER_BASE_URL.concat("/evaluate");
+
+    //sleep
+    public static final String SLEEP_BASE_URL = "http://114.215.127.64:8088/sleep";
+    public static final String SLEEP_ADDRECORD_URL = SLEEP_BASE_URL.concat("/addRecord");
+    public static final String SLEEP_GETRECORD_URL = SLEEP_BASE_URL.concat("/getRecord");
+    public static final String SLEEP_EVALUATE_URL = SLEEP_BASE_URL.concat("/evaluate");
+
+    //task
+    public static final String TASK_BASE_URL = "http://114.215.127.64:8088/task";
+    public static final String SLEEP_ADDTASK_URL = TASK_BASE_URL.concat("/addTask");
+    public static final String SLEEP_GETSTATISTICSBYMONTH_URL =
+            TASK_BASE_URL.concat("/getStatisticsByMonth");
+    public static final String SLEEP_GETASK_URL = TASK_BASE_URL.concat("/getTask");
+}

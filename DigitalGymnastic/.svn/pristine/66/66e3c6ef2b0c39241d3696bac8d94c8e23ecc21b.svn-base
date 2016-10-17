@@ -1,0 +1,1643 @@
+package com.hike.digitalgymnastic.fragment;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Request;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.hike.digitalgymnastic.MainActivity;
+import com.hike.digitalgymnastic.SportSingleDetailActivity;
+import com.hike.digitalgymnastic.adapter.TimeLineAdapter;
+import com.hike.digitalgymnastic.adapter.TimeLineAdapter.btnTimeLineListener;
+import com.hike.digitalgymnastic.entitiy.AppVersion;
+import com.hike.digitalgymnastic.entitiy.BuXing;
+import com.hike.digitalgymnastic.entitiy.Customer;
+import com.hike.digitalgymnastic.entitiy.DailySportData;
+import com.hike.digitalgymnastic.entitiy.HomeSportData;
+import com.hike.digitalgymnastic.entitiy.OnceSportData;
+import com.hike.digitalgymnastic.entitiy.QQRunData;
+import com.hike.digitalgymnastic.entitiy.QQStepsData;
+import com.hike.digitalgymnastic.http.HttpConnectUtils;
+import com.hike.digitalgymnastic.request.BaseDao;
+import com.hike.digitalgymnastic.request.SportDao;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.hike.digitalgymnastic.utils.Constants;
+import com.hike.digitalgymnastic.utils.LocalDataUtils;
+import com.hike.digitalgymnastic.utils.PreferencesUtils;
+import com.hike.digitalgymnastic.utils.ReqeustCode;
+import com.hike.digitalgymnastic.utils.SportType;
+import com.hike.digitalgymnastic.utils.Utils;
+import com.hike.digitalgymnastic.view.DashCircleProgress;
+import com.hike.digitalgymnastic.view.HomePageListView;
+import com.hike.digitalgymnastic.view.HomePageListView.OnScrollTopListener;
+import com.hike.digitalgymnastic.view.ImageHelper;
+import com.hike.digitalgymnastic.view.MyViewFlipper;
+import com.hike.digitalgymnastic.view.MyViewFlipper.ViewFlipperOnTouchListener;
+import com.hike.digitalgymnastic.view.RandomLayout;
+import com.hike.digitalgymnastic.view.ScrollViewInner;
+import com.hike.digitalgymnastic.view.SportRateImageView;
+import com.hike.digitalgymnastic.view.SportTypeCheckBox;
+import com.hiko.enterprisedigital.R;
+import com.hiko.enterprisedigital.SocialShareActivity;
+import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.BitmapCommonUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
+import com.lidroid.xutils.view.annotation.ViewInject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+
+public class HomeFragment extends BaseFragment implements
+        ViewFlipperOnTouchListener {
+    @ViewInject(R.id.root)
+    LinearLayout root;
+    @ViewInject(R.id.viewFlipper)
+    MyViewFlipper viewFlipper;
+
+    LayoutInflater inflater;
+    View view;
+
+    private RelativeLayout rl_blank_view_male;
+    private RelativeLayout rl_blank_view_sex;
+    private View center_layout_target;
+    private View center_layout_acture;
+    private TextView tv_target;
+    private TextView tv_acture;
+    private DashCircleProgress iv_completionRate;
+    private Customer customer;
+    private SportDao dao;
+    private BaseDao baseDao;
+    private RandomLayout randomLayout;
+    private LinearLayout ll2;
+    private TextView tv_today_sport_count;
+    private TextView tv_today_info;
+    private ImageView btn_up;
+    private HomePageListView sportListView;
+    private SportRateImageView sriv_sport;
+    private Button btn_share;
+    private TimeLineAdapter adapter;
+    private String sportName;
+    private int sporttype;
+    private static final String TAG = "HomeFragment";
+    private int homepage = 1;
+    private String totalCalories;
+    private HomeListener hListener = null;
+    private String titliname;
+    private TextView tv_today_desp;
+    ScrollViewInner svi;
+    Boolean isOpenActivity = true;
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        this.inflater = inflater;
+        View view = inflater.inflate(R.layout.activity_home, container, false); // 加载fragment布
+        ViewUtils.inject(this, view);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        init();
+    }
+
+    private void setListener() {
+        adapter.setbtnTimeLineListener(new btnTimeLineListener() {
+            @Override
+            public void onSomeChange(OnceSportData info, int i) {
+                btnGetDatas(info, i);
+            }
+        });
+    }
+
+    MainActivity ma;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        UtilLog.e(TAG, " onresume ");
+        if (!this.isHidden()) {
+
+//			if (ma.currentPage == 0 && !versionDialogShowing)// 从本地数据加载睡眠主页
+            if (!versionDialogShowing)// 从本地数据加载睡眠主页
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        buildViewFromLoacalData();
+                    }
+                }, 500);
+
+
+            if (hListener != null) {
+                if (homepage == 1) {
+                    titliname = getString(R.string.today_sport_title_str);
+                    if (hListener != null) {// 回调 change 主activity标题给变量赋值
+                        hListener.onChange(titliname, homepage);
+                    }
+                } else {
+                    titliname = "共消耗"
+                            + (int) (Double.parseDouble(totalCalories) + 0.5)
+                            + "kcal";
+                    if (hListener != null) {// 回调 change 主activity标题给变量赋值
+                        hListener.onChange(titliname, homepage);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void notifyUpdateTitle() {
+        if (!this.isHidden()) {
+            if (hListener != null) {
+                if (homepage == 1) {
+                    titliname = getString(R.string.today_sport_title_str);
+                    if (hListener != null) {// 回调 change 主activity标题给变量赋值
+                        hListener.onChange(titliname, homepage);
+                    }
+                } else {
+                    int _totalCalories = (int) (Double.parseDouble(totalCalories) + 0.5);
+                    titliname = "共消耗"
+                            + _totalCalories
+                            + "kcal";
+                    if (hListener != null) {// 回调 change 主activity标题给变量赋值
+                        hListener.onChange(titliname, homepage);
+                    }
+                }
+            }
+
+        }
+    }
+
+    private boolean versionDialogShowing = false;
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        UtilLog.e(TAG, "onpause");
+        try {
+//			iv_completionRate.dismissProgress();
+            if (dao != null && dao.isRunning()) {
+                dao.cancel();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        UtilLog.e(TAG,"onHiddenChanged");
+    }
+
+    private void init() {
+        dao = new SportDao(this, activity);
+        customer = LocalDataUtils.readCustomer(activity);
+
+        initBitmapUtils();
+        // btn_right.setVisibility(View.VISIBLE);
+        // btn_right.setBackgroundResource(R.mipmap.icon_history);
+
+        View viewTop = inflater.inflate(R.layout.activity_home1, null);
+        View viewBottom = inflater.inflate(R.layout.activity_home2, null);
+        svi = (ScrollViewInner) viewBottom;
+        svi.setRate(2);
+        // viewBottom.setOnClickListener(new View.OnClickListener() {
+        //
+        // @Override
+        // public void onClick(View arg0) {
+        // showPreviousView();
+        // }
+        // });
+        tv_today_desp = (TextView) viewBottom.findViewById(R.id.tv_today_desp);
+        // viewTop.setOnTouchListener(this);
+        viewFlipper.addView(viewTop, 0);
+        viewFlipper.addView(viewBottom, 1);
+        viewFlipper.setTag("home_sport");
+        // 上部分视图初始化
+        iv_completionRate = (DashCircleProgress) viewTop
+                .findViewById(R.id.iv_completionRate);
+        tv_today_sport_count = (TextView) viewTop
+                .findViewById(R.id.tv_today_sport_count);
+        tv_today_info = (TextView) viewTop.findViewById(R.id.tv_today_info);
+
+//		iv_completionRate
+//				.setOnTouchListener(new CompletionRateImageView.OnTouchListener() {
+//					@Override
+//					public void onTouch() {
+//						// DataGettingTask task = new DataGettingTask();
+//						// task.execute();
+//						if (center_layout_target.isShown()) {
+//							center_layout_target.setVisibility(View.INVISIBLE);
+//							center_layout_acture.setVisibility(View.VISIBLE);
+//						} else {
+//							center_layout_target.setVisibility(View.VISIBLE);
+//							center_layout_acture.setVisibility(View.INVISIBLE);
+//						}
+//					}
+//				});
+        iv_completionRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (center_layout_target.isShown()) {
+                    center_layout_target.setVisibility(View.INVISIBLE);
+                    center_layout_acture.setVisibility(View.VISIBLE);
+                } else {
+                    center_layout_target.setVisibility(View.VISIBLE);
+                    center_layout_acture.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+        ll2 = (LinearLayout) viewTop.findViewById(R.id.ll2);
+        rl_blank_view_male = (RelativeLayout) viewTop
+                .findViewById(R.id.rl_blank_view_male);
+        rl_blank_view_sex = (RelativeLayout) viewTop
+                .findViewById(R.id.rl_blank_view_sex);
+        randomLayout = (RandomLayout) viewTop.findViewById(R.id.randomLayout);
+
+        randomLayout
+                .setOnSportTypeChangedListener(new RandomLayout.ONSportTypeChangedListener() {
+
+                    @Override
+                    public void onTypeChanged(SportTypeCheckBox cb) {
+                        DailySportData osd = (DailySportData) cb.getTag();
+                        // 滑动下部页面
+                        showNextView(sportListView, osd.getSportType());
+
+                    }
+                });
+
+        center_layout_target = viewTop.findViewById(R.id.center_layout_target);
+        center_layout_acture = viewTop.findViewById(R.id.center_layout_acture);
+        center_layout_target.setVisibility(View.INVISIBLE);
+        center_layout_acture.setVisibility(View.VISIBLE);
+        tv_target = (TextView) center_layout_target
+                .findViewById(R.id.tv_target);
+        tv_acture = (TextView) center_layout_acture
+                .findViewById(R.id.tv_acture);
+
+        btn_up = (ImageView) viewTop.findViewById(R.id.btn_up);
+        btn_up.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (randomLayout.getDailySportDataList() != null
+                        && randomLayout.getDailySportDataList().size() > 0)
+                    showNextView();
+            }
+        });
+        sportListView = (HomePageListView) viewBottom
+                .findViewById(R.id.sportList);
+        sportListView.setOnScrollTopListener(new OnScrollTopListener() {
+
+            @Override
+            public void onScrollTop() {
+
+                showPreviousView();
+
+            }
+        });
+        sriv_sport = (SportRateImageView) viewBottom
+                .findViewById(R.id.sriv_sport);
+        btn_share = (Button) viewBottom.findViewById(R.id.btn_share);
+        btn_share.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (!isSaving) {
+
+                    jump2ShareActivity();
+                }
+            }
+        });
+        viewFlipper.setListener(this);
+        //
+        // // 先加载本空数据
+        buildView(null);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(sportAction);
+        activity.registerReceiver(receiver, intentFilter);
+
+        if (application.appVersion == null)
+            startBluetoothStateChecking();
+        else {
+            showUpdateVersion(application.appVersion);
+        }
+    }
+
+    private void startBluetoothStateChecking() {
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                checkBluetoothState();
+            }
+        }, 1000);
+    }
+
+    public static final String sportAction = "com.hikodigital.sportdata";
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(sportAction)) {
+                // 先加载本地的主页数据
+                buildViewFromLoacalData();
+            }
+        }
+    };
+
+    public void onDestroy() {
+        super.onDestroy();
+        try {
+            activity.unregisterReceiver(receiver);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void buildViewFromLoacalData() {
+        showProgress(false);
+        if (this.isHidden()) {
+            if (dao.isRunning()) {
+                dao.cancel();
+            }
+            return;
+        }
+        if (dao.isRunning()) {
+            dao.cancel();
+        }
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SharedPreferences shp = activity.getSharedPreferences("home",
+                Context.MODE_WORLD_WRITEABLE);
+
+        if (!isShowingProgressDialog()) {
+//			iv_completionRate.dismissProgress();
+            showProgress(false);
+        }
+//		iv_completionRate.showProgress();
+        // showProgress(true);
+        String homeString = shp.getString(format.format(new Date()), null);
+        if (homeString != null) {
+            Gson gson = new Gson();
+            hsd = gson.fromJson(homeString, HomeSportData.class);
+            buildView(hsd);
+        }
+
+        dao.GetHomeSportData();
+
+    }
+
+    public void dissmissDialog() {
+        if (iv_completionRate != null) {
+//			iv_completionRate.dismissProgress();
+        }
+    }
+
+//	public boolean isShowingDailog() {
+//		return iv_completionRate.isShowingDailog();
+//	}
+
+    // 向下滑 显示下面列表布局
+    private void showNextView() {
+        Log.e("向下滑动", "OK");
+        Log.e(TAG, "向下滑动---1111111-->");
+        Animation anim_in = AnimationUtils.loadAnimation(activity,
+                R.anim.push_top_in);
+        Animation anim_out = AnimationUtils.loadAnimation(activity,
+                R.anim.push_top_out);
+        viewFlipper.setInAnimation(anim_in);
+        viewFlipper.setOutAnimation(anim_out);
+        svi.setSpeedMaxRate();
+        svi.setNeedScroll(false);
+        viewFlipper.setScrolling(true);
+        anim_in.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                viewFlipper.setScrolling(true);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        svi.setNeedScroll(true);
+                        viewFlipper.setOpened(true);
+                        viewFlipper.setScrolling(false);
+                    }
+                }, 100);
+            }
+        });
+        viewFlipper.showNext();
+        if (hListener != null) {
+            homepage = 2;
+            hListener.onChange("共消耗"
+                            + (int) (Double.parseDouble(totalCalories) + 0.5) + "kcal",
+                    homepage);
+        }
+    }
+
+    // 向下滑
+    private void showNextView(ListView listView, int sportType) {
+        Log.e(TAG, "向下滑动---222222-->");
+        Log.e("向下滑动", "OK");
+        Animation anim_in = AnimationUtils.loadAnimation(activity,
+                R.anim.push_top_in);
+        Animation anim_out = AnimationUtils.loadAnimation(activity,
+                R.anim.push_top_out);
+        viewFlipper.setInAnimation(anim_in);
+        viewFlipper.setOutAnimation(anim_out);
+
+        svi.setSpeedMaxRate();
+        svi.setNeedScroll(false);
+        viewFlipper.setScrolling(true);
+        anim_in.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                viewFlipper.setScrolling(true);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        svi.setNeedScroll(true);
+                        viewFlipper.setOpened(true);
+                        viewFlipper.setScrolling(false);
+                    }
+                }, 100);
+            }
+        });
+        viewFlipper.showNext();
+        viewFlipper.setOpened(true);
+        if (hListener != null) {
+            homepage = 2;
+            hListener.onChange("共消耗"
+                            + (int) (Double.parseDouble(totalCalories) + 0.5) + "kcal",
+                    homepage);
+        }
+        if (adapter != null) {
+            List<OnceSportData> list = adapter.getList();
+            int selectPosition = -1;
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getSportType() == sportType) {
+                    selectPosition = i;
+                    break;
+                }
+            }
+            if (selectPosition != -1) {
+                adapter.initSelectView(listView, selectPosition);
+            }
+
+            for (int i = 0; i < hsd.getDailyList().size(); i++) {
+                if (hsd.getDailyList().get(i).getSportType() == sportType) {
+                    sriv_sport.setClickIndex(i);
+                }
+            }
+
+        }
+    }
+
+    // 向上滑 显示上面布局
+    private void showPreviousView() {
+        Log.e("向上滑动", "OK");
+        Animation inAinm = AnimationUtils.loadAnimation(activity,
+                R.anim.push_bot_in);
+        viewFlipper.setInAnimation(inAinm);
+        Animation outAinm = AnimationUtils.loadAnimation(activity,
+                R.anim.push_bot_out);
+        viewFlipper.setOutAnimation(outAinm);
+        svi.setSpeedMaxRate();
+        svi.setNeedScroll(false);
+        viewFlipper.setScrolling(true);
+        outAinm.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        svi.setNeedScroll(true);
+                        viewFlipper.setOpened(false);
+                        viewFlipper.setScrolling(false);
+                    }
+                }, 100);
+            }
+        });
+        inAinm.setAnimationListener(new AnimationListener() {
+
+            @Override
+            public void onAnimationStart(Animation arg0) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation arg0) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation arg0) {
+                // TODO Auto-generated method stub
+                sportListView.resetState();
+            }
+        });
+        viewFlipper.showPrevious();
+        if (hListener != null) {
+            homepage = 1;
+            hListener.onChange(getString(R.string.today_sport_title_str),
+                    homepage);
+        }
+
+    }
+
+    private void setValue(String acture, String value, String advice) {
+        if (!TextUtils.isEmpty(value)) {
+            tv_target.setText(value);
+            // tv_acture.setText(new
+            // java.text.DecimalFormat("#").format(Double.parseDouble(value)));
+        }
+
+        if (!TextUtils.isEmpty(acture)) {
+            // tv_acture.setText(acture);
+            tv_acture.setText(new java.text.DecimalFormat("#").format(Double
+                    .parseDouble(acture) + 0.5));
+        }
+        if (!TextUtils.isEmpty(advice)) {
+            tv_today_info.setText(advice);
+        }
+    }
+    String mLock="mLock";
+    private synchronized void buildView(HomeSportData hsd) {
+        synchronized (mLock){
+
+        }
+        if (this.isDetached()) {
+            return;
+        }
+        customer = LocalDataUtils.readCustomer(activity);
+        randomLayout.clear();
+        if (hsd == null) {
+            randomLayout.setVisibility(View.GONE);
+            ll2.setVisibility(View.GONE);
+            btn_up.setVisibility(view.INVISIBLE);
+            tv_today_info.setText("你今天还未参加任何运动");
+            tv_today_info.setTextColor(getResources().getColor(
+                    R.color.time_color_normal));
+            // 构建空数据布局
+            if (customer.getGender().equals("1")) {// 男性
+                rl_blank_view_male.setVisibility(View.VISIBLE);
+                rl_blank_view_sex.setVisibility(View.GONE);
+                buildMaleBlankView();
+            } else if (customer.getGender().equals("2")) {
+                rl_blank_view_male.setVisibility(View.GONE);
+                rl_blank_view_sex.setVisibility(View.VISIBLE);
+                buildSexBlankView();
+            } else {
+                rl_blank_view_male.setVisibility(View.VISIBLE);
+                rl_blank_view_sex.setVisibility(View.GONE);
+                buildMaleBlankView();
+            }
+            viewFlipper.setListener(null);
+        } else {
+            totalCalories = hsd.getTotalCalories();
+            randomLayout.clear();
+            int calories = (int) Double.parseDouble(hsd.getTotalCalories());
+            if(calories>0){
+                btn_up.setVisibility(View.VISIBLE);
+            }else {
+                btn_up.setVisibility(View.INVISIBLE);
+            }
+//            btn_up.setVisibility(View.VISIBLE);
+
+//			iv_completionRate.dismissProgress();
+            if (!TextUtils.isEmpty(customer.getGoalCalories())) {
+                iv_completionRate.setValue((int) Double.parseDouble(hsd.getTotalCalories()));
+                iv_completionRate.setMax((int) Double.parseDouble(customer.getGoalCalories()));
+
+//				iv_completionRate.updateLastData(
+//						Double.parseDouble(hsd.getTotalCalories()),
+//						Double.parseDouble(customer.getGoalCalories()));
+            } else {
+
+//				iv_completionRate.updateLastData(
+//						Double.parseDouble(hsd.getTotalCalories()),
+//						Double.parseDouble(hsd.getGoalCalories()));
+                iv_completionRate.setValue((int) Double.parseDouble(hsd.getTotalCalories()));
+                iv_completionRate.setMax((int) Double.parseDouble(hsd.getGoalCalories()));
+
+            }
+            setValue(String.valueOf(hsd.getTotalCalories()),
+                    String.valueOf(hsd.getGoalCalories()), hsd.getAdvice());
+
+            int total = (int) (Double.parseDouble(hsd.getTotalCalories()));
+            int aver = (int) Double.parseDouble(hsd.getGoalCalories());
+            int dis = total - aver;
+            String value = null;
+            if (dis > 0) {
+                value = "超过目标" + dis + "kcal，" + "继续挑战自己吧";
+            } else if (dis == 0) {
+                value = "已达到目标,继续挑战自己吧";
+            } else {
+                value = "还差目标" + (-dis) + "kcal，" + "继续挑战自己吧";
+            }
+            tv_today_desp.setText(value);
+
+            if ((hsd != null && Double.parseDouble(hsd.getTotalCalories()) == 0)) {
+                randomLayout.setVisibility(View.GONE);
+                ll2.setVisibility(View.GONE);
+
+                tv_today_info.setText("你今天还未参加任何运动");
+                tv_today_info.setTextColor(getResources().getColor(
+                        R.color.time_color_normal));
+                // 构建空数据布局
+                if (customer.getGender().equals("1")) {// 男性
+                    rl_blank_view_male.setVisibility(View.VISIBLE);
+                    rl_blank_view_sex.setVisibility(View.GONE);
+                    buildMaleBlankView();
+                } else if (customer.getGender().equals("2")) {
+                    rl_blank_view_male.setVisibility(View.GONE);
+                    rl_blank_view_sex.setVisibility(View.VISIBLE);
+                    buildSexBlankView();
+                } else {
+                    rl_blank_view_male.setVisibility(View.VISIBLE);
+                    rl_blank_view_sex.setVisibility(View.GONE);
+                    buildMaleBlankView();
+                }
+                viewFlipper.setListener(null);
+            } else {
+                tv_today_info.setTextColor(getResources().getColor(
+                        R.color.white));
+                rl_blank_view_male.setVisibility(View.GONE);
+                rl_blank_view_sex.setVisibility(View.GONE);
+                randomLayout.setVisibility(View.VISIBLE);// 显示随机布局
+                ll2.setVisibility(View.GONE);// 显示共参加n项活动布局
+                // 构建动态类型布局
+                if (hsd.getDailyList() != null)
+                    tv_today_sport_count.setText(String.valueOf(hsd
+                            .getDailyList().size()));
+                randomLayout.ininData(hsd.getDailyList());
+                randomLayout.buildLayout(activity);
+
+                if (hsd.getOnceList() != null) {
+                    adapter = new TimeLineAdapter(activity, hsd.getOnceList());
+                    sportListView.setAdapter(adapter);
+                    Utils.setListViewHeightBasedOnChildren(sportListView);
+                    String[] types = new String[hsd.getDailyList().size()];
+                    double[] values = new double[hsd.getDailyList().size()];
+                    int i = 0;
+
+                    for (DailySportData dsd : hsd.getDailyList()) {
+                        types[i] = dsd.getSportName();
+                        values[i] = dsd.getTotalCalories();
+                        i++;
+                    }
+
+                    sriv_sport.setData(types, values);
+                    setListener();
+                    viewFlipper.setListener(this);
+                }
+
+            }
+        }
+    }
+
+    void buildMaleBlankView() {
+        String[] typeNames = {"跑步", "游泳", "椭圆机", "二头肌双向练习", "三头肌双向练习",
+                "坐式肩膀后展练习", "坐式大腿伸展练习", "高拉力背肌练习"};
+        int[] typeImage = {R.mipmap.icon_paobu, R.mipmap.icon_youyong,
+                R.mipmap.icon_tuoyuanji, R.mipmap.icon_ertouji,
+                R.mipmap.icon_santouji, R.mipmap.icon_jianbang,
+                R.mipmap.icon_tuibu, R.mipmap.icon_gaolali};
+        ImageView iv_male_sport1 = (ImageView) rl_blank_view_male
+                .findViewById(R.id.iv_male_sport1);
+        ImageView iv_male_sport2 = (ImageView) rl_blank_view_male
+                .findViewById(R.id.iv_male_sport2);
+        ImageView iv_male_sport3 = (ImageView) rl_blank_view_male
+                .findViewById(R.id.iv_male_sport3);
+        TextView tv_male_sport1 = (TextView) rl_blank_view_male
+                .findViewById(R.id.tv_male_sport1);
+        TextView tv_male_sport2 = (TextView) rl_blank_view_male
+                .findViewById(R.id.tv_male_sport2);
+        TextView tv_male_sport3 = (TextView) rl_blank_view_male
+                .findViewById(R.id.tv_male_sport3);
+
+        iv_male_sport1.setImageResource(typeImage[0]);
+        tv_male_sport1.setText(typeNames[0]);
+        Random random = new Random();
+        int index = (int) (Math.random() * 3 + 1);// 1-3的随机数Math.random()0.0<=n<1.0
+        iv_male_sport2.setImageResource(typeImage[index]);
+        tv_male_sport2.setText(typeNames[index]);
+        index = (int) (Math.random() * 4 + 4);// 4-7的随机数Math.random()0.0<=n<1.0
+        iv_male_sport3.setImageResource(typeImage[index]);
+        tv_male_sport3.setText(typeNames[index]);
+    }
+
+    void buildSexBlankView() {
+        String[] typeNames = {"跑步", "游泳", "有氧舞蹈", "椭圆机", "动感单车", "步行", "搏击操",
+                "蝴蝶式扩胸练习"};
+        int[] typeImage = {R.mipmap.icon_paobu, R.mipmap.icon_youyong,
+                R.mipmap.icon_youyang, R.mipmap.icon_tuoyuanji,
+                R.mipmap.icon_danche, R.mipmap.icon_buxing,
+                R.mipmap.icon_bojicao, R.mipmap.icon_hudie};
+        ImageView iv_sex_sport1 = (ImageView) rl_blank_view_sex
+                .findViewById(R.id.iv_sex_sport1);
+        ImageView iv_sex_sport2 = (ImageView) rl_blank_view_sex
+                .findViewById(R.id.iv_sex_sport2);
+        ImageView iv_sex_sport3 = (ImageView) rl_blank_view_sex
+                .findViewById(R.id.iv_sex_sport3);
+        TextView tv_sex_sport1 = (TextView) rl_blank_view_sex
+                .findViewById(R.id.tv_sex_sport1);
+        TextView tv_sex_sport2 = (TextView) rl_blank_view_sex
+                .findViewById(R.id.tv_sex_sport2);
+        TextView tv_sex_sport3 = (TextView) rl_blank_view_sex
+                .findViewById(R.id.tv_sex_sport3);
+
+        iv_sex_sport1.setImageResource(typeImage[0]);
+        tv_sex_sport1.setText(typeNames[0]);
+        Random random = new Random();
+        int index = (int) (Math.random() * 3 + 1);// 1-3的随机数Math.random()0.0<=n<1.0
+        iv_sex_sport2.setImageResource(typeImage[index]);
+        tv_sex_sport2.setText(typeNames[index]);
+        index = (int) (Math.random() * 4 + 4);// 4-8的随机数Math.random()0.0<=n<1.0
+        iv_sex_sport3.setImageResource(typeImage[index]);
+        tv_sex_sport3.setText(typeNames[index]);
+    }
+
+    @Override
+    public void onNoConnect() {
+        super.onNoConnect();
+//		iv_completionRate.dismissProgress();
+        showProgress(false);
+        // MessageUtils.showShortToast(activity,
+        // getString(R.string.no_connect_str));
+    }
+
+    // float lastY;
+    // public boolean isChanging = false;
+
+    // @Override
+    // public boolean onTouch(View view, MotionEvent event) {
+    //
+    // int action = event.getAction();
+    // switch (action) {
+    // case MotionEvent.ACTION_DOWN:
+    // lastY = event.getY();
+    // break;
+    // case MotionEvent.ACTION_UP:
+    // // isChanging = false;
+    // break;
+    // case MotionEvent.ACTION_MOVE:
+    // float newY = event.getY();
+    // if (lastY - newY > 40) {
+    // if (!isChanging && randomLayout.getDailySportDataList() != null
+    // && randomLayout.getDailySportDataList().size() > 0) {
+    // showNextView();// 滑动跳转到列表界面
+    // isChanging = true;
+    // viewFlipper.postDelayed(new Runnable() {
+    //
+    // @Override
+    // public void run() {
+    // // TODO Auto-generated method stub
+    // isChanging = false;
+    // }
+    // }, 1000);
+    // }
+    // }
+    // break;
+    // default:
+    // break;
+    // }
+    //
+    // return true;
+    // }
+
+    @Override
+    public void onRequestFaild(String errorNo, String errorMessage) {
+        // TODO Auto-generated method stub
+        super.onRequestFaild(errorNo, errorMessage);
+        showProgress(false);
+        dissmissDialog();
+    }
+
+    HomeSportData hsd;
+
+    @SuppressLint("NewApi")
+    @Override
+    public void onRequestSuccess(int requestCode) {
+        if (activity == null || activity.isFinishing() || this.isHidden())
+            return;
+        showProgress(false);
+        dissmissDialog();
+        Intent intent = null;
+        switch (requestCode) {
+            case SportType.HomeSport: // !<首页
+                hsd = dao.getHomesportdata();
+                buildView(hsd);
+//
+                break;
+            case SportType.HKSportTypePaoBuJi: // !<跑步机
+                if (isOpenActivity) {
+                    intent = new Intent(activity, SportSingleDetailActivity.class);
+                    intent.putExtra(Constants.oncesporttype, sporttype);
+                    intent.putExtra(Constants.oncesportname, sportName);
+                    intent.putExtra(Constants.oncesportdata, dao.getPaobu());
+                    startActivity(intent);
+                } else {
+//				BuXing buxing = dao.getBuxing();
+//				uploadQQSteps(buxing);
+//				isOpenActivity = true;
+                }
+
+                break;
+            case SportType.HKSportTypeBuXing:// !<步行
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getBuxing());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeYouYangWuDao:// !<有氧舞蹈
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getYouxiangwudao());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeDongGanDanChe:// !<动感单车
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getDonggandanche());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeGangLingCao:// !<杠铃操
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getGanglingcao());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeBoJiCao:// !<搏击操
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getBojiCao());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeTuoYuanJi: // !<椭圆机
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getTuoyuanji());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeHuaTingLaLi:// !<坐式划艇拉力练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getZuoshihuatinglali());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeJianBangHouZhan: // !<坐式肩膀后展练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getJianbanghouzhan());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeLaLiBeiJi:// !<高拉力背肌练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getGaolalibeiji());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeBeiJiShenZhan:// !<坐式背肌伸展练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshibeijishenzhan());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeZuoShiFeiNiao:// !<坐式飞鸟练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getZuoshifeiniao());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeZuoShiTiXi:// !<坐式提膝练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getZuoshitixi());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeZuoShiDaTuiShenZhan:// !<坐式大腿伸展练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshidatuishenzhan());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeZuoShiHouTuiQuShen: // !<坐式后腿屈伸练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshihoutuiqushen());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeDaTuiWaiCeJi: // !<大腿外侧肌练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshidatuiwaiceji());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeDaTuiNeiCeJi: // !<大腿内侧肌练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshidatuineiceji());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeJianBangTuiJu: // !<坐式肩膀推举练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshijianbangtuiju());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeShuangXiangTuiXiong: // !<坐式双向推胸练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getZuoshishuangxiangtuixiong());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeHuDieShiKuoXiong: // !<蝴蝶式扩胸练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getHudieshikuoxiong());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeWoShiTuiQuZhan: // !<卧式腿屈展器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getWoshituiquzhan());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeErTouJiShuangXiang: // !<二头肌双向练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getErtoujishuangxiang());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeSanTouJiShuangXiang: // !<三头肌双向练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getSantoujishuangxiang());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeLiShiDaTuiShenZhan: // !<立式大腿伸展练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata,
+                        dao.getLishidatuishenzhan());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeTiaoJieDengTui: // !<调节式蹬腿练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getTiaojieshidengtui());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeLiShiDaTuiQuShen: // !<立式大腿屈伸练习器
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getLishidatuiqushen());
+                startActivity(intent);
+                break;
+            case SportType.HKSportTypeYouYong: // !<游泳
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getYouyong());
+                startActivity(intent);
+                break;
+
+            case SportType.HKSportTypeJianshencao:
+                intent = new Intent(activity, SportSingleDetailActivity.class);
+                intent.putExtra(Constants.oncesporttype, sporttype);
+                intent.putExtra(Constants.oncesportname, sportName);
+                intent.putExtra(Constants.oncesportdata, dao.getJianshencao());
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void uploadQQSteps(BuXing buxing) {
+        QQStepsData stepsData = new QQStepsData();
+        QQRunData runData = new QQRunData();
+        String QQ_oauth_consumer_key = PreferencesUtils.getString(ma, "QQ_oauth_consumer_key", "");
+        String QQ_access_token = PreferencesUtils.getString(ma, "QQ_access_token", "");
+        String QQ_openid = PreferencesUtils.getString(ma, "QQ_openid", "");
+        //步行数据
+        stepsData.setAccess_token(QQ_access_token);
+        stepsData.setOauth_consumer_key(QQ_oauth_consumer_key);
+        stepsData.setOpenid(QQ_openid);
+        stepsData.setTime(buxing.getBeginTime());
+        stepsData.setDistance(buxing.getJuli() + "");
+        stepsData.setSteps(buxing.getBushu() + "");
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
+
+        Long c = null;
+        try {
+            c = sf.parse(buxing.getEndTime()).getTime() - sf.parse(buxing.getBeginTime()).getTime();
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        long duration = c / 1000;//秒
+        stepsData.setDuration(duration + "");
+        stepsData.setCalories(buxing.getKaluli() + "");
+        //跑步数据
+        runData.setAccess_token(QQ_access_token);
+        runData.setOauth_consumer_key(QQ_oauth_consumer_key);
+        runData.setOpenid(QQ_openid);
+        runData.setTime(buxing.getBeginTime());
+        runData.setDistance(buxing.getJuli() + "");
+        runData.setSteps(buxing.getBushu() + "");
+        runData.setDuration(duration + "");
+        runData.setCalories(buxing.getKaluli() + "");
+
+        baseDao.setQQSteps(stepsData);
+        baseDao.setQQRun(runData);
+
+    }
+
+    public interface HomeListener {
+        public void onChange(String info, int i);
+    }
+
+    public void sethListener(HomeListener hListener) {
+        this.hListener = hListener;
+    }
+
+    protected void btnGetDatas(OnceSportData str, int i) {
+        if (isShowingProgressDialog())
+            return;
+        showProgress(true);
+        Log.v("MyLog", i + "------------" + str.getSportType());
+        sporttype = str.getSportType();
+        sportName = str.getSportName();
+        switch (str.getSportType()) {
+            case SportType.HKSportTypePaoBuJi: // !<跑步机
+                dao.GetLatestPaoBuJiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeBuXing:// !<步行
+                dao.GetLatestBuXingData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeYouYangWuDao:// !<有氧舞蹈
+                dao.GetLatestYouYangWuDaoData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeDongGanDanChe:// !<动感单车
+                dao.GetLatestDongGanDanCheData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeGangLingCao:// !<杠铃操
+                dao.GetLatestGangLingCaoData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeBoJiCao:// !<搏击操
+                dao.GetLatestBoJiCaoData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeTuoYuanJi: // !<椭圆机
+                dao.GetLatestTuoYuanJiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeHuaTingLaLi:// !<坐式划艇拉力练习器
+                dao.GetLatestHuaTingLaLiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeJianBangHouZhan: // !<坐式肩膀后展练习器
+                dao.GetLatestJianBangHouZhanData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeLaLiBeiJi:// !<高拉力背肌练习器
+                dao.GetLatestLaLiBeiJiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeBeiJiShenZhan:// !<坐式背肌伸展练习器
+                dao.GetLatestBeiJiShenZhanData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeZuoShiFeiNiao:// !<坐式飞鸟练习器
+                dao.GetLatestZuoShiFeiNiaoData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeZuoShiTiXi:// !<坐式提膝练习器
+                dao.GetLatestZuoShiTiXiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeZuoShiDaTuiShenZhan:// !<坐式大腿伸展练习器
+                dao.GetLatestZuoShiDaTuiShenZhanData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeZuoShiHouTuiQuShen: // !<坐式后腿屈伸练习器
+                dao.GetLatestZuoShiHouTuiQuShenData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeDaTuiWaiCeJi: // !<大腿外侧肌练习器
+                dao.GetLatestDaTuiWaiCeJiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeDaTuiNeiCeJi: // !<大腿内侧肌练习器
+                dao.GetLatestDaTuiNeiCeJiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeJianBangTuiJu: // !<坐式肩膀推举练习器
+                dao.GetLatestJianBangTuiJuData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeShuangXiangTuiXiong: // !<坐式双向推胸练习器
+                dao.GetLatestShuangXiangTuiXiongData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeHuDieShiKuoXiong: // !<蝴蝶式扩胸练习器
+                dao.GetLatestHuDieShiKuoXiongData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeWoShiTuiQuZhan: // !<卧式腿屈展器
+                dao.GetLatestWoShiTuiQuZhanData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeErTouJiShuangXiang: // !<二头肌双向练习器
+                dao.GetLatestErTouJiShuangXiangData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeSanTouJiShuangXiang: // !<三头肌双向练习器
+                dao.GetLatestSanTouJiShuangXiangData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeLiShiDaTuiShenZhan: // !<立式大腿伸展练习器
+                dao.GetLatestLiShiDaTuiShenZhanData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeTiaoJieDengTui: // !<调节式蹬腿练习器
+                dao.GetLatestTiaoJieDengTuiData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeLiShiDaTuiQuShen: // !<立式大腿屈伸练习器
+                dao.GetLatestLiShiDaTuiQuShenData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeYouYong: // !<游泳
+                dao.GetLatestYouYongData(str.getOnceId());
+                break;
+            case SportType.HKSportTypeJianshencao:// !<健身操
+                dao.getJianShenCaoOnceData(str.getOnceId());
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    /**
+     * 弹出系统弹框提示用户打开 Bluetooth
+     */
+    private void turnOnBluetooth() {
+        // 请求打开 Bluetooth
+        Intent requestBluetoothOn = new Intent(
+                BluetoothAdapter.ACTION_REQUEST_ENABLE);
+
+        // 设置 Bluetooth 设备可以被其它 Bluetooth 设备扫描到
+        requestBluetoothOn
+                .setAction(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
+
+        // 设置 Bluetooth 设备可见时间
+        requestBluetoothOn.putExtra(
+                BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,
+                BLUETOOTH_DISCOVERABLE_DURATION);
+
+        // 请求开启 Bluetooth
+        startActivityForResult(requestBluetoothOn, REQUEST_CODE_BLUETOOTH_ON);
+    }
+
+    @SuppressLint("NewApi")
+    private void checkBluetoothState() {
+        if (android.os.Build.VERSION.SDK_INT >= 18) {
+            if (activity != null) {
+                BluetoothManager bluetoothManager = (BluetoothManager) activity
+                        .getSystemService(Context.BLUETOOTH_SERVICE);
+                BluetoothAdapter bluetoothAdapter = bluetoothManager
+                        .getAdapter();
+
+                if (bluetoothAdapter != null && !bluetoothAdapter.isEnabled()) {
+                    this.turnOnBluetooth();
+                }
+            }
+        }
+    }
+
+    /**
+     * 自定义的打开 Bluetooth 的请求码，与 onActivityResult 中返回的 requestCode 匹配。
+     */
+    private static final int REQUEST_CODE_BLUETOOTH_ON = 1313;
+
+    /**
+     * Bluetooth 设备可见时间，单位：秒。
+     */
+    private static final int BLUETOOTH_DISCOVERABLE_DURATION = 250;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // requestCode 与请求开启 Bluetooth 传入的 requestCode 相对应
+        if (requestCode == REQUEST_CODE_BLUETOOTH_ON) {
+            switch (resultCode) {
+                // 点击确认按钮
+                case Activity.RESULT_OK: {
+                    application.scanDevice();
+
+                }
+
+
+                // 点击确认按钮
+                case 250: {
+                    // TODO 用户选择开启 Bluetooth，Bluetooth 会被开启
+
+                    application.scanDevice();
+                }
+                break;
+
+                // 点击取消按钮或点击返回键
+                case Activity.RESULT_CANCELED: {
+                    // TODO 用户拒绝打开 Bluetooth, Bluetooth 不会被开启
+                }
+                break;
+                default:
+                    break;
+            }
+        }
+        if (requestCode == ReqeustCode.FROM_CAPTURE) {
+            if (resultCode == Activity.RESULT_OK) {
+            }
+        }
+    }
+
+    public void showUpdateVersion(final AppVersion appVersion) {
+        PackageManager manager = ma.getPackageManager();
+        PackageInfo info;
+        try {
+            info = manager.getPackageInfo(ma.getPackageName(), 0);
+            String version = info.versionName;
+
+            if (!TextUtils.isEmpty(appVersion.getForceVersion())
+                    && version
+                    .compareToIgnoreCase(appVersion.getForceVersion()) < 0) {
+                versionDialogShowing = true;
+                new AlertDialog.Builder(ma).setMessage("发现新版本")
+                        .setPositiveButton("升级", new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int arg1) {
+                                // TODO Auto-generated method stub
+                                downLoad(appVersion.getPackageUrl());
+                                dialog.dismiss();
+                                ma.finish();
+                            }
+                        }).setCancelable(false).show();
+
+            } else if (!TextUtils.isEmpty(appVersion.getLatestVersion())
+                    && version.compareToIgnoreCase(appVersion
+                    .getLatestVersion()) < 0) {
+                versionDialogShowing = true;
+                new AlertDialog.Builder(ma).setMessage("发现新版本")
+                        .setPositiveButton("升级", new OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int arg1) {
+                                // TODO Auto-generated method stub
+                                downLoad(appVersion.getPackageUrl());
+                                dialog.dismiss();
+                                ma.finish();
+                            }
+                        }).setNegativeButton("取消", new OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int arg1) {
+                        // TODO Auto-generated method stub
+                        dialog.dismiss();
+                        versionDialogShowing = false;
+                        buildViewFromLoacalData();
+                        startBluetoothStateChecking();
+                    }
+                }).setCancelable(false).show();
+            } else {
+                versionDialogShowing = false;
+                buildViewFromLoacalData();
+                startBluetoothStateChecking();
+            }
+        } catch (NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    public void downLoad(String fileUrl) {
+        if (!TextUtils.isEmpty(fileUrl)) {
+            String suffix = fileUrl.substring(fileUrl.length() - 4);
+            if (suffix.equalsIgnoreCase(".apk")) {
+                DownloadManager downloadManager = (DownloadManager) ma
+                        .getSystemService(Context.DOWNLOAD_SERVICE);
+
+                Uri uri = Uri.parse(fileUrl);
+                Request request = new Request(uri);
+
+                // 设置允许使用的网络类型，这里是移动网络和wifi都可以
+                request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE
+                        | DownloadManager.Request.NETWORK_WIFI);
+
+                // 禁止发出通知，既后台下载，如果要使用这一句必须声明一个权限：android.permission.DOWNLOAD_WITHOUT_NOTIFICATION
+                // request.setShowRunningNotification(false);
+
+                // 不显示下载界面
+                request.setVisibleInDownloadsUi(true);
+                /*
+				 * 设置下载后文件存放的位置,如果sdcard不可用，那么设置这个将报错， 因此最好不设置如果sdcard可用，下载后的文件
+				 * 在/mnt/sdcard/Android/ data/packageName/files目录下面
+				 * ，如果sdcard不可用,设置了下面这个将报错，不设置，下载后的文件在/cache这个 目录下面
+				 */
+                // request.setDestinationInExternalFilesDir(this,
+                // null, "tar.apk");
+                long id = downloadManager.enqueue(request);
+
+                // TODO 把id保存好，在接收者里面要用，最好保存在Preferences里面
+                SharedPreferences shp = ma.getSharedPreferences(
+                        Constants.download, Context.MODE_WORLD_WRITEABLE);
+                Editor editor = shp.edit();
+                editor.putLong(Constants.ID, id);
+                editor.commit();
+
+            } else {
+                Uri uri = Uri.parse(fileUrl);
+                Intent downloadIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(downloadIntent);
+            }
+        }
+    }
+
+    boolean isSaving = false;
+    final List<Bitmap> bmpsList = new ArrayList<Bitmap>();
+    private synchronized void jump2ShareActivity() {
+        bmpsList.clear();
+        if (!isSaving) {
+            showProgress(true);
+            isSaving = true;
+
+            final LayoutInflater inflater = activity.getLayoutInflater();
+            final View view_head = inflater.inflate(R.layout.share_pic_head,
+                    null);
+            final View view_bottom = inflater.inflate(
+                    R.layout.share_pic_bottom, null);
+            final TextView tv_appname = (TextView) view_bottom
+                    .findViewById(R.id.tv_appname);
+            final TextView tv_desp = (TextView) view_bottom
+                    .findViewById(R.id.tv_desp);
+            final ImageView iv_head = (ImageView) view_head
+                    .findViewById(R.id.iv_head);
+            TextView tv_name = (TextView) view_head.findViewById(R.id.tv_name);
+            tv_name.setText(customer.getName());
+
+            tv_appname.setText(getString(R.string.app_name));
+            tv_desp.setText("你从未如此了解自己");
+
+            bitmapUtils.display(iv_head,
+                    HttpConnectUtils.image_ip + customer.getAvatar(),
+                    new BitmapLoadCallBack<View>() {
+                        @Override
+                        public void onLoadCompleted(View container, String uri,
+                                                    Bitmap bitmap, BitmapDisplayConfig config,
+                                                    BitmapLoadFrom from) {
+                            // TODO Auto-generated method stub
+                            // 顶部头像转成圆角
+                            iv_head.setImageBitmap(ImageHelper
+                                    .toRoundBitmap(bitmap));
+
+                            new Thread(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    // TODO Auto-generated method stub
+                                    // 添加顶部的头像view
+                                    bmpsList.add(Utils.getBitmapByViewCache(
+                                            view_head, 0));
+
+                                    // 添加列表view
+                                    Bitmap bmp;
+                                    synchronized (mLock){
+                                         bmp = Utils.getBitmapByView(svi,  Color.parseColor("#dc4355") , -(int) activity
+                                                .getResources()
+                                                .getDimension(
+                                                        R.dimen.x300));
+                                        bmpsList.add(bmp);
+
+                                    }
+
+                                    // 添加底部说明
+                                    bmpsList.add(Utils.getBitmapByViewCache(
+                                            view_bottom, 0));
+
+                                    // 生成整个分享图片
+                                    bmp = Utils.getBitmapSportList(Color.parseColor("#dc4355"), bmpsList);
+
+                                    bmpsList.clear();
+                                    String filePath = Utils.savePic(bmp,
+                                            "sport");
+
+                                    Message msg = new Message();
+                                    msg.what = 0;
+                                    msg.obj = filePath;
+                                    handler.sendMessage(msg);
+                                }
+                            }).start();
+
+                        }
+
+                        @Override
+                        public void onLoadFailed(View container, String uri,
+                                                 Drawable drawable) {
+                            // TODO Auto-generated method stub
+
+                            new Thread(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    // TODO Auto-generated method stub
+                                    // 添加顶部的头像view
+                                    bmpsList.add(Utils.getBitmapByViewCache(
+                                            view_head, 0));
+
+                                    // 添加列表view
+
+                                    Bitmap bmp = Utils.getBitmapByView(svi, Color.parseColor("#dc4355"), -(int) activity
+                                            .getResources()
+                                            .getDimension(
+                                                    R.dimen.x300));
+                                    bmpsList.add(bmp);
+
+                                    // 添加底部说明
+                                    bmpsList.add(Utils.getBitmapByViewCache(
+                                            view_bottom, 0));
+
+                                    // 生成整个分享图片
+                                    bmp = Utils.getBitmapSportList(Color.parseColor("#dc4355"), bmpsList);
+                                    String filePath = Utils.savePic(bmp,
+                                            "sport");
+
+                                    Message msg = new Message();
+                                    msg.what = 0;
+                                    msg.obj = filePath;
+                                    handler.sendMessage(msg);
+                                }
+                            }).start();
+
+                        }
+                    });
+        }
+    }
+
+    Handler handler = new Handler() {
+        public void handleMessage(android.os.Message msg) {
+
+            showProgress(false);
+            switch (msg.what) {
+                case 0:
+                    if (msg.obj != null) {
+                        String filePath = (String) msg.obj;
+                        Intent intent = new Intent(activity,
+                                SocialShareActivity.class);
+                        intent.putExtra("filePath", filePath);
+                        startActivity(intent);
+                        isSaving = false;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+        }
+
+        ;
+    };
+    BitmapUtils bitmapUtils;
+
+    /**
+     * 初始化图片加载器
+     */
+    private void initBitmapUtils() {
+        String path = Environment.getExternalStorageDirectory()
+                .getAbsolutePath() + "/"+getString(R.string.app_name)+"/cacher";
+        bitmapUtils = new BitmapUtils(activity, path);
+        bitmapUtils.configDefaultLoadFailedImage(R.mipmap.icon_touxiang);
+        bitmapUtils.configDefaultShowOriginal(false);// 显示原始图片,不压缩,
+        // 尽量不要使用,图片太大时容易OOM。
+        bitmapUtils.configDefaultBitmapConfig(Bitmap.Config.RGB_565);
+        bitmapUtils.configDefaultBitmapMaxSize(BitmapCommonUtils
+                .getScreenSize(activity));
+        bitmapUtils.configDefaultLoadingImage(R.mipmap.icon_touxiang);
+        // bitmapUtils.configDefaultCacheExpiry(2*60*1000);
+        bitmapUtils.configThreadPoolSize(5);
+
+    }
+
+    @Override
+    public void onTouch(boolean opened) {
+        if (opened) {
+            showNextView();
+        } else {
+            showPreviousView();
+        }
+    }
+
+
+}

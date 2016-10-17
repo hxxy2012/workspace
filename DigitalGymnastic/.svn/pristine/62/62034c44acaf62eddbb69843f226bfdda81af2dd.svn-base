@@ -1,0 +1,4 @@
+include ':library'
+include ':social_sdk_library_project'
+include ':slidelistview_library'
+include ':app'

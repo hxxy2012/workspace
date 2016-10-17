@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/app_icon_test.png",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/mipmap-xxxhdpi/app_icon_test.png"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/app_icon_test.png",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/mipmap-xxxhdpi/app_icon_test.png"
+    }
+]

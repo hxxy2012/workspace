@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout android:id="@+id/ll_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center"
+        android:layout_marginTop="30dp">
+  <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:gravity="center"
+             android:layout_gravity="center_vertical"
+            android:src="@mipmap/icon_deviceconfiailed"/>
+        <TextView
+            android:id="@+id/tv_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="3dp"
+            android:text="@string/device_failed_pipei"
+            android:textColor="@color/device_rel_text_normal"
+            android:textSize="15dp" />
+    </LinearLayout>
+ <LinearLayout android:id="@+id/ll_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_title"
+        android:orientation="vertical"
+        android:layout_margin="10dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/device_near_phone"
+            android:textColor="@color/device_rel_text_desp"
+            android:textSize="@dimen/x11" />
+    </LinearLayout>
+  <FrameLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_desc"
+        android:orientation="horizontal"
+        android:layout_margin="30dp" >
+
+        <ImageView
+            android:layout_width="@dimen/x210"
+            android:layout_height="@dimen/x210"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/icon_alert_fail1"/>
+
+        
+        
+    </FrameLayout>
+     <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/y40" >
+
+       <Button android:id="@+id/btn_research"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/research_device"
+        android:textColor="@color/device_unbind_btncolor"
+        android:textSize="@dimen/x11"
+       android:layout_centerInParent="true"
+        android:background="@null"
+        android:gravity="center"
+        />
+       
+       
+        
+    </RelativeLayout>
+ 
+  
+</RelativeLayout><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/layout/activity_deviceconfailed.xml -->

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_email.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="36bb8b1a2f997d102d458a6897a083cf504aca99">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_email_05b003312fedaf657ae399673acbdd6b2ef1cbf9.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_pinterest.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2ddfadd1780ed8037c2b495a07657e9304f5127b">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_pinterest_0639329f793bb82cd09089e91b4fb640e756d162.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_laiwang_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="15eaf26e7b4d637dc002dcfd114d07a007d5e045">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_laiwang_1_920c8b68e2ac05cc9f21c5beab405cad0536817a.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_QQZone_3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8338b09e3c15d2ff5590c71b32037042b56b3306">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_QQZone_3_a9ab020f4dc9b916203f63dd2f133f3750115cbf.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_yixin_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="16c748db2b256eaf8806c14cc4c6a041b4306ce5">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_yixin_1_5bcdc7761d528a82b4d7176dccc64bba3aabe770.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/libs/com.umeng.message.lib_v2.4.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2e43bd4164f510a6b4be65f569356d79237b36ed">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/com.umeng.message.lib_v2.4.1_1cd1fe9dee2352349f5fe9b7d74b7e4083f12f8a.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_UserCenter.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="991b77b0d483c485a2bf1408efc253b438f496de">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_UserCenter_8122123519fbb990f8f070e8dcc3bb8e7a44933b.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_tencentWB_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="33314b1f431d8efe34d4707c99c0956bb84115ef">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_tencentWB_1_6d4be304ee92fb3469f7e3ccab29c52df3da5a08.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_WeiXin_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4e150979eae8a8e28ac5e2b1dabf22f74077de31">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_WeiXin_1_159c0829d86fa8ee9ebf1b5273f832d7418ee306.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_instagram.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5da3cc9699b2cc525bc80941cc9f15fdb4e140a8">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_instagram_5caea6d27b4a07f968b1d74d9f501daef264bf54.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_scrshot.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a9c4b65ff010679584e67160085ff97de2c3b550">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_scrshot_8631d809304729ad453668fd46ce83186cbe9555.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_sms.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9ecf55fc8189d08a1dd3af113b8a0ce9f93c80d6">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_sms_09cd4acda61219c165068e7cd763452900d76e2e.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/library/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1fd35ff2410949fa45b9e7e214f98fe288334f09">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/DigitalGymnastic-library-unspecified_53d7f9d8125de5b5d67ac6232df3979f173ba00d.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_laiwang_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2143828d03b2942c5b4e6817d50d51604b63d5d6">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_laiwang_2_95fcfd256dd338a06c726b8da861a489d061eb6b.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_WeiXin_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="efedfc2bb5a5db12916717c6bbb10ffe6b54942e">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_WeiXin_2_904cd6f32bb4c7ccf4642e9fd39d226ca0f50b9c.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_tumblr.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5a99615e0f84b68e2bd3bb8225a695362c045595">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_tumblr_aa8f2a4d54d7592d6d3e24980fe9baa585837d6b.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_QQZone_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2e7a501626163707993003cb0a7d553f03809ba8">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_QQZone_1_65395ff2e77d385eae85c748a6827db055eaba14.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0e4ba79fe39513d4823f642a3d0671d2c3018a2b">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/DigitalGymnastic-social_sdk_library_project-unspecified_6a10851c76a476480cf3cdf1d72571ea87de0316.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/libs/milinkble2.0.2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bdda596bac9c237964541103c362debd681b2c3a">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/milinkble2.0.2_dbdb1b09a0228d98892baa963ccaabc7c72f05f9.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_foursquare.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bcdddd9506a51a9d1dce8c12471d7b85f7b0912d">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_foursquare_a9e97753525ea6da4edc711361b9dae7e871a799.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_facebook_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6ae06148d5593ec8c7490681ec3f9e611425829d">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_facebook_1_70597c7ba47e53afac7333f324efae9a7c70f18d.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_comment.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="06aab4e32e7b2defbb55c73be69cbc1f3e7c6ded">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_comment_d889416fd151ced5a817e22f047a9f2a7151a833.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_like.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d98a82fcdca1fbd824f07391227c4a5bbcd9b083">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_like_59710719c191474a42d9a7f9adf01fb43854b8c6.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_facebook_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d39dce81b3aed9ca00610b76e0621209f2716ac8">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_facebook_2_533ba03a2f7cd8ba5b026cfdbec8b394975fff3e.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/com.tencent.bugly/crashreport/1.2.9/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="6b950511badb53900d5c3a9efb9e68fbabe8dc74">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/com.tencent.bugly-crashreport-1.2.9_183840857738581865146afc96d7e097e7d06550.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_actionbarview.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="79ea704286b1e03ca224e4442f6e732a64bf371a">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_actionbarview_2a32e7c4b72f82f64a010a8868f6be6b136b38af.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_renren_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="34a396498d2378405bf4eeeb7ba775ddafec65f4">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_renren_2_8e71f38d74c4c38acf50298743301107f7c0dd60.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_linkedin.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4542b96ab5e41808cf788a83e4a0b7fb920b0c78">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_linkedin_a65b5e3154d6184b47a13b01bd6b5bbda97eef1f.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_shake.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2e26484521692076508aba88430b9b1f27ecd466">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_shake_cba5f31a562c20ffb997dbd807fa1b577157479a.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_renren_1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c650cc5ee95e6fdca13641e35c2ea817320b1c8b">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_renren_1_7269436b08d3b41c554947f3602baceb41f601e2.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_flickr.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c3ac0089093a40ffd63b563067a0191854f599fb">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_flickr_281b62e4724c3bcf8d262923be83fd292019acc8.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_AtFriends.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="fdff38b38761c944fbcffa0f0d6ea2591257e09c">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_AtFriends_6ed4583246a68a442888808a6a802a5f9e8f1d19.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/slidelistview_library/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="0096c7efa388845fb8155358491e2dc68ad85e6b">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/DigitalGymnastic-slidelistview_library-unspecified_2d9bdb68cfc206c676448771a30f0e60d80d0faf.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_whatsapp.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ae62d75060f46e089d20996b70c3b8291901ff28">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_whatsapp_4a641061041143e6809affc3ff3a32a2e7968ae9.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_yixin_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c7526ef29beacbe0e76ff2bf25dee88e515b03d0">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_yixin_2_e563b9952b4df162c17c212e00b6df6ee8134bb1.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/dbService/unspecified/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e318f9c7dbf0b80195a09c018e6cb6af589c8588">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/DigitalGymnastic-dbService-unspecified_c5480b86d6aa6738547e4501af15d51a98f0d9bc.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_pocket.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1c0404c1563df04a2751330fb9f9ded941b04df0">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_pocket_b67475eccd97b6e871fefd302fcaa7907a271bcd.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_ynote.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c6411bb3a22d88362a3d904d1d4ea539b5524de5">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_ynote_1672d3b5c8d2d98b515b21a2b904c3e5596aef57.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_tencentWB_3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="9c2176795f4443ecae809e68ca0cbf98abe2e695">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_tencentWB_3_a0008dd5be71443ebf8f5275df6ba60269e0f599.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_Sina.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c19f74098bc5654fd3ff5ef1a5aadd8e6ee934dd">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_Sina_6067de765bed08da0c62b70cfd23a9fd4b2f9431.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/umeng_social_sdk.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5646f859c9e663146be681b9884fbfefc483bad7">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/umeng_social_sdk_5d30378b13b59baefb4485fbc427d22ef5d7763c.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_tencentWB_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="21aebabd7c664668aa6dd5e110b9d3997d041bd2">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_tencentWB_2_a90be29df6eb770526f711842aaa149f76f5a7a3.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_evernote.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="04919b00bbe24eae6b67b19398e1bb8789c86c2b">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_evernote_09b0048d873b1595940c29f1cd17f8f4f971e220.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_kakao.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5de60605cc99995b9016a2bef6b88be2802b2f57">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_kakao_bbc416587a327de79b77c95be1460c1661bf7627.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/libs/gson-2.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="bd858833cacb4e6742f7698649fb874a360e230f">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/gson-2.1_c551b28b1462d2de56cc34c7c7bce7b9e9399a1a.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_QQZone_2.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="a65582d71d6cf428d238727cabba7a8d4fdd8639">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_QQZone_2_be51b73f09b9a02a64ce890299e46b8f3637f215.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/android-support-v4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ffa97fcc9e339af72bd4951ed7c82333af48d7be">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/android-support-v4_81d1519b238cffad91b54184bb7128398c74980b.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="24c5a6224d20f2a9d80398aea0c0d6cfac25e390">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.4_8d91594dc719fb73abcf7ebe7a2cdc6c6158e9f8.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/SocialSDK_line.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d09f0d18e20e435685bff50c9a9d888a274a87ae">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/SocialSDK_line_335c6fcc274797f2d391a2112ae270c57f889b68.jar" />
+    </item>
+    <item
+        jar="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/jars/libs/httpmime-4.1.3.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="cd40be0f61fe42bc262415b588776a713d9724a5">
+        <dex dex="/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/pre-dexed/debug/httpmime-4.1.3_08e7be6f1a881db5106e9549b4311ec571d5cf97.jar" />
+    </item>
+
+</items>

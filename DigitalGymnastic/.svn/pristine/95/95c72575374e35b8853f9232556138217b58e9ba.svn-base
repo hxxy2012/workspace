@@ -1,0 +1,326 @@
+package com.hike.digitalgymnastic.view;
+
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.hike.digitalgymnastic.entitiy.MyClock;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.hike.digitalgymnastic.view.PickerView.onSelectListener;
+import com.hiko.enterprisedigital.R;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * 
+ * @author changqi
+ * @category 闹钟item视图
+ * 
+ */
+public class ClockItemView extends LinearLayout implements
+		OnCheckedChangeListener {
+	Context context;
+	Calendar calendar;
+	public TextView tv_time;
+	public TextView tv_date;
+	public UISwitchButton ck_open_or_close;
+	public CheckBox cb_expand;
+	public LinearLayout ll_clock_time;
+	public PickerView pv_hh;
+	public PickerView pv_mm;
+
+	CheckBox rb_one;
+	CheckBox rb_two;
+	CheckBox rb_three;
+	CheckBox rb_four;
+	CheckBox rb_five;
+	CheckBox rb_six;
+	CheckBox rb_seven;
+	private String TAG ="ClockItemView";
+
+//	Map<Integer, String> checkedTitleMap = new HashMap<Integer, String>();
+
+	public ClockItemView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		init(context);
+	}
+
+	public ClockItemView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		init(context);
+	}
+
+	public ClockItemView(Context context) {
+		super(context);
+		init(context);
+	}
+
+	MyClock clock;
+
+	public MyClock getClock() {
+		return clock;
+	}
+
+	
+
+	String[] weeks = {"周日","周一", "周二", "周三", "周四", "周五", "周六"};
+	List<CheckBox> cb_list = new ArrayList<CheckBox>();
+
+	private void init(Context context) {
+		inflate(context, R.layout.menu_my_clock_list_item, this);
+		tv_time = (TextView) findViewById(R.id.tv_time);
+		tv_date = (TextView) findViewById(R.id.tv_date);
+		ck_open_or_close = (UISwitchButton) findViewById(R.id.ck_open_or_close);
+		cb_expand = (CheckBox) findViewById(R.id.cb_expand);
+		ll_clock_time = (LinearLayout) findViewById(R.id.ll_clock_time);
+		pv_hh = (PickerView) findViewById(R.id.pv_hh);
+		pv_mm = (PickerView) findViewById(R.id.pv_mm);
+
+		rb_one = (CheckBox) findViewById(R.id.rb_one);
+		rb_two = (CheckBox) findViewById(R.id.rb_two);
+		rb_three = (CheckBox) findViewById(R.id.rb_three);
+		rb_four = (CheckBox) findViewById(R.id.rb_four);
+		rb_five = (CheckBox) findViewById(R.id.rb_five);
+		rb_six = (CheckBox) findViewById(R.id.rb_six);
+		rb_seven = (CheckBox) findViewById(R.id.rb_seven);
+
+		rb_one.setTag(1);
+		rb_two.setTag(2);
+		rb_three.setTag(3);
+		rb_four.setTag(4);
+		rb_five.setTag(5);
+		rb_six.setTag(6);
+		rb_seven.setTag(0);
+
+		cb_list.add(rb_seven);
+		cb_list.add(rb_one);
+		cb_list.add(rb_two);
+		cb_list.add(rb_three);
+		cb_list.add(rb_four);
+		cb_list.add(rb_five);
+		cb_list.add(rb_six);
+
+
+		ck_open_or_close.setOnCheckedChangeListener(this);
+		cb_expand.setOnCheckedChangeListener(this);
+		rb_one.setOnCheckedChangeListener(this);
+		rb_two.setOnCheckedChangeListener(this);
+		rb_three.setOnCheckedChangeListener(this);
+		rb_four.setOnCheckedChangeListener(this);
+		rb_five.setOnCheckedChangeListener(this);
+		rb_six.setOnCheckedChangeListener(this);
+		rb_seven.setOnCheckedChangeListener(this);
+
+		initdata(pv_hh, pv_mm);
+	}
+
+	private void initdata(PickerView pv_hh, PickerView pv_mm) {
+		calendar = Calendar.getInstance();
+
+		List<String> HH = new ArrayList<String>();// 时
+		List<String> MM = new ArrayList<String>();// 分
+		for (int i = 0; i < 24; i++) {
+			HH.add(i<10?("0" + i):""+i);
+		}
+		for (int i = 0; i < 60; i++) {
+			MM.add(i<10?("0" + i):""+i);
+		}
+		pv_hh.setData(HH);
+		pv_mm.setData(MM);
+
+		pv_hh.setOnSelectListener(new onSelectListener() {
+
+			@Override
+			public void onSelect(String text) {
+				UtilLog.e(TAG, "---hh-----" + text);
+				calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
+				setTime();
+				updateView();
+			}
+		});
+		pv_mm.setOnSelectListener(new onSelectListener() {
+
+			@Override
+			public void onSelect(String text) {
+				UtilLog.e(TAG, "--mm----" + text);
+				setTime();
+				calendar.set(Calendar.MINUTE, Integer.parseInt(text));
+				updateView();
+			}
+		});
+	}
+	/**
+	 * 
+	 * @param clock
+	 *            数据源
+	 * @category 设置闹钟数据源
+	 */
+	public void setData(MyClock clock) {
+		this.clock = clock;
+		calendar.set(Calendar.HOUR_OF_DAY, clock.getHour());
+		calendar.set(Calendar.MINUTE, clock.getMin());
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+		tv_time.setText(format.format(calendar.getTime()));
+		int i = 0;
+		StringBuilder buider = new StringBuilder();
+		List<Boolean> list=new ArrayList<Boolean>();
+		for(int j=0;j<7;j++){
+			list.add(false);
+		}
+		Collections.copy(list, clock.getIdList());
+		for (Boolean b : list) {
+			if (b) {
+				buider.append(weeks[i]);
+				buider.append("、");
+				for (CheckBox cb : cb_list) {
+					if (i == (Integer) (cb.getTag())) {
+						cb.setChecked(true);
+						break;
+					}
+				}
+			}
+			i++;
+		}
+		if (buider.length() > 0) {
+			buider.deleteCharAt(buider.length() - 1);
+		}
+
+		tv_date.setText(buider.toString());
+
+		if (clock.isOpenorclose()) {
+			ck_open_or_close.setChecked(true);
+		} else {
+			ck_open_or_close.setChecked(false);
+		}
+
+		if (clock.isExpanded()) {
+			ll_clock_time.setVisibility(View.VISIBLE);
+		} else {
+			ll_clock_time.setVisibility(View.GONE);
+		}
+
+		pv_hh.setSelected(clock.getHour()<10?("0"+clock.getHour()):String.valueOf(clock.getHour()));
+		pv_mm.setSelected(clock.getMin()<10?("0"+clock.getMin()):String.valueOf(clock.getMin()));
+		
+		updateView();
+
+	}
+	public void closeExpanded() {
+		ll_clock_time.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+		if (buttonView.getId() == R.id.cb_expand) {// 改变扩展开关
+			clock.setExpanded(isChecked);
+			if (isChecked) {
+				ll_clock_time.setVisibility(View.VISIBLE);
+			} else {
+				ll_clock_time.setVisibility(View.GONE);
+			}
+			if (listener != null) {
+				listener.onTimePickerExpandedStateChanged(isChecked, clock);
+			}
+		} else if (buttonView.getId() == R.id.ck_open_or_close) {// 改变打开关闭开关
+			if (listener != null) {
+				setTime();
+				listener.onTunerStateChanged(isChecked, clock);
+			}
+		} else {
+			updateView();
+		}
+	}
+
+	/**
+	 * @author changqi
+	 * @category 更新视图
+	 */
+	private void updateView() {
+		// 1.说明：若用户选择周一、周二、周三、周四、周五，则上一页面显示为工作日；
+		// 2.若用户选择周六、周日，则上一页面显示为周末；
+		// 3.若用户选择周一、周二、周三、周四、周五，周六、周日则上一页面显示为每天；
+		// 4..若用户未选择日期，则上一页面闹钟按钮为关闭，且文案显示为永不。
+		// 5.其他日期，上一页面则显示对应的日期。
+		clock.getIdList().clear();
+
+		clock.getIdList().add(rb_seven.isChecked());
+		clock.getIdList().add(rb_one.isChecked());
+		clock.getIdList().add(rb_two.isChecked());
+		clock.getIdList().add(rb_three.isChecked());
+		clock.getIdList().add(rb_four.isChecked());
+		clock.getIdList().add(rb_five.isChecked());
+		clock.getIdList().add(rb_six.isChecked());
+
+
+		boolean firstState = rb_one.isChecked() && rb_two.isChecked()
+				&& rb_three.isChecked() && rb_four.isChecked()
+				&& rb_five.isChecked() && !rb_six.isChecked()
+				&& !rb_seven.isChecked();
+		boolean secondState = !rb_one.isChecked() && !rb_two.isChecked()
+				&& !rb_three.isChecked() && !rb_four.isChecked()
+				&& !rb_five.isChecked() && rb_six.isChecked()
+				&& rb_seven.isChecked();
+		boolean thirdState = rb_one.isChecked() && rb_two.isChecked()
+				&& rb_three.isChecked() && rb_four.isChecked()
+				&& rb_five.isChecked() && rb_six.isChecked()
+				&& rb_seven.isChecked();
+		String title = "";// 显示使用的title
+		String ids = "";
+		if (firstState) {
+			title = "工作日";
+		} else if (secondState) {
+			title = "周末";
+		} else if (thirdState) {
+			title = "每天";
+		} else {
+			StringBuilder builder = new StringBuilder();
+			int i = 0;
+			for(Boolean ischecked:clock.getIdList()){
+				if(ischecked){
+					builder.append(weeks[i]);
+					builder.append("、");
+				}
+				i++;
+			}
+			if (builder.toString().length() > 0)
+				builder.deleteCharAt(builder.toString().length() - 1);
+			title = builder.toString();
+		}
+
+		tv_date.setText(title);// 更新星期文本
+		String timestr = pv_hh.getSelected() + ":" + pv_mm.getSelected();
+		tv_time.setText(timestr);// 更新时间文本
+		
+	}
+
+	public void setTime(){
+		// 更新对象
+		clock.setHour(Integer.parseInt(pv_hh.getSelected()));
+		clock.setMin(Integer.parseInt(pv_mm.getSelected()));
+	}
+
+
+	StateChangedListener listener;
+
+	public void setListener(StateChangedListener listener) {
+		this.listener = listener;
+	}
+
+	public interface StateChangedListener {
+		public void onTimePickerExpandedStateChanged(boolean isExpanded,
+													 MyClock object);
+
+		public void onTunerStateChanged(boolean isChecked, MyClock clock);
+	}
+
+}

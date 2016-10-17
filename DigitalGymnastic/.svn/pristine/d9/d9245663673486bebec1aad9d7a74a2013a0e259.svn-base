@@ -1,0 +1,401 @@
+package com.hike.digitalgymnastic;
+
+import android.annotation.SuppressLint;
+import android.bluetooth.BluetoothDevice;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.hike.digitalgymnastic.fragment.FragmentCircle;
+import com.hike.digitalgymnastic.fragment.FragmentDevices;
+import com.hike.digitalgymnastic.fragment.FragmentMy;
+import com.hike.digitalgymnastic.fragment.HomeFragment;
+import com.hike.digitalgymnastic.http.INetResult;
+import com.hike.digitalgymnastic.request.BaseDao;
+import com.hike.digitalgymnastic.service.BLEDataType;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.hike.digitalgymnastic.utils.LocalDataUtils;
+import com.hike.digitalgymnastic.utils.ReqeustCode;
+import com.hike.digitalgymnastic.utils.Utils;
+import com.hiko.enterprisedigital.R;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.view.annotation.ContentView;
+import com.lidroid.xutils.view.annotation.ViewInject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@ContentView(R.layout.activity_main_test)
+public class MainActivity extends BaseFragmentActivity implements  UIHandler  {
+
+    private static final String TAG = "MainActivity";
+
+    private FragmentManager manager = getSupportFragmentManager();
+
+    private Fragment mFragment;
+
+    private int mPosition = R.id.id_menu_rbtn_home;
+
+    private List<Fragment> fragments = new ArrayList<Fragment>();
+
+    @ViewInject(R.id.id_llyt_menu)
+    public LinearLayout mMainTabView;
+    @ViewInject(R.id.id_root_layout)
+    private RelativeLayout mLayotRoot;
+    private int mPopupWindowHight;
+
+    public FragmentManager getManager(){
+        return manager;
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        UtilLog.e(TAG, "oncreate");
+        ViewUtils.inject(this);
+        forgotFirstRequest();
+        mPopupWindowHight = getResources().getDimensionPixelOffset(R.dimen.x30);
+        LocalDataUtils.saveLoginInfo(this, true);
+        switchFragment(mPosition);
+    }
+
+    public void switchFragment(int position) {
+        mFragment = manager.findFragmentByTag(position + "");
+        if (mFragment != null) {
+            return;
+        }
+        switch (position) {
+            case R.id.id_menu_rbtn_home:// 首页
+                mFragment = HomeFragment.newInstance();
+                break;
+            case R.id.id_menu_rbtn_circle:// 圈子
+                mFragment = FragmentCircle.newInstance();
+                break;
+            case R.id.id_menu_rbtn_analyze:// 装备
+                mFragment = FragmentDevices.newInstance();
+                break;
+            default:// 我的
+                mFragment = FragmentMy.newInstance();
+                break;
+        }
+        FragmentTransaction ft = manager.beginTransaction();
+        ft.replace(R.id.id_rlyt_fragment, mFragment, position + "");
+        ft.commit();
+        mPosition = position;
+
+    }
+
+    /**
+     * 菜单点击事件
+     */
+    public void menuOnClick(View v) {
+        switch (v.getId()) {
+            case R.id.id_menu_rbtn_home:// 首页
+                switchFragment(v.getId());
+                break;
+            case R.id.id_menu_rbtn_circle:// 圈子
+                switchFragment(v.getId());
+                break;
+            case R.id.id_menu_rbtn_analyze:// 分析
+                switchFragment(v.getId());
+                break;
+            case R.id.id_menu_rbtn_my:// 我的
+                switchFragment(v.getId());
+                break;
+        }
+    }
+
+    boolean isExit = false;
+
+    @SuppressLint("HandlerLeak")
+    Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            isExit = false;
+        }
+    };
+
+    private void reportPushToken(final String token) {
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                pushTokenDao.ReportPushToken(token, null);
+            }
+        }).start();
+    }
+
+    BaseDao pushTokenDao = new BaseDao(new INetResult() {
+
+        @Override
+        public void onResponseReceived(int requestCode) {
+
+        }
+
+        @Override
+        public void onRequestSuccess(int requestCode) {
+            UtilLog.e(TAG, "服务器推送Token绑定成功 !!!!");
+
+        }
+
+        @Override
+        public void onRequestFaild(String errorNo, String errorMessage) {
+            UtilLog.e(TAG, "服务器推送Token绑定失败   !!!!");
+        }
+
+        @Override
+        public void onNoConnect() {
+
+        }
+
+        @Override
+        public void onRequestSuccess(ResponseInfo responseInfo) {
+            UtilLog.e("MyLog", "success==" + responseInfo.toString());
+
+        }
+    }, MainActivity.this);
+
+
+    public void exit() {
+        if (!isExit) {
+            isExit = true;
+            Utils.showMessage(this, "再按一次退出程序");
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mHandler.sendEmptyMessage(0);
+                }
+            }, 2000);
+        } else {
+            application.logout();
+            finish();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ReqeustCode.FROM_CAPTURE) {
+            if (fragments.size() > 0) {
+                HomeFragment home = (HomeFragment) fragments.get(0);
+                if (home != null) {
+                    home.onActivityResult(requestCode, resultCode, data);
+                }
+            }
+
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        UtilLog.e(TAG, "onPause");
+        mReceive = false;
+        closePopwindow();
+        removeTimerOutHandler();
+        application.unRegisterUIHandler();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        UtilLog.e(TAG, "ondestory");
+        mReceive = true;
+        closePopwindow();
+        removeTimerOutHandler();
+        application.unRegisterUIHandler();
+        if (HikoDigitalgyApplication.map.containsKey(this.getClass().getName())) {
+            HikoDigitalgyApplication.map.remove(this.getClass().getName());
+        }
+
+
+    }
+    /**
+     * 用来判断是否需要和手环同步数据
+     */
+    private boolean mReceive = true;
+    /**
+     * 蓝牙同步数据提示框
+     */
+    private PopupWindow mPopupWindow;
+    /**
+     * 蓝牙同步框 提示文字
+     */
+    private TextView mDataSynStatus;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mReceive) {
+            application.registerUIHandler(this);
+
+            mPopupHandler.sendEmptyMessageDelayed(0, 1000);
+        } else {
+            mReceive = false;
+            closePopwindow();
+        }
+    }
+
+    /****************蓝牙同步框begin*********************/
+    private Handler mPopupHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 0:
+                    initPopwindow();
+                    showHint();
+                    break;
+            }
+        }
+
+    };
+
+    public void showHint() {
+        // 弹出PopupWindow的具体代码
+        if (!this.isFinishing() && this != null && mPopupWindow != null && !TextUtils.isEmpty(application.bindMAC)&&!mPopupWindow.isShowing()) {
+
+            mReceive = false;
+            application.scanDevice();
+            Rect frame = new Rect();
+
+            this.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+
+            mPopupWindow.showAtLocation(mLayotRoot, Gravity.CENTER | Gravity.TOP, 0, frame.top);
+            mPopupWindow.update();
+            //开始计时
+            mTimeOutHandler.postDelayed(mTimeOutRunnable, 10000);
+
+        }
+    }
+
+    private void initPopwindow() {
+        // 利用layoutInflater获得View
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View _view = inflater.inflate(R.layout.popwin_datasyn, null);
+        mPopupWindow = new PopupWindow(_view, WindowManager.LayoutParams.FILL_PARENT, mPopupWindowHight, true);
+        mPopupWindow.setAnimationStyle(R.style.PopupAnimation);
+        // 设置popWindow弹出窗体可点击，这句话必须添加，并且是true
+        mPopupWindow.setFocusable(false);
+        mPopupWindow.setOutsideTouchable(true);
+        mPopupWindow.update();
+        mDataSynStatus = (TextView) _view.findViewById(R.id.tv_datasyn);
+
+    }
+
+    public void closePopwindow() {
+
+        if (this != null && !this.isFinishing() && mPopupWindow != null && mPopupWindow.isShowing()) {
+            UtilLog.e(TAG, "close pop windows");
+            mPopupWindow.dismiss();
+        }
+
+
+    }
+
+    public void removeTimerOutHandler() {
+        if (mTimeOutHandler != null && mTimeOutRunnable != null) {
+            UtilLog.e(TAG, "removeTimerOutHandler");
+            mTimeOutHandler.removeCallbacksAndMessages(null);
+        }
+    }
+
+    Handler mTimeOutHandler = new Handler();
+    Runnable mTimeOutRunnable = new Runnable() {
+        @Override
+        public void run() {
+            UtilLog.e(TAG, "time out ");
+            closePopwindow();
+        }
+    };
+
+
+    @Override
+    public void handlerUI(Message msg) {
+        switch (msg.what) {
+            case BLEDataType.BLE_SCAN_CODE: {
+
+                UtilLog.e(TAG, "BLE_SCAN_CODE");
+
+                BluetoothDevice _Devices = (BluetoothDevice) msg.obj;
+                String _mac = _Devices.getAddress();
+
+                UtilLog.e(TAG, "bind mac is " + application.bindMAC + "-->scan " + _mac);
+                /**
+                 * 判断如果搜索到的设备的mac地址和绑定的设备地址相同，则停止搜索，开始连接。
+                 */
+                if (_mac.equals(application.bindMAC)) {
+                    application.stopScan();
+                    if (application.connecting(application.bindMAC)) {
+                        changeStatus("正在连接设备");
+                    } else {
+                        changeStatus("没有搜索到设备，请手动同步数据");
+                        closePopwindow();
+                    }
+                    return;
+                }
+
+                break;
+            }
+            case BLEDataType.BLE_SCAN_END: {
+                changeStatus("没有搜索到设备，请手动同步数据");
+                closePopwindow();
+                break;
+            }
+            case BLEDataType.BLE_ISREADY_CODE: {
+                UtilLog.e(TAG, "BLEDataType");
+                application.getRecordCount();//同步数据先获取记录统计信息
+                changeStatus("开始同步数据");
+                break;
+            }
+            case BLEDataType.BLE_RECORDCOUNT_CODE:// RecordCount
+                UtilLog.e(TAG, "BLE_RECORDCOUNT_CODE");
+
+                break;
+            case BLEDataType.BLE_SPORTDATA_CODE://  SportData
+                UtilLog.e(TAG, "BLE_SPORTDATA_CODE");
+                break;
+            case BLEDataType.BLE_GETSLEEP_CODE: {
+                UtilLog.e(TAG, "BLE_GETSLEEP_CODE");
+                changeStatus("数据同步完毕");
+                closePopwindow();
+                removeTimerOutHandler();
+                break;
+            }
+            default:
+                break;
+        }
+
+    }
+    public void changeStatus(final String pStatus) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mDataSynStatus.setText(pStatus);
+            }
+        });
+    }
+
+    /////////////////////蓝牙同步框end/////////////////////////////////////////////////
+
+
+
+}

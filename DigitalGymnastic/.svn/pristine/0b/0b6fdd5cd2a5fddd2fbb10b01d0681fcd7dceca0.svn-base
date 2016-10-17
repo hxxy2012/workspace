@@ -1,0 +1,9 @@
+package com.weizhi.domainmodel;
+
+public class MMilepost {
+	//
+	public int Users;
+	public int Counter;
+	public int Mileage;
+	public int Calorie;
+}

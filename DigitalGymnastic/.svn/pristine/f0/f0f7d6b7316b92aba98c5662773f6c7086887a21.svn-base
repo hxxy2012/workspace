@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x100"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_top_menu_extra" />
+
+    <LinearLayout   android:id="@+id/ll_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/bg_top_menu"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        
+        <ImageView android:layout_width="@dimen/x17"
+        android:layout_height="@dimen/x18"
+        android:src="@mipmap/btn_delete"
+        />
+        <TextView  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x5"
+        android:text="删除"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x14"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

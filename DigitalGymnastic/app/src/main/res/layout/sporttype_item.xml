@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="@dimen/x90"
+    android:layout_height="@dimen/x90"
+    android:background="#3b3f4a"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/x10" >
+
+   <ImageView  android:id="@+id/iv_type"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/x60"
+            android:src="@mipmap/icon_sport_type_11"
+             />
+</LinearLayout>

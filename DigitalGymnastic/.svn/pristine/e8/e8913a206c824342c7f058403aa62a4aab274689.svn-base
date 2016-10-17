@@ -1,0 +1,40 @@
+package com.weizhi.httpservice;
+
+import android.os.Handler;
+
+import com.loopj.android.http.AsyncHttpClient;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+public class Task implements ITask
+{
+    private static final String TAG = Task.class.getSimpleName();
+    public static Task getInstance(Handler handler) {
+        return new Task(handler);
+    }
+
+    private AsyncHttpClient m_client;
+    private Handler m_callback;
+
+    private Task(Handler handler)
+    {
+        m_callback = handler;
+        m_client = new AsyncHttpClient();
+    }
+
+    public void addTask()
+    {
+        //
+    }
+
+    public void getStatisticsByMonth()
+    {
+        //
+    }
+
+    public void getTask()
+    {
+        //
+    }
+}

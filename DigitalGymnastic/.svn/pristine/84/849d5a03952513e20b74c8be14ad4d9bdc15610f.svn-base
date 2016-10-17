@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x85"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+      android:padding="@dimen/x15"
+     >
+<ImageView  android:id="@+id/iv_head"
+    android:layout_width="@dimen/x60"
+    android:layout_height="@dimen/x60"
+    android:layout_marginLeft="@dimen/x10"
+    />
+<TextView   android:id="@+id/tv_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/x10"
+    android:gravity="center_vertical"
+    android:textColor="@color/white"
+    android:textSize="@dimen/x18"/>
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/share_pic_head.xml -->

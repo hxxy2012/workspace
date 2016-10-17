@@ -1,0 +1,1062 @@
+package com.hike.digitalgymnastic.fragment;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.AbsoluteSizeSpan;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.hike.digitalgymnastic.HistorySleepActivity;
+import com.hike.digitalgymnastic.MainActivity;
+import com.hike.digitalgymnastic.SleepDefineActivity;
+import com.hike.digitalgymnastic.entitiy.Customer;
+import com.hike.digitalgymnastic.entitiy.HomeSleepData;
+import com.hike.digitalgymnastic.entitiy.QQSleepData;
+import com.hike.digitalgymnastic.entitiy.SectionSleepData;
+import com.hike.digitalgymnastic.entitiy.SleepQuality;
+import com.hike.digitalgymnastic.http.HttpConnectUtils;
+import com.hike.digitalgymnastic.request.BaseDao;
+import com.hike.digitalgymnastic.tools.AnimUtil;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.hike.digitalgymnastic.utils.LocalDataUtils;
+import com.hike.digitalgymnastic.utils.PreferencesUtils;
+import com.hike.digitalgymnastic.utils.Utils;
+import com.hike.digitalgymnastic.view.DashCircleProgress;
+import com.hike.digitalgymnastic.view.HomeSleepStateView;
+import com.hike.digitalgymnastic.view.ImageHelper;
+import com.hike.digitalgymnastic.view.MyViewFlipper;
+import com.hike.digitalgymnastic.view.MyViewFlipper.ViewFlipperOnTouchListener;
+import com.hike.digitalgymnastic.view.ScrollViewInner;
+import com.hiko.enterprisedigital.R;
+import com.hiko.enterprisedigital.SocialShareActivity;
+import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.BitmapCommonUtils;
+import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
+import com.lidroid.xutils.view.annotation.ViewInject;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+/*
+ *  首页睡眠数据
+ */
+public class SleepFragment extends BaseFragment implements OnClickListener,
+		ViewFlipperOnTouchListener{
+
+	private static final String TAG = "SleepFragment";
+
+	private View v;
+	private BaseDao dao;
+	@ViewInject(R.id.ll_top)
+	LinearLayout ll_top;
+	@ViewInject(R.id.btn_left)
+	ImageView btn_left;
+	@ViewInject(R.id.btn_right)
+	ImageView btn_right;
+	@ViewInject(R.id.ll_btn_left)
+	private LinearLayout ll_btn_left;
+	@ViewInject(R.id.ll_btn_right)
+	private LinearLayout ll_btn_right;
+	@ViewInject(R.id.title)
+	TextView title;
+	@ViewInject(R.id.iv_completionRate)
+	DashCircleProgress iv_completionRate;
+	@ViewInject(R.id.tv_today_info)
+	TextView tv_today_info;
+	@ViewInject(R.id.tv_sleep_total_time)
+	TextView tv_sleep_total_time;
+	@ViewInject(R.id.tv_sleep_time)
+	TextView tv_sleep_time;
+	@ViewInject(R.id.tv_deep_sleep_time)
+	TextView tv_deep_sleep_time;
+
+	@ViewInject(R.id.tv_light_sleep_time)
+	TextView tv_light_sleep_time;
+	
+	@ViewInject(R.id.ll_backgroud_alpha)
+	LinearLayout ll_backgroud_alpha;
+	@ViewInject(R.id.ll_chart)
+	LinearLayout ll_chart;
+	@ViewInject(R.id.viewFlipper)
+	MyViewFlipper viewFlipper;
+
+	@ViewInject(R.id.handleView)
+	View handleView;
+	@ViewInject(R.id.frament_sleep_top)
+	View frament_sleep_top;
+	@ViewInject(R.id.frament_sleep_bottom)
+	View frament_sleep_bottom;
+
+	@ViewInject(R.id.view_sleepState)
+	HomeSleepStateView view_sleepState;
+	@ViewInject(R.id.fl)
+	FrameLayout fl;
+	@ViewInject(R.id.ll1)
+	LinearLayout ll1;
+	
+	@ViewInject(R.id.center_layout_target)
+	LinearLayout center_layout_target;
+	@ViewInject(R.id.center_layout_actual)
+	LinearLayout center_layout_actual;
+	@ViewInject(R.id.tv_time_start_end)
+	TextView tv_time_start_end;
+	@ViewInject(R.id.tv_sleep_quality)
+	TextView tv_sleep_quality;
+
+	// TextView tv_time_start_end;
+	// TextView tv_sleep_quality;
+
+	ImageView iv_top;
+	ImageView iv_top_handle;
+	TextView tv_deep_sleep_time_handle;
+	TextView tv_light_sleep_time_handle;
+	Button btn_share;
+	FrameLayout fl_bottom;
+	
+	public int sleepQuality = 1;
+	private SleepListener sListener = null;
+	private int sleeppage = 1;
+	private String titlename;
+
+	long total = 8 * 60 * 60;
+	Customer cusomter;
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		this.inflater = inflater;
+		this.v = inflater.inflate(R.layout.activity_main_frament_sleep,
+				container, false);
+		ViewUtils.inject(this, v);
+
+		return v;
+	}
+	MainActivity ma;
+	@Override
+	public void onAttach(Activity activity) {
+		super.onAttach(activity);
+		ma = (MainActivity) activity;
+	}
+	SimpleDateFormat format=new SimpleDateFormat("yyyy.MM.dd");
+	@Override
+	public void onResume() {
+		super.onResume();
+		UtilLog.e(TAG, "onresume----sleep--33333333333>");
+		if (!this.isHidden()) {
+//			if(ma.currentPage==1)// 从本地数据加载睡眠主页
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						buildViewFromLoacalData();
+					}
+				}, 500);
+
+//			if(sListener!=null){
+				if (sleeppage == 1) {
+
+					titlename = getString(R.string.yestoday_sleep_title_str)+"\n"+format.format(Utils.dateAdd(-1));
+					title.setVisibility(View.VISIBLE);
+					if (titlename.length() > 4) {
+						title.setText(getSpan(titlename));
+					} else {
+						title.setText(titlename);
+					}
+//					if (sListener != null) {
+//						sListener.change(titlename, 1);
+//					}
+//				} else {
+					String sleepQualityStr = "昨晚睡眠质量为";
+					if (sleepQuality == 1) {
+						sleepQualityStr += SleepQuality.优质;
+					} else if (sleepQuality == 2) {
+						sleepQualityStr += SleepQuality.良好;
+					} else if (sleepQuality == 3) {
+						sleepQualityStr += SleepQuality.一般;
+					} else if (sleepQuality == 4) {
+						sleepQualityStr += SleepQuality.较差;
+					}
+					titlename = sleepQualityStr;
+					if (sListener != null) {
+						sListener.change(titlename, 2);
+					}
+//				}
+			}
+		}
+	}
+	@Override
+	public void notifyUpdateTitle(){
+		if (!this.isHidden()) {
+			if(sListener!=null){
+				if (sleeppage == 1) {
+
+					titlename = getString(R.string.yestoday_sleep_title_str)+"\n"+format.format(Utils.dateAdd(-1));
+					if (sListener != null) {
+						sListener.change(titlename, 1);
+					}
+				} else {
+
+					String sleepQualityStr = "昨晚睡眠质量为";
+					if (sleepQuality == 1) {
+						sleepQualityStr += SleepQuality.优质;
+					} else if (sleepQuality == 2) {
+						sleepQualityStr += SleepQuality.良好;
+					} else if (sleepQuality == 3) {
+						sleepQualityStr += SleepQuality.一般;
+					} else if (sleepQuality == 4) {
+						sleepQualityStr += SleepQuality.较差;
+					}
+					titlename = sleepQualityStr;
+					if (sListener != null) {
+						sListener.change(titlename, 2);
+					}
+				}
+			}
+
+		}
+	}
+	@Override
+	public void onPause() {
+		super.onPause();
+		UtilLog.e(TAG, "onpause222222222222");
+		if (dao!=null&&dao.isRunning()) {
+			dao.cancel();
+		}
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		initData();
+	}
+	private SpannableString getSpan(String str) {
+		SpannableString spanString = new SpannableString(str);
+		AbsoluteSizeSpan spanTitle = new AbsoluteSizeSpan(dp2px(12));
+		AbsoluteSizeSpan spanTime = new AbsoluteSizeSpan(dp2px(9));
+		spanString.setSpan(spanTitle, 0, 4, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+		spanString.setSpan(spanTime, 4, str.length(),
+				Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+		return spanString;
+	}
+	private int dp2px(int value) {
+		float v = getResources().getDisplayMetrics().density;
+		return (int) (v * value + 0.5f);
+	}
+	private void initData() {
+		btn_right.setVisibility(View.VISIBLE);
+		btn_right.setOnClickListener(this);
+		ll_btn_right.setOnClickListener(this);
+		ll_btn_left.setOnClickListener(this);
+		btn_left.setOnClickListener(this);
+		btn_right.setImageResource(R.mipmap.sleep_3x);
+		// btn_left.setImageResource(R.mipmap.btn_menu);
+		btn_left.setImageResource(R.mipmap.other_3x);
+		title.setVisibility(View.VISIBLE);
+		title.setText("昨日睡眠");
+		dao = new BaseDao(this, activity);
+		cusomter=LocalDataUtils.readCustomer(activity);
+		initBitmapUtils();
+		// handleView.getBackground().setAlpha(5);
+		iv_top = (ImageView) frament_sleep_bottom.findViewById(R.id.iv_top);
+		iv_top_handle = (ImageView) handleView.findViewById(R.id.iv_top);
+		ImageView iv_xingxing=(ImageView) frament_sleep_bottom.findViewById(R.id.iv_xingxing);
+		iv_xingxing.setOnClickListener(this);
+		tv_deep_sleep_time_handle = (TextView) handleView
+				.findViewById(R.id.tv_deep_sleep_time);
+		tv_light_sleep_time_handle = (TextView) handleView
+				.findViewById(R.id.tv_light_sleep_time);
+		tv_deep_sleep_time = (TextView) frament_sleep_bottom
+				.findViewById(R.id.tv_deep_sleep_time);
+		tv_light_sleep_time = (TextView) frament_sleep_bottom
+				.findViewById(R.id.tv_light_sleep_time);
+		ll_backgroud_alpha = (LinearLayout) frament_sleep_bottom
+				.findViewById(R.id.ll_backgroud_alpha);
+		ll_backgroud_alpha.setVisibility(View.INVISIBLE);
+		btn_share = (Button) frament_sleep_bottom.findViewById(R.id.btn_share);
+		fl_bottom = (FrameLayout) frament_sleep_bottom
+				.findViewById(R.id.fl_bottom);
+		btn_share.setOnClickListener(this);
+		viewFlipper.setListener(this);
+		fillData(null);
+
+		IntentFilter intentFilter = new IntentFilter();
+		intentFilter.addAction(sleepAction);
+		activity.registerReceiver(receiver, intentFilter);
+	}
+
+	public static final String sleepAction = "com.hikodigital.sleepdata";
+
+	BroadcastReceiver receiver = new BroadcastReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			if (intent.getAction().equals(sleepAction)) {
+				UtilLog.e(TAG, "sleepAction=======finished");
+				// 从本地数据加载睡眠主页
+				buildViewFromLoacalData();
+			}
+		}
+	};
+
+	public void onDestroy() {
+		super.onDestroy();
+		try {
+			activity.unregisterReceiver(receiver);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void buildViewFromLoacalData() {
+		showProgress(false);
+		if(this.isHidden()){
+			if(dao.isRunning()){
+				dao.cancel();
+			}
+			return;
+		}
+		if(dao.isRunning()){
+			dao.cancel();
+		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		SharedPreferences shp = activity.getSharedPreferences("sleep",
+				Context.MODE_WORLD_WRITEABLE);
+//		fillData(null);
+		String homeString = shp.getString(format.format(new Date()), null);
+		if (homeString != null) {
+			Gson gson = new Gson();
+			HomeSleepData homeSleepData = gson.fromJson(homeString,
+					HomeSleepData.class);
+			fillData(homeSleepData);
+		}
+		dao.GetHomeSleepDat();
+	}
+
+	@Override
+	public void onHiddenChanged(boolean hidden) {
+		super.onHiddenChanged(hidden);
+
+		// 回调 change 主activity标题给变量赋值
+//		if (!hidden) {
+//			if (sleeppage == 1) {
+//				titlename = getString(R.string.yestoday_sleep_title_str);
+//				if (sListener != null) {
+//					sListener.change(titlename, 1);
+//				}
+//			} else {
+//
+//				String sleepQualityStr = "昨晚睡眠质量为";
+//				if (sleepQuality == 1) {
+//					sleepQualityStr += SleepQuality.优质;
+//				} else if (sleepQuality == 2) {
+//					sleepQualityStr += SleepQuality.良好;
+//				} else if (sleepQuality == 3) {
+//					sleepQualityStr += SleepQuality.一般;
+//				} else if (sleepQuality == 4) {
+//					sleepQualityStr += SleepQuality.较差;
+//				}
+//				titlename = sleepQualityStr;
+//				if (sListener != null) {
+//					sListener.change(titlename, 2);
+//				}
+//			}
+//		}else{
+//			if(dao.isRunning()){
+//				dao.cancel();
+//			}
+//		}
+	}
+
+	@SuppressLint("NewApi")
+	@Override
+	public void onRequestSuccess(int requestCode) {
+		super.onRequestSuccess(requestCode);
+		if (activity == null
+				|| activity.isFinishing()||this.isHidden())
+			return;
+		showProgress(false);
+		HomeSleepData sleepData = dao.getHomeSleepData();
+		fillData(sleepData);
+		uploadQQSleepData(sleepData);
+	}
+
+	private void uploadQQSleepData(HomeSleepData homeSleepData) {
+		QQSleepData sleepData = new QQSleepData();
+		try {
+			if (homeSleepData!=null) {
+//				json.put("type", sleep.type);
+//				json.put("roll", sleep.turnOver);
+//				json.put("time", sleep.timeString);
+//				json.put("reserved", sleep.reserved);
+				String QQ_oauth_consumer_key = PreferencesUtils.getString(ma, "QQ_oauth_consumer_key","");
+				String QQ_access_token = PreferencesUtils.getString(ma, "QQ_access_token","");
+				String QQ_openid = PreferencesUtils.getString(ma, "QQ_openid","");
+				List<SectionSleepData> sleepList = homeSleepData.getDataList();
+				//步行数据
+				sleepData.setAccess_token(QQ_access_token);
+				sleepData.setOauth_consumer_key(QQ_oauth_consumer_key);
+				sleepData.setOpenid(QQ_openid);
+				StringBuffer buffer = new StringBuffer();
+				int awakeTime = 0;
+				for(SectionSleepData sectionSleepData : sleepList){
+//					detailStr += "["+sectionSleepData.getBeginTime()+","+sectionSleepData.getStatus()+"]";
+					buffer.append("[");
+					buffer.append(sectionSleepData.getBeginTime());
+					buffer.append(",");
+					buffer.append(sectionSleepData.getStatus());
+					buffer.append("]");
+					buffer.append(",");
+					if(sectionSleepData.getStatus()==0){
+						awakeTime += sectionSleepData.getDuration();
+					}
+				}
+				if(buffer.length()>0){
+					buffer.deleteCharAt(buffer.length()-1);
+					sleepData.setEnd_time(homeSleepData.getEndTime());
+					sleepData.setStart_time(homeSleepData.getBeginTime());
+					sleepData.setTotal_time(homeSleepData.getTotalTime()/60+"");
+					sleepData.setLight_sleep(homeSleepData.getLightTime()/60+"");
+					sleepData.setDeep_sleep(homeSleepData.getDeepTime()/60+"");
+					sleepData.setAwake_time(awakeTime/60+"");
+					sleepData.setDetail(buffer.toString());
+
+					dao.setQQSleep(sleepData);
+				}
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	Log.d("MyLog", "开始上传睡眠数据");
+		
+	}
+	void fillData(HomeSleepData hsd) {
+		if(this.isDetached()){
+			return;
+		}
+		center_layout_target.setVisibility(View.VISIBLE);
+		if (hsd != null && hsd.getTotalTime() > 0) {
+			handleView.findViewById(R.id.ll_blank_alert).setVisibility(
+					View.GONE);
+			handleView.findViewById(R.id.rl_handler)
+					.setVisibility(View.VISIBLE);
+			frament_sleep_bottom.findViewById(R.id.ll_blank_alert)
+					.setVisibility(View.GONE);
+			frament_sleep_bottom.findViewById(R.id.rl_handler).setVisibility(
+					View.VISIBLE);
+			handleView.findViewById(R.id.iv_top).setVisibility(View.VISIBLE);
+			TextView tv_nodata_alert = (TextView) handleView
+					.findViewById(R.id.tv_nodata_alert);
+			tv_nodata_alert.setVisibility(View.INVISIBLE);
+
+			sleepQuality = hsd.getSleepQuality();
+			// 更新上部页面数据
+			int totalHour = (int) (hsd.getTotalTime() / 3600);
+			int totalMin = (int) (hsd.getTotalTime() / 60) % 60;
+			String totalValue = totalHour + "小时" + totalMin + "分";
+
+			tv_sleep_total_time.setText(totalValue);
+			iv_completionRate.setValue(hsd.getTotalTime());
+			iv_completionRate.setMax(total);
+			// tv_today_info.setText("优质的睡眠保证一天的学习和工作都拥有充足的精神");
+			tv_today_info.setText(hsd.getAdviceTitle());
+			// 更新handleview和底部的页面的数据
+			int deepHour = (int) (hsd.getDeepTime() / 3600);
+			int deepMin = (int) (hsd.getDeepTime() / 60) % 60;
+			int lightHour = (int) (hsd.getLightTime() / 3600);
+			int lightMin = (int) (hsd.getLightTime() / 60) % 60;
+			String deepValue = deepHour + "小时" + deepMin + "分";
+			String lightValue = lightHour + "小时" + lightMin + "分";
+			tv_deep_sleep_time.setText(deepValue);
+			tv_light_sleep_time.setText(lightValue);
+			tv_deep_sleep_time_handle.setText(deepValue);
+			tv_light_sleep_time_handle.setText(lightValue);
+			tv_sleep_time.setText(totalValue);
+			if (hsd.getDataList() != null && hsd.getDataList().size() > 0) {
+
+				iv_completionRate.setOnClickListener(new View.OnClickListener() {
+
+
+					@Override
+					public void onClick(View v) {
+						if (center_layout_target.isShown()) {
+							center_layout_target.setVisibility(View.INVISIBLE);
+							center_layout_actual.setVisibility(View.VISIBLE);
+						} else {
+							center_layout_target.setVisibility(View.VISIBLE);
+							center_layout_actual.setVisibility(View.INVISIBLE);
+						}
+					}
+				});
+
+				String time = hsd.getBeginTime() + "-" + hsd.getEndTime();
+				String qualityStr = "";
+				short quality = hsd.getSleepQuality();
+				switch (quality) {
+				case 1:
+					qualityStr = "睡眠优质";
+					break;
+				case 2:
+					qualityStr = "睡眠良好";
+					break;
+				case 3:
+					qualityStr = "睡眠一般";
+					break;
+				case 4:
+					qualityStr = "睡眠较差";
+					break;
+
+				default:
+					break;
+				}
+				tv_time_start_end.setText(time);
+				tv_sleep_quality.setText(qualityStr);
+                iv_top.setVisibility(View.VISIBLE);
+                iv_top_handle.setVisibility(View.VISIBLE);
+				viewFlipper.setListener(this);
+				iv_top.setOnClickListener(this);
+				iv_top_handle.setOnClickListener(this);
+				view_sleepState.initData(hsd);
+			} else {
+				iv_completionRate.setOnClickListener(null);
+				viewFlipper.setListener(null);
+				iv_top.setOnClickListener(null);
+				iv_top_handle.setOnClickListener(null);
+                iv_top.setVisibility(View.INVISIBLE);
+                iv_top_handle.setVisibility(View.INVISIBLE);
+			}
+		} else {
+
+			// 更新上部页面数据
+			String totalValue = "00小时00分钟";
+			tv_sleep_total_time.setText(totalValue);
+			tv_sleep_time.setText(totalValue);
+			iv_completionRate.setValue(0);
+			iv_completionRate.setMax(total);
+			tv_today_info.setText("暂无数据，你可能昨天晚上没有佩戴手环");
+			handleView.findViewById(R.id.rl_handler).setVisibility(
+					View.INVISIBLE);
+			handleView.findViewById(R.id.iv_top).setVisibility(View.VISIBLE);
+			TextView tv_nodata_alert = (TextView) handleView
+					.findViewById(R.id.tv_nodata_alert);
+			tv_nodata_alert.setVisibility(View.VISIBLE);
+			tv_nodata_alert.setText("检测睡眠会让你更加了解自己的睡眠质量");
+			handleView.findViewById(R.id.ll_blank_alert).setVisibility(
+					View.VISIBLE);
+			handleView.findViewById(R.id.rl_handler).setVisibility(View.GONE);
+			frament_sleep_bottom.findViewById(R.id.ll_blank_alert)
+					.setVisibility(View.VISIBLE);
+			frament_sleep_bottom.findViewById(R.id.rl_handler).setVisibility(
+					View.GONE);
+			iv_completionRate.setOnClickListener(null);
+			viewFlipper.setListener(null);
+			iv_top.setVisibility(View.INVISIBLE);
+            iv_top_handle.setVisibility(View.INVISIBLE);
+
+		}
+	}
+
+	float lastY;
+	boolean isOpened = false;// 下面视图是否打开默认不显示
+
+	// @Override
+	// public boolean onTouch(View view, MotionEvent event) {
+	// // TODO Auto-generated method stub
+	// switch (event.getAction()) {
+	// case MotionEvent.ACTION_DOWN:
+	// lastY = event.getY();
+	// break;
+	// case MotionEvent.ACTION_UP:
+	// break;
+	// case MotionEvent.ACTION_MOVE:
+	// float newY = event.getY();
+	// if (lastY - newY > 20 && lastY != -1 && !isOpened) {//
+	// 向上滑动并且当前显示第一个页面，则shownext
+	// showNextView();
+	// isOpened = true;
+	// lastY = -1;
+	// }
+	// if (newY - lastY > 20 && lastY != -1 && isOpened) {//
+	// 向下滑动并且当前显示第二个页面，则showpre
+	// showPreviousView();
+	// isOpened = false;
+	// lastY = -1;
+	// }
+	//
+	// break;
+	// default:
+	// break;
+	// }
+	// return true;
+	// };
+
+	/*
+	 * p1起始位置 p2终点位置
+	 */
+	public void dissmissAnimation() {
+		final int currentTop = frament_sleep_bottom.getTop();
+		final int currentLeft = frament_sleep_bottom.getLeft();
+		final int endTop = currentTop
+				+ frament_sleep_bottom.getHeight()
+				- getResources().getDimensionPixelSize(
+						R.dimen.y150) - 10;
+		TranslateAnimation animation = new TranslateAnimation(0, 0, currentTop,
+				endTop);
+		animation.setInterpolator(new OvershootInterpolator());
+		animation.setDuration(1000);
+		animation.setStartOffset(0);
+
+		ScrollViewInner scrollView = (ScrollViewInner) frament_sleep_bottom;
+		scrollView.setSpeedMaxRate();
+		scrollView.setNeedScroll(false);
+		viewFlipper.setScrolling(true);
+
+		animation.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {
+				iv_top.setVisibility(View.VISIBLE);
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				final	ScrollViewInner scrollView = (ScrollViewInner) frament_sleep_bottom;
+				scrollView.setSpeedMinRate();
+
+				int left = frament_sleep_bottom.getLeft();
+				int top = endTop;
+				int width = frament_sleep_top.getWidth();
+				int height = frament_sleep_top.getHeight();
+				// frament_sleep_top.clearAnimation();
+				TranslateAnimation anim = new TranslateAnimation(0, 0, 0, 0);
+				frament_sleep_bottom.setAnimation(anim);
+				frament_sleep_bottom.layout(left, top, left + width, top
+						+ height);
+				handleView.setVisibility(View.VISIBLE);
+				// MainActivity ma=(MainActivity) activity;
+				// ma.onExtraPageChangeListener.onExtraPageSelected(1, "昨晚睡眠");
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						scrollView.setNeedScroll(true);
+						viewFlipper.setOpened(false);
+						viewFlipper.setScrolling(false);
+					}
+				},100);
+
+			}
+		});
+		viewFlipper.setOutAnimation(animation);
+	}
+
+	//
+	/*
+	 * p1起始位置 p2终点位置
+	 */
+	public void showingAnimation() {
+		final int currentTop = frament_sleep_top.getTop()
+				+ frament_sleep_top.getHeight()
+				- getResources().getDimensionPixelSize(
+						R.dimen.y150);
+		final int currentLeft = frament_sleep_top.getLeft();
+		final int endTop = frament_sleep_top.getTop();
+		TranslateAnimation animation = new TranslateAnimation(0, 0, currentTop,
+				endTop);
+		animation.setInterpolator(new OvershootInterpolator());
+		animation.setDuration(1000);
+		animation.setStartOffset(0);
+		ScrollViewInner scrollView = (ScrollViewInner) frament_sleep_bottom;
+		scrollView.setSpeedMaxRate();
+		scrollView.setNeedScroll(false);
+		viewFlipper.setScrolling(true);
+		animation.setAnimationListener(new Animation.AnimationListener() {
+			@Override
+			public void onAnimationStart(Animation animation) {
+				handleView.setVisibility(View.INVISIBLE);
+				iv_top.setVisibility(View.INVISIBLE);
+//				frament_sleep_bottom.findViewById(R.id.ll1).setBackgroundColor(
+//						getResources().getColor(R.color.app_bg));
+			}
+
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+			}
+
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				final ScrollViewInner scrollView = (ScrollViewInner) frament_sleep_bottom;
+				scrollView.setSpeedMinRate();
+
+				int left = frament_sleep_top.getLeft();
+				int top = endTop;
+				int width = frament_sleep_bottom.getWidth();
+				int height = frament_sleep_top.getHeight();
+				// frament_sleep_top.clearAnimation();
+				TranslateAnimation anim = new TranslateAnimation(0, 0, 0, 0);
+				frament_sleep_bottom.setAnimation(anim);
+				frament_sleep_bottom.layout(left, top, left + width, top
+						+ height);
+				// 睡眠质量(1:优质;2:良好;3:一般;4:较差)
+				MainActivity ma = (MainActivity) activity;
+				String sleepQualityStr = "昨晚睡眠质量为";
+				if (sleepQuality == 1) {
+					sleepQualityStr += SleepQuality.优质;
+				} else if (sleepQuality == 2) {
+					sleepQualityStr += SleepQuality.良好;
+				} else if (sleepQuality == 3) {
+					sleepQualityStr += SleepQuality.一般;
+				} else if (sleepQuality == 4) {
+					sleepQualityStr += SleepQuality.较差;
+				}
+				// ma.onExtraPageChangeListener.onExtraPageSelected(1,
+				// sleepQualityStr);
+
+				new Handler().postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						scrollView.setNeedScroll(true);
+						viewFlipper.setOpened(true);
+						viewFlipper.setScrolling(false);
+					}
+				}, 100);
+			}
+		});
+		viewFlipper.setInAnimation(animation);
+	}
+
+	// 向下滑 显示上面的布局
+	private void showNextView() {
+		Log.e("向下滑动", "OK");
+		// viewFlipper.setInAnimation(AnimationUtils.loadAnimation(activity,
+		// R.anim.push_top_in));
+		showingAnimation();
+		viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(activity,
+				R.anim.push_top_out));
+		viewFlipper.showNext();
+		if (sListener != null) {// 回调 change 主activity标题给变量赋值
+			sleeppage = 2;
+			sListener.change(getString(R.string.yestoday_sleep_title_str),
+					sleeppage);
+		}
+	}
+
+	// 向上滑 显示下面的布局
+	private void showPreviousView() {
+		UtilLog.e(TAG,"向上滑动 OK");
+		viewFlipper.setInAnimation(AnimationUtils.loadAnimation(activity,
+				R.anim.push_bot_in));
+		// viewFlipper.setOutAnimation(AnimationUtils.loadAnimation(activity,
+		// R.anim.push_bot_out));
+		dissmissAnimation();
+		viewFlipper.showPrevious();
+		if (sListener != null) {// 回调 change 主activity标题给变量赋值
+			sleeppage = 1;
+			titlename = getString(R.string.yestoday_sleep_title_str)+"\n"+format.format(Utils.dateAdd(-1));
+			sListener.change(titlename,
+					sleeppage);
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		Intent intent = null;
+		switch (v.getId()) {
+		case R.id.iv_top:
+			showNextView();
+			isOpened = true;
+			lastY = -1;
+			break;
+
+		case R.id.btn_share:
+			if(!isSaving){
+				jump2ShareActivity();
+			}
+			break;
+		case R.id.iv_xingxing:
+			jump2DefineActivity();
+			break;
+			case R.id.btn_left:
+			case R.id.ll_btn_left:
+				FragmentTransaction _ft = ma.getManager().beginTransaction();
+//				_ft.replace(R.id.id_rlyt_fragment, HomeFragment.newInstance(), R.id.id_add_device_button + "");
+				_ft.replace(R.id.id_rlyt_fragment,new HomeFragment(),"HomeFragment");
+				_ft.addToBackStack(null);
+				_ft.commit();
+
+				break;
+
+			case R.id.btn_right:
+			case R.id.ll_btn_right:
+
+				intent = new Intent(activity,
+						HistorySleepActivity.class);
+				startActivity(intent);
+				AnimUtil.intentSlidIn(activity);
+
+				break;
+		default:
+			break;
+		}
+	}
+	private void jump2DefineActivity() {
+		Intent intent=new Intent(activity, SleepDefineActivity.class);
+		startActivity(intent);
+	}
+	boolean isSaving = false;
+	/**
+	 * @category 进入分享页面，（之前要生成分享的图片）
+	 */
+	private synchronized void jump2ShareActivity() {
+		if (!isSaving) {
+			 showProgress(true);
+			isSaving = true;
+
+			final List<Bitmap> bmpsList = new ArrayList<Bitmap>();
+
+			final LayoutInflater inflater = activity.getLayoutInflater();
+			final View view_head = inflater.inflate(R.layout.share_pic_head,
+					null);
+			final View view_bottom = inflater.inflate(
+					R.layout.share_pic_bottom, null);
+			final TextView tv_appname = (TextView) view_bottom
+					.findViewById(R.id.tv_appname);
+			final TextView tv_desp = (TextView) view_bottom
+					.findViewById(R.id.tv_desp);
+			final ImageView iv_head = (ImageView) view_head
+					.findViewById(R.id.iv_head);
+			TextView tv_name = (TextView) view_head.findViewById(R.id.tv_name);
+			tv_name.setText(cusomter.getName());
+			
+			tv_appname.setText(getString(R.string.app_name));
+			tv_desp.setText("你从未如此了解自己");
+
+			bitmapUtils.display(iv_head,
+					HttpConnectUtils.image_ip + cusomter.getAvatar(),
+					new BitmapLoadCallBack<View>() {
+						@Override
+						public void onLoadCompleted(View container, String uri,
+								Bitmap bitmap, BitmapDisplayConfig config,
+								BitmapLoadFrom from) {
+							// TODO Auto-generated method stub
+							// 顶部头像转成圆角
+							iv_head.setImageBitmap(ImageHelper
+									.toRoundBitmap(bitmap));
+							
+							new Thread(new Runnable() {
+								
+								@Override
+								public void run() {
+									// TODO Auto-generated method stub
+									// 添加顶部的头像view
+									bmpsList.add(Utils.getBitmapByViewCache(view_head, 0));
+									//添加圆环
+									bmpsList.add(Utils.getBitmapByView(fl, 0));
+									//添加描述信息
+									bmpsList.add(Utils.getBitmapByView(ll1, 0));
+									// 添加列表view
+									ScrollView svi = (ScrollView) frament_sleep_bottom;
+									Bitmap bmp = Utils.getBitmapByView(svi,Color.parseColor("#413355"),0);
+									bmpsList.add(bmp);
+
+									// 添加底部说明
+									bmpsList.add(Utils.getBitmapByViewCache(view_bottom, 0));
+
+									// 生成整个分享图片
+									bmp = Utils.getBitmapSportList(Color.parseColor("#413355"), bmpsList);
+									String filePath = Utils.savePic(bmp, "sleep");
+
+									Message msg = new Message();
+									msg.what = 0;
+									msg.obj = filePath;
+									handler.sendMessage(msg);
+								}
+							}).start();
+							
+						}
+
+						@Override
+						public void onLoadFailed(View container, String uri,
+								Drawable drawable) {
+							// TODO Auto-generated method stub
+							Bitmap bitmap;
+							Resources res = getResources();
+							if("1".equals(customer.getGender())){
+								bitmap = BitmapFactory.decodeResource(res,
+										R.mipmap.boy_head);
+							}else{
+								bitmap = BitmapFactory.decodeResource(res,
+										R.mipmap.girl_head);
+							}
+
+							iv_head.setImageBitmap(ImageHelper
+									.toRoundBitmap(bitmap));
+							new Thread(new Runnable() {
+
+								@Override
+								public void run() {
+									// TODO Auto-generated method stub
+									// 添加顶部的头像view
+									bmpsList.add(Utils.getBitmapByViewCache(view_head, 0));
+									//添加圆环
+									bmpsList.add(Utils.getBitmapByView(fl, 0));
+									//添加描述信息
+									bmpsList.add(Utils.getBitmapByView(ll1, 0));
+									// 添加列表view
+									ScrollView svi = (ScrollView) frament_sleep_bottom;
+									Bitmap bmp = Utils.getBitmapByView(svi,Color.parseColor("#413355"),0);
+									bmpsList.add(bmp);
+
+									// 添加底部说明
+									bmpsList.add(Utils.getBitmapByViewCache(view_bottom, 0));
+
+									// 生成整个分享图片
+									bmp = Utils.getBitmapSportList(Color.parseColor("#413355"), bmpsList);
+
+									String filePath = Utils.savePic(bmp, "sleep");
+
+									Message msg = new Message();
+									msg.what = 0;
+									msg.obj = filePath;
+									handler.sendMessage(msg);
+								}
+							}).start();
+						}
+					});
+		}
+	}
+//	private void jump2ShareActivity() {
+//		if (!isSaving) {
+//			showProgress(true);
+//			// ScrollView sv = (ScrollView) frament_sleep_bottom;
+//			// String filePath = Utils.savePic(
+//			// Utils.getBitmapByView(sv, fl_bottom.getHeight()),
+//			// "sleep");
+//			//
+//			// Intent intent = new Intent(activity,
+//			// SocialShareActivity.class);
+//			// intent.putExtra("filePath", filePath);
+//			// startActivity(intent);
+//			new Thread(new Runnable() {
+//
+//				@Override
+//				public void run() {
+//					ScrollView sv = (ScrollView) frament_sleep_bottom;
+//					String filePath = Utils.savePic(
+//							Utils.getBitmapByView(sv, 0),
+//							"sleep");
+//					Message msg = new Message();
+//					msg.obj = filePath;
+//					handler.sendMessage(msg);
+//				}
+//			}).start();
+//
+//		}
+//	}
+
+	Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+
+			showProgress(false);
+			switch (msg.what) {
+			case 0:
+				if (msg.obj != null) {
+					String filePath = (String) msg.obj;
+					Intent intent = new Intent(activity,
+							SocialShareActivity.class);
+					intent.putExtra("filePath", filePath);
+					startActivity(intent);
+					isSaving = false;
+				}
+				break;
+
+			default:
+				break;
+			}
+
+		};
+	};
+	BitmapUtils bitmapUtils;
+
+	/**
+	 * 初始化图片加载器
+	 */
+	private void initBitmapUtils() {
+		String path = Environment.getExternalStorageDirectory()
+				.getAbsolutePath() + "/"+getString(R.string.app_name)+"/cacher";
+		bitmapUtils = new BitmapUtils(activity, path);
+		bitmapUtils.configDefaultLoadFailedImage(R.mipmap.icon_touxiang);
+		bitmapUtils.configDefaultShowOriginal(false);// 显示原始图片,不压缩,
+														// 尽量不要使用,图片太大时容易OOM。
+		bitmapUtils.configDefaultBitmapConfig(Bitmap.Config.RGB_565);
+		bitmapUtils.configDefaultBitmapMaxSize(BitmapCommonUtils
+				.getScreenSize(activity));
+		bitmapUtils.configDefaultLoadingImage(R.mipmap.icon_touxiang);
+		// bitmapUtils.configDefaultCacheExpiry(2*60*1000);
+		bitmapUtils.configThreadPoolSize(5);
+
+	}
+	public interface SleepListener {
+		public void change(String name, int i);
+	}
+
+	public void setsListener(SleepListener sListener) {
+		this.sListener = sListener;
+	}
+
+	@Override
+	public void onTouch(boolean opened) {
+		viewFlipper.setOpened(opened);
+		if (opened) {
+
+			showNextView();
+
+		} else {
+
+			showPreviousView();
+		}
+	}
+
+
+
+}

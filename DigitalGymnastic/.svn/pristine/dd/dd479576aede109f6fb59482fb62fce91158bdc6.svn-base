@@ -1,0 +1,140 @@
+package com.hike.digitalgymnastic.entitiy;
+
+/**
+ * Created by computer on 2016/2/27.
+ */
+public class SleepData {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int id;
+    public boolean isSleepValid;
+    public byte sleepHour;
+    public byte sleepMin;
+    public byte wakeHour;
+    public byte wakeMin;
+    public byte wakeCount;
+    public int deepTime;
+    public int lightTime;
+    public int sleepScore;
+    public String time;
+
+    public String getTime(){return time;}
+    public void setTime(String time){this.time = time;}
+
+    public boolean isSleepValid() {
+        return isSleepValid;
+    }
+
+    public void setIsSleepValid(boolean isSleepValid) {
+        this.isSleepValid = isSleepValid;
+    }
+
+    public byte getSleepHour() {
+        return sleepHour;
+    }
+
+    public void setSleepHour(byte sleepHour) {
+        this.sleepHour = sleepHour;
+    }
+
+    public byte getSleepMin() {
+        return sleepMin;
+    }
+
+    public void setSleepMin(byte sleepMin) {
+        this.sleepMin = sleepMin;
+    }
+
+    public byte getWakeHour() {
+        return wakeHour;
+    }
+
+    public void setWakeHour(byte wakeHour) {
+        this.wakeHour = wakeHour;
+    }
+
+    public byte getWakeMin() {
+        return wakeMin;
+    }
+
+    public void setWakeMin(byte wakeMin) {
+        this.wakeMin = wakeMin;
+    }
+
+    public byte getWakeCount() {
+        return wakeCount;
+    }
+
+    public void setWakeCount(byte wakeCount) {
+        this.wakeCount = wakeCount;
+    }
+
+    public int getDeepTime() {
+        return deepTime;
+    }
+
+    public void setDeepTime(int deepTime) {
+        this.deepTime = deepTime;
+    }
+
+    public int getLightTime() {
+        return lightTime;
+    }
+
+    public void setLightTime(int lightTime) {
+        this.lightTime = lightTime;
+    }
+
+    public int getSleepScore() {
+        return sleepScore;
+    }
+
+    public void setSleepScore(int sleepScore) {
+        this.sleepScore = sleepScore;
+    }
+
+    public String getSleepShowRaw() {
+        return sleepShowRaw;
+    }
+
+    public void setSleepShowRaw(byte[] sleepShowRaw) {
+        this.sleepShowRaw="";
+        String str = new String(sleepShowRaw);
+        System.out.println("sleepShowRaw = [" + str + "]");
+        System.out.println();
+        for(int i=0;i<sleepShowRaw.length;i++){
+            byte sleeptype = sleepShowRaw[i];
+            if(sleeptype == 0x00){
+                this.sleepShowRaw+="0";//浅睡
+            }else if (sleeptype == 0x03){
+                this.sleepShowRaw+="3";//深睡
+            }else if(sleeptype == 0x02){
+                this.sleepShowRaw+="2";//醒着
+            }
+            if(i!=sleepShowRaw.length-1){
+                this.sleepShowRaw+=",";
+            }
+        }
+//        this.sleepShowRaw = sleepShowRaw;
+    }
+
+    public int getSleepShowRawi() {
+        return sleepShowRawi;
+    }
+
+    public void setSleepShowRawi(int sleepShowRawi) {
+        this.sleepShowRawi = sleepShowRawi;
+    }
+
+    public String sleepShowRaw = "";
+    public int sleepShowRawi;
+
+    public SleepData() {
+    }
+}

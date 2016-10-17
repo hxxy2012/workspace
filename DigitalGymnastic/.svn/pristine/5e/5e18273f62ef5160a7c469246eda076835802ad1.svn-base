@@ -1,0 +1,44 @@
+package com.weizhi.httpservice;
+
+import android.os.Handler;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+public class HTTPManager
+{
+    private static HTTPManager instance = new HTTPManager();
+
+    public static HTTPManager getInstance() {
+        return instance;
+    }
+
+    private HTTPManager()
+    {
+    }
+
+    public ICommon getCommon(Handler handler)
+    {
+        return Common.getInstance(handler);
+    }
+
+    public ICounter getCounter(Handler handler)
+    {
+        return Counter.getInstance(handler);
+    }
+
+    public ISleep getSleep(Handler handler)
+    {
+        return Sleep.getInstance(handler);
+    }
+
+    public ITask getTask(Handler handler)
+    {
+        return Task.getInstance(handler);
+    }
+
+    public IUserInfo getUserInfo(Handler handler)
+    {
+        return UserInfo.getInstance(handler);
+    }
+}

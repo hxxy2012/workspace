@@ -1,0 +1,311 @@
+package com.hike.digitalgymnastic.fragment;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.hike.digitalgymnastic.DeviceScanActivity;
+import com.hike.digitalgymnastic.MainMenuActivity;
+import com.hike.digitalgymnastic.UIHandler;
+import com.hike.digitalgymnastic.entitiy.MyClock;
+import com.hike.digitalgymnastic.utils.BluetoothUtils;
+import com.hike.digitalgymnastic.view.ClockItemView;
+import com.hike.digitalgymnastic.view.ClockItemView.StateChangedListener;
+import com.hiko.enterprisedigital.R;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
+import com.lidroid.xutils.view.annotation.event.OnClick;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddClockFrament extends BaseFragment implements
+		StateChangedListener, UIHandler {
+
+	private View v;
+	@ViewInject(R.id.btn_left)
+	private ImageView btn_left;
+	@ViewInject(R.id.btn_right)
+	private ImageView btn_right;
+
+	@ViewInject(R.id.btn_right_text)
+	private Button btn_right_text;
+	@ViewInject(R.id.ll_btn_left)
+	private LinearLayout ll_btn_left;
+	@ViewInject(R.id.ll_btn_right)
+	private LinearLayout ll_btn_right;
+
+	@ViewInject(R.id.title)
+	private TextView title;
+	// 未连接手环显示页面
+	@ViewInject(R.id.rl_clock_noconnected)
+	private RelativeLayout rl_clock_noconnected;
+	@ViewInject(R.id.btn_connect2bond)
+	private Button btn_connect2bond;
+
+	// 空页面显示
+	@ViewInject(R.id.rl_clock_blank)
+	private RelativeLayout rl_clock_blank;
+
+	@ViewInject(R.id.ll_my_clock)
+	private LinearLayout ll_my_clock;
+//	@ViewInject(R.id.lv_clock)
+//	private ClockListView lv_clock;
+
+	private MyClockAdapter myAdapter;
+	private List<MyClock> myDatas = new ArrayList<MyClock>();
+
+	@OnClick(value = { R.id.btn_left, R.id.btn_right_text, R.id.ll_btn_left,
+			R.id.ll_btn_right, R.id.btn_connect2bond })
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_left:
+			((MainMenuActivity) activity).fragmentBack();
+			break;
+		case R.id.ll_btn_left:
+			((MainMenuActivity) activity).fragmentBack();
+			break;
+
+		case R.id.ll_btn_right:
+			// ((MainMenuActivity)
+			// activity).setTabSelection(getString(R.string.menu_my_clock),MainMenuActivity.mode_enter);
+			if (view_list.size() < 3) {
+				addClock();
+			}
+			break;
+		case R.id.btn_connect2bond:
+			// ((MainMenuActivity) activity).setTabSelection(
+			// getString(R.string.menu_my_watch),
+			// MainMenuActivity.mode_enter);
+
+			jump2DeviceScanPage();
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		this.inflater = inflater;
+		this.v = inflater.inflate(R.layout.activity_menu_add_my_clock,
+				container, false);
+		ViewUtils.inject(this, v);
+
+		return v;
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		initData();
+
+	}
+
+	/**
+	 * @category 获取手环闹钟列表
+	 */
+	private void getAlarmList() {
+		// TODO Auto-generated method stub
+		showProgress(true);
+		application.registerUIHandler(this);
+		application.getAlarmList();
+
+	}
+
+	@Override
+	public void onHiddenChanged(boolean hidden) {
+		// TODO Auto-generated method stub
+		super.onHiddenChanged(hidden);
+		if (!hidden) {
+			initData();
+		}
+	}
+
+	private void initData() {
+		myDatas.clear();
+		view_list.clear();
+		ll_my_clock.removeAllViews();
+		btn_right_text.setVisibility(View.VISIBLE);
+		title.setTextColor(this.getResources().getColor(R.color.umeng_socialize_list_item_textcolor));
+		btn_left.setImageResource(R.mipmap.back_login_3x);
+		btn_right_text.setText("添加");
+		btn_right_text.setVisibility(View.GONE);
+		try{
+			if (BluetoothUtils.checkDeviceConnectStatus()) {
+				btn_right.setImageResource(R.mipmap.add_3x);
+				btn_right.setVisibility(View.VISIBLE);
+				if (myDatas.size() > 0) {
+					rl_clock_noconnected.setVisibility(View.GONE);
+					rl_clock_blank.setVisibility(View.GONE);
+					ll_my_clock.setVisibility(View.VISIBLE);
+				} else {
+					rl_clock_noconnected.setVisibility(View.GONE);
+					rl_clock_blank.setVisibility(View.VISIBLE);
+					ll_my_clock.setVisibility(View.GONE);
+				}
+				getAlarmList();
+			} else {
+				btn_right.setVisibility(View.GONE);
+				rl_clock_noconnected.setVisibility(View.VISIBLE);
+				rl_clock_blank.setVisibility(View.GONE);
+				ll_my_clock.setVisibility(View.GONE);
+			}
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		title.setText(getString(R.string.menu_clock_str));
+
+	}
+
+	List<ClockItemView> view_list = new ArrayList<ClockItemView>();
+
+	/**
+	 * @category 构建视图
+	 */
+	private void buildView() {
+//		ll_my_clock.removeAllViews();
+		if (myDatas.size() > 0) {
+			rl_clock_noconnected.setVisibility(View.GONE);
+			rl_clock_blank.setVisibility(View.GONE);
+			ll_my_clock.setVisibility(View.VISIBLE);
+//			ClockAdapter adapter=new ClockAdapter(activity,myDatas);
+//			lv_clock.setAdapter(adapter);
+			
+		} else {
+			rl_clock_noconnected.setVisibility(View.GONE);
+			rl_clock_blank.setVisibility(View.VISIBLE);
+			ll_my_clock.setVisibility(View.GONE);
+		}
+		for (MyClock clock : myDatas) {
+			ClockItemView clockItemView = new ClockItemView(activity);
+			view_list.add(clockItemView);
+			ll_my_clock.addView(clockItemView);
+			clockItemView.setData(clock);
+			clockItemView.setListener(this);
+		}
+		
+	}
+
+	/**
+	 * @category 添加闹钟
+	 */
+	private void addClock() {
+
+		MyClock clock = new MyClock();
+		List<Boolean> list = new ArrayList<Boolean>();
+		for (int i = 0; i < 7; i++) {// 默认周日
+			list.add(false);
+		}
+		clock.setGroup_id(view_list.size());
+		clock.setIdList(list);
+		clock.setHour(0);
+		clock.setMin(0);
+
+		ClockItemView clockItemView = new ClockItemView(activity);
+		clockItemView.setData(clock);
+		clockItemView.setListener(this);
+
+		// view_list.add(clockItemView);
+		// ll_my_clock.addView(clockItemView);
+		// myDatas.add(clock);
+
+		
+	}
+
+	// 设置闹钟成功后更新页面
+	private void updataView() {
+		rl_clock_noconnected.setVisibility(View.GONE);
+		rl_clock_blank.setVisibility(View.GONE);
+		ll_my_clock.setVisibility(View.VISIBLE);
+		ClockItemView clockItemView = new ClockItemView(activity);
+		MyClock clock = new MyClock();
+		clock.setGroup_id(view_list.size());
+		clock.setHour(0);
+		clock.setMin(0);
+		clock.setOpenorclose(false);
+		List<Boolean> list = new ArrayList<Boolean>();
+		for (int i = 0; i < 7; i++) {
+			if (i == 6)
+				list.add(true);
+			else
+				list.add(false);
+		}
+		clock.setExpanded(false);
+
+		clockItemView.setData(clock);
+		clockItemView.setListener(this);
+		view_list.add(clockItemView);
+		ll_my_clock.addView(clockItemView);
+		myDatas.add(clock);
+
+		if (view_list.size() == 3) {
+			btn_right.setImageResource(R.mipmap.icon_add);
+		}
+	}
+
+
+	private void setAlarm(MyClock clock) {
+//		WAlarm alarm = new WAlarm(clock.getGroup_id());
+//		List<Boolean> idList = clock.getIdList();
+//		alarm.setWeekdayAlarm(idList.get(0), idList.get(1), idList.get(2),
+//				idList.get(3), idList.get(4), idList.get(5), idList.get(6));
+//		alarm.setAlarmOnce(false);// 设置闹钟是否一次性
+//		alarm.setAlarmTime(clock.getHour(), clock.getMin());
+//		if (application.setAlarm(alarm)) {
+//			showProgress(false);
+//			// updataView();
+//		}else{
+//			showProgress(false);
+//		}
+	}
+
+	private void jump2DeviceScanPage() {
+		Intent intent = new Intent(activity, DeviceScanActivity.class);
+		startActivity(intent);
+	}
+
+	@Override
+	public void onTimePickerExpandedStateChanged(boolean isExpanded,
+			Object object) {
+		// TODO Auto-generated method stub
+		if (isExpanded) {
+			for (ClockItemView clockItemView : view_list) {
+				MyClock clock = clockItemView.getClock();
+				if (!clock.equals(object)) {
+					clockItemView.closeExpanded();
+				}
+			}
+		}
+	}
+
+	@Override
+	public void onTunerStateChanged(boolean isChecked, MyClock clock) {
+		// TODO Auto-generated method stub
+		showProgress(true);
+		setAlarm(clock);
+	}
+
+	int[] weeks = { 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x01 };// 周一到周日
+
+	/**
+	 * @category 蓝牙回调结果
+	 */
+	@Override
+	public void handlerUI(Message msg) {
+		super.handlerUI(msg);
+
+	}
+
+	
+}

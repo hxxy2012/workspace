@@ -1,0 +1,326 @@
+package com.hike.digitalgymnastic.service;
+
+import android.bluetooth.BluetoothDevice;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+
+import com.hike.digitalgymnastic.entitiy.MyClock;
+import com.hike.digitalgymnastic.tools.UtilLog;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+
+public class BleBaseControlerLOVEFIT implements BleBaseControler {
+
+
+    AirServiceManager mBleManager;
+    Context context;
+    Handler mHandler;
+    private BluetoothDevice mDevice;
+    private static BleBaseControlerLOVEFIT controlerBOSI;
+    private String TAG = "BleBaseControlerLOVEFIT";
+
+    private BleBaseControlerLOVEFIT(Context context, Handler mHandler) {
+        this.context = context;
+        this.mHandler = mHandler;
+    }
+
+    public static BleBaseControlerLOVEFIT getInstance(Context context, Handler mHandler) {
+        if (controlerBOSI == null) {
+            controlerBOSI = new BleBaseControlerLOVEFIT(context, mHandler);
+        }
+        return controlerBOSI;
+    }
+
+
+    @Override
+    public void scanDevice(int pType) {
+        if (mBleManager == null) {
+            mBleManager = AirServiceManager.getInstance(context);
+        }
+        mBleManager.initialize(uiHandler);
+        mBleManager.startScan(pType);
+
+    }
+
+    @Override
+    public boolean connect(String mac) {
+        UtilLog.e(TAG, "connecting");
+        mBleManager.connect(mac);
+        return true;
+    }
+
+    @Override
+    public void disconnect() {
+        mBleManager.disconnect();
+    }
+
+    @Override
+    public void bindUser(String user) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mBleManager.bind();
+            }
+        }).start();
+    }
+
+    @Override
+    public void unBinderUer(String user) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (mBleManager != null)
+                    mBleManager.disconnect();
+            }
+        }).start();
+    }
+
+    @Override
+    public void setDeviceName(String name) {
+        if (mBleManager != null && !TextUtils.isEmpty(name) && name.getBytes().length <= 13) {
+            mBleManager.setName("HIKO-" + name);
+        }
+    }
+
+    @Override
+    public void getlaseFillPowerTime() {
+
+    }
+
+    @Override
+    public void getBallary() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (mBleManager != null)
+                    mBleManager.battery();
+            }
+        }).start();
+    }
+
+    @Override
+    public void adjustTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Calendar c = Calendar.getInstance();
+                c.setTime(new Date());
+                if (mBleManager != null)
+                    mBleManager.setTime(String.valueOf(c.get(Calendar.YEAR)), String.valueOf(c.get(Calendar.MONTH) + 1)
+                            , String.valueOf(c.get(Calendar.DAY_OF_MONTH)), String.valueOf(c.get(Calendar.HOUR_OF_DAY))
+                            , String.valueOf(c.get(Calendar.MINUTE)), String.valueOf(c.get(Calendar.SECOND)));
+
+
+            }
+        }).start();
+    }
+
+    @Override
+    public void getRecordCount() {
+        if (mBleManager != null) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    mBleManager.recordCount();
+                }
+            }).start();
+        }
+    }
+
+    @Override
+    public void syncWatchData(final int tag) {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                mBleManager.getSportData(tag);
+//            }
+//        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                mBleManager.getSportData();
+            }
+        }).start();
+
+    }
+
+    @Override
+    public void deviceUpdate() {
+
+    }
+
+    @Override
+    public void shutdown() {
+        if (mBleManager != null) {
+            mBleManager.shutdown();
+            mBleManager = null;
+        }
+    }
+
+    @Override
+    public boolean isShutdown() {
+        if (mBleManager != null) {
+            return mBleManager.isShutdown();
+        }
+        return true;
+    }
+
+    @Override
+    public void syncWatchSleepData() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (mBleManager != null) {
+                    mBleManager.getSleepData();
+                } else {
+                    return;
+                }
+            }
+        }).start();
+    }
+
+    @Override
+    public void stopScan() {
+        mBleManager.stopScan();
+    }
+
+    @Override
+    public void setAlarm(ArrayList<MyClock> pClock) {
+        if (mBleManager!=null){
+            mBleManager.setAlarm(pClock);
+        }
+    }
+
+    @Override
+    public void getConfig() {
+        if (mBleManager!=null){
+            mBleManager.getConfig();
+        }
+    }
+
+
+    Handler uiHandler = new Handler() {
+        @Override
+        public void dispatchMessage(Message newMsg) {
+            super.dispatchMessage(newMsg);
+            Message msg = new Message();
+
+            int what = newMsg.what;
+            Object obj = newMsg.obj;
+            UtilLog.e(TAG, "what=[" + what + "]; obj=[" + obj + "]");
+            switch (what) {
+                case BLEDataType.BLE_SCAN_CODE:
+                    mDevice = (BluetoothDevice) newMsg.obj;
+                    msg.what = BLEDataType.BLE_SCAN_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_SCAN_END:
+                    msg.what = BLEDataType.BLE_SCAN_END;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_ISREADY_CODE:
+                    msg.what = BLEDataType.BLE_ISREADY_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+
+                    break;
+                case BLEDataType.BLE_CANNOTFINDSERVICE_CODE:
+                    msg.what = BLEDataType.BLE_CANNOTFINDSERVICE_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_CONNECTTIMEOUT_CODE:
+                    msg.what = BLEDataType.BLE_CONNECTTIMEOUT_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_DISCONNECT_CODE:
+                    msg.what = BLEDataType.BLE_DISCONNECT_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_BIND_CODE: // Bind
+                    msg.what = BLEDataType.BLE_BIND_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_RECORDCOUNT_CODE:// RecordCount
+                    msg.what = BLEDataType.BLE_RECORDCOUNT_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_BATTERY_CODE:// Battery
+
+                    msg.what = BLEDataType.BLE_BATTERY_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_VERSION_CODE:// Version
+                    msg.what = BLEDataType.BLE_VERSION_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_GETALARMCLOCK_CODE:// GetAlarmClock
+                    msg.what = BLEDataType.BLE_GETALARMCLOCK_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_ADJUSTTIME_CODE:// SetTime
+                    msg.what = BLEDataType.BLE_ADJUSTTIME_CODE;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_SETNAME_CODE:// SetName
+                    msg.what = BLEDataType.BLE_SETNAME_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_SPORTDATA_CODE:// SportData
+                    msg.what = BLEDataType.BLE_SPORTDATA_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+
+                    break;
+                case BLEDataType.BLE_SETALARMCLOCK_CODE:// SetAlarmClock
+                    msg.what = BLEDataType.BLE_SETALARMCLOCK_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_DELETESPORTDATA_CODE:// DeleteSportData
+                    msg.what = BLEDataType.BLE_DELETESPORTDATA_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+                case BLEDataType.BLE_GETSLEEP_CODE:// DeleteSportData
+                    msg.what = BLEDataType.BLE_GETSLEEP_CODE;
+                    msg.obj = newMsg.obj;
+                    mHandler.sendMessage(msg);
+                    break;
+            }
+        }
+    };
+
+    public char Hex2Char(byte b) {
+        if ((b >= 0) && (b <= 9)) {
+            return (char) (b + '0');
+        } else {
+            return (char) ((b - 0x0A) + 'A');
+        }
+    }
+
+    public String Bytes2String(byte[] bts) {
+        StringBuffer str = new StringBuffer(bts.length * 2);
+        for (int i = 0; i < bts.length; i++) {
+
+            str.append(Hex2Char((byte) ((bts[i] >> 4) & 0x0F)));
+            str.append(Hex2Char((byte) (bts[i] & 0x0F)));
+        }
+
+        return str.toString();
+    }
+}

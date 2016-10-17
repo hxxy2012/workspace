@@ -1,0 +1,7 @@
+package com.weizhi.domainmodel;
+
+public class MDevice {
+	public String Name;
+	public String Address;
+
+}

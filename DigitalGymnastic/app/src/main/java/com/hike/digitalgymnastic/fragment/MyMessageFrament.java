@@ -1,0 +1,800 @@
+//package com.hike.digitalgymnastic.fragment;
+//
+//import android.annotation.SuppressLint;
+//import android.app.Activity;
+//import android.content.Context;
+//import android.content.Intent;
+//import android.graphics.Bitmap;
+//import android.graphics.BitmapFactory;
+//import android.graphics.Canvas;
+//import android.graphics.Paint;
+//import android.graphics.drawable.BitmapDrawable;
+//import android.graphics.drawable.Drawable;
+//import android.os.Bundle;
+//import android.os.Environment;
+//import android.os.Handler;
+//import android.os.Message;
+//import android.support.annotation.Nullable;
+//import android.text.Editable;
+//import android.text.TextUtils;
+//import android.text.TextWatcher;
+//import android.util.Log;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.view.ViewTreeObserver;
+//import android.view.inputmethod.InputMethodManager;
+//import android.widget.Button;
+//import android.widget.EditText;
+//import android.widget.ImageView;
+//import android.widget.LinearLayout;
+//import android.widget.RelativeLayout;
+//import android.widget.TextView;
+//
+//import com.hike.digitalgymnastic.MainMenuActivity;
+//import com.hike.digitalgymnastic.PicturePickerActivity;
+//import com.hike.digitalgymnastic.entitiy.Customer;
+//import com.hike.digitalgymnastic.http.HttpConnectUtils;
+//import com.hike.digitalgymnastic.request.BaseDao;
+//import com.hike.digitalgymnastic.utils.Constants;
+//import com.hike.digitalgymnastic.utils.FastBlur;
+//import com.hike.digitalgymnastic.utils.LocalDataUtils;
+//import com.hike.digitalgymnastic.utils.Utils;
+//import com.hike.digitalgymnastic.view.ImageHelper;
+//import com.hiko.enterprisedigital.R;
+//import com.lidroid.xutils.BitmapUtils;
+//import com.lidroid.xutils.ViewUtils;
+//import com.lidroid.xutils.bitmap.BitmapCommonUtils;
+//import com.lidroid.xutils.bitmap.BitmapDisplayConfig;
+//import com.lidroid.xutils.bitmap.callback.BitmapLoadCallBack;
+//import com.lidroid.xutils.bitmap.callback.BitmapLoadFrom;
+//import com.lidroid.xutils.view.annotation.ViewInject;
+//import com.lidroid.xutils.view.annotation.event.OnClick;
+//
+//import java.io.ByteArrayOutputStream;
+//import java.io.File;
+//import java.lang.ref.SoftReference;
+//import java.text.SimpleDateFormat;
+//import java.util.Date;
+//import java.util.HashMap;
+//import java.util.Map;
+//
+///*
+// *
+// * 个人信息修改
+// *
+// */
+//public class MyMessageFrament extends BaseFragment {
+//
+//	@ViewInject(R.id.btn_left)
+//	private ImageView btn_left;
+//	@ViewInject(R.id.ll_btn_left)
+//	private LinearLayout ll_btn_left;
+//	@ViewInject(R.id.ll_btn_right)
+//	private LinearLayout ll_btn_right;
+//
+//	@ViewInject(R.id.btn_right_text)
+//	private Button btn_right_text;
+//	@ViewInject(R.id.title)
+//	private TextView title;
+////	@ViewInject(R.id.top_rl)
+////	private RelativeLayout top_rl;
+////	@ViewInject(R.id.rl_gender)
+////	private RelativeLayout rl_gender;
+////	@ViewInject(R.id.rl_year)
+////	private RelativeLayout rl_year;
+////	@ViewInject(R.id.rl_height)
+////	private RelativeLayout rl_height;
+////	@ViewInject(R.id.rl_weight)
+////	private RelativeLayout rl_weight;
+////	@ViewInject(R.id.top_pic)
+////	private RelativeLayout top_pic;
+////	@ViewInject(R.id.iv_camera)
+////	private ImageView iv_camera;
+////	@ViewInject(R.id.et_person_name)
+////	private EditText et_person_name;
+//
+//	@ViewInject(R.id.tv_value_gender)
+//	private TextView tv_value_gender;
+//	@ViewInject(R.id.tv_value_year)
+//	private TextView tv_value_year;
+//	@ViewInject(R.id.tv_value_height)
+//	private TextView tv_value_height;
+//	@ViewInject(R.id.tv_value_weight)
+//	private TextView tv_value_weight;
+//	private View v;
+//	private BaseDao dao;
+//	public Customer changecustomer;
+//
+//	// 记录当前选中的各个参数
+//	private String gender;
+//	private String year;
+//	private String height;
+//	private String weight;
+//	public String goalCalories;
+//	public String description;
+//	public String name;
+//	public String avatar;
+//
+//	private Bitmap myBitmap;
+//	private ByteArrayOutputStream baos;
+//	String headPath;
+//
+//	String[] array = new String[] { "管理员", "admin", "官方", "工作人员" };
+//
+//	@OnClick(value = { R.id.btn_left, R.id.ll_btn_left, R.id.rl_gender,
+//			R.id.btn_right_text, R.id.rl_year, R.id.rl_height, R.id.rl_weight,
+//			R.id.iv_camera })
+//	public void onClick(View v) {
+//		switch (v.getId()) {
+//			case R.id.btn_left:
+//				submit();
+//				break;
+//			case R.id.ll_btn_left:
+//				submit();
+//				break;
+//
+//			case R.id.btn_right_text:
+//
+//				break;
+//			case R.id.rl_gender:
+//				((MainMenuActivity) activity).setTabSelection(
+//						getString(R.string.gender), MainMenuActivity.mode_enter);
+//				break;
+//			case R.id.rl_year:
+//				((MainMenuActivity) activity).setTabSelection(
+//						getString(R.string.year), MainMenuActivity.mode_enter);
+//				break;
+//			case R.id.rl_height:
+//				((MainMenuActivity) activity).setTabSelection(
+//						getString(R.string.height), MainMenuActivity.mode_enter);
+//				break;
+//			case R.id.rl_weight:
+//				((MainMenuActivity) activity).setTabSelection(
+//						getString(R.string.weight), MainMenuActivity.mode_enter);
+//				break;
+//			case R.id.iv_camera:
+//				// 头像
+//				showPicturePickerDialog();
+//				break;
+//			default:
+//				break;
+//		}
+//	}
+//
+//	@Override
+//	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+//							 Bundle savedInstanceState) {
+//		this.inflater = inflater;
+////		Utils.toolBarManager((MainMenuActivity) activity, R.color.green_2ee0cb);
+//		this.v = inflater.inflate(R.layout.activity_menu_my_message, container,
+//				false);
+//		ViewUtils.inject(this, v);
+//		return v;
+//	}
+//
+//	@Override
+//	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//		super.onActivityCreated(savedInstanceState);
+//		initData();
+//	}
+//
+//	private void initData() {
+//		headPath = Environment.getExternalStorageDirectory()
+//				.getAbsolutePath() + "/"+getString(R.string.app_name)+"/分享/picHead.jpg";
+//		title.setText("");
+//		btn_right_text.setVisibility(View.VISIBLE);
+//		btn_right_text.setText("提交");
+//		btn_right_text.setVisibility(View.INVISIBLE);
+//		dao = new BaseDao(this, activity);
+//
+//		initBitmapUtils();
+//		/* 将默认头像转为圆形 */
+////		Resources res = getResources();
+////		Bitmap bmp = BitmapFactory.decodeResource(res,
+////				R.drawable.icon_head_deffault);
+////		iv_camera.setImageBitmap(ImageHelper.toRoundBitmap(bmp));
+//		et_person_name.setText(LocalDataUtils.readCustomer(activity).getName());
+////		top_pic.setBackgroundResource(R.mipmap.story1);
+//		changeData();
+//
+//		// et_person_name.addTextChangedListener(watcher);
+//	}
+//
+//	TextWatcher watcher = new TextWatcher() {
+//
+//		@Override
+//		public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+//								  int arg3) {
+//			// TODO Auto-generated method stub
+//
+//		}
+//
+//		@Override
+//		public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+//									  int arg3) {
+//			// TODO Auto-generated method stub
+//
+//		}
+//
+//		@Override
+//		public void afterTextChanged(Editable editable) {
+//			// TODO Auto-generated method stub
+//			String name = editable.toString();
+//			if (name.contains(" ")) {
+//				name = name.trim();
+//				et_person_name.setText(name);
+//			}
+//			// else if(is2Long(name)){
+//			// et_person_name.setText(name.substring(0, name.length()-1));
+//			// }
+//
+//		}
+//	};
+//
+//	@Override
+//	public void onAttach(Activity activity) {
+//		// TODO Auto-generated method stub
+//		super.onAttach(activity);
+//		MainMenuActivity mma = (MainMenuActivity) activity;
+//		mma.setDataCommuiation(new DataCommuiation() {
+//
+//			@Override
+//			public void onKyDown() {
+//				// TODO Auto-generated method stub
+//				submit();
+//			}
+//		});
+//	}
+//
+//	private void showPicturePickerDialog() {
+//		Intent intent = null;
+//		intent = new Intent(activity, PicturePickerActivity.class);
+//		startActivityForResult(intent, Constants.requestCode_pickpicture);
+//	}
+//
+//	@Override
+//	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//		super.onActivityResult(requestCode, resultCode, data);
+//		if (resultCode != Activity.RESULT_OK) {
+//			return;
+//		}
+//		if (data != null) {
+//			int degree= data.getIntExtra("degree",0);
+//
+//			String imagePath = data.getStringExtra("imagePath");
+////			degree=Utils.readPictureDegree(imagePath);
+//			Bitmap bmp = BitmapFactory.decodeFile(imagePath);
+//			Bitmap bitmap = Utils.rotaingImageView(degree, bmp);
+//
+//			iv_camera.setImageBitmap(ImageHelper.toRoundBitmap(bitmap));
+//			Log.v("MyLog", "--" + imagePath);
+//			if (imagePath != null) {
+//				uploadImage(imagePath);
+////				Utils.saveHeadPic(bitmap);
+//			}
+//		}
+//	}
+//
+//	// 上传图片
+//	private void uploadImage(final String imagePath) {
+//		showProgress(true);
+//		new Thread(new Runnable() {
+//
+//			@Override
+//			public void run() {
+//				// TODO Auto-generated method stub
+////				baos = new ByteArrayOutputStream();
+////				Options opt = new Options();
+////				opt.inSampleSize = 4;
+////				myBitmap = BitmapFactory.decodeFile(imagePath, opt);
+////				myBitmap.compress(CompressFormat.JPEG, 100, baos);
+//				File file = new File(imagePath);
+//				myBitmap=Utils.imageFile2Bitmap(file);
+//				String filePath = Utils.savePic(myBitmap, "picHead");
+//				dao.UploadImage(filePath);
+//			}
+//		}).start();
+//	}
+//
+//	@Override
+//	public void onHiddenChanged(boolean hidden) {
+//		super.onHiddenChanged(hidden);
+////		Utils.toolBarManager((MainMenuActivity) activity, R.color.green_2ee0cb);
+//		if (!hidden)
+//			changeData();
+//	}
+//
+//	public void changCustomerData() {
+//		changecustomer = new Customer();
+//		// changecustomer.setName(name);
+//		changecustomer.setName(et_person_name.getText().toString().trim());
+//		changecustomer.setAvatar(avatar);
+//		changecustomer.setGender(gender);
+//		changecustomer.setYear(year);
+//		changecustomer.setHeight(height);
+//		changecustomer.setWeight(weight);
+//		changecustomer.setGoalCalories(goalCalories);
+//		changecustomer.setDescription(description);
+//	}
+//
+//	private void changeData() {
+//		avatar = ((MainMenuActivity) activity).getAvatar();
+//		name = ((MainMenuActivity) activity).getName();
+//		description = ((MainMenuActivity) activity).getDescription();
+//
+//		gender = ((MainMenuActivity) activity).getGender();
+//		year = ((MainMenuActivity) activity).getYear();
+//
+//		height = ((MainMenuActivity) activity).getHeight();
+//
+//		weight = ((MainMenuActivity) activity).getWeight();
+//
+//		goalCalories = ((MainMenuActivity) activity).getGoalCalories();
+//		if (TextUtils.isEmpty(goalCalories))
+//			goalCalories = "0";
+//		if ("1".equals(gender)) {
+//			tv_value_gender.setText("男");
+//			if (TextUtils.isEmpty(year))
+//				year = String.valueOf(Constants.defaultAge);
+//			if (TextUtils.isEmpty(height))
+//				height = String.valueOf(Constants.defaultMaleHeight);
+//			if (TextUtils.isEmpty(weight))
+//				weight = String.valueOf(Constants.defaultMaleWeight);
+//		} else {
+//			tv_value_gender.setText("女");
+//			if (TextUtils.isEmpty(year))
+//				year = String.valueOf(Constants.defaultAge);
+//			if (TextUtils.isEmpty(height))
+//				height = String.valueOf(Constants.defaultSexHeight);
+//			if (TextUtils.isEmpty(weight))
+//				weight = String.valueOf(Constants.defaultSexWeight);
+//		}
+//
+//		int yearint = Integer.parseInt(year);
+//		if(yearint<1930){
+//			yearint=Constants.defaultAge;
+//		}
+//
+//		SimpleDateFormat format = new SimpleDateFormat("yyyy");
+//		String currentYear = format.format(new Date());
+//		int age = Integer.parseInt(currentYear) - yearint;
+//		et_person_name.setText(LocalDataUtils.readCustomer(activity).getName());
+//		tv_value_year.setText(age + "岁");
+//		tv_value_height.setText(height + "cm");
+//		tv_value_weight.setText(Float.parseFloat(weight) + "kg");
+////		if(!TextUtils.isEmpty(name)){
+////			et_person_name.setText(name);
+////		}
+//		initHeadImage();
+//
+//	}
+//
+//	private void initHeadImage() {
+//		display(iv_camera,avatar);
+//	}
+//
+//	Map<String, SoftReference<Bitmap>> bmpMap = new HashMap<String, SoftReference<Bitmap>>();
+//
+//	private void setPic(final String str) {
+//		if (!TextUtils.isEmpty(str)) {// 此处启动线程获取头像
+//			showProgress(true);
+//
+//			new Thread(new Runnable() {
+//				@Override
+//				public void run() {
+//					File file = new File(headPath);
+//					if (file.exists()) {
+//						Message msg = new Message();
+//						msg.obj = BitmapFactory.decodeFile(headPath);
+//						handler.sendMessage(msg);
+//						return;
+//					}
+//					String url = HttpConnectUtils.image_ip + str;
+//					boolean isNeedRequestNet = true;
+//					if (bmpMap.get(url) != null) {
+//						SoftReference<Bitmap> srf = bmpMap.get(url);
+//						if (srf.get() != null) {
+//							isNeedRequestNet = false;
+//							Message msg = new Message();
+//							msg.obj = srf.get();
+//							handler.sendMessage(msg);
+//						} else {
+//							isNeedRequestNet = true;
+//						}
+//					}
+//					if (isNeedRequestNet) {
+//						Bitmap bitmap = Utils.getHttpBitmap(url);
+//						if (bitmap != null) {
+//							String path = Utils.saveHeadPic(bitmap);
+//							SoftReference<Bitmap> srf = new SoftReference<Bitmap>(
+//									bitmap);
+//							bmpMap.put(url, srf);
+//						}
+//						Message msg = new Message();
+//						msg.obj = bitmap;
+//						handler.sendMessage(msg);
+//					}
+//				}
+//			}).start();
+//
+//			// Timer timer = new Timer();
+//			// timer.schedule(new TimerTask() {
+//			//
+//			// @Override
+//			// public void run() {
+//			// // TODO Auto-generated method stub
+//			// handler.sendEmptyMessage(-1);
+//			// new Thread(new Runnable() {
+//			// @Override
+//			// public void run() {
+//			// File file=new File(headPath);
+//			// if(file.exists()){
+//			// Message msg = new Message();
+//			// msg.obj = BitmapFactory.decodeFile(headPath);
+//			// handler.sendMessage(msg);
+//			// return;
+//			// }
+//			// String url = HttpConnectUtils.image_ip + str;
+//			// boolean isNeedRequestNet = true;
+//			// if (bmpMap.get(url) != null) {
+//			// SoftReference<Bitmap> srf = bmpMap.get(url);
+//			// if (srf.get() != null) {
+//			// isNeedRequestNet = false;
+//			// Message msg = new Message();
+//			// msg.obj = srf.get();
+//			// handler.sendMessage(msg);
+//			// } else {
+//			// isNeedRequestNet = true;
+//			// }
+//			// }
+//			// if (isNeedRequestNet) {
+//			// Bitmap bitmap = Utils.getHttpBitmap(url);
+//			// String path=Utils.saveHeadPic(bitmap);
+//			// SoftReference<Bitmap> srf = new SoftReference<Bitmap>(
+//			// bitmap);
+//			// bmpMap.put(url, srf);
+//			// Message msg = new Message();
+//			// msg.obj = bitmap;
+//			// handler.sendMessage(msg);
+//			// }
+//			// }
+//			// }).start();
+//			// }
+//			// },1000);
+//		}
+//	}
+//
+//	@SuppressLint("HandlerLeak")
+//	Handler handler = new Handler() {
+//
+//		@SuppressLint("NewApi")
+//		@Override
+//		public void handleMessage(Message msg) {
+//			super.handleMessage(msg);
+//			showProgress(false);
+//			if (msg.obj != null) {
+//				try {
+////					System.gc();
+//					final Bitmap bmp = (Bitmap) msg.obj;
+//					iv_camera.setImageBitmap(ImageHelper.toRoundBitmap(bmp));
+//					top_pic.setBackgroundDrawable(new BitmapDrawable(bmp));
+//					bitmapMohu();
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//	};
+//
+//	public void onRequestFaild(String errorNo, String errorMessage) {
+//		showProgress(false);
+//		if (isSubmitting) {
+//			isSubmitting = false;
+//			isUpdataedPicHead = false;
+//			((MainMenuActivity) activity).fragmentBack();
+//		}
+//	};
+//
+//	@Override
+//	public void onNoConnect() {
+//		// TODO Auto-generated method stub
+//		super.onNoConnect();
+//		showProgress(false);
+//		if (isSubmitting) {
+//			isSubmitting = false;
+//			isUpdataedPicHead = false;
+//			((MainMenuActivity) activity).fragmentBack();
+//		}
+//
+//	}
+//
+//	public void onRequestSuccess(int requestCode) {
+//		showProgress(false);
+//		if (requestCode == 9) {// 修改个人信息
+//			isSubmitting = false;
+//			isUpdataedPicHead = false;
+//			// Utils.showMessage(activity, "修改成功");
+//			changecustomer.setBandId(LocalDataUtils.readCustomer(activity)
+//					.getBandId());
+//			changecustomer.setId(LocalDataUtils.readCustomer(activity).getId());
+//			changecustomer.setLoginToken(LocalDataUtils.readCustomer(activity)
+//					.getLoginToken());
+//			changecustomer.setStatus(LocalDataUtils.readCustomer(activity)
+//					.getStatus());
+//			changecustomer.setPhone(LocalDataUtils.readCustomer(activity)
+//					.getPhone());
+//			changecustomer.setSource(LocalDataUtils.readCustomer(activity)
+//					.getSource());
+//			LocalDataUtils.saveCustomer(activity, changecustomer);
+//			((MainMenuActivity) activity).fragmentBack();
+//		}
+//		if (requestCode == 7) {
+//			// 上传图片
+//			this.avatar = dao.getImageurl().getImageUrl();
+//			((MainMenuActivity) activity).setAvatar(avatar);
+//			isUpdataedPicHead = true;
+//			// 获取图片路径并保存
+//			if (myBitmap != null) {
+//				// iv_camera.setImageBitmap(ImageHelper.toRoundBitmap(Utils
+//				// .getPicFromBytes(baos.toByteArray(), null)));
+//				Message msg = new Message();
+//				msg.obj = myBitmap;
+//				handler.sendMessage(msg);
+//			}
+//		}
+//	};
+//
+//	boolean isSubmitting = false;
+//	boolean isUpdataedPicHead = false;
+//
+//	public void submit() {
+//		View view = activity.getWindow().peekDecorView();
+//		if (view != null) {
+//			InputMethodManager inputmanger = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+//			inputmanger.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//		}
+//		if (!isSubmitting) {
+//			// name = et_person_name.getText().toString().trim();
+//			name = et_person_name.getText().toString();
+//			if (TextUtils.isEmpty(name)) {
+//				Utils.showMessage(activity, "请填写你的昵称！");
+//			} else if (name.contains(" ")) {
+//				Utils.showMessage(activity, "昵称中包含非法字符！");
+//			} else if (!check(name)) {
+//				Utils.showMessage(activity, "昵称中仅支持中英文及数字！");
+//			} else if (is2Long(name)) {
+//				Utils.showMessage(activity, "你输入的昵称过长！");
+//			} else if (name.contains(array[0]) || name.contains(array[1])
+//					|| name.contains(array[2]) || name.contains(array[3])) {
+//				Utils.showMessage(activity, "你输入的昵称中包含敏感词！");
+//			} else if (!checkIsNeedUpdate()) {
+//				((MainMenuActivity) activity).fragmentBack();
+//			} else {
+//				showProgress(true);
+//				isSubmitting = true;
+//				changCustomerData();
+//				dao.ModifyCustomer(changecustomer);
+//
+//			}
+//		}
+//	}
+//
+//	private boolean checkIsNeedUpdate() {
+//		Customer customer = LocalDataUtils.readCustomer(activity);
+//		if (isUpdataedPicHead) {// 如果更新了头像，必须提交一次
+//			return true;
+//		} else if (!TextUtils.isEmpty(gender)
+//				&& !TextUtils.equals(gender, customer.getGender())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(year)
+//				&& !TextUtils.equals(year, customer.getYear())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(height)
+//				&& !TextUtils.equals(height, customer.getHeight())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(weight)
+//				&& !TextUtils.equals(weight, customer.getWeight())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(goalCalories)
+//				&& !TextUtils.equals(goalCalories, customer.getGoalCalories())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(description)
+//				&& !TextUtils.equals(description, customer.getDescription())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(name)
+//				&& !TextUtils.equals(name, customer.getName())) {
+//			return true;
+//		} else if (!TextUtils.isEmpty(avatar)
+//				&& !TextUtils.equals(avatar, customer.getAvatar())) {
+//			return true;
+//		}
+//		return false;
+//	}
+//
+//	public void bitmapMohu() {
+//		top_pic.getViewTreeObserver().addOnPreDrawListener(
+//				new ViewTreeObserver.OnPreDrawListener() {
+//					@Override
+//					public boolean onPreDraw() {
+//
+//						top_pic.getViewTreeObserver().removeOnPreDrawListener(
+//								this);
+//						top_pic.buildDrawingCache();
+//
+//						Bitmap bmp = top_pic.getDrawingCache();
+//						// if(android.os.Build.VERSION.SDK_INT>=17){
+//						blur(bmp, top_pic);
+//						// }
+//						return true;
+//					}
+//				});
+//	}
+//
+//	/*
+//	 * @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1) private void blur(Bitmap
+//	 * bkg, View view) { long startMs = System.currentTimeMillis();
+//	 *
+//	 * float radius = 25;
+//	 *
+//	 * Bitmap overlay = Bitmap.createBitmap((int) (view.getMeasuredWidth()),
+//	 * (int) (view.getMeasuredHeight()), Bitmap.Config.ARGB_8888);
+//	 *
+//	 * Canvas canvas = new Canvas(overlay);
+//	 *
+//	 * canvas.translate(-view.getLeft(), -view.getTop()); canvas.drawBitmap(bkg,
+//	 * 0, 0, null);
+//	 *
+//	 * RenderScript rs = RenderScript.create(activity);
+//	 *
+//	 * Allocation overlayAlloc = Allocation.createFromBitmap(rs, overlay);
+//	 *
+//	 * ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs,
+//	 * overlayAlloc.getElement());
+//	 *
+//	 * blur.setInput(overlayAlloc);
+//	 *
+//	 * blur.setRadius(radius);
+//	 *
+//	 * blur.forEach(overlayAlloc);
+//	 *
+//	 * overlayAlloc.copyTo(overlay);
+//	 *
+//	 * view.setBackground(new BitmapDrawable(getResources(), overlay));
+//	 *
+//	 * rs.destroy(); System.gc(); //
+//	 * statusText.setText(System.currentTimeMillis() - startMs + "ms"); }
+//	 */
+//
+//	private void blur(Bitmap bkg, View view) {
+//		long startMs = System.currentTimeMillis();
+//		float scaleFactor = 1;
+//		float radius = 25;
+//		/*
+//		 * if (downScale.isChecked()) { scaleFactor = 8; radius = 2; }
+//		 */
+//
+//		Bitmap overlay = Bitmap.createBitmap(
+//				(int) (view.getMeasuredWidth() / scaleFactor),
+//				(int) (view.getMeasuredHeight() / scaleFactor),
+//				Bitmap.Config.ARGB_8888);
+//		Canvas canvas = new Canvas(overlay);
+//		canvas.translate(-view.getLeft() / scaleFactor, -view.getTop()
+//				/ scaleFactor);
+//		canvas.scale(1 / scaleFactor, 1 / scaleFactor);
+//		Paint paint = new Paint();
+//		paint.setFlags(Paint.FILTER_BITMAP_FLAG);
+//		canvas.drawBitmap(bkg, 0, 0, paint);
+//
+//		overlay = FastBlur.doBlur(overlay, (int) radius, true);
+//		view.setBackgroundDrawable(new BitmapDrawable(getResources(), overlay));
+//	}
+//
+//	private boolean is2Long(String str) {
+//		String hanziEx = "[\\u4e00-\\u9fa5]";
+//		String zifuEx = "[a-zA-Z0-9]";
+//
+//		int hanziCount = 0;
+//		int zifuCount = 0;
+//		String c;
+//		for (int i = 0; i < str.length(); i++) {
+//			c = String.valueOf(str.charAt(i));
+//			if (c.matches(hanziEx)) {
+//				hanziCount++;
+//			} else if (c.matches(zifuEx)) {
+//				zifuCount++;
+//			}
+//		}
+//		int length = hanziCount * 2 + zifuCount;
+//		if (hanziCount > 6)
+//			return true;
+//		else if (zifuCount > 12)
+//			return true;
+//		else if (length > 12)
+//			return true;
+//		return false;
+//	}
+//
+//	// 特殊字符过滤
+//	public static boolean check(String str) {
+//
+//		String regEx = "[\\u4e00-\\u9fa5a-zA-Z0-9]{1,10000}";
+//		return str.matches(regEx);
+//	}
+//
+//	DataCommuiation dataCommuiation;
+//
+//	public DataCommuiation getDataCommuiation() {
+//		return dataCommuiation;
+//	}
+//
+//	public void setDataCommuiation(DataCommuiation dataCommuiation) {
+//		this.dataCommuiation = dataCommuiation;
+//	}
+//
+//	public interface DataCommuiation {
+//		public void onKyDown();
+//	}
+//
+//
+//
+//	BitmapUtils   bitmapUtils;
+//	String imageCachePath;
+//
+//
+//	private void display(ImageView container,String path){
+//		if(TextUtils.isEmpty(path))
+//			return;
+//		String url = HttpConnectUtils.image_ip + path;
+//		bitmapUtils.display(container, url, new BitmapLoadCallBack<View>() {
+//
+//			@Override
+//			public void onLoadCompleted(View container, String uri,
+//										Bitmap bitmap, BitmapDisplayConfig config,
+//										BitmapLoadFrom from) {
+//				// TODO Auto-generated method stub
+//				File headfile = bitmapUtils.getBitmapFileFromDiskCache(uri);
+//				System.out.println("headfile=="+headfile);
+//				if(headfile==null){
+//
+//				}else{
+////					int degree=Utils.readPictureDegree(bitmapUtils.getBitmapFileFromDiskCache(uri).getPath());
+////					bitmap=Utils.rotaingImageView(degree,bitmap);
+//					iv_camera.setImageBitmap(ImageHelper.toRoundBitmap(bitmap));
+//					top_pic.setBackgroundDrawable(new BitmapDrawable(bitmap));
+//					bitmapMohu();
+//				}
+//
+//			}
+//
+//			@Override
+//			public void onLoadFailed(View container, String uri,
+//									 Drawable drawable) {
+//				// TODO Auto-generated method stub
+////				Bitmap bitmap = BitmapFactory.decodeResource(getResources(),
+////						R.drawable.icon_head_deffault);
+////				iv_camera.setImageBitmap(ImageHelper.toRoundBitmap(bitmap));
+//			}
+//		});
+//
+//	}
+//	/**
+//	 * 初始化图片加载器
+//	 */
+//	private void initBitmapUtils() {
+//		imageCachePath=Environment.getExternalStorageDirectory()+"/"+getString(R.string.app_name)+"/image";
+//		bitmapUtils = new BitmapUtils(activity, imageCachePath);
+////		bitmapUtils.configDefaultLoadFailedImage(R.drawable.icon_head_deffault);
+//		bitmapUtils.configDefaultShowOriginal(false);// 显示原始图片,不压缩,
+//		// 尽量不要使用,图片太大时容易OOM。
+//		bitmapUtils.configDefaultBitmapConfig(Bitmap.Config.RGB_565);
+//		bitmapUtils.configDefaultBitmapMaxSize(BitmapCommonUtils
+//				.getScreenSize(activity));
+//		bitmapUtils.configDefaultLoadingImage(R.mipmap.boy_head);
+//		// bitmapUtils.configDefaultCacheExpiry(2*60*1000);
+//		bitmapUtils.configThreadPoolSize(5);
+//
+//	}
+//
+//
+//}

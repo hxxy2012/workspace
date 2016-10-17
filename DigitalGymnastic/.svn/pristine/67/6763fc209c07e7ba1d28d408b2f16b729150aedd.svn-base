@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:orientation="vertical" >
+
+    <include layout="@layout/topbar" />
+
+    <!--
+         <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/white" />
+    -->
+
+    <RelativeLayout
+        android:id="@+id/rl_clock_noconnected"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_clock_noconnected"
+            android:layout_width="@dimen/x178"
+            android:layout_height="@dimen/x107"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y60"
+            android:src="@mipmap/img_connect_3x" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_clock_noconnected"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y25"
+            android:text="请先连接手环，再修改闹钟设置"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:textSize="@dimen/x12" >
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_connect2bond"
+            android:layout_width="@dimen/x142"
+            android:layout_height="@dimen/x35"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/y35"
+            android:background="@drawable/bg_connect2bond_selector"
+            android:text="连接手环"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:textSize="@dimen/x15" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_clock_blank"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <ImageView
+            android:id="@+id/iv_clock_blank"
+            android:layout_width="@dimen/x128"
+            android:layout_height="@dimen/x128"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y60"
+            android:src="@mipmap/icon_clock_blank" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_clock_blank"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y25"
+            android:text="添加一种闹钟，闹钟会在指定时间唤醒你"
+            android:textColor="@color/text_color_normal"
+            android:textSize="@dimen/x12" >
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_my_clock"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp" 
+        android:orientation="vertical">
+      <!--  <com.hike.digitalgymnastic.view.ClockListView
+            android:id="@+id/lv_clock"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="@dimen/y8"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:drawSelectorOnTop="false"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" 
+            android:overScrollMode="never"/> -->
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/activity_menu_add_my_clock.xml -->

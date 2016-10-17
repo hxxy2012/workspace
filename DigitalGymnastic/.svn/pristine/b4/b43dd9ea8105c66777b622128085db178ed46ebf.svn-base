@@ -1,0 +1,78 @@
+package com.weizhi.domainmodel;
+
+public class MAlarm {
+	public enum AlarmCategory
+	{
+		//只响一次
+		TODAY,
+		//每天
+		EVERYDAY,
+		//周一至周五
+		WORKDAY,
+		//自定义
+		CUSTOM
+	}
+	
+	//类型
+	public int Category;
+	
+	public AlarmCategory getCategory()
+	{
+		switch(Category)
+		{
+		case 0:
+			return AlarmCategory.TODAY;
+		case 1:
+			return AlarmCategory.EVERYDAY;
+		case 2:
+			return AlarmCategory.WORKDAY;
+		case 3:
+			return AlarmCategory.CUSTOM;
+		default:
+			return AlarmCategory.TODAY;
+		}
+	}
+	
+	public void setCategory(AlarmCategory category)
+	{
+		switch(category)
+		{
+		case TODAY:
+			Category = 0;
+			break;
+		case EVERYDAY:
+			Category = 1;
+			break;
+		case WORKDAY:
+			Category = 2;
+			break;
+		case CUSTOM:
+			Category = 3;
+			break;
+		default:
+			Category = 0;
+			break;
+		}
+	}
+	
+	//
+	private boolean[] Day;
+	
+	public MAlarm()
+	{
+		Day = new boolean[7];
+		for(int i=0;i<7;i++)
+			Day[i] = false;
+	}
+	
+	public void setDay(int index,boolean flag)
+	{
+		if(index <0 || index >6)return;
+		Day[index] = flag;
+	}
+	
+	public boolean[] getDay()
+	{
+		return Day;
+	}
+}

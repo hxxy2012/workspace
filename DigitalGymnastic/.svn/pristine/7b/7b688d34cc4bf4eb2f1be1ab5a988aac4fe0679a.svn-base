@@ -1,0 +1,96 @@
+//package com.weizhi.httpservice;
+//
+//import android.app.Activity;
+//import com.weizhi.domainmodel.*;
+//import android.graphics.Bitmap;
+//import android.graphics.BitmapFactory;
+//import android.os.Bundle;
+//import android.os.Handler;
+//import android.os.Message;
+//import android.view.Menu;
+//import android.view.MenuItem;
+//import android.widget.ImageView;
+//import android.widget.Toast;
+//
+//import java.io.File;
+//
+//
+//public class MainActivity extends Activity {
+//
+//    private Handler m_handler = new Handler()
+//    {
+//        @Override
+//        public void handleMessage(Message msg) {
+//            NotifyMessage ntcode = NotifyMessage.values()[msg.what];
+//            switch (ntcode)
+//            {
+//                case HTTP_COMMON_GETPOSTER_FIN:
+//                    if(msg.arg1 == 0)
+//                        ShowPoster(msg.obj.toString());
+//                    else
+//                        ShowTips("获取Poster失败");
+//                    break;
+//                case HTTP_COMMON_CARE_FIN:
+//                    if(msg.arg1 == 0)
+//                        ShowTips("吐槽成功");
+//                    else
+//                        ShowTips("吐槽失败");
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+//    };
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//
+//        ICommon comm = DBManager.getInstance().getCommon(m_handler);
+//        comm.getPoster(this.getFilesDir().toString());
+//
+//    }
+//
+//    private void ShowPoster(String posterName)
+//    {
+//        ImageView poster = (ImageView)findViewById(R.id.imageView);
+//
+//
+//        File file = new File(posterName);
+//        boolean bRet = file.exists();
+//
+//        BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inSampleSize = 2;
+//        Bitmap bm = BitmapFactory.decodeFile(posterName, options);
+//        poster.setImageBitmap(bm);
+//    }
+//
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//    private void ShowTips(String strTips)
+//    {
+//        Toast.makeText(this,strTips,Toast.LENGTH_SHORT).show();
+//    }
+//}

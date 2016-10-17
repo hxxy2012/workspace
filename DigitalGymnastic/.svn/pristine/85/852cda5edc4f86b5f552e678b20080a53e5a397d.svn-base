@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y150"
+    android:gravity="center" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:layout_centerHorizontal="true" >
+
+        <LinearLayout android:id="@+id/ll_backgroud_alpha"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150"
+            android:alpha="0.05"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150" >
+
+            <ImageView
+                android:id="@+id/iv_top"
+                android:layout_width="@dimen/x27"
+                android:layout_height="@dimen/x18"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y8"
+                android:src="@mipmap/btn_up" />
+
+            <LinearLayout
+                android:id="@+id/ll_blank_alert"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/iv_top"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView  
+                    android:layout_width="@dimen/x63"
+                    android:layout_height="@dimen/x63"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/icon_remind" />
+
+                <TextView
+                    android:id="@+id/tv_nodata_alert"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="@dimen/x142"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_top"
+                    android:gravity="center"
+                    android:lineSpacingExtra="@dimen/y4"
+                    android:text="检测睡眠会让你更加了解自己的睡眠质量"
+                    android:textSize="@dimen/x13" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_handler"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y90"
+                android:layout_below="@id/iv_top"
+                android:layout_margin="@dimen/x14"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <ImageView
+                    android:id="@+id/iv_xingxing"
+                    android:layout_width="@dimen/x63"
+                    android:layout_height="@dimen/x63"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/icon_xingxing" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/y75"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/x14"
+                    android:layout_toRightOf="@id/iv_xingxing"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="@dimen/x18"
+                                android:layout_height="@dimen/x18"
+                                android:src="@mipmap/icon_deep_sleep" />
+
+                            <TextView
+                                style="@style/mainpage_tv_value_style1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/x3"
+                                android:text="深度睡眠时间"
+                                android:textSize="@dimen/x13" />
+
+                            <TextView
+                                android:id="@+id/tv_deep_sleep_time"
+                                style="@style/mainpage_tv_value_style1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="@dimen/x63"
+                                android:textSize="@dimen/x13" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <ImageView
+                                android:layout_width="@dimen/x18"
+                                android:layout_height="@dimen/x18"
+                                android:src="@mipmap/icon_light_sleep" />
+
+                            <TextView
+                                style="@style/mainpage_tv_value_style1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/x3"
+                                android:text="轻度睡眠时间"
+                                android:textSize="@dimen/x13" />
+
+                            <TextView
+                                android:id="@+id/tv_light_sleep_time"
+                                style="@style/mainpage_tv_value_style1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:minWidth="@dimen/x63"
+                                android:textSize="@dimen/x13" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_tongji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tv_sleep_begintime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_moom" />
+
+            <TextView
+                android:id="@+id/tv_sleep_endtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_sun" />
+
+            <TextView
+                android:id="@+id/tv_sleep_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/icon_sun" />
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/layout/activity_main_frament_sleep_urual.xml -->

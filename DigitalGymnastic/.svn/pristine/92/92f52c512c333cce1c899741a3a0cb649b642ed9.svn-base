@@ -1,0 +1,349 @@
+package com.hike.digitalgymnastic.utils;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
+
+import com.hike.digitalgymnastic.HikoDigitalgyApplication;
+import com.hike.digitalgymnastic.entitiy.Customer;
+import com.hike.digitalgymnastic.entitiy.MyClock;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class LocalDataUtils {
+
+	public static boolean getIsFirstEntered(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getBoolean("isFirstEntered", true);
+	}
+
+	public static void setIsFirstEntered(Context context, boolean isFirstEntered) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putBoolean("isFirstEntered", isFirstEntered);
+		editor.commit();
+	}
+
+	public static void saveCustomer(Context context, Customer customer) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString("id", customer.id);
+		editor.putString("status", customer.status);// Short
+													// 客户状态(1:正常;2:冻结;3:删除)
+		editor.putString("name", customer.name);// String 客户名称
+		editor.putString("phone", customer.phone);// String 客户电话
+		editor.putString("avatar", customer.avatar);// String 客户头像
+		editor.putString("gender", customer.gender);// Short
+													// 客户性别(0:未知;1:男性;2:女性)
+
+		editor.putString("year", customer.year); // Integer 客户生年
+
+		editor.putString("height", customer.height);// Integer 客户身高(厘米)
+
+		editor.putString("weight", customer.weight);// Double 客户体重(千克)
+
+		if (TextUtils.isEmpty(customer.goalCalories))
+			editor.putString("goalCalories", "500");// Double 客户体重(千克)
+		else
+			editor.putString("goalCalories", customer.goalCalories);// Double
+																	// 客户体重(千克)
+		editor.putString("source", customer.source);// Short 客户来源(1:宅不住;2:数字健身)
+		editor.putString("loginToken", customer.loginToken);// String 登录令牌
+		editor.putString("bandId", customer.bandId);// String 手环标识
+		editor.putString("description", customer.description);// String 客户描述
+		editor.commit();
+
+	}
+
+	public static Customer readCustomer(Context context) {
+		Customer customer = new Customer();
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+
+		customer.id = preferences.getString("id", null);
+		customer.status = preferences.getString("status", null);
+		customer.name = preferences.getString("name", null);
+		customer.phone = preferences.getString("phone", null);
+		customer.avatar = preferences.getString("avatar", null);
+		customer.gender = preferences.getString("gender", null);
+
+		customer.year = preferences.getString("year", null);
+		customer.height = preferences.getString("height", null);
+		customer.weight = preferences.getString("weight", null);
+
+		customer.goalCalories = preferences.getString("goalCalories", "500");
+		customer.source = preferences.getString("source", null);
+		customer.loginToken = preferences.getString("loginToken", null);
+		customer.bandId = preferences.getString("bandId", null);
+		customer.description = preferences.getString("description", null);
+		return customer;
+
+	}
+
+	public static void saveLoginInfo(Context context, String mobile,
+			String password) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString("mobile", mobile);
+		editor.putString("password", password);
+		editor.commit();
+	}
+
+	public static String readLoginInfo(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getString("mobile", "");
+	}
+
+	public static String readLoginPwdInfo(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getString("password", "");
+	}
+
+	public static void saveBindMAC(Context context, String watchMAC) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		if (watchMAC != null) {
+			editor.putString("bindMAC", watchMAC);
+		} else
+			editor.remove("bindMAC");
+		editor.commit();
+		HikoDigitalgyApplication appalication = (HikoDigitalgyApplication) context
+				.getApplicationContext();
+		appalication.bindMAC = watchMAC;
+	}
+
+	public static String getBindMAC(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getString("bindMAC", null);
+	}
+
+	public static void saveBindName(Context context, String name) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString("devicename", name);
+		editor.commit();
+		HikoDigitalgyApplication appalication = (HikoDigitalgyApplication) context
+				.getApplicationContext();
+		appalication.name = name;
+	}
+
+	public static String getBindName(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getString("devicename", null);
+	}
+	public static void saveBindTag(Context context, String name) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString("deviceTag", name);
+		editor.commit();
+		HikoDigitalgyApplication appalication = (HikoDigitalgyApplication) context
+				.getApplicationContext();
+	}
+	public static String getBindTag(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getString("deviceTag", null);
+	}
+	public static void saveConnectedInfo(Context context, boolean isConnected) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putBoolean("isConnected", isConnected);
+		editor.commit();
+	}
+
+	public static boolean getConnectedInfo(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getBoolean("isConnected", false);
+	}
+//保存登陆标识
+	public static void saveLoginInfo(Context context, boolean isLoged) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putBoolean("isLoged", isLoged);
+		editor.commit();
+	}
+	//获取登陆标识
+	public static boolean getLoginInfo(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getBoolean("isLoged", false);
+	}
+	//获取登陆token
+	public static String getLoginToken(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		return preferences.getString("loginToken", "");
+	}
+	//保存首页运动分享标识
+		public static void setSharedTag(Context context,boolean sharedTag){
+			SimpleDateFormat format=new SimpleDateFormat("yyy-MM-dd");
+			SharedPreferences preferences = context.getSharedPreferences(
+					Constants.customer, Context.MODE_PRIVATE);
+			Editor editor = preferences.edit();
+			editor.putBoolean("sharedTag"+format.format(new Date()), sharedTag);
+			editor.commit();
+		}
+	//获取首页运动信息分享标识
+	public static boolean getSharedTag(Context context){
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		SimpleDateFormat format=new SimpleDateFormat("yyy-MM-dd");
+		return preferences.getBoolean("sharedTag"+format.format(new Date()), false);
+	}
+	
+
+	/**
+	 * @category 保存闹钟信息到本地文件
+	 * 时间先存字符串，用的时候转成数组
+	 */
+	public static void saveClockData(Context context, List<MyClock> clockList) {
+		JSONArray jsonArray = new JSONArray();
+		for (MyClock clock : clockList) {
+			JSONObject json = new JSONObject();
+			try {
+				json.put("ids", clock.getGroup_id());
+				json.put("hour", clock.getHour());
+				json.put("min", clock.getMin());
+				json.put("isOpened", clock.isOpenorclose());
+				json.put("date", clock.getWorkTime());
+				jsonArray.put(json);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString(Constants.ClockData, jsonArray.toString());
+		editor.commit();
+	}
+
+	/**
+	 * @category 获取本地闹钟信息
+	 */
+	public static List<MyClock> getClockData(Context context) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				Constants.customer, Context.MODE_PRIVATE);
+		String data = preferences.getString(Constants.ClockData, "");
+		JSONObject json = null;
+		MyClock clock;
+		List<MyClock> list = new ArrayList<MyClock>();
+		try {
+			JSONArray jsonArray = new JSONArray(data);
+			for (int i = 0; i < jsonArray.length(); i++) {
+				clock = new MyClock();
+				json = (JSONObject) jsonArray.get(i);
+				clock.setGroup_id(json.getInt("ids"));
+				clock.setHour(json.getInt("hour"));
+				clock.setMin(json.getInt("min"));
+				clock.setOpenorclose(json.getBoolean("isOpened"));
+				clock.setWorkTime(json.getString("date"));
+				list.add(clock);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	// Object必须是可序列号的
+	public static void saveObject(Context context, String sharedName,
+			String key, Object object) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				sharedName, Context.MODE_PRIVATE);
+		// 创建字节输出流
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = null;
+		try {
+			// 创建对象输出流，并封装字节流
+			oos = new ObjectOutputStream(baos);
+			// 将对象写入字节流
+			oos.writeObject(object);
+			// 将字节流编码成base64的字符窜
+			String object_Base64 = new String(Base64.encode(baos.toByteArray(),
+					Base64.DEFAULT));
+			Editor editor = preferences.edit();
+			editor.putString(key, object_Base64);
+			editor.commit();
+		} catch (IOException e) {
+
+		} finally {
+			if (baos != null)
+				try {
+					baos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			if (oos != null)
+				try {
+					oos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		}
+		Log.i("ok", "存储成功");
+	}
+
+	// Object必须是可序列号的
+	public static Object readObject(Context context, String sharedName,
+			String key) {
+		Object object = null;
+		SharedPreferences preferences = context.getSharedPreferences(
+				sharedName, Context.MODE_PRIVATE);
+		String objectBase64 = preferences.getString(key, "");
+
+		// 读取字节
+		byte[] base64 = Base64.decode(objectBase64.getBytes(), Base64.DEFAULT);
+
+		// 封装到字节流
+		ByteArrayInputStream bais = new ByteArrayInputStream(base64);
+		try {
+			// 再次封装
+			ObjectInputStream bis = new ObjectInputStream(bais);
+			try {
+				// 读取对象
+				object = bis.readObject();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (StreamCorruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return object;
+	}
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/feedback_ly"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/top_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/tixing_topbar" />
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/top_ly"
+        android:background="@color/app_bg_login" />
+
+    <LinearLayout
+        android:id="@+id/context_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_line"
+        android:background="@color/app_bg_login"
+        android:orientation="vertical"
+        android:padding="@dimen/x9" >
+
+        <TextView
+            android:id="@+id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y34"
+            android:gravity="center|left"
+            android:text="@string/menu_feedback_top_str"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:textSize="@dimen/x13" >
+        </TextView>
+<ScrollView 
+android:id="@+id/scrollView" 
+android:layout_width="fill_parent" 
+android:layout_height="@dimen/y75"
+android:scrollbarStyle="outsideOverlay" 
+android:background="@color/white"
+    android:fillViewport="false">
+        <EditText
+            android:id="@+id/ed_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="top|left"
+            android:hint="@string/menu_feedback_ed_hint_str"
+            android:maxLength="200"
+            android:padding="@dimen/x9"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:textColorHint="@color/grey_d0"
+            android:textSize="@dimen/x13" />
+</ScrollView>
+        <TextView
+            android:id="@+id/tv_message_length"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y20"
+            android:background="@color/app_bg_login"
+            android:gravity="center_vertical|right"
+            android:text="0/200"
+            android:textColor="@color/grey_ae"
+            android:textSize="@dimen/x13" >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/y20"
+            android:gravity="center|left"
+            android:text="@string/menu_feedback_middle_str"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:textSize="@dimen/x13" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/ed_phone_email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y42"
+            android:background="@color/white"
+            android:gravity="center|left"
+            android:hint="@string/menu_feedback_bottom_ed_hint_str"
+            android:padding="@dimen/x9"
+            android:textColor="@color/umeng_socialize_list_item_textcolor"
+            android:textColorHint="@color/grey_d0"
+            android:textSize="@dimen/x13" />
+    </LinearLayout>
+<!--
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/context_ly"
+        android:layout_marginLeft="@dimen/x9"
+        android:layout_marginRight="@dimen/x9"
+        android:layout_marginTop="@dimen/y23"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="@string/menu_set_feedback_cummit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x17" />
+-->
+</RelativeLayout><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/layout/activity_menu_set_feedback.xml -->

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/app_bg_login"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:scaleType="centerCrop" />
+
+    <LinearLayout
+        android:id="@+id/main_ly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        >
+
+      <include layout="@layout/topbar"/>
+        <RelativeLayout
+            android:id="@+id/menu_rl_my_watch"
+            style="@style/menu_style_rl" 
+            android:layout_marginTop="@dimen/y23" 
+            >
+
+            <TextView
+                android:id="@+id/tv_my_watch"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="@string/menu_my_watch" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_my_watch"
+                android:src="@mipmap/ic_menu_my_watch" />
+
+            <TextView
+                android:id="@+id/tv_watch_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x0"
+                android:layout_toRightOf="@+id/tv_my_watch"
+                android:text=""
+                android:textColor="@color/light_green"
+                android:textSize="@dimen/x10" >
+            </TextView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menu_rl_my_goal"
+            style="@style/menu_style_rl" >
+
+            <TextView
+                android:id="@+id/tv_my_goal"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="@string/menu_my_goal" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_my_goal"
+                android:src="@mipmap/ic_menu_my_goal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menu_rl_my_message"
+            style="@style/menu_style_rl" >
+
+            <TextView
+                android:id="@+id/tv_my_message"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="@string/menu_my_message" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_my_message"
+                android:src="@mipmap/ic_menu_my_message" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menu_rl_set"
+            style="@style/menu_style_rl" >
+
+            <TextView
+                android:id="@+id/tv_set"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="@string/menu_set" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_set"
+                android:src="@mipmap/ic_menu_set" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menu_rl_my_clock"
+            style="@style/menu_style_rl"
+            android:visibility="gone"
+            >
+
+            <TextView
+                android:id="@+id/tv_my_clock"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="@string/menu_my_clock" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_my_clock"
+                android:src="@mipmap/ic_menu_my_clock" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/menu_rl_message"
+            style="@style/menu_style_rl" >
+
+            <TextView
+                android:id="@+id/tv_message"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="@string/menu_message" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_message"
+                android:src="@mipmap/ic_menu_message" />
+
+            <TextView
+                android:id="@+id/tv_message_right"
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:minWidth="@dimen/x18"
+                android:minHeight="@dimen/x18"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="-3dp"
+                android:layout_toRightOf="@+id/tv_message"
+                android:textColor="@color/white"
+                android:visibility="invisible"
+                android:background="@mipmap/ic_message_right_tv"
+                android:textSize="13dp" >
+            </TextView>
+        </RelativeLayout>
+        
+        
+         <RelativeLayout
+            android:id="@+id/menu_rl_test"
+            style="@style/menu_style_rl" 
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_my_test"
+                style="@style/menu_style_tv"
+                 android:layout_centerVertical="true"
+                android:text="测试" >
+            </TextView>
+
+            <ImageView
+                android:layout_width="@dimen/x18"
+                android:layout_height="@dimen/x18"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x9"
+                android:layout_toLeftOf="@+id/tv_my_test"
+                android:src="@mipmap/ic_menu_my_clock" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</FrameLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_menu_fragment.xml -->

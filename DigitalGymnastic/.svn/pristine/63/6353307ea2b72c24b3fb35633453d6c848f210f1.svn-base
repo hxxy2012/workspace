@@ -1,0 +1,253 @@
+package com.hike.digitalgymnastic;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.ImageView;
+
+import com.com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.hike.digitalgymnastic.fragment.AboutUsFrament;
+import com.hike.digitalgymnastic.fragment.BaseFragment;
+import com.hike.digitalgymnastic.fragment.BodyStateTestFrament;
+import com.hike.digitalgymnastic.fragment.FeedBackFrament;
+import com.hike.digitalgymnastic.fragment.MenuFragment;
+import com.hike.digitalgymnastic.fragment.MessageFrament;
+import com.hike.digitalgymnastic.fragment.MyClockFrament;
+import com.hike.digitalgymnastic.fragment.MyGooalFrament;
+import com.hike.digitalgymnastic.fragment.MyMessageFrament;
+import com.hike.digitalgymnastic.fragment.MyWatchFragment;
+import com.hike.digitalgymnastic.fragment.SetFragment;
+import com.hike.digitalgymnastic.fragment.SitLongTimeFrament;
+import com.hike.digitalgymnastic.fragment.SportAlarmFrament;
+import com.hike.digitalgymnastic.utils.Utils;
+import com.hiko.enterprisedigital.R;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.ContentView;
+import com.lidroid.xutils.view.annotation.ViewInject;
+@ContentView(R.layout.activity_menu)
+public class MenuMainActivity extends BaseFragmentActivity {
+	@ViewInject(R.id.btn_left)
+	ImageView btn_left;
+
+	/**
+	 * 用于对Fragment进行管理
+	 */
+	private FragmentManager fragmentManager;
+	private FragmentTransaction mFragmentTransaction;
+	public static String curFragmentTag;
+	private MenuFragment menuFragment; // 主界面
+	private MyWatchFragment menuWatchFragment;// 我的手环
+	private MessageFrament messageFrament;// 消息
+	private MyMessageFrament myMessageFrament;// 消息
+	private MyGooalFrament myGooalFrament;// 目标
+	private MyClockFrament myclockFrament;// 闹钟
+	private SetFragment setFragment;// 设置
+	private FeedBackFrament feedBackFrament;// 意见反馈
+	private Bitmap bitmap;
+
+	private Object sitLongTimeFragment;
+
+	private Object sportAlarmFrament;
+
+	private Object bodyStateTestFrament;
+
+	private AboutUsFrament aboutUsFrament;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			Utils.setTranslucentStatus(true, this);
+		}
+		SystemBarTintManager tintManager = new SystemBarTintManager(this);
+
+		tintManager.setStatusBarTintEnabled(true);
+
+// 使用颜色资源
+
+		tintManager.setStatusBarTintResource(R.color.white);
+
+		ViewUtils.inject(this);
+		fragmentManager = getSupportFragmentManager();
+		Init();
+		setCurrentFragment();
+	}
+
+	private void Init() {
+		Intent intent = getIntent();
+		if (intent != null) {
+			bitmap = intent.getParcelableExtra("bitmap");
+		}
+
+	}
+
+	private void setCurrentFragment() {
+		mFragmentTransaction = fragmentManager.beginTransaction();
+		if (menuFragment == null) {
+			// 如果MessageFragment为空，则创建一个并添加到界面上
+			menuFragment = new MenuFragment();
+			Bundle args = new Bundle();
+			// bye[] b =Utils.Bitmap2Bytes(bitmap);
+			// args.putByte("", );
+			menuFragment.setArguments(args);
+			mFragmentTransaction.add(R.id.content_frame, menuFragment,
+					getString(R.string.menu_frament));
+			commitTransactions();
+		}
+		curFragmentTag = getString(R.string.menu_frament);
+	}
+
+	public void FragmentBack() {
+		if (TextUtils.equals(curFragmentTag, getString(R.string.menu_frament))) {
+			finish();
+			return;
+		} else {
+			if (TextUtils.equals(curFragmentTag,
+					getString(R.string.menu_my_message))
+					|| TextUtils.equals(curFragmentTag,
+							getString(R.string.menu_message))
+					|| TextUtils.equals(curFragmentTag,
+							getString(R.string.menu_my_watch))
+					|| TextUtils.equals(curFragmentTag,
+							getString(R.string.menu_set))
+					|| TextUtils.equals(curFragmentTag,
+							getString(R.string.menu_my_clock))
+					|| TextUtils.equals(curFragmentTag,
+							getString(R.string.menu_my_goal))) {
+				setTabSelection(getString(R.string.menu_frament));
+			} else if (TextUtils.equals(curFragmentTag,
+					getString(R.string.menu_feedback))) {
+				setTabSelection(getString(R.string.menu_set));
+			}
+			switchFragment(curFragmentTag);
+		}
+	}
+
+	/**
+	 * 根据传入的tag参数来设置选中的tab页。
+	 * 
+	 * @param tag
+	 * 
+	 */
+	public void setTabSelection(String tag) {
+		// 开启一个Fragment事务
+		mFragmentTransaction = fragmentManager.beginTransaction();
+		mFragmentTransaction.setCustomAnimations(R.anim.next_view_enter,
+				R.anim.next_view_out);
+		if (TextUtils.equals(tag, getString(R.string.menu_my_watch))) {
+			if (menuWatchFragment == null) {
+				menuWatchFragment = new MyWatchFragment();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.menu_my_goal))) {
+			if (myGooalFrament == null) {
+				myGooalFrament = new MyGooalFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.menu_my_message))) {
+			if (myMessageFrament == null) {
+				myMessageFrament = new MyMessageFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.menu_set))) {
+			if (setFragment == null) {
+				setFragment = new SetFragment();
+			}
+
+		} else if (TextUtils.equals(tag, getString(R.string.menu_my_clock))) {
+			if (myclockFrament == null) {
+				myclockFrament = new MyClockFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.menu_message))) {
+			if (messageFrament == null) {
+				messageFrament = new MessageFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.menu_feedback))) {
+			if (feedBackFrament == null) {
+				feedBackFrament = new FeedBackFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.sit_long_alarm))) {
+			if (sitLongTimeFragment == null) {
+				sitLongTimeFragment = new SitLongTimeFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.sport_alarm))) {
+			if (sportAlarmFrament == null) {
+				sportAlarmFrament = new SportAlarmFrament();
+			}
+		} else if (TextUtils.equals(tag, getString(R.string.body_test_alarm))) {
+			if (bodyStateTestFrament == null) {
+				bodyStateTestFrament = new BodyStateTestFrament();
+			}
+		}else if (TextUtils.equals(tag, getString(R.string.about_us))) {
+			if (aboutUsFrament == null) {
+				aboutUsFrament = new AboutUsFrament();
+			}
+		}
+
+		switchFragment(tag);
+	}
+
+	public void switchFragment(String tag) {
+		if (TextUtils.equals(tag, curFragmentTag)) {
+			return;
+		}
+		if (curFragmentTag != null) {
+			mFragmentTransaction.hide(getFragment(curFragmentTag));
+		}
+		attachFragment(R.id.content_frame, getFragment(tag), tag);
+		curFragmentTag = tag;
+		commitTransactions();
+	}
+
+	private FragmentTransaction ensureTransaction() {
+		if (mFragmentTransaction == null) {
+			mFragmentTransaction = fragmentManager.beginTransaction();
+			mFragmentTransaction
+					.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			mFragmentTransaction.setCustomAnimations(R.anim.push_top_in,
+					R.anim.push_top_out);
+		}
+		return mFragmentTransaction;
+	}
+
+	private void attachFragment(int layout, Fragment f, String tag) {
+		if (f != null) {
+			if (f.isAdded()) {
+				mFragmentTransaction.show(f);
+			} else {
+				ensureTransaction();
+				mFragmentTransaction.add(layout, f, tag);
+			}
+		}
+	}
+
+	private void commitTransactions() {
+		if (mFragmentTransaction != null && !mFragmentTransaction.isEmpty()) {
+			mFragmentTransaction.commit();
+			mFragmentTransaction = null;
+		}
+	}
+
+	private Fragment getFragment(String tag) {
+		Fragment f = fragmentManager.findFragmentByTag(tag);
+		if (f == null) {
+			f = BaseFragment.newInstance(getApplicationContext(), tag);
+		}
+		return f;
+	}
+
+	/**
+	 * 监听后退事件
+	 */
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) { // 按下的如果是BACK，同时没有重复
+			FragmentBack();
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+}

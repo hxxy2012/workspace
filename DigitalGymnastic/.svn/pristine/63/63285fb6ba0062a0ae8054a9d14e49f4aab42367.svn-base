@@ -1,0 +1,11 @@
+package com.weizhi.domainmodel;
+
+public class MCounter {
+	public long steps;
+	public long run;
+	public long stairs;
+	public long calories;
+	public long distance;
+	public int pressure;
+	public int temperature;
+}

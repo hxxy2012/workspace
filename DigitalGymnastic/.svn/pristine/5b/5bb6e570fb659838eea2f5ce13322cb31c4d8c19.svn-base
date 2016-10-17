@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<selector xmlns:android="http://schemas.android.com/apk/res/android">  
+
+     <item android:state_checked="true" android:state_pressed="true"  
+           android:drawable="@mipmap/tuesday_3x_07" />  
+     <item android:state_checked="false" android:state_pressed="true"  
+           android:drawable="@mipmap/tuesday2_3x_07" />  
+
+   
+     <item android:state_checked="false" android:drawable="@mipmap/tuesday2_3x_07" />  
+     <item android:state_checked="true" android:drawable="@mipmap/tuesday_3x_07" /> 
+
+   
+</selector>
+
+<!-- From: file:/D:/techfit3_1/app/src/main/res/drawable/custom_radio_btn_tues.xml -->

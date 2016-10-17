@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y70"
+    android:background="@color/white" >
+
+    <ImageView
+        android:id="@+id/pic_tv"
+        android:layout_width="@dimen/x40"
+        android:layout_height="@dimen/x40"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/x14"
+        android:layout_marginTop="@dimen/y7"
+        android:src="@mipmap/message_d_3x" />
+
+    <TextView
+        android:id="@+id/tv_context_str"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x9"
+        android:layout_marginRight="@dimen/x9"
+        android:layout_marginTop="@dimen/y8"
+        android:layout_toRightOf="@+id/pic_tv"
+        android:textSize="@dimen/x14"
+        android:textColor="@color/umeng_socialize_list_item_textcolor" />
+
+    <TextView
+        android:id="@+id/tv_time_str"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/x14"
+        android:layout_marginRight="@dimen/x9"
+        android:layout_marginBottom="@dimen/y8"
+        android:textColor="@color/umeng_socialize_list_item_textcolor" />
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginLeft="@dimen/x20"
+        android:background="@color/grey_dd"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

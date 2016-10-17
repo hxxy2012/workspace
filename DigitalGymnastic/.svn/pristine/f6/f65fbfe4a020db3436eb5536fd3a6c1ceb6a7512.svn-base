@@ -1,0 +1,322 @@
+[
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/spinner.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/spinner.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_up.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_up.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_slide_out_from_bottom.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_slide_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/menu_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/menu_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/menu_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/menu_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_imageview_rotate.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_imageview_rotate.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_cycle_5.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_cycle_5.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_edit_anim.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_edit_anim.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/popwindow_run.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/popwindow_run.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/urual.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/urual.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_right_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_right_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_edit_anim.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_edit_anim.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_scrshot_dlg.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_scrshot_dlg.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/menu_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/menu_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/left_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/left_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_right_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_right_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/right_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/right_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_in_left.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_in_left.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_imageview_rotate.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_imageview_rotate.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/popwindow_run.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/popwindow_run.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_out_left.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_out_left.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_view_enter.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_view_enter.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/popwindow_down.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/popwindow_down.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_view_enter.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_view_enter.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/pre_view_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/pre_view_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_scrshot_dlg.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_scrshot_dlg.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_shareboard_animation_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_shareboard_animation_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_slide_in_from_bottom.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/pre_view_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/pre_view_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/popwindow_up.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/popwindow_up.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/popwindow_up.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/popwindow_up.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_down.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_down.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_down.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_down.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_fade_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_fade_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_dlg_alpha.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_dlg_alpha.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_view_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_view_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/right_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/right_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_top_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_top_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/left_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/left_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_bot_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_bot_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_out_left.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_out_left.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_shareboard_animation_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_shareboard_animation_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_right_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_right_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/popwindow_down.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/popwindow_down.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/pre_view_enter.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/pre_view_enter.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_in_left.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_in_left.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_bot_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_bot_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_fade_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_fade_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_dlg_scale.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_dlg_scale.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_bot_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_bot_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_shareboard_animation_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_shareboard_animation_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/right_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/right_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_dlg_scale.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_dlg_scale.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_cycle_5.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_cycle_5.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_out_right.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_out_right.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_right_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_right_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/next_view_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/next_view_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/spinner.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/spinner.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/shake_umeng_socialize_dlg_alpha.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/shake_umeng_socialize_dlg_alpha.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_shareboard_animation_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_shareboard_animation_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/pre_view_enter.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/pre_view_enter.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_fade_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_fade_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_in_right.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_in_right.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_in_right.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_in_right.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/left_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/left_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/menu_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/menu_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_slide_in_from_bottom.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_slide_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_up.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_up.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_top_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_top_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_top_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_top_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_slide_out_from_bottom.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_slide_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_bot_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_bot_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/urual.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/urual.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/slide_out_right.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/slide_out_right.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/umeng_socialize_fade_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/anim/umeng_socialize_fade_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/left_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/left_out.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/right_in.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/right_in.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/anim/push_top_out.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/src/main/res/anim/push_top_out.xml"
+    }
+]

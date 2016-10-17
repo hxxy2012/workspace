@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/y150"
+    android:layout_centerHorizontal="true"
+    tools:showIn="@layout/activity_main_frament_body_top">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:alpha="0.05"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:gravity="center" >
+
+        <!-- 空数据布局 开始 -->
+
+        <RelativeLayout
+            android:id="@+id/rl_handler_blank"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150" >
+
+            <ImageView
+                android:id="@+id/iv_top_body_blank"
+               android:layout_width="@dimen/x27"
+                android:visibility="invisible"
+                android:layout_height="@dimen/x18"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y8"
+                android:src="@mipmap/btn_up" />
+
+            <TextView
+                android:id="@+id/tv_nodata_alert_blank"
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_top_body_blank"
+                android:layout_marginTop="@dimen/y15"
+                android:gravity="center_horizontal"
+                android:textSize="@dimen/x13" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="@dimen/y19"
+                android:layout_marginLeft="@dimen/x14"
+                android:layout_marginRight="@dimen/x14"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/icon_fubufeipanglv" />
+
+                    <TextView
+                        style="@style/mainpage_tv_value_style1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y7"
+                        android:gravity="center"
+                        android:text="腹部肥胖率"
+                        android:textSize="@dimen/x10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/icon_body_jiroulv" />
+
+                    <TextView
+                        style="@style/mainpage_tv_value_style1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y7"
+                        android:gravity="center"
+                        android:text="肌肉率"
+                        android:textSize="@dimen/x10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                       android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/icon_body_shentishuifen" />
+
+                    <TextView
+                        style="@style/mainpage_tv_value_style1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y7"
+                        android:gravity="center"
+                        android:text="身体水分"
+                        android:textSize="@dimen/x10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/icon_body_danbaizhi" />
+
+                    <TextView
+                        style="@style/mainpage_tv_value_style1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y7"
+                        android:gravity="center"
+                        android:text="蛋白质重量比"
+                        android:textSize="@dimen/x10" />
+                </LinearLayout>
+<!--
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                       android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/icon_body_shuifen" />
+
+                    <TextView
+                        style="@style/mainpage_tv_value_style1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y7"
+                        android:gravity="center"
+                        android:text="水分"
+                        android:textSize="@dimen/x9" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <ImageView
+                        android:layout_width="@dimen/x30"
+                        android:layout_height="@dimen/x30"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/icon_body_neizangzhifang" />
+
+                    <TextView
+                        style="@style/mainpage_tv_value_style1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/y7"
+                        android:gravity="center"
+                        android:text="内脏脂肪"
+                        android:textSize="@dimen/x9" />
+                </LinearLayout>
+                -->
+            </LinearLayout>
+        </RelativeLayout>
+        <!-- 空数据布局 结束 -->
+
+        <RelativeLayout
+            android:id="@+id/rl_handler"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/iv_top_body"
+                android:layout_width="@dimen/x27"
+                android:layout_height="@dimen/x18"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/y8"
+                android:visibility="invisible"
+                android:src="@mipmap/btn_up" />
+
+            <!--
+             <TextView
+            android:id="@+id/tv_nodata_alert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_top_body"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+           style="@style/mainpage_tv_value_style1"
+            android:textSize="15dp"
+            />
+            -->
+            <!--
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/iv_top_body"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/x5"
+                        android:layout_marginTop="@dimen/y20"
+                        android:gravity="center_horizontal"
+                        android:lineSpacingExtra="@dimen/y3"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/tv_baseinfo_alert"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/x5"
+                            android:gravity="center_horizontal"
+                            android:text="基础代谢率："
+                            android:textSize="@dimen/x12" />
+
+                        <TextView
+                            android:id="@+id/tv_baseinfo_alert_value"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_green"
+                            android:text="400.0"
+                            android:textSize="@dimen/x13" />
+
+                        <TextView
+                            android:id="@+id/tv_baseinfo_alert_kcal"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/x5"
+                            android:lineSpacingExtra="@dimen/y3"
+                            android:text="kcal/d"
+                            android:textSize="@dimen/x12" />
+                    </LinearLayout>
+             -->
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y42"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x45"
+                android:layout_marginBottom="@dimen/x20"
+                android:text="您的体测详情"
+                android:textSize="@dimen/x12" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/x9"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_couont_qualified"
+                    style="@style/mainpage_tv_value_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="@dimen/x27"
+                    android:minWidth="@dimen/x27"
+                    android:textColor="@color/text_green"
+                    android:text="0"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/tv_hege"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:gravity="center"
+                    android:text="项合格"
+                    android:textSize="@dimen/x12" />
+
+                <TextView
+                    android:id="@+id/tv_couont_unqualified"
+                    style="@style/mainpage_tv_value_style2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x50"
+                    android:gravity="center"
+                    android:minHeight="@dimen/x27"
+                    android:minWidth="@dimen/x27"
+                    android:textColor="@color/text_pink"
+                    android:text="0"
+                    android:textSize="@dimen/x30" />
+
+                <TextView
+                    android:id="@+id/tv_buhege"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x3"
+                    android:gravity="center"
+                    android:text="项不合格"
+                    android:textSize="@dimen/x12" />
+            </LinearLayout>
+        </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</FrameLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_main_frament_body_urual.xml -->

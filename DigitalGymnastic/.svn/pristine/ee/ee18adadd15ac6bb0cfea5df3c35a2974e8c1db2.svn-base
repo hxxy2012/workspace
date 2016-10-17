@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/top_ly"
+        android:background="@color/white"
+        layout="@layout/topbar" />
+
+    <View
+        android:id="@+id/v_first"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/top_ly"
+        android:background="@color/grey_ae" />
+
+    <LinearLayout
+        android:id="@+id/clock_time_ly"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/v_first"
+        android:gravity="center_horizontal" >
+
+        <com.hike.digitalgymnastic.view.PickerView
+            android:id="@+id/HH_pv"
+            android:layout_width="80dp"
+            android:layout_height="180dp"
+            android:layout_margin="20dp" />
+
+        <com.hike.digitalgymnastic.view.PickerView
+            android:id="@+id/MM_pv"
+            android:layout_width="80dp"
+            android:layout_height="180dp"
+            android:layout_margin="20dp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_second"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/clock_time_ly"
+        android:layout_marginTop="20dp"
+        android:background="@color/white" />
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="@string/menu_clock_btn_str"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/v_second"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/menu_clock_time_str"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_message"
+        android:layout_margin="15dp"
+        android:orientation="horizontal" >
+
+        <CheckBox  android:id="@+id/rb_one"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_sun_rbtn_select" />
+
+        <CheckBox android:id="@+id/rb_two"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_mon_rbtn_select" />
+
+        <CheckBox  android:id="@+id/rb_three"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_tus_rbtn_select" />
+
+        <CheckBox  android:id="@+id/rb_four"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_wes_rbtn_select" />
+
+        <CheckBox android:id="@+id/rb_five"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_thri_rbtn_select" />
+
+        <CheckBox  android:id="@+id/rb_six"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_fri_rbtn_select" />
+         <CheckBox  android:id="@+id/rb_seven"
+            style="@style/menu_clock_rbtn_style"
+            android:layout_weight="1"
+            android:button="@drawable/menu_sta_rbtn_select" />
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/layout/activity_menu_my_clock.xml -->

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:weightSum="1">
+    <include layout="@layout/topbar_rightword" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_top"
+        android:background="@color/whitesmoke"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/id_clock_image_view"
+                android:src="@mipmap/img_clock"
+                android:layout_gravity="center_vertical"
+                android:layout_alignTop="@+id/id_alert_image_view"
+                android:layout_toStartOf="@+id/imageView"
+                android:layout_marginEnd="77dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/img_line"
+                android:layout_alignBottom="@+id/id_alert_image_view"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/imageView" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/id_alert_image_view"
+                android:src="@mipmap/img_alert"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="76dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/imageView" />
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/x30"
+            android:textSize="18sp"
+            android:text="@string/string_person_device"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:layout_marginTop="@dimen/x7"
+            android:background="@color/grey_e5" />
+        <RelativeLayout
+            android:id="@+id/rl_homepage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/id_no_device"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x20"
+
+                android:layout_toRightOf="@+id/iv_homepage"
+                android:textColor="@color/umeng_socialize_text_time"
+                android:text="@string/string_you_not_have_device_now" />
+            <TextView
+                android:id="@+id/id_device_name"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_toRightOf="@+id/iv_homepage"
+                android:visibility="gone"
+                android:text="@string/string_band_name" />
+
+            <ImageView
+                android:id="@+id/id_device_arrow"
+                style="@style/menu_my_message_iv_style"
+                android:visibility="gone"
+                android:layout_width="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_homepage"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:src="@mipmap/img_band_icon"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/x30"
+            android:textSize="18sp"
+            android:text="@string/string_venue_device"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:layout_marginTop="@dimen/x7"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/id_aerobic_exerciser_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_goal"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/iv_goal"
+                android:text="@string/string_aerobic_exerciser" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/img_aerobic_exerciser"
+                android:layout_marginLeft="@dimen/x18"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+
+        <RelativeLayout
+            android:id="@+id/id_power_equipment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_feedback"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/iv_feedback"
+                android:text="@string/string_power_equipment" />
+
+            <ImageView
+                android:id="@+id/iv2"
+                style="@style/menu_my_message_iv_style" />
+
+            <ImageView
+                android:id="@+id/iv_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:src="@mipmap/img_power_equipment"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x10"
+            android:layout_marginTop="@dimen/x30"
+            android:textSize="18sp"
+            android:text="@string/string_third_connect"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/x7"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_aboutus"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_aboutus"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x12"
+                android:layout_toRightOf="@+id/iv_aboutus"
+                android:text="@string/string_weixin_sport" />
+
+            <ImageView
+                android:id="@+id/iv3"
+                style="@style/menu_my_message_iv_style" />
+
+            <ImageView
+                android:id="@+id/iv_aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:src="@mipmap/img_weixin_sport"
+                android:scaleType="fitXY" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+
+
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

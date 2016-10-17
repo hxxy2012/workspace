@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y8">
+
+        <include
+            android:id="@+id/center_layout_target"
+            android:layout_width="@dimen/x134"
+            android:layout_height="@dimen/x134"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/y10"
+            layout="@layout/widget_center_home" />
+
+        <include
+            android:id="@+id/center_layout_acture"
+            android:layout_width="@dimen/x134"
+            android:layout_height="@dimen/x134"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/y10"
+            layout="@layout/widget_center_home1" />
+
+
+
+            <com.hike.digitalgymnastic.view.DashCircleProgress
+                android:id="@+id/iv_completionRate"
+                android:layout_width="@dimen/x196"
+                android:layout_height="@dimen/x196"
+                custom:duration="1000"
+                custom:mRingColor="@color/white"
+                custom:mRingPaintColor="@color/white"
+                custom:max="1500"
+                custom:min="0"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fl"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_today_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/y18"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/x13" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll1"
+        android:layout_marginTop="@dimen/y11"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="共参加了"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x16" />
+
+        <TextView
+            android:id="@+id/tv_today_sport_count"
+            android:layout_width="@dimen/x27"
+            android:layout_height="@dimen/x27"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/x3"
+            android:layout_marginRight="@dimen/x3"
+            android:background="@mipmap/bg_count"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="项活动"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x16" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y150"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150"
+            android:background="@mipmap/bg_home_sport_bottom"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y150"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/btn_up"
+                android:layout_width="@dimen/x27"
+                android:layout_height="@dimen/x18"
+                android:layout_marginTop="@dimen/y8"
+                android:src="@mipmap/btn_up"
+                android:visibility="gone"/>
+
+            <com.hike.digitalgymnastic.view.RandomLayout
+                android:id="@+id/randomLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rl_blank_view_male"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/tv_blank_alert"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="根据你的身体状况,我们向你推荐下列运动"
+                    android:textSize="@dimen/x13" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_blank_alert"
+                    android:layout_marginTop="@dimen/y26"
+                    android:layout_centerHorizontal="true">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/x107"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/x18"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_male_sport1"
+                            android:layout_width="@dimen/x54"
+                            android:layout_height="@dimen/x54"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon_paobu" />
+
+                        <TextView
+                            android:id="@+id/tv_male_sport1"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/y7"
+                            android:gravity="center"
+                            android:text="跑步"
+                            android:textSize="@dimen/x9" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/x107"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_male_sport2"
+                            android:layout_width="@dimen/x54"
+                            android:layout_height="@dimen/x54"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon_ertouji" />
+
+                        <TextView
+                            android:id="@+id/tv_male_sport2"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/y7"
+                            android:gravity="center"
+                            android:text="二头肌双向练习器"
+                            android:textSize="@dimen/x9" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/x107"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="@dimen/x18"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_male_sport3"
+                            android:layout_width="@dimen/x54"
+                            android:layout_height="@dimen/x54"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon_tuoyuanji" />
+
+                        <TextView
+                            android:id="@+id/tv_male_sport3"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/y7"
+                            android:gravity="center"
+                            android:text="椭圆机"
+                            android:textSize="@dimen/x9" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_blank_view_sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y15"
+ 				android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_blank_alert1"
+                    style="@style/mainpage_tv_value_style1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="根据你的身体状况,我们向你推荐下列运动"
+                    android:textSize="@dimen/x13" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_blank_alert1"
+                    android:layout_marginTop="@dimen/y26" >
+
+                    <LinearLayout
+                        android:layout_width="@dimen/x107"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="@dimen/x18"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_sex_sport1"
+                            android:layout_width="@dimen/x54"
+                            android:layout_height="@dimen/x54"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon_paobu" />
+
+                        <TextView
+                            android:id="@+id/tv_sex_sport1"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/y7"
+                            android:gravity="center"
+                            android:text="跑步"
+                            android:textSize="@dimen/x9" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/x107"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_sex_sport2"
+                            android:layout_width="@dimen/x54"
+                            android:layout_height="@dimen/x54"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon_ertouji" />
+
+                        <TextView
+                            android:id="@+id/tv_sex_sport2"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/y7"
+                            android:gravity="center"
+                            android:text="二头肌双向练习器"
+                            android:textSize="@dimen/x9" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/x107"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="@dimen/x18"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_sex_sport3"
+                            android:layout_width="@dimen/x54"
+                            android:layout_height="@dimen/x54"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@mipmap/icon_tuoyuanji" />
+
+                        <TextView
+                            android:id="@+id/tv_sex_sport3"
+                            style="@style/mainpage_tv_value_style1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/y7"
+                            android:gravity="center"
+                            android:text="椭圆机"
+                            android:textSize="@dimen/x9" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+</RelativeLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_home1.xml -->

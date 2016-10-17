@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/topbar_rightword" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y60"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_head"
+                style="@style/menu_my_message_tv_key_style"
+                android:text="头像" />
+
+            <ImageView
+                android:id="@+id/iv_head"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <com.hike.digitalgymnastic.view.CircleImageView
+                android:id="@+id/iv_camera"
+                android:layout_width="@dimen/x59"
+                android:layout_height="@dimen/x59"
+                android:layout_marginBottom="@dimen/x5"
+                android:layout_marginRight="@dimen/x8"
+                android:layout_marginTop="@dimen/x5"
+                android:layout_toLeftOf="@+id/iv_head"
+                android:scaleType="fitXY"
+                android:src="@mipmap/boy_head" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_nickname"
+                style="@style/menu_my_message_tv_key_style"
+                android:text="昵称" />
+
+            <ImageView
+                android:id="@+id/iv_nick"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_nickname2"
+                style="@style/menu_my_message_tv_value_style"
+                android:layout_toLeftOf="@+id/iv_nick"
+                android:text="含笑姐姐" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_gender"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_key_gender"
+                style="@style/menu_my_message_tv_key_style"
+                android:text="@string/sex_str" />
+
+            <ImageView
+                android:id="@+id/iv1"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_value_gender"
+                style="@style/menu_my_message_tv_value_style"
+                android:layout_toLeftOf="@+id/iv1"
+                android:text="女" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <!--        <include layout="@layout/view_line" />-->
+
+        <RelativeLayout
+            android:id="@+id/rl_year"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_key_year"
+                style="@style/menu_my_message_tv_key_style"
+                android:text="@string/age_str" />
+
+            <ImageView
+                android:id="@+id/iv2"
+                style="@style/menu_my_message_iv_style" />
+
+            <TextView
+                android:id="@+id/tv_value_year"
+                style="@style/menu_my_message_tv_value_style"
+                android:layout_toLeftOf="@+id/iv2"
+                android:text="26岁" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_height"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_key_height"
+                style="@style/menu_my_message_tv_key_style"
+                android:text="@string/heigth_str" />
+
+            <ImageView
+                android:id="@+id/iv3"
+                style="@style/menu_my_message_iv_style" />
+
+            <TextView
+                android:id="@+id/tv_value_height"
+                style="@style/menu_my_message_tv_value_style"
+                android:layout_toLeftOf="@+id/iv3"
+                android:text="170cm" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_weight"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_key_weight"
+                style="@style/menu_my_message_tv_key_style"
+                android:text="@string/weigth_str" />
+
+            <ImageView
+                android:id="@+id/iv4"
+                style="@style/menu_my_message_iv_style" />
+
+            <TextView
+                android:id="@+id/tv_value_weight"
+                style="@style/menu_my_message_tv_value_style"
+                android:layout_toLeftOf="@+id/iv4"
+                android:text="56Kg" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

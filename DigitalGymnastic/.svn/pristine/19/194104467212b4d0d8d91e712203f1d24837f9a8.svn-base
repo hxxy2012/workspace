@@ -1,0 +1,7 @@
+package com.weizhi.domainmodel;
+
+public class MTask {
+	public int TotalCounter;
+	public int CompletedCounter;
+
+}

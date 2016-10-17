@@ -1,0 +1,9 @@
+package com.weizhi.domainmodel;
+
+public class MSleep {
+	public int TotalSleepDuration;
+	public int Rems;
+	public int NRems;
+	public int Wakup;
+	public int Level;
+}

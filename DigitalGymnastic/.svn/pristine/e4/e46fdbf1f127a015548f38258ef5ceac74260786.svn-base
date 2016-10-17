@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_checked="true" android:drawable="@drawable/bg_timeline_value_checked"/>
+    <item android:state_checked="false" android:drawable="@mipmap/bg_timeline_value_normal"/>
+
+</selector>
+<!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/drawable/bg_sport_value_selector.xml -->

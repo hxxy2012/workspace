@@ -1,0 +1,40 @@
+package com.weizhi.httpservice;
+
+import android.os.Handler;
+
+import com.loopj.android.http.AsyncHttpClient;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+public class Sleep implements ISleep
+{
+    private static final String TAG = Sleep.class.getSimpleName();
+    public static Sleep getInstance(Handler handler) {
+        return new Sleep(handler);
+    }
+
+    private AsyncHttpClient m_client;
+    private Handler m_callback;
+
+    private Sleep(Handler handler)
+    {
+        m_callback = handler;
+        m_client = new AsyncHttpClient();
+    }
+
+    public void addRecord()
+    {
+        //
+    }
+
+    public void getRecord()
+    {
+        //
+    }
+
+    public void evaluate()
+    {
+        //
+    }
+}

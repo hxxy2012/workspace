@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/test_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal" >
+<RelativeLayout 
+    android:id="@+id/time_line1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal" >
+
+  
+
+    <LinearLayout android:id="@+id/ll1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/iv_time_line_top1"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/icon_time_line" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/icon_time_dot" />
+
+        <LinearLayout
+            android:id="@+id/iv_time_line_bottom1"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/icon_time_line" />
+    </LinearLayout>
+  <CheckBox android:id="@+id/cb_value1"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toLeftOf="@id/ll1"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_sport_value_selector"
+        android:button="@mipmap/bg_check_null"/>
+    <TextView android:id="@+id/tv_time1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/ll1"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:text="08:30" />
+
+</RelativeLayout>
+
+<RelativeLayout 
+    android:id="@+id/time_line2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal" >
+ 
+    
+    <LinearLayout android:id="@+id/ll2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:layout_centerInParent="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/iv_time_line_top2"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/icon_time_line" />
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/icon_time_dot" />
+
+        <LinearLayout
+            android:id="@+id/iv_time_line_bottom2"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@mipmap/icon_time_line" />
+    </LinearLayout>
+ <TextView android:id="@+id/tv_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/ll2"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:text="08:30" />
+  <CheckBox android:id="@+id/cb_value2"
+         android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toRightOf="@id/ll2"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_sport_value_selector"
+        android:button="@mipmap/bg_check_null"/>
+    
+
+</RelativeLayout>
+
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/item_sport_list1.xml -->

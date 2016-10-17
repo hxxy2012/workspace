@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myradio="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/top_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" >
+
+        <include layout="@layout/topbar" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_next_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/x18"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="@string/next"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_ly"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y13"
+            android:gravity="center_horizontal"
+            android:text="@string/selcetsex"
+            android:textColor="@color/grey_99" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y38"
+            android:minHeight="@dimen/y225"
+            android:orientation="horizontal" >
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                 >
+
+                <com.hike.digitalgymnastic.view.MyRadioButton
+                    android:id="@+id/rb_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:clickable="true"
+                    android:gravity="center"
+                    myradio:drawableWidth="@dimen/x80"
+                    myradio:drawableHeight="@dimen/x80"
+                    android:layout_weight="1"
+                    myradio:drawableTop="@drawable/male_selector"
+                    />
+
+                <com.hike.digitalgymnastic.view.MyRadioButton
+                    android:id="@+id/rb_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:clickable="true"
+                    android:gravity="center"
+                     android:layout_weight="1"
+                    myradio:drawableWidth="@dimen/x80" 
+                    myradio:drawableHeight="@dimen/x80"
+                    myradio:drawableTop="@drawable/sex_selector"
+                     />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/personalinfo_one.xml -->

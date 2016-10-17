@@ -1,0 +1,149 @@
+package com.hike.digitalgymnastic.adapter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.hike.digitalgymnastic.DiaryPageActivity;
+import com.hike.digitalgymnastic.entitiy.Message;
+import com.hike.digitalgymnastic.http.HttpConnectUtils;
+import com.hike.digitalgymnastic.request.BaseDao;
+import com.hike.digitalgymnastic.utils.Constants;
+import com.hike.digitalgymnastic.utils.Utils;
+import com.hike.digitalgymnastic.view.CircleImageView;
+import com.hiko.enterprisedigital.R;
+import com.lidroid.xutils.BitmapUtils;
+
+import java.util.List;
+
+/**
+ * Created by huwei on 2016/3/17.
+ * <p>
+ * 消息页面ui适配器
+ */
+public class MessageAdapter extends MyBaseAdapter<Message> {
+
+    List<Message> list;
+    BitmapUtils bm;
+    Context context;
+    BaseDao dao;
+
+    public MessageAdapter(List<Message> list, Context context, BitmapUtils bm, BaseDao dao) {
+        super(list, context);
+        this.list = list;
+        this.bm = bm;
+        this.context = context;
+        this.dao = dao;
+    }
+
+    @Override
+    public View getConvertView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.item_diarymessage, null);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        final Message message = (Message) getItem(position);
+        String sourceAvatar = message.getSourceAvatar();
+        initSourceAvater(holder, sourceAvatar);
+        holder.tv_name.setText(message.getSourceName());
+        // 谁赞了你的content
+
+        fillItem(holder, message);
+
+        String createdTime = message.getCreatedTime();
+        compareTime(holder, createdTime);
+        holder.iv_customer.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // 获得消息来源的客户的标识和客户的id
+                jump2OtherDiarylist(message.getSourceId(),
+                        message.getSourceName());
+            }
+        });
+
+        return convertView;
+    }
+
+    private void fillItem(ViewHolder holder, Message message) {
+        if (message != null && holder != null) {
+            short type = message.getType();
+            String content = message.getContent();
+            String title = message.getTitle();
+
+            String sourceName = message.getSourceName();
+            if (!TextUtils.isEmpty(sourceName)) {
+                holder.tv_name.setText(sourceName);
+            }
+//		(1:系统公告;2.系统通知;3:关注通知;4:评论通知;5:称赞通知;6:回复通知)
+            switch (type) {
+                // 其他用户关注
+                case 3:
+                    holder.tv_type.setText(title);
+                    break;
+                // 评论或者回复了你的日记
+                case 4:
+                case 5:
+                case 6:
+                    if (title != null && content != null) {
+                        if (TextUtils.isEmpty(content)) {
+                            holder.tv_type
+                                    .setText(title + "的日记");
+                        } else {
+                            holder.tv_type.setText(title + "的" + "\"" + content + "\"");
+                        }
+                    } else {
+                        holder.tv_type.setText(title + "的日记");
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+    }
+
+    /**
+     * @category 进入某人的健身日记页面
+     */
+    private void jump2OtherDiarylist(long customerID, String customerName) {
+        Intent intent = new Intent(context, DiaryPageActivity.class);
+        intent.putExtra(Constants.customerId, customerID);
+        intent.putExtra(Constants.customerName, customerName);
+        context.startActivity(intent);
+    }
+
+    private void compareTime(ViewHolder holder, String createdTime) {
+        // 将时间转化为时间戳
+        String timeGap = Utils.getStandardDate(createdTime);
+        holder.tv_time.setText(timeGap);
+    }
+
+    private void initSourceAvater(ViewHolder holder, String sourceAvatar) {
+        if (!TextUtils.isEmpty(sourceAvatar)) {
+            bm.display(holder.iv_customer, HttpConnectUtils.image_ip
+                    + sourceAvatar);
+        }
+    }
+
+    class ViewHolder {
+        CircleImageView iv_customer;
+        TextView tv_name, tv_type, tv_time;
+
+        public ViewHolder(View view) {
+            tv_time = (TextView) view.findViewById(R.id.tv_time);
+            tv_type = (TextView) view.findViewById(R.id.tv_type);
+            tv_name = (TextView) view.findViewById(R.id.tv_name);
+            iv_customer = (CircleImageView) view.findViewById(R.id.iv_customer);
+        }
+    }
+
+}

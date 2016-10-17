@@ -1,0 +1,209 @@
+package com.weizhi.httpservice;
+
+import android.os.Handler;
+import android.util.Log;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+public class Counter implements ICounter
+{
+
+    private static final String TAG = Counter.class.getSimpleName();
+    public static Counter getInstance(Handler handler) {
+        return new Counter(handler);
+    }
+
+    private AsyncHttpClient m_client;
+    private Handler m_callback;
+
+    private Counter(Handler handler)
+    {
+        m_callback = handler;
+        m_client = new AsyncHttpClient();
+    }
+
+    private void Post(String url, RequestParams params, ResponseHandlerInterface responseHandler)
+    {
+        m_client.post(url, params,responseHandler);
+    }
+
+    public boolean addRecord()
+    {
+        return true;
+    }
+
+    private JsonHttpResponseHandler respAddRecordHandler = new JsonHttpResponseHandler()
+    {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            //super.onSuccess(statusCode, headers, response);
+            try {
+                int nRet = response.getInt("code");
+                if(nRet != 0)
+                {
+                    Log.d(TAG, "");
+                    return;
+                }
+                int nToken = response.getInt("token");
+                //保存用户token
+            }
+            catch (JSONException jsE)
+            {
+                //
+            }
+
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString,
+                              Throwable throwable) {
+            super.onFailure(statusCode, headers, responseString, throwable);
+        }
+    };
+
+    public void getStatisticsByMonth()
+    {
+        //
+    }
+
+    private JsonHttpResponseHandler respGetStatisticsByMonthHandler = new JsonHttpResponseHandler()
+    {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            //super.onSuccess(statusCode, headers, response);
+            try {
+                int nRet = response.getInt("code");
+                if(nRet != 0)
+                {
+                    Log.d(TAG, "");
+                    return;
+                }
+                int nToken = response.getInt("token");
+                //保存用户token
+            }
+            catch (JSONException jsE)
+            {
+                //
+            }
+
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString,
+                              Throwable throwable) {
+            super.onFailure(statusCode, headers, responseString, throwable);
+        }
+    };
+
+    public void getRecordsByMonth()
+    {
+        //
+    }
+
+    private JsonHttpResponseHandler respGetRecordsByMonthHandler = new JsonHttpResponseHandler()
+    {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            //super.onSuccess(statusCode, headers, response);
+            try {
+                int nRet = response.getInt("code");
+                if(nRet != 0)
+                {
+                    Log.d(TAG, "");
+                    return;
+                }
+                int nToken = response.getInt("token");
+                //保存用户token
+            }
+            catch (JSONException jsE)
+            {
+                //
+            }
+
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString,
+                              Throwable throwable) {
+            super.onFailure(statusCode, headers, responseString, throwable);
+        }
+    };
+
+    public void getRecord()
+    {
+        //
+    }
+
+    private JsonHttpResponseHandler respGetRecordHandler = new JsonHttpResponseHandler()
+    {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            //super.onSuccess(statusCode, headers, response);
+            try {
+                int nRet = response.getInt("code");
+                if(nRet != 0)
+                {
+                    Log.d(TAG, "");
+                    return;
+                }
+                int nToken = response.getInt("token");
+                //保存用户token
+            }
+            catch (JSONException jsE)
+            {
+                //
+            }
+
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString,
+                              Throwable throwable) {
+            super.onFailure(statusCode, headers, responseString, throwable);
+        }
+    };
+
+    public void evaluate()
+    {
+        //
+    }
+
+    private JsonHttpResponseHandler respEvaluateHandler = new JsonHttpResponseHandler()
+    {
+        @Override
+        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+            //super.onSuccess(statusCode, headers, response);
+            try {
+                int nRet = response.getInt("code");
+                if(nRet != 0)
+                {
+                    Log.d(TAG, "");
+                    return;
+                }
+                int nToken = response.getInt("token");
+                //保存用户token
+            }
+            catch (JSONException jsE)
+            {
+                //
+            }
+
+        }
+
+        @Override
+        public void onFailure(int statusCode, Header[] headers, String responseString,
+                              Throwable throwable) {
+            super.onFailure(statusCode, headers, responseString, throwable);
+        }
+    };
+}

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myradio="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_login"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/top_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/app_bg_login"
+        android:visibility="gone" >
+
+        <include layout="@layout/topbar" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_ly"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y35"
+            android:gravity="center_horizontal"
+            android:text="@string/edit_personal_info"
+            android:textSize="@dimen/x13"
+            android:textColor="@color/umeng_socialize_text_share_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/y30"
+            android:minHeight="@dimen/y100"
+            android:orientation="horizontal" >
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <com.hike.digitalgymnastic.view.MyRadioButton
+                    android:id="@+id/rb_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:clickable="true"
+                    android:gravity="center"
+                    myradio:drawableWidth="@dimen/x80"
+                    myradio:drawableHeight="@dimen/x80"
+                    android:layout_weight="1"
+                    myradio:drawableTop="@drawable/male_selector"
+                    />
+
+                <com.hike.digitalgymnastic.view.MyRadioButton
+                    android:id="@+id/rb_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    myradio:drawableWidth="@dimen/x80"
+                    myradio:drawableHeight="@dimen/x80"
+                    myradio:drawableTop="@drawable/sex_selector"
+                    android:checked="false" />
+            </RadioGroup>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_marginTop="@dimen/x20">
+            <LinearLayout
+                android:id="@+id/ll_birth_year"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x60"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/x10"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1990年"
+                    android:textSize="@dimen/x15"
+                    android:textColor="@color/green_00bfa3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/birth_year"
+                    android:textSize="@dimen/x12"
+                    android:textColor="@color/umeng_socialize_text_share_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="@dimen/x220"
+                android:layout_height="@dimen/x60"
+                android:layout_alignParentRight="true">
+            <com.hike.digitalgymnastic.view.Ruler
+                android:id="@+id/ruler_year"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x60"
+
+                android:layout_toRightOf="@+id/ll_birth_year"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_marginTop="@dimen/x20">
+            <LinearLayout
+                android:id="@+id/ll_height"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x60"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/x10"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1990"
+                    android:textSize="@dimen/x15"
+                    android:textColor="@color/green_00bfa3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/heigth_str"
+                    android:textSize="@dimen/x12"
+                    android:textColor="@color/umeng_socialize_text_share_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="@dimen/x220"
+                android:layout_height="@dimen/x60"
+                android:layout_alignParentRight="true">
+            <com.hike.digitalgymnastic.view.Ruler
+                android:id="@+id/ruler_height"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x60"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/ll_height"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x20"
+            android:layout_marginRight="@dimen/x20"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_marginBottom="@dimen/x10">
+            <LinearLayout
+                android:id="@+id/ll_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x60"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/x10"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/tv_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="199"
+                    android:textSize="@dimen/x15"
+                    android:textColor="@color/light_green"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/weigth_str"
+                    android:textSize="@dimen/x12"
+                    android:textColor="@color/umeng_socialize_text_share_content"/>
+
+            </LinearLayout>
+            <LinearLayout
+            android:layout_width="@dimen/x220"
+            android:layout_height="@dimen/x60"
+                android:layout_alignParentRight="true">
+                <com.hike.digitalgymnastic.view.Ruler
+                    android:id="@+id/ruler_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/x60"
+
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/ll_weight"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

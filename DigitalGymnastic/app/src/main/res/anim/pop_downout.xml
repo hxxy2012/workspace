@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="800"
+    android:fromXDelta="0"
+    android:fromYDelta="0"
+    android:toXDelta="0"
+    android:toYDelta="1600" />
+
+
+    <!--float fromXDelta 动画开始的点离当前View X坐标上的差值
+    float toXDelta 动画结束的点离当前View X坐标上的差值
+    float fromYDelta 动画开始的点离当前View Y坐标上的差值
+    float toYDelta 动画开始的点离当前View Y坐标上的差值-->

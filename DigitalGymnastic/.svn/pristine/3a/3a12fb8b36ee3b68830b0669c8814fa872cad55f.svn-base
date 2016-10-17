@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/layout-h500dp-normal-v13/umeng_socialize_ucenter.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/git/2016/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/layout-h500dp-normal-v13/umeng_socialize_ucenter.xml"
+    },
+    {
+        "merged": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/res/merged/debug/layout-h500dp-normal-v13/umeng_socialize_ucenter.xml",
+        "source": "/Users/liqing/Documents/work/techfit/android/workspace/svn/DigitalGymnastic/DigitalGymnastic/app/build/intermediates/exploded-aar/DigitalGymnastic/social_sdk_library_project/unspecified/res/layout-h500dp-normal-v13/umeng_socialize_ucenter.xml"
+    }
+]

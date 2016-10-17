@@ -1,0 +1,12 @@
+package com.weizhi.httpservice;
+
+/**
+ * Created by shaohua on 14-11-8.
+ */
+public interface ISleep {
+    void addRecord();
+
+    void getRecord();
+
+    void evaluate();
+}

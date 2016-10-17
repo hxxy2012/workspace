@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<selector xmlns:android="http://schemas.android.com/apk/res/android">  
+
+     <item android:state_checked="true" android:state_pressed="true"  
+           android:drawable="@mipmap/sunday_3x_03" />  
+     <item android:state_checked="false" android:state_pressed="true"  
+           android:drawable="@mipmap/sunday2_3x_03" />  
+
+   
+     <item android:state_checked="false" android:drawable="@mipmap/sunday2_3x_03" />  
+     <item android:state_checked="true" android:drawable="@mipmap/sunday_3x_03" /> 
+
+   
+</selector>
+
+<!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/drawable/custom_radio_btn_sun.xml -->

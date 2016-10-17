@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y8"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x196"
+           >
+            <TextView  android:id="@+id/tv_standWeight"
+                style="@style/mainpage_tv_value_style1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:lineSpacingExtra="@dimen/y3"
+                android:text="最佳体重"
+                android:textSize="@dimen/x12"
+                android:alpha="0.8"
+                />
+            <com.hike.digitalgymnastic.view.DashCircleProgressWeight
+                android:id="@+id/iv_dialScaleView"
+                android:layout_width="@dimen/x196"
+                android:layout_height="@dimen/x196"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tv_standWeight"
+                custom:duration="2000"
+                custom:mRingColor="@color/white"
+                custom:mRingPaintColor="@color/white"
+                custom:max="1500"
+                custom:min="0"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@id/iv_dialScaleView"
+                android:layout_marginRight="-5dp"
+                android:lineSpacingExtra="@dimen/y3"
+                android:text="偏低"
+                android:textSize="@dimen/x11"
+                android:textColor="@color/white"
+                android:alpha="0.8"
+                android:layout_marginBottom="@dimen/y10"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/iv_dialScaleView"
+                android:layout_marginLeft="-5dp"
+                android:lineSpacingExtra="@dimen/y3"
+                android:text="偏高"
+                android:textSize="@dimen/x11"
+                android:textColor="@color/white"
+                android:alpha="0.8"
+                android:layout_marginBottom="@dimen/y10"/>
+
+            <Button
+                android:id="@+id/iv_body_addweight"
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x22"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:background="@mipmap/btn_body_addweight"
+                android:text="新增体重"
+                android:textColor="@color/white"
+                android:textSize="@dimen/x12"
+                />
+        </RelativeLayout>
+        <!-- <com.hike.digitalgymnastic.view.DialScaleView
+             android:id="@+id/iv_dialScaleView"
+             android:layout_width="@dimen/x270"
+             android:layout_height="@dimen/y150"
+             android:layout_gravity="center_horizontal"
+             android:layout_marginTop="@dimen/y8" />-->
+        <TextView
+            android:id="@+id/tv_body_advice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/x14"
+            android:layout_marginRight="@dimen/x14"
+            android:layout_marginTop="@dimen/y18"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="@dimen/y3"
+            android:text=""
+            android:textSize="@dimen/x13"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+
+    <include
+        android:id="@+id/handleView"
+        layout="@layout/activity_main_frament_body_urual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
+
+
+</RelativeLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_main_frament_body_top.xml -->

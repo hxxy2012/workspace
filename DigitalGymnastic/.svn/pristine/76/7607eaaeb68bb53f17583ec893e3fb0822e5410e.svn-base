@@ -1,0 +1,430 @@
+package com.hike.digitalgymnastic.service;
+
+import android.annotation.SuppressLint;
+import android.app.Service;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothProfile;
+import android.content.Intent;
+import android.os.Binder;
+import android.os.IBinder;
+
+import com.hike.digitalgymnastic.HikoDigitalgyApplication;
+import com.hike.digitalgymnastic.tools.UtilLog;
+import com.milink.air.ble.Converter;
+import com.milink.air.ble.LEOutPutStream;
+import com.milink.air.ble.OnBleNotification;
+import com.milink.air.ble.Parser;
+
+import java.util.Calendar;
+import java.util.List;
+import java.util.UUID;
+
+
+@SuppressLint("NewApi")
+public class AirBLEService extends Service {
+
+    private String TAG = "AirBLEService";
+    private String address;
+
+    // just for lost
+
+    private BluetoothAdapter mBluetoothAdapter = HikoDigitalgyApplication.getInstance().mBluetoothAdapter;
+    private BluetoothGattService mBluetoothGattService;
+    public BluetoothGatt mBluetoothGatt;
+
+
+    private LEOutPutStream outStream;
+    private BluetoothGattDescriptor descriptor;
+    public Parser parser;
+
+    public static String AIR_DATA_F2 = "0000fff2-0000-1000-8000-00805f9b34fb";
+    public static String AIR_DATA_F1 = "0000fff1-0000-1000-8000-00805f9b34fb";
+    public final static UUID UUID_AIR_DATA_F2 = UUID.fromString(AIR_DATA_F2);
+
+    public final static UUID UUID_AIR_DATA_F1 = UUID.fromString(AIR_DATA_F1);
+
+
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+
+        UtilLog.e(TAG,"onStartCommand");
+
+        flags = Service.START_REDELIVER_INTENT;
+
+        if (intent != null) {
+
+            address = intent.getStringExtra("address");
+
+
+            if (address != null) {
+
+                connect(address);
+
+            }
+
+        }
+
+        return super.onStartCommand(intent, flags, startId);
+
+    }
+    /**
+     * Connects to the GATT server hosted on the Bluetooth LE device.
+     *
+     * @param address The device address of the destination device.
+     * @return Return true if the connection is initiated successfully. The
+     * connection result is reported asynchronously through the
+     * {@code BluetoothGattCallback#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)}
+     * callback.
+     */
+
+    public boolean connect(final String address) {
+        if (mBluetoothAdapter == null || address == null) {
+
+            return false;
+        }
+
+        final BluetoothDevice device = BluetoothAdapter.getDefaultAdapter()
+                .getRemoteDevice(address);
+        if (device == null) {
+
+            return false;
+        }
+
+        mBluetoothGatt = device.connectGatt(this, false, mGattCallback);
+
+
+        return true;
+    }
+
+
+    private final BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
+
+        @Override
+        public void onConnectionStateChange(BluetoothGatt gatt, int status,
+                                            int newState) {
+
+            if (newState == BluetoothProfile.STATE_CONNECTED) {
+
+                mBluetoothGatt.discoverServices();
+
+            } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
+                close();
+            }
+        }
+
+        @Override
+        public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+            if (status == BluetoothGatt.GATT_SUCCESS) {
+
+                // scale
+                mBluetoothGattService = gatt.getService(UUID
+                        .fromString("0000fff0-0000-1000-8000-00805f9b34fb"));
+                if (mBluetoothGattService != null) {
+                    // 使能通知fff2
+                    EnableFFF2();
+                }
+
+            }
+        }
+
+        @Override
+        public void onCharacteristicRead(BluetoothGatt gatt,
+                                         BluetoothGattCharacteristic characteristic, int status) {
+
+        }
+
+        @Override
+        public void onCharacteristicChanged(BluetoothGatt gatt,
+                                            BluetoothGattCharacteristic characteristic) {
+            if (UUID_AIR_DATA_F2.equals(characteristic.getUuid())) {
+                byte[] data = characteristic.getValue();
+                // FFF2在得到数据之后,调用该方法解析
+                //parser.readHeartRate();
+                parser.getArray(data, data.length);
+                UtilLog.e(TAG, Converter.byteArrayToHexString(data));
+
+            }
+        }
+
+        @Override
+        public void onCharacteristicWrite(BluetoothGatt gatt,
+                                          BluetoothGattCharacteristic characteristic, int status) {
+            UtilLog.e(TAG+"->SEND:",
+                    Converter.byteArrayToHexString(characteristic.getValue()));
+            if (UUID_AIR_DATA_F1.equals(characteristic.getUuid())) {
+                // *******回调中一定调用下面方法用于分段发送*******
+                outStream.ContinueSend();
+            }
+            super.onCharacteristicWrite(gatt, characteristic, status);
+
+        }
+
+        @Override
+        public void onDescriptorWrite(BluetoothGatt gatt,
+                                      BluetoothGattDescriptor descriptor, int status) {
+            // 使能fff2之后实例化写通道
+            BluetoothGattCharacteristic characteristic2 = mBluetoothGattService
+                    .getCharacteristic(UUID_AIR_DATA_F1);
+            outStream = new LEOutPutStream(mBluetoothGatt, characteristic2,
+                    false);
+            try {
+                parser = new Parser(outStream, AirBLEService.this, address);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            Intent intent = new Intent("mil.bt");
+            intent.putExtra("cmd", 1);
+            sendBroadcast(intent);
+            super.onDescriptorWrite(gatt, descriptor, status);
+
+        }
+
+    };
+    private void EnableFFF2() {
+        BluetoothGattCharacteristic characteristic;
+        characteristic = mBluetoothGattService
+                .getCharacteristic(UUID_AIR_DATA_F2);
+        boolean enabled = true;
+        if (characteristic != null) {
+            mBluetoothGatt.setCharacteristicNotification(characteristic,
+                    enabled);
+
+            List<BluetoothGattDescriptor> descriptorl = characteristic
+                    .getDescriptors();
+            descriptor = descriptorl.get(0);
+            if (descriptor != null) {
+                descriptor
+                        .setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                mBluetoothGatt.writeDescriptor(descriptor);
+            }
+        }
+    }
+    // 这个地方为了省事直接回调到activity 如果是后台长连接服务需要使用其他方法传递回调信息
+    public void setNotifyBt(OnBleNotification bt) {
+        if (parser != null) {
+
+            parser.setOnBleNotification(bt);
+        }
+    }
+
+
+
+
+
+    @Override
+    public void onDestroy() {
+
+        super.onDestroy();
+    }
+
+
+
+
+    /**
+     * Disconnects an existing connection or cancel a pending connection. The
+     * disconnection result is reported asynchronously through the
+     * {@code BluetoothGattCallback#onConnectionStateChange(android.bluetooth.BluetoothGatt, int, int)}
+     * callback.
+     */
+    public void disconnect() {
+        if (mBluetoothAdapter == null || mBluetoothGatt == null) {
+            return;
+        }
+        close();
+    }
+
+    /**
+     * After using a given BLE device, the app must call this method to ensure
+     * resources are released properly.
+     */
+    public void close() {
+        UtilLog.e(TAG,"close ble connect");
+        try {
+            if (mBluetoothGatt != null) {
+                mBluetoothGatt.disconnect();
+                mBluetoothGatt.close();
+                mBluetoothGatt = null;
+                mBluetoothGattService = null;
+            }
+            parser = null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void setTime(Calendar time) {
+        if (parser != null) {
+            parser.setTime(time);
+        }
+    }
+
+    public void setTime(int s, int d, int c) {
+        if (parser != null) {
+            parser.setTime(s, d, c);
+        }
+    }
+
+    public void getSpData() {
+        if (parser != null) {
+            parser.getSpData();
+        }
+    }
+
+    public static byte[] strToBytes(String src) {
+
+        if (null == src || 0 == src.length() || 0 != src.length() % 2) {
+            return null;
+        }
+
+        byte[] arrRes = new byte[src.length() / 2];
+        StringBuffer sBuff = new StringBuffer(src);
+
+        int i = 0;
+        String sTmp = null;
+        while (i < sBuff.length() - 1) {
+            sTmp = src.substring(i, i + 2);
+            arrRes[i / 2] = (byte) Integer.parseInt(sTmp, 16);
+            i += 2;
+        }
+
+        return arrRes;
+    }
+
+    public void readDeviceConfig() {
+        if (parser != null) {
+            parser.readConfig();
+        }
+    }
+
+    public void setHZAir(boolean on) {
+        if (parser != null) {
+            parser.setHZAir(on);
+        }
+    }
+
+    public void sendCallInWithNumber(String string) {
+        // TODO Auto-generated method stub
+        if (parser != null) {
+            // parser.SendCallWithNumber(string);
+            try {
+                parser.SendPhoneCall(string, "来电呼入");
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void SendCallIncome(String string) {
+        if (parser != null) {
+            try {
+                parser.SendPhoneCall(string, "来电呼入");
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void sendCallOut() {
+        // TODO Auto-generated method stub
+        if (parser != null) {
+            parser.SendCallEnd();
+        }
+    }
+
+    public void sendMsg() {
+        // TODO Auto-generated method stub
+        if (parser != null) {
+            parser.SendMsgIncome();
+        }
+    }
+
+
+    public void GetSleep() {
+        if (parser != null) {
+            parser.SendGetSleep();
+        }
+    }
+
+    public void AppNotification(String title, String msg) {
+        if (parser != null) {
+            try {
+                parser.SendNotification(title, msg);
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /***
+     * 设备是否振动（闹钟除外）
+     *
+     * @param vibrate_en
+     */
+    public void SendVibrateSet(boolean vibrate_en) {
+        if (parser != null) {
+            parser.setVibrateEn(vibrate_en);
+        }
+    }
+
+    public void setAlarm(int[] is, String string, String string2) {
+        // TODO Auto-generated method stub
+        if (parser != null) {
+            parser.setAlarm(is, string, string2);
+        }
+    }
+
+    /***
+     * 设置步长
+     *
+     * @param len 厘米
+     */
+    public void SendStepLenSet(int len) {
+        if (parser != null) {
+            parser.setStepLen(len);
+        }
+    }
+
+
+    public class LocalBinder extends Binder {
+        public AirBLEService getService() {
+            return AirBLEService.this;
+        }
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        UtilLog.e(TAG,"onbind");
+//        if (intent != null) {
+//
+//            address = intent.getStringExtra("address");
+//
+//
+//            if (address != null) {
+//
+//                connect(address);
+//
+//            }
+//
+//        }
+        return mBinder;
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        return super.onUnbind(intent);
+    }
+
+    private final IBinder mBinder = new LocalBinder();
+}

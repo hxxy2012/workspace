@@ -1,0 +1,302 @@
+package com.weizhi.httpservice;
+
+import android.os.Handler;
+import android.util.Log;
+
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+import com.loopj.android.http.ResponseHandlerInterface;
+import com.weizhi.domainmodel.MUser;
+import com.weizhi.domainmodel.NotifyMessage;
+
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+/**
+ * Created by shaohua on 14-11-6.
+ */
+public class UserInfo implements IUserInfo
+{
+	private static final String TAG = UserInfo.class.getSimpleName();
+	public static UserInfo getInstance(Handler handler) {
+		return new UserInfo(handler);
+	}
+
+	private AsyncHttpClient m_client;
+	private Handler m_callback;
+
+	private UserInfo(Handler handler)
+	{
+		m_callback = handler;
+		m_client = new AsyncHttpClient();
+	}
+
+	private void reportUI(int what,boolean success,Object obj)
+	{
+		int nRet = success?0:1;
+		if(m_callback != null)
+			m_callback.obtainMessage(what,nRet,0,obj).sendToTarget();
+	}
+
+	private void Post(String url, RequestParams params, ResponseHandlerInterface responseHandler)
+	{
+		m_client.post(url, params,responseHandler);
+	}
+
+	public boolean login(MUser user)
+	{
+		if(user.userName == null || user.userPwd == null
+				|| user.userName.isEmpty() || user.userPwd.isEmpty())
+			return false;
+		RequestParams params = new RequestParams();
+		params.setUseJsonStreamer(true);
+		params.put("userName",user.userName);
+		params.put("userPwd",user.userPwd);
+
+		Post(ServiceURL.USERINFO_LOGIN_URL, params, respLoginHandler);
+		return true;
+	}
+
+	private JsonHttpResponseHandler respLoginHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			try
+			{
+				int nRet = response.getInt("code");
+				if(nRet != 0)
+				{
+					reportUI(NotifyMessage.HTTP_USERINFO_LOGIN_FIN.ordinal(),
+							false,nRet);
+					return;
+				}
+				int nToken = response.getInt("token");
+				//保存用户token
+				reportUI(NotifyMessage.HTTP_USERINFO_LOGIN_FIN.ordinal(),
+						true,nToken);
+			}
+			catch (JSONException jsE)
+			{
+				reportUI(NotifyMessage.HTTP_USERINFO_LOGIN_FIN.ordinal(),
+						false,null);
+			}
+
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString,
+				Throwable throwable) {
+			reportUI(NotifyMessage.HTTP_USERINFO_LOGIN_FIN.ordinal(),
+					false,null);
+		}
+	};
+
+	public boolean register(MUser user)
+	{
+		if(user.userName == null || user.userPwd == null || user.nickName == null
+				|| user.userName.isEmpty() || user.userPwd.isEmpty() || user.nickName.isEmpty())
+			return false;
+		RequestParams params = new RequestParams();
+		params.setUseJsonStreamer(true);
+		params.put("userName",user.userName);
+		params.put("userPwd",user.userPwd);
+		params.put("nickName",user.nickName);
+
+		Post(ServiceURL.USERINFO_REGISTER_URL, params, respRegisterHandler);
+		return true;
+	}
+
+	private JsonHttpResponseHandler respRegisterHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			try {
+				int nRet = response.getInt("code");
+				if(nRet != 0)
+				{
+					reportUI(NotifyMessage.HTTP_USERINFO_REGISTER_FIN.ordinal(),
+							false,nRet);
+					return;
+				}
+				int nToken = response.getInt("token");
+				//保存用户token
+				reportUI(NotifyMessage.HTTP_USERINFO_REGISTER_FIN.ordinal(),
+						true,nToken);
+			}
+			catch (JSONException jsE)
+			{
+				reportUI(NotifyMessage.HTTP_USERINFO_REGISTER_FIN.ordinal(),
+						false,null);
+			}
+
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString,
+				Throwable throwable) {
+			reportUI(NotifyMessage.HTTP_USERINFO_REGISTER_FIN.ordinal(),
+					false,null);
+		}
+	};
+
+	public boolean forgetPassword(String phoneNumber)
+	{
+		if(phoneNumber == null || phoneNumber.isEmpty())
+			return false;
+		RequestParams params = new RequestParams();
+		params.setUseJsonStreamer(true);
+		params.put("phoneNumber",phoneNumber);
+
+		Post(ServiceURL.USERINFO_FORGETPASSWORD_URL, params, respForgetPasswordHandler);
+		return true;
+	}
+
+	private JsonHttpResponseHandler respForgetPasswordHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			try
+			{
+				int nRet = response.getInt("code");
+				if(nRet != 0)
+				{
+					reportUI(NotifyMessage.HTTP_USERINFO_FORGETPASSWORD_FIN.ordinal(),
+							false,nRet);
+					return;
+				}
+				reportUI(NotifyMessage.HTTP_USERINFO_FORGETPASSWORD_FIN.ordinal(),
+						true,null);
+			}
+			catch (JSONException jsE)
+			{
+				reportUI(NotifyMessage.HTTP_USERINFO_FORGETPASSWORD_FIN.ordinal(),
+						false,null);
+			}
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+			reportUI(NotifyMessage.HTTP_USERINFO_FORGETPASSWORD_FIN.ordinal(),
+					false,null);
+		}
+	};
+
+	public boolean modifyPassword(String phoneNumber,String sms,String newPwd)
+	{
+		if(phoneNumber == null || phoneNumber.isEmpty() || sms == null || sms.isEmpty()
+				||newPwd == null || newPwd.isEmpty())
+			return false;
+		RequestParams params = new RequestParams();
+		params.setUseJsonStreamer(true);
+		params.put("phoneNumber",phoneNumber);
+		params.put("sms",sms);
+		params.put("newPwd",newPwd);
+
+		Post(ServiceURL.USERINFO_MODIFYPASSWORD_URL, params, respModifyPasswordHandler);
+		return true;
+	}
+
+	private JsonHttpResponseHandler respModifyPasswordHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			try
+			{
+				int nRet = response.getInt("code");
+				if(nRet != 0)
+				{
+					reportUI(NotifyMessage.HTTP_USERINFO_MODIFYPASSWORD_FIN.ordinal(),
+							false,nRet);
+					return;
+				}
+				reportUI(NotifyMessage.HTTP_USERINFO_MODIFYPASSWORD_FIN.ordinal(),
+						true,null);
+			}
+			catch (JSONException jsE)
+			{
+				reportUI(NotifyMessage.HTTP_USERINFO_MODIFYPASSWORD_FIN.ordinal(),
+						false,null);
+			}
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+			reportUI(NotifyMessage.HTTP_USERINFO_MODIFYPASSWORD_FIN.ordinal(),
+					false,null);
+		}
+	};
+
+	public void uploadHeadPhoto()
+	{
+		//
+	}
+
+	private JsonHttpResponseHandler respUploadHeadPhotoHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			super.onSuccess(statusCode, headers, response);
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+			super.onFailure(statusCode, headers, responseString, throwable);
+		}
+	};
+
+	public void updateHeadPhoto()
+	{
+		//
+	}
+
+	private JsonHttpResponseHandler respUpdateHeadPhotoHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			super.onSuccess(statusCode, headers, response);
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+			super.onFailure(statusCode, headers, responseString, throwable);
+		}
+	};
+
+	public void updateProfile()
+	{
+		//
+	}
+
+	private JsonHttpResponseHandler respUpdateProfileHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			super.onSuccess(statusCode, headers, response);
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+			super.onFailure(statusCode, headers, responseString, throwable);
+		}
+	};
+
+	public void getProfile()
+	{
+		//
+	}
+
+	private JsonHttpResponseHandler respGetProfileHandler = new JsonHttpResponseHandler()
+	{
+		@Override
+		public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+			super.onSuccess(statusCode, headers, response);
+		}
+
+		@Override
+		public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+			super.onFailure(statusCode, headers, responseString, throwable);
+		}
+	};
+}

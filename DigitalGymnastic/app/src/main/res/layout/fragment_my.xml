@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <include layout="@layout/topbar_rightword" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_top"
+        android:background="@color/whitesmoke"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_head"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y80"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_head"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_toRightOf="@+id/iv_touxiang"
+                android:text="Angel" />
+
+            <ImageView
+                android:id="@+id/iv_head"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <com.hike.digitalgymnastic.view.CircleImageView
+                android:id="@+id/iv_touxiang"
+                android:layout_width="@dimen/x59"
+                android:layout_height="@dimen/x59"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:scaleType="fitXY"
+                android:src="@mipmap/boy_head" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/x20"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_homepage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_homepage"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/iv_homepage"
+                android:text="@string/myhomepage" />
+
+            <ImageView
+                android:id="@+id/iv_nick"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_homepage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_homepage2" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_goal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_goal"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/iv_goal"
+                android:text="我的目标" />
+
+            <ImageView
+                android:id="@+id/iv_back"
+                style="@style/menu_my_message_iv_style"
+                android:layout_width="wrap_content" />
+
+            <ImageView
+                android:id="@+id/iv_goal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_goal2" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/x20"
+            android:background="@color/grey_e5" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_feedback"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/iv_feedback"
+                android:text="@string/feedback" />
+
+            <ImageView
+                android:id="@+id/iv2"
+                style="@style/menu_my_message_iv_style" />
+
+            <ImageView
+                android:id="@+id/iv_feedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_feedback2" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="@dimen/x18"
+            android:background="@color/grey_e5" />
+
+        <RelativeLayout
+            android:id="@+id/rl_aboutus"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/tv_aboutus"
+                style="@style/menu_my_message_tv_key_style"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/iv_aboutus"
+                android:text="@string/关于我们" />
+
+            <ImageView
+                android:id="@+id/iv3"
+                style="@style/menu_my_message_iv_style" />
+
+            <ImageView
+                android:id="@+id/iv_aboutus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x18"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_aboutus2" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/x15"
+            android:background="@color/grey_e5" />
+
+        <TextView
+            android:id="@+id/tv_loginout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y40"
+            android:layout_below="@+id/ll_bottom"
+            android:background="@color/white"
+            android:gravity="center"
+            android:text="退出登录"
+            android:textColor="@color/special_tcolor"
+            android:textSize="@dimen/x16" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_e5" />
+    </LinearLayout>
+</RelativeLayout>

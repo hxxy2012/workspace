@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/y10" >
+
+        <com.hike.digitalgymnastic.view.CircleImageView
+            android:id="@+id/iv_customer"
+            android:layout_width="@dimen/x60"
+            android:layout_height="@dimen/x60"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/boy_head" />
+
+        <RelativeLayout
+            android:id="@+id/rl_right"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x60"
+            android:layout_marginLeft="@dimen/x8"
+            android:layout_toRightOf="@id/iv_customer"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="小明"
+                android:textSize="@dimen/x15" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/x25"
+                android:layout_alignBottom="@+id/tv_name"
+                android:layout_marginLeft="@dimen/x10"
+                android:layout_toRightOf="@+id/tv_name"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="1小时前"
+                android:textSize="@dimen/x14" />
+
+            <TextView
+                android:id="@+id/tv_type"
+                android:gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_name"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/tv_name"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="小明"
+                android:textSize="@dimen/x14" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

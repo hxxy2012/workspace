@@ -1,0 +1,11 @@
+package com.hike.digitalgymnastic.utils;
+
+public class CheckUtils {
+
+	public static boolean checkNull(String value){
+		if(value==null||value.length()==0)
+			return true;
+		else 
+			return false;
+	}
+}

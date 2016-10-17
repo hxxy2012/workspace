@@ -1,0 +1,190 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginRight="@dimen/y10"
+        android:layout_marginTop="@dimen/y5"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.hike.digitalgymnastic.view.CircleImageView
+            android:id="@+id/iv_huoban_touxiang"
+            android:layout_width="@dimen/x35"
+            android:layout_height="@dimen/x35"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/boy_head" />
+
+        <TextView
+            android:id="@+id/tv_customername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x5"
+            android:layout_toRightOf="@id/iv_huoban_touxiang"
+            android:text="nightwish"
+            android:textColor="@color/text_green"
+            android:textSize="@dimen/x13" />
+
+        <TextView
+            android:id="@+id/tv_publishtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x5"
+            android:gravity="center"
+            android:text="4天前"
+            android:textColor="@color/grey_99"
+            android:textSize="@dimen/x13" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_left"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginRight="@dimen/y10"
+        android:layout_marginTop="@dimen/y5"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/iv_diarypic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_two"
+        android:layout_marginLeft="@dimen/y10"
+        android:layout_marginRight="@dimen/y10">
+
+        <TextView
+            android:id="@+id/tv_shuoshuo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x5"
+            android:background="@color/white"
+            android:text="fhdakjhfdalkfhadlskjfhaskldfhfjdlakj"
+            android:textColor="@color/plan_title_textcolor"
+            android:textSize="@dimen/x14"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_top"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="@dimen/x5"
+        android:background="@color/plan_line_color" />
+
+    <LinearLayout
+        android:id="@+id/ll_item_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y35"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:id="@+id/rl_zan"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <com.hike.digitalgymnastic.view.ZanButton
+                android:id="@+id/tv_zan"
+                style="@style/item_huoban_tupian"
+                android:layout_width="@dimen/x15"
+                android:layout_height="@dimen/x15"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/count_zan"
+                style="@style/item_huoban_shuzi"
+                android:layout_marginLeft="@dimen/x5"
+                android:layout_toRightOf="@+id/tv_zan"
+                android:text="10"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_kuohaozuo"
+                style="@style/item_huoban_wenzi"
+                android:layout_marginLeft="@dimen/x5"
+                android:layout_toRightOf="@+id/count_zan"
+                android:text="赞" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/x4"
+            android:layout_marginTop="@dimen/x4"
+            android:background="@color/plan_line_color" />
+
+        <RelativeLayout
+            android:id="@+id/rl_comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv_comment"
+                style="@style/item_huoban_tupian"
+                android:layout_width="@dimen/x22"
+                android:layout_height="@dimen/x12"
+                android:src="@mipmap/comment_normal" />
+
+            <TextView
+                android:id="@+id/count_comment"
+                style="@style/item_huoban_shuzi"
+                android:layout_marginLeft="@dimen/x5"
+                android:layout_toRightOf="@+id/iv_comment"
+                android:text="10"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_kuohao"
+                style="@style/item_huoban_shuzi"
+                android:layout_marginLeft="@dimen/x5"
+                android:layout_toRightOf="@+id/count_comment"
+                android:text="评论" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/plan_line_color" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y8"
+        android:background="#f5f5f5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/plan_line_color" />
+
+</LinearLayout>

@@ -1,0 +1,172 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fr_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuiderActivity" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:alpha="0.8">
+
+    </FrameLayout>
+    <RelativeLayout
+        android:id="@+id/rl_unbind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y75" >
+
+        <ImageView
+            android:id="@+id/iv_applogo1"
+            android:layout_width="@dimen/x71"
+            android:layout_height="@dimen/x71"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/app_icon" />
+
+        <TextView
+            android:id="@+id/tv_unbind_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_applogo1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y23"
+            android:gravity="center_horizontal"
+            android:text="解绑手环后会丢失尚未同步的数据"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_unbind_desc"
+            android:layout_marginTop="@dimen/y34"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_unbind"
+                android:layout_width="@dimen/x71"
+                android:layout_height="@dimen/x71"
+                android:layout_marginRight="@dimen/x18"
+                android:background="@drawable/btn_unbind_selector"
+                android:text="解绑"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_unbind_cancel"
+                android:layout_width="@dimen/x71"
+                android:layout_height="@dimen/x71"
+                android:layout_marginLeft="@dimen/x18"
+                android:background="@drawable/btn_unbind_selector"
+                android:text="取消"
+                android:textColor="@color/device_unbind_btncolor" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_sync_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y75"
+        android:visibility="gone" >
+
+     
+
+        <ImageView
+            android:id="@+id/iv_applogo2"
+            android:layout_width="@dimen/x71"
+            android:layout_height="@dimen/x71"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/app_icon" />
+
+        <TextView
+            android:id="@+id/tv_update_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_applogo2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/y23"
+            android:gravity="center_horizontal"
+            android:text="是否升级到最新固件版本"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x15"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/tv_update_desc"
+            android:layout_marginTop="@dimen/y34"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_update_cancel"
+                android:layout_width="@dimen/x71"
+                android:layout_height="@dimen/x71"
+                android:layout_marginRight="@dimen/x18"
+                android:background="@drawable/btn_unbind_selector"
+                android:text="取消"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="@dimen/x71"
+                android:layout_height="@dimen/x71"
+                android:layout_marginLeft="@dimen/x18"
+                android:background="@drawable/btn_unbind_selector"
+                android:text="升级"
+                android:textColor="@color/device_unbind_btncolor" />
+        </LinearLayout>
+    </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/rl_bond_update"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="100dp"
+          android:visibility="gone" >
+
+   <LinearLayout
+            android:id="@+id/ll_bond_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+       android:layout_marginTop="@dimen/y30"
+            >
+
+
+       <com.hike.digitalgymnastic.view.FirewallUpdateView
+           android:id="@+id/iv_firmwallupdat"
+           android:layout_width="@dimen/x71"
+           android:layout_height="@dimen/x71"
+           />
+
+            <TextView android:id="@+id/tv_update_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/y30"
+                android:text="正在升级固件..."
+                 android:textColor="@color/white"
+                android:textSize="@dimen/x18"/>
+
+       <Button
+           android:id="@+id/btn_retry"
+           android:layout_width="@dimen/x71"
+           android:layout_height="@dimen/x71"
+           android:text="重试"
+          android:textColor="@color/device_unbind_btncolor"
+           android:textSize="@dimen/x20"
+           android:visibility="invisible"
+           android:background="@null"
+           android:layout_marginTop="@dimen/y100"
+           />
+        </LinearLayout>
+        </RelativeLayout>
+</FrameLayout><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/layout/activity_deviceunbind.xml -->

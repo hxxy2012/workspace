@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/test_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/time_line1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/ll1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x18"
+            android:layout_marginRight="@dimen/x18"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/iv_time_line_top1"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/y37"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:alpha="0.2"/>
+
+            <ImageView
+                android:layout_width="@dimen/x12"
+                android:layout_height="@dimen/x12"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_time_dot" />
+
+            <LinearLayout
+                android:id="@+id/iv_time_line_bottom1"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/y37"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/iv_time_line_top1"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:alpha="0.2"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+
+                <com.hike.digitalgymnastic.view.SportTextView
+                    android:id="@+id/tv_value1"
+                    android:layout_width="@dimen/x70"
+                    android:layout_height="@dimen/x70"
+                    android:layout_centerInParent="true"
+                    custom:normalWidth="@dimen/x70"
+                    custom:normalHeight="@dimen/x70"
+                    custom:checkedWidth="@dimen/x130"
+                    custom:checkedHeight="@dimen/x70"
+                    android:background="@mipmap/bg_timeline_value_normal"
+                    custom:normalBackground="@mipmap/bg_timeline_value_normal"
+                    custom:checkedBackground="@drawable/bg_timeline_value_checked"
+                    custom:during="200"
+                    custom:textsize_big="@dimen/x12"
+                    custom:textsize_small="@dimen/x12"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:textColor="@color/white" />
+                <View
+                    android:layout_width="@dimen/x30"
+                    android:layout_height="1px"
+                    android:background="@color/white"
+                    android:alpha="0.2"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/x10"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_time1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:focusable="false"
+                    android:text="08:30"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/time_line2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+
+        <RelativeLayout
+            android:id="@+id/ll2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/x18"
+            android:layout_marginRight="@dimen/x18"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/iv_time_line_top2"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/y37"
+                android:layout_gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:alpha="0.2"/>
+
+            <ImageView
+                android:layout_width="@dimen/x12"
+                android:layout_height="@dimen/x12"
+                android:layout_gravity="center_horizontal"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_time_dot" />
+
+            <LinearLayout
+                android:id="@+id/iv_time_line_bottom2"
+                android:layout_width="1dp"
+                android:layout_height="@dimen/y37"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@id/iv_time_line_top2"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:alpha="0.2"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/tv_time2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="08:30"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+        >
+            <View
+                android:layout_width="@dimen/x30"
+                android:layout_height="1px"
+                android:background="@color/white"
+                android:alpha="0.2"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x10"
+                />
+            <com.hike.digitalgymnastic.view.SportTextView
+                android:id="@+id/tv_value2"
+                android:layout_width="@dimen/x70"
+                android:layout_height="@dimen/x70"
+                android:layout_centerInParent="true"
+                custom:normalWidth="@dimen/x70"
+                custom:normalHeight="@dimen/x70"
+                custom:checkedWidth="@dimen/x130"
+                custom:checkedHeight="@dimen/x70"
+                android:background="@mipmap/bg_timeline_value_normal"
+                custom:normalBackground="@mipmap/bg_timeline_value_normal"
+                custom:checkedBackground="@drawable/bg_timeline_value_checked"
+                custom:textsize_big="@dimen/x12"
+                custom:textsize_small="@dimen/x12"
+                custom:during="200"
+                android:gravity="center"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout><!-- From: file:/D:/techfit3_1/app/src/main/res/layout/item_sport_list.xml -->

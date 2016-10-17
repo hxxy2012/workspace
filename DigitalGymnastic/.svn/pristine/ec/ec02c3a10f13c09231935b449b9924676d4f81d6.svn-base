@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- 体测合格 -->
+    <color name="device_rel_text_normal">#333333</color>
+    <color name="device_rel_text_desp">#999999</color>
+
+    <color name="device_unbind_btncolor">#00bea3</color>
+</resources>

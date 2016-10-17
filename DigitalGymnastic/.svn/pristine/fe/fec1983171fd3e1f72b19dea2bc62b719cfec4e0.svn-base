@@ -1,0 +1,99 @@
+package com.hike.digitalgymnastic.entitiy;
+
+import java.util.List;
+public class MessageContext {
+	private int total;// 消息总数
+	private List<MessageListEntity> messageList;// 消息列表
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public void setMessageList(List<MessageListEntity> messageList) {
+		this.messageList = messageList;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public class MessageListEntity {
+		private String action;// 消息动作
+		private String createdTime;// 创建时间
+		private Long id;// 消息标识
+		private Short type;// 消息类型(1:公告;2:通知)
+		private String title;// 消息标题
+		private String content;// 消息内容
+		private Short status;// 消息状态(1:未读;2:已读;3:删除)
+		private String expiredTime;// 过期时间
+
+		public String getAction() {
+			return action;
+		}
+
+		public void setAction(String action) {
+			this.action = action;
+		}
+
+		public String getCreatedTime() {
+			return createdTime;
+		}
+
+		public void setCreatedTime(String createdTime) {
+			this.createdTime = createdTime;
+		}
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		public Short getType() {
+			return type;
+		}
+
+		public void setType(Short type) {
+			this.type = type;
+		}
+
+		public String getTitle() {
+			return title;
+		}
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+		public String getContent() {
+			return content;
+		}
+
+		public void setContent(String content) {
+			this.content = content;
+		}
+
+		public Short getStatus() {
+			return status;
+		}
+
+		public void setStatus(Short status) {
+			this.status = status;
+		}
+
+		public String getExpiredTime() {
+			return expiredTime;
+		}
+
+		public void setExpiredTime(String expiredTime) {
+			this.expiredTime = expiredTime;
+		}
+
+	}
+
+	public List<MessageListEntity> getMessageList() {
+		return messageList;
+	}
+}

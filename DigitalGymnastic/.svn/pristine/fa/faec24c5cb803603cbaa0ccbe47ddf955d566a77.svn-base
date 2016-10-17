@@ -1,0 +1,59 @@
+package com.hike.digitalgymnastic.utils;
+
+import java.util.List;
+
+import org.apache.http.message.BasicNameValuePair;
+
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.os.Build;
+import android.telephony.TelephonyManager;
+import android.text.TextUtils;
+
+import com.lidroid.xutils.http.RequestParams;
+
+public class Utiles {
+	
+	/**
+	 * 每次请求提交的信息
+	 * 
+	 * @param params
+	 */
+	@SuppressWarnings("static-access")
+	public static void Add(Context context,RequestParams params) {
+		Build bd = new Build();
+		TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+		WifiManager wifimanager=(WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+		params.addBodyParameter("osType", "2");
+		params.addBodyParameter("osVersion", String.valueOf(android.os.Build.VERSION.SDK_INT) );
+		params.addBodyParameter("appVersion",Utils.getVersion(context));
+		params.addBodyParameter("deviceModel", bd.MODEL);
+		if(!TextUtils.isEmpty(tm.getDeviceId()))
+			params.addBodyParameter("deviceId", tm.getDeviceId());
+		else if(wifimanager.getConnectionInfo()!=null
+				&&!TextUtils.isEmpty(wifimanager.getConnectionInfo().getMacAddress())){
+			params.addBodyParameter("deviceId",wifimanager.getConnectionInfo().getMacAddress());
+		}else{
+			params.addBodyParameter("deviceId", android.os.Build.SERIAL);
+		}
+		params.addBodyParameter("sign", "");
+		params.addBodyParameter("token", LocalDataUtils.readCustomer(context).getLoginToken());
+		params.addBodyParameter("timestamp", String.valueOf(System.currentTimeMillis()));
+	}
+	
+	/**
+	 * 每次请求提交的信息
+	 * 
+	 * @param params
+	 */
+	@SuppressWarnings("static-access")
+	public static void Add(Context context,List<BasicNameValuePair> params) {
+		Build bd = new Build();
+		TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);		
+		params.add(new BasicNameValuePair("osType", "2"));
+		params.add(new BasicNameValuePair("osVersion", Utils.getVersion(context)));
+		params.add(new BasicNameValuePair("appVersion", String.valueOf(android.os.Build.VERSION.SDK_INT)));
+		params.add(new BasicNameValuePair("deviceModel",  bd.MODEL));
+		params.add(new BasicNameValuePair("deviceId", tm.getDeviceId()));
+	}
+}

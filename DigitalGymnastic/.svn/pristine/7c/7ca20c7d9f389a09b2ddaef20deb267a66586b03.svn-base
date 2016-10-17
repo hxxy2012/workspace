@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@mipmap/clock_thri_press" android:state_checked="true"/>
+    <item android:drawable="@mipmap/clock_thri_nor" android:state_checked="false"/>
+
+</selector><!-- From: file:/Users/huwei/Documents/workspace/DigitalGymnastic/app/src/main/res/drawable/menu_thri_rbtn_select.xml -->

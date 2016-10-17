@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+<include
+        android:id="@+id/handleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/activity_main_frament_sleep_urual" />
+
+    <FrameLayout  android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y8">
+
+        <include android:id="@+id/center_layout_target"
+            android:layout_width="@dimen/x134"
+            android:layout_height="@dimen/x134"
+            android:layout_gravity="center"
+            layout="@layout/widget_center_sleep" />
+      
+  		<include android:id="@+id/center_layout_actual"
+            android:layout_width="@dimen/x134"
+            android:layout_height="@dimen/x134"
+            android:layout_gravity="center"
+            layout="@layout/widget_center_sleep_actual"
+            android:visibility="invisible" />
+
+        <com.hike.digitalgymnastic.view.DashCircleProgress
+            android:id="@+id/iv_completionRate"
+            android:layout_width="@dimen/x196"
+            android:layout_height="@dimen/x196"
+            custom:duration="1000"
+            custom:mRingColor="@color/white"
+            custom:mRingPaintColor="@color/white"
+            custom:max="1500"
+            custom:min="0"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </FrameLayout>
+
+    <LinearLayout android:id="@+id/ll1"
+        android:layout_below="@id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_today_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="暂无数据，你可能昨天晚上没有佩戴手环"
+            android:textSize="@dimen/x13"
+            android:layout_marginTop="@dimen/y18"
+            android:textColor="@color/time_color_normal"
+            android:gravity="center" />
+    </LinearLayout>
+
+</RelativeLayout><!-- From: file:/Users/liqing/Documents/work/techfit/311/DigitalGymnastic2.1.3/trunk/DigitalGymnastic/DigitalGymnastic/app/src/main/res/layout/activity_main_frament_sleep_top.xml -->

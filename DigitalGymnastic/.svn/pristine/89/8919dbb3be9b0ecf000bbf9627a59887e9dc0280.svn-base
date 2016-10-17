@@ -1,0 +1,104 @@
+package com.hike.digitalgymnastic.entitiy;
+
+import android.content.Context;
+
+import com.hike.digitalgymnastic.utils.LocalDataUtils;
+
+public class DeviceInfo {
+	private boolean isConnected;
+	private String bindMAC;
+	private String name;
+	private int powerRate;
+	private int sleepCount;
+	private int sportCount;
+	private boolean isSyncData_ing;//蓝牙通信标识
+	private boolean isLoginDevice;//是否登陆设备
+	private boolean isCommunication;//是否正在通信
+	public boolean isCommunication() {
+		return isCommunication;
+	}
+	public void setCommunication(boolean isCommunication) {
+		this.isCommunication = isCommunication;
+	}
+	private int version;//手环版本号
+	private BandVersion bandVersion;//服务端手环版本信息
+	
+	
+	public BandVersion getBandVersion() {
+		return bandVersion;
+	}
+	public void setBandVersion(BandVersion bandVersion) {
+		this.bandVersion = bandVersion;
+	}
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	public boolean isLoginDevice() {
+		return isLoginDevice;
+	}
+	public void setLoginDevice(boolean isLoginDevice) {
+		this.isLoginDevice = isLoginDevice;
+	}
+	
+	public boolean isSyncData_ing() {
+		return isSyncData_ing;
+	}
+	public void setSyncData_ing(boolean isSyncData_ing) {
+		this.isSyncData_ing = isSyncData_ing;
+	}
+	public int getSleepCount() {
+		return sleepCount;
+	}
+	public void setSleepCount(int sleepCount) {
+		this.sleepCount = sleepCount;
+	}
+	public int getSportCount() {
+		return sportCount;
+	}
+	public void setSportCount(int sportCount) {
+		this.sportCount = sportCount;
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public boolean isConnected(Context context) {
+		return LocalDataUtils.getConnectedInfo(context);
+	}
+	public void setConnected(Context context,boolean isConnected) {
+		LocalDataUtils.saveConnectedInfo(context, isConnected);
+	}
+	public String getBindMAC() {
+		return bindMAC;
+	}
+	public void setBindMAC(String bindMAC) {
+		this.bindMAC = bindMAC;
+	}
+	public int getPowerRate() {
+		return powerRate;
+	}
+	public void setPowerRate(int powerRate) {
+		this.powerRate = powerRate;
+	}
+	private DeviceInfo(){
+		
+	}
+	private  static DeviceInfo instance;
+	public static DeviceInfo getInstance(Context context){
+		if(instance==null){
+			instance=new DeviceInfo();
+			instance.bindMAC=LocalDataUtils.getBindMAC(context);
+			instance.name=LocalDataUtils.getBindName(context);
+//			DBManager manager=DBManager.getIntance(context,LocalDataUtils.readCustomer(context).getPhone());
+//			instance.sleepCount=manager.getAllObject(WSleep.class).size();
+//			instance.sportCount=manager.getAllObject(WHistorySteps.class).size();
+		}
+		return instance;
+	}
+}
